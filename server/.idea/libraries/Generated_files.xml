@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/src/core/dtree.js" />
+        <item url="file://$PROJECT_DIR$/build/server.js" />
+        <item url="file://$PROJECT_DIR$/src/constants/filetypeConstants.js" />
+        <item url="file://$PROJECT_DIR$/src/server.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/core/dtree.js" />
+      <root url="file://$PROJECT_DIR$/build/server.js" />
+      <root url="file://$PROJECT_DIR$/src/constants/filetypeConstants.js" />
+      <root url="file://$PROJECT_DIR$/src/server.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
