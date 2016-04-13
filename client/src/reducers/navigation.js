@@ -1,11 +1,9 @@
-import * as ActionTypes from '../actions/routeAction';
+import * as ActionTypes from '../actions/RouteActions';
 
-module.exports = (state = { path: '/', files: [] }, action) => {
+module.exports = (state = '/', action) => {
     switch (action.type) {
         case ActionTypes.NAVIGATE:
-            return Object.assign({}, state, {
-                path: action.text
-            });
+            return action.text;
         default:
             return state;
     }

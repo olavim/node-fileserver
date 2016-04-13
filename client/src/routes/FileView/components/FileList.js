@@ -1,29 +1,32 @@
 import React from 'react';
 import path from 'path';
-import { Link } from 'react-router';
+import DirectoryLink from './DirectoryLink';
 
-module.exports = React.createClass({
-    render: function() {
-        let files = this.props.files;
-        let dir = this.props.path;
+const FileList = ({
+	files,
+	currentPath,
+	onNavigate
+}) => {
+	return (
+		<ul>
+			{
+				files.map((file, index) => {
+					if (file.type === 'directory') {
+						let to = path.join(currentPath, file.name);
+						return (
+							<li key={index}>
+								<DirectoryLink to={to} onNavigate={onNavigate}>
+									{file.name}
+								</DirectoryLink>
+							</li>
+						);
+					}
 
-        let fileComponents = files.map((file, index) => {
-            if (file.type === 'directory') {
-                let p = path.join(dir, file.name);
-                return (
-                    <li key={index}>
-                        <Link to={p}>{file.name}</Link>
-                    </li>
-                );
-            }
+					return <li key={index}>{file.name}</li>;
+				})
+			}
+		</ul>
+	)
+}
 
-            return <li key={index}>{file.name}</li>;
-        });
-
-        return (
-            <ul>
-                {fileComponents}
-            </ul>
-        );
-    }
-});
+module.exports = FileList;

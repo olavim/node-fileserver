@@ -6,6 +6,16 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _RouteActions = require('../actions/RouteActions');
+
+var RouteActions = _interopRequireWildcard(_RouteActions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17,15 +27,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
-    function App() {
+    function App(props) {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+
+        props.routeActions.navigate(props.location.pathname);
+        return _this;
     }
 
     _createClass(App, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {}
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(props) {
+            props.routeActions.navigate(props.location.pathname);
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -40,4 +55,16 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
-module.exports = App;
+function mapStateToProps(state) {
+    return {
+        currentPath: state.currentPath
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        routeActions: (0, _redux.bindActionCreators)(RouteActions, dispatch)
+    };
+}
+
+module.exports = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);

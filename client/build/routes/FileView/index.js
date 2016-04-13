@@ -4,7 +4,7 @@ module.exports = {
     path: '/home/*',
     getComponent: function getComponent(location, callback) {
         require.ensure([], function (require) {
-            callback(null, require('./components/FileView'));
+            callback(null, require('./containers/FileView'));
         });
     }
 };

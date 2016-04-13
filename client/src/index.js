@@ -3,8 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import navigationReducer from './reducers/navigation';
+import fileReducer from './reducers/files';
 
 let routes = {
     component: 'div',
@@ -18,13 +20,19 @@ let routes = {
 };
 
 let initialState = {
-    path: '/',
+    currentPath: '/',
     files: []
 }
 
+let reducers = combineReducers({
+    currentPath: navigationReducer,
+    files: fileReducer
+});
+
 let store = createStore(
-    navigationReducer,
-    initialState
+    reducers,
+    initialState,
+    applyMiddleware(thunk)
 );
 
 ReactDOM.render(

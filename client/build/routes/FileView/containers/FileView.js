@@ -16,6 +16,18 @@ var _FileList2 = _interopRequireDefault(_FileList);
 
 var _reactRedux = require('react-redux');
 
+var _redux = require('redux');
+
+var _FileActions = require('../../../actions/FileActions');
+
+var FileActions = _interopRequireWildcard(_FileActions);
+
+var _RouteActions = require('../../../actions/RouteActions');
+
+var RouteActions = _interopRequireWildcard(_RouteActions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34,39 +46,6 @@ var FileView = function (_React$Component) {
     }
 
     _createClass(FileView, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.retrieveFiles(this.props.path.substr(5));
-        }
-    }, {
-        key: 'retrieveFiles',
-        value: function retrieveFiles(path) {
-            var _this2 = this;
-
-            (0, _axios2.default)({
-                method: 'get',
-                url: 'http://localhost:3000/files' + path,
-                withCredentials: true,
-                responseType: 'json'
-            }).then(function (response) {
-                _this2.setState({ files: response.data.files });
-            }).catch(function (err) {
-                console.error(err.stack);
-            });
-        }
-    }, {
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(nextProps) {
-            var _this3 = this;
-
-            var routeChanged = nextProps.location !== this.props.location;
-            if (routeChanged) {
-                this.setState({ path: nextProps.location.pathname }, function (err, data) {
-                    _this3.retrieveFiles(_this3.state.path.substr(5));
-                });
-            }
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -75,9 +54,12 @@ var FileView = function (_React$Component) {
                 _react2.default.createElement(
                     'h2',
                     null,
-                    this.props.path
+                    this.props.currentPath
                 ),
-                _react2.default.createElement(_FileList2.default, { files: this.props.files, path: this.props.path })
+                _react2.default.createElement(_FileList2.default, {
+                    files: this.props.files,
+                    currentPath: this.props.currentPath,
+                    onNavigate: this.props.routeActions.navigate })
             );
         }
     }]);
@@ -85,11 +67,18 @@ var FileView = function (_React$Component) {
     return FileView;
 }(_react2.default.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
+function mapStateToProps(state) {
     return {
-        path: state.path,
+        currentPath: state.currentPath,
         files: state.files
     };
-};
+}
 
-module.exports = (0, _reactRedux.connect)(mapStateToProps)(FileView);
+function mapDispatchToProps(dispatch) {
+    return {
+        fileActions: (0, _redux.bindActionCreators)(FileActions, dispatch),
+        routeActions: (0, _redux.bindActionCreators)(RouteActions, dispatch)
+    };
+}
+
+module.exports = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FileView);

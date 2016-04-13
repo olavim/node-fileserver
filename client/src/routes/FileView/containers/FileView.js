@@ -2,51 +2,39 @@ import React from 'react';
 import axios from 'axios';
 import FileList from '../components/FileList';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as FileActions from '../../../actions/FileActions';
+import * as RouteActions from '../../../actions/RouteActions';
 
 class FileView extends React.Component {
-    componentWillMount() {
-        this.retrieveFiles(this.props.path.substr(5));
-    }
-
-    retrieveFiles(path) {
-        axios({
-            method: 'get',
-            url: 'http://localhost:3000/files' + path,
-            withCredentials: true,
-            responseType: 'json'
-        }).then((response) => {
-            this.setState({files: response.data.files});
-        }).catch((err) => {
-            console.error(err.stack);
-        });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        const routeChanged = nextProps.location !== this.props.location
-        if (routeChanged) {
-            this.setState({path: nextProps.location.pathname}, (err, data) => {
-                this.retrieveFiles(this.state.path.substr(5));
-            });
-        }
-    }
-
     render() {
         return (
             <div>
-                <h2>{this.props.path}</h2>
-                <FileList files={this.props.files} path={this.props.path} />
+                <h2>{this.props.currentPath}</h2>
+                <FileList
+                    files={this.props.files}
+					currentPath={this.props.currentPath}
+                    onNavigate={this.props.routeActions.navigate} />
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
     return {
-        path: state.path,
+		currentPath: state.currentPath,
         files: state.files
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        fileActions: bindActionCreators(FileActions, dispatch),
+        routeActions: bindActionCreators(RouteActions, dispatch)
+    }
+}
+
 module.exports = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(FileView);

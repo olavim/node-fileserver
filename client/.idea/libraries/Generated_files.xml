@@ -2,29 +2,30 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/build/client.js" />
-        <item url="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
-        <item url="file://$PROJECT_DIR$/build/index.js" />
-        <item url="file://$PROJECT_DIR$/src/actions/types/serverAction.js" />
-        <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-syntax-jsx/lib/index.js" />
-        <item url="file://$PROJECT_DIR$/static/scripts/bundle.js" />
-        <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx/lib/index.js" />
-        <item url="file://$PROJECT_DIR$/webpack.config.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-helper-builder-react-jsx/lib/index.js" />
-        <item url="file://$PROJECT_DIR$/src/client.js" />
+        <item url="file://$PROJECT_DIR$/src/reducers/files.js" />
+        <item url="file://$PROJECT_DIR$/client.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-display-name/lib/index.js" />
         <item url="file://$PROJECT_DIR$/src/index.js" />
-        <item url="file://$PROJECT_DIR$/src/actions/creators/routes.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-preset-react/index.js" />
-        <item url="file://$PROJECT_DIR$/src/actions/creators/server.js" />
         <item url="file://$PROJECT_DIR$/src/containers/App.js" />
+        <item url="file://$PROJECT_DIR$/build/client.js" />
         <item url="file://$PROJECT_DIR$/src/routes/FileView/index.js" />
-        <item url="file://$PROJECT_DIR$/src/actions/types/routeAction.js" />
+        <item url="file://$PROJECT_DIR$/src/actions/RouteActions.js" />
+        <item url="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
         <item url="file://$PROJECT_DIR$/src/reducers/navigation.js" />
+        <item url="file://$PROJECT_DIR$/build/index.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-flow-strip-types/lib/index.js" />
+        <item url="file://$PROJECT_DIR$/src/actions/FileActions.js" />
+        <item url="file://$PROJECT_DIR$/static/scripts/bundle.js" />
         <item url="file://$PROJECT_DIR$/build/containers/App.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-syntax-jsx/lib/index.js" />
         <item url="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx-source/lib/index.js" />
+        <item url="file://$PROJECT_DIR$/src/api.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx/lib/index.js" />
+        <item url="file://$PROJECT_DIR$/src/routes/FileView/components/FileLink.js" />
+        <item url="file://$PROJECT_DIR$/webpack.config.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -34,29 +35,32 @@
       <root url="file://$PROJECT_DIR$/src/routes/Home/containers/Home.js" />
       <root url="file://$PROJECT_DIR$/src/store/configureStore.js" />
       <root url="file://$PROJECT_DIR$/src/store/configureStore.js" />
-      <root url="file://$PROJECT_DIR$/build/client.js" />
-      <root url="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
-      <root url="file://$PROJECT_DIR$/build/index.js" />
-      <root url="file://$PROJECT_DIR$/src/actions/types/serverAction.js" />
-      <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-syntax-jsx/lib/index.js" />
-      <root url="file://$PROJECT_DIR$/static/scripts/bundle.js" />
-      <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx/lib/index.js" />
-      <root url="file://$PROJECT_DIR$/webpack.config.js" />
+      <root url="file://$PROJECT_DIR$/src/actions/creators/routes.js" />
+      <root url="file://$PROJECT_DIR$/src/actions/creators/server.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-helper-builder-react-jsx/lib/index.js" />
-      <root url="file://$PROJECT_DIR$/src/client.js" />
+      <root url="file://$PROJECT_DIR$/client.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-display-name/lib/index.js" />
       <root url="file://$PROJECT_DIR$/src/index.js" />
-      <root url="file://$PROJECT_DIR$/src/actions/creators/routes.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-preset-react/index.js" />
-      <root url="file://$PROJECT_DIR$/src/actions/creators/server.js" />
       <root url="file://$PROJECT_DIR$/src/containers/App.js" />
       <root url="file://$PROJECT_DIR$/src/routes/FileView/index.js" />
-      <root url="file://$PROJECT_DIR$/src/actions/types/routeAction.js" />
+      <root url="file://$PROJECT_DIR$/src/actions/RouteActions.js" />
       <root url="file://$PROJECT_DIR$/src/reducers/navigation.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-flow-strip-types/lib/index.js" />
       <root url="file://$PROJECT_DIR$/build/containers/App.js" />
       <root url="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx-source/lib/index.js" />
+      <root url="file://$PROJECT_DIR$/src/api.js" />
+      <root url="file://$PROJECT_DIR$/src/routes/FileView/components/DirectoryLink.js" />
+      <root url="file://$PROJECT_DIR$/src/reducers/files.js" />
+      <root url="file://$PROJECT_DIR$/build/client.js" />
+      <root url="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
+      <root url="file://$PROJECT_DIR$/build/index.js" />
+      <root url="file://$PROJECT_DIR$/src/actions/FileActions.js" />
+      <root url="file://$PROJECT_DIR$/static/scripts/bundle.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-syntax-jsx/lib/index.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/babel-plugin-transform-react-jsx/lib/index.js" />
+      <root url="file://$PROJECT_DIR$/webpack.config.js" />
     </CLASSES>
     <SOURCES />
   </library>
