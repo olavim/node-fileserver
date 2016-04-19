@@ -1,43 +1,53 @@
-import 'babel-polyfill';
+require('../assets/style.scss');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import navigationReducer from './reducers/navigation';
-import fileReducer from './reducers/files';
+import navigationReducer from './reducers/routeReducer';
+import fileReducer from './reducers/fileReducer';
+import { fileInfoFields } from './actions/FileActions';
+import { navigate } from './actions/RouteActions';
+import { enableBatching } from 'redux-batched-actions';
 
-let routes = {
-    component: 'div',
-    childRoutes: [{
-        path: '/',
-        component: require('./containers/App'),
-        childRoutes: [
-            require('./routes/FileView')
-        ]
-    }]
-};
+import App from './containers/App';
+import FileView from './routes/FileView';
 
 let initialState = {
-    currentPath: '/',
-    files: []
+    currentFile: {
+		path: '/',
+		filetype: 'directory',
+		dirData: {
+			files: [],
+			sort: {
+				by: fileInfoFields,
+				asc: true
+			}
+		}
+	}
 }
 
 let reducers = combineReducers({
-    currentPath: navigationReducer,
-    files: fileReducer
+    currentFile: fileReducer
 });
 
 let store = createStore(
-    reducers,
+    enableBatching(reducers),
     initialState,
     applyMiddleware(thunk)
 );
 
+navigate(window.location.pathname)(store.dispatch);
+
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory} routes={routes} />
+        <Router history={browserHistory} /*routes={routes}*/>
+			<Route path="/" component={App}>
+				{FileView}
+			</Route>
+		</Router>
     </Provider>,
     document.getElementById('content')
 );

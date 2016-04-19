@@ -1,7 +1,5 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -14,71 +12,88 @@ var _FileList = require('../components/FileList');
 
 var _FileList2 = _interopRequireDefault(_FileList);
 
+var _DirectoryNav = require('../components/DirectoryNav');
+
+var _DirectoryNav2 = _interopRequireDefault(_DirectoryNav);
+
 var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
-
-var _FileActions = require('../../../actions/FileActions');
-
-var FileActions = _interopRequireWildcard(_FileActions);
 
 var _RouteActions = require('../../../actions/RouteActions');
 
 var RouteActions = _interopRequireWildcard(_RouteActions);
 
+var _FileActions = require('../../../actions/FileActions');
+
+var FileActions = _interopRequireWildcard(_FileActions);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var isDir = function isDir(file) {
+	return file.filetype === 'directory';
+};
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+var FileView = function FileView(_ref) {
+	var currentFile = _ref.currentFile;
+	var routeActions = _ref.routeActions;
+	var fileActions = _ref.fileActions;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FileView = function (_React$Component) {
-    _inherits(FileView, _React$Component);
-
-    function FileView() {
-        _classCallCheck(this, FileView);
-
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(FileView).apply(this, arguments));
-    }
-
-    _createClass(FileView, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'h2',
-                    null,
-                    this.props.currentPath
-                ),
-                _react2.default.createElement(_FileList2.default, {
-                    files: this.props.files,
-                    currentPath: this.props.currentPath,
-                    onNavigate: this.props.routeActions.navigate })
-            );
-        }
-    }]);
-
-    return FileView;
-}(_react2.default.Component);
+	return _react2.default.createElement(
+		'div',
+		{ className: 'file-view' },
+		_react2.default.createElement(_DirectoryNav2.default, { currentPath: currentFile.path, onNavigate: routeActions.navigate }),
+		isDir(currentFile) ? _react2.default.createElement(_FileList2.default, {
+			currentFile: currentFile,
+			onNavigate: routeActions.navigate,
+			onSort: fileActions.sortFiles }) : ''
+	);
+};
 
 function mapStateToProps(state) {
-    return {
-        currentPath: state.currentPath,
-        files: state.files
-    };
+	if (!isDir(state.currentFile)) {
+		return {
+			currentFile: {
+				path: state.currentFile.path,
+				filetype: state.currentFile.filetype
+			}
+		};
+	}
+
+	var dirData = state.currentFile.dirData;
+	var files = dirData.files.slice(0);
+
+	files.sort(function (a, b) {
+		if (a.filetype !== b.filetype && (isDir(a) || isDir(b))) return isDir(a) ? -1 : 1;
+
+		for (var i = 0; i < dirData.sort.by.length; i++) {
+			var field = dirData.sort.by[i];
+			var comp = a[field].localeCompare(b[field]);
+			if (comp !== 0) return dirData.sort.asc ? comp : -comp;
+		}
+
+		return 0;
+	});
+
+	return {
+		currentFile: {
+			path: state.currentFile.path,
+			filetype: state.currentFile.filetype,
+			dirData: {
+				files: files,
+				sort: dirData.sort
+			}
+		}
+	};
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        fileActions: (0, _redux.bindActionCreators)(FileActions, dispatch),
-        routeActions: (0, _redux.bindActionCreators)(RouteActions, dispatch)
-    };
+	return {
+		routeActions: (0, _redux.bindActionCreators)(RouteActions, dispatch),
+		fileActions: (0, _redux.bindActionCreators)(FileActions, dispatch)
+	};
 }
 
 module.exports = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FileView);

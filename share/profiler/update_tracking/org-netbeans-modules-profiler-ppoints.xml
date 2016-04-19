@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.profiler.ppoints">
+    <module_version install_time="1445549650691" last="true" origin="installer" specification_version="1.20.1">
+        <file crc="653708770" name="config/Modules/org-netbeans-modules-profiler-ppoints.xml"/>
+        <file crc="1545189925" name="modules/locale/org-netbeans-modules-profiler-ppoints_ja.jar"/>
+        <file crc="2396530418" name="modules/locale/org-netbeans-modules-profiler-ppoints_pt_BR.jar"/>
+        <file crc="2773593914" name="modules/locale/org-netbeans-modules-profiler-ppoints_ru.jar"/>
+        <file crc="3630192342" name="modules/locale/org-netbeans-modules-profiler-ppoints_zh_CN.jar"/>
+        <file crc="2487690899" name="modules/org-netbeans-modules-profiler-ppoints.jar"/>
+    </module_version>
+</module>

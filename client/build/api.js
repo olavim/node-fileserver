@@ -21,10 +21,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	fetchFiles: function fetchFiles(dir) {
 		return _axios2.default.get(getFileUrl(dir));
+	},
+
+	loadFileData: function loadFileData(path) {
+		return _axios2.default.get(getFileUrl(path) + '?load=data');
 	}
 };
 
 
 function getFileUrl(dir) {
+	dir = dir.replace(/^\/home/, '');
 	return _config2.default.apiUrl + _path2.default.join('files', dir);
 }

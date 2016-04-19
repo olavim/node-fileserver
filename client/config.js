@@ -1,5 +1,5 @@
 module.exports = {
 	webDir: __dirname + '/static',
 	port: 8080,
-	apiUrl: 'http://localhost:3000/'
+	apiUrl: 'http://tilastojakelu.net:3000/'
 }

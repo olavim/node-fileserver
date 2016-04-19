@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.web.client.samples">
+    <module_version install_time="1445552218661" last="true" origin="installer" specification_version="1.15.1">
+        <file crc="2595981291" name="config/Modules/org-netbeans-modules-web-client-samples.xml"/>
+        <file crc="2383169326" name="modules/locale/org-netbeans-modules-web-client-samples_ja.jar"/>
+        <file crc="3790624703" name="modules/locale/org-netbeans-modules-web-client-samples_pt_BR.jar"/>
+        <file crc="4141330791" name="modules/locale/org-netbeans-modules-web-client-samples_ru.jar"/>
+        <file crc="2248769800" name="modules/locale/org-netbeans-modules-web-client-samples_zh_CN.jar"/>
+        <file crc="3473534941" name="modules/org-netbeans-modules-web-client-samples.jar"/>
+    </module_version>
+</module>

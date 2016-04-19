@@ -7,7 +7,11 @@ app.get('/', function(req, res) {
     res.redirect('/home/');
 });
 
-app.get('/home*', function(request, response) {
+app.get(/\/home$/, function(req, res) {
+    res.redirect('/home/');
+});
+
+app.get('/home/*', function(request, response) {
     response.sendFile(config.webDir + '/index.html');
 });
 

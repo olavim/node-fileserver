@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600italic);
+$responsive-break: 768px;
+
+* {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.file-view {
+  width: 60%;
+  max-width: 60em;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: $responsive-break) {
+    width: 90%;
+  }
+}
+
+.directory-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    margin-left: 8px;
+    margin-right: 1.5em;
+    padding: 18px 0;
+    text-decoration: none;
+
+    a {
+      font-size: 11pt;
+      color: #000;
+    }
+
+    a:hover:not(.active) {
+      text-decoration: underline;
+    }
+
+    a.active {
+      font-weight: bold;
+      font-style: italic;
+      position: relative;
+      cursor: default;
+    }
+  }
+}
+
+.file-list {
+
+  * {
+    color: #fff;
+  }
+
+  $bgsize: 1.6em;
+  $border-height: 8px;
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.6);
+
+  .file-item-list {
+    border-top: 2px solid #1a1a1a;
+    border-bottom: $border-height solid #222;
+    background-color: #333;
+  }
+
+  .name, .modified {
+    $padding-y: 0.8em;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: $padding-y 1em $padding-y 1em;
+    width: 50%;
+
+    @media (max-width: $responsive-break) {
+      display: block;
+    }
+  }
+
+  @media (max-width: $responsive-break) {
+    .name {
+      width: 100%;
+    }
+  }
+
+  .header {
+    * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    background-color: #222;
+
+    $arrow-size: 8px;
+
+    .asc, .desc {
+      display: inline-block;
+      background-size: $arrow-size $arrow-size;
+      background-repeat: no-repeat;
+      width: $arrow-size;
+      height: $arrow-size;
+      margin-left: 1em;
+    }
+
+    .asc {
+      background-image: url(ascending.svg);
+    }
+
+    .desc {
+      background-image: url(descending.svg);
+    }
+
+    .name:hover, .modified:hover {
+      cursor: pointer;
+      background-color: #533;
+    }
+
+    .modified {
+      @media (max-width: $responsive-break) {
+        display: none;
+      }
+    }
+  }
+
+  .item {
+    background-image: url(file-empty.svg);
+    background-repeat: no-repeat;
+    background-position: 1em 50%;
+    background-size: $bgsize;
+    overflow: hidden;
+
+    .name {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding-left: 3.5em;
+    }
+
+    .modified {
+      overflow: hidden;
+
+      @media (max-width: $responsive-break) {
+        color: #aaa;
+        font-size: 11px;
+      }
+    }
+  }
+
+  @media (max-width: $responsive-break) {
+    .item:not(.dir) .name {
+      padding: 0;
+    }
+  }
+
+  .item.dir {
+    background-image: url(folder.svg);
+
+    @media (max-width: $responsive-break) {
+      .modified {
+        display: none;
+      }
+    }
+  }
+
+  .item:hover {
+    background-color: #433;
+  }
+}

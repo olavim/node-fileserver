@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.modules.profiler.nbmodule/1">
+    <module_version install_time="1445551058886" last="true" origin="installer" specification_version="1.34.1">
+        <file crc="1818824590" name="config/Modules/org-netbeans-modules-profiler-nbmodule.xml"/>
+        <file crc="1763617467" name="modules/locale/org-netbeans-modules-profiler-nbmodule_ja.jar"/>
+        <file crc="2643891225" name="modules/locale/org-netbeans-modules-profiler-nbmodule_pt_BR.jar"/>
+        <file crc="1713585300" name="modules/locale/org-netbeans-modules-profiler-nbmodule_ru.jar"/>
+        <file crc="1641929905" name="modules/locale/org-netbeans-modules-profiler-nbmodule_zh_CN.jar"/>
+        <file crc="1805520990" name="modules/org-netbeans-modules-profiler-nbmodule.jar"/>
+    </module_version>
+</module>

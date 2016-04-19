@@ -1,16 +1,42 @@
 import api from '../api';
 
-export const FETCH_FILES = 'FETCH_FILES';
+export const CHANGE_FILE = 'CHANGE_FILE';
+export const SET_FILES = 'SET_FILES';
+export const SORT_FILES = 'SORT_FILES';
 
-export function fetchFiles(dir) {
+export const fileInfoFields = ['name', 'modified']
+
+export function fetchFile(path) {
+	return {
+		type: CHANGE_FILE,
+		path,
+		filetype
+	}
+}
+
+export function changeFile(path, filetype) {
+	return {
+		type: CHANGE_FILE,
+		path,
+		filetype
+	}
+}
+
+export function setFiles(files) {
+	return {
+		type: SET_FILES,
+		files
+	}
+}
+
+export function sortFiles(by, asc) {
 	return (dispatch) => {
-		api.fetchFiles(dir).then((response) => {
-			dispatch({
-				type: FETCH_FILES,
-				payload: response.data.files
-			});
-		}).catch((error) => {
-			console.error(error.stack);
+		dispatch({
+			type: SORT_FILES,
+			sort: {
+				by,
+				asc
+			},
 		});
 	}
 }

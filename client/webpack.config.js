@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
     entry: ['babel-polyfill', './build/index.js'],
     output: {
@@ -7,8 +9,26 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" }
+            {
+                test: /\.scss/,
+                loaders: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+			{
+				test: /\.svg$/,
+				loader: 'file-loader?name=assets/[name].[ext]'
+			}
         ]
     },
+	sassLoader: {
+		includePaths: [path.resolve(__dirname, "./assets")]
+	},
     devtool: 'source-map'
 };
