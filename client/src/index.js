@@ -19,6 +19,7 @@ let initialState = {
     currentFile: {
 		path: '/',
 		filetype: 'directory',
+		data: '',
 		dirData: {
 			files: [],
 			sort: {

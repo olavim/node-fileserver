@@ -23,8 +23,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var navigate = exports.navigate = function navigate(path) {
 	return function (dispatch) {
-		_api2.default.fetchFiles(path).then(function (response) {
-			dispatch((0, _reduxBatchedActions.batchActions)([(0, _FileActions.changeFile)(path, response.data.filetype), (0, _FileActions.setFiles)(response.data.files)]));
+		_api2.default.fetchFileData(path).then(function (response) {
+			dispatch((0, _reduxBatchedActions.batchActions)([(0, _FileActions.fetchFile)(path, response.data), (0, _FileActions.setFiles)(response.data.files)]));
 		}).catch(function (error) {
 			console.error(error.stack);
 		});

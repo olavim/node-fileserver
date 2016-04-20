@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { getFileExtension } from '../tools/file';
 
 module.exports = function(root, filepath) {
 	return new Promise((resolve, reject) => {
@@ -7,7 +8,7 @@ module.exports = function(root, filepath) {
 			if (err)
 				reject(err);
 			else
-				resolve({data});
+				resolve({filetype: getFileExtension(filepath), data});
 		});
 	});
 }

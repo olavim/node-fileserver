@@ -6,19 +6,12 @@ export const SORT_FILES = 'SORT_FILES';
 
 export const fileInfoFields = ['name', 'modified']
 
-export function fetchFile(path) {
+export function fetchFile(path, file) {
 	return {
 		type: CHANGE_FILE,
 		path,
-		filetype
-	}
-}
-
-export function changeFile(path, filetype) {
-	return {
-		type: CHANGE_FILE,
-		path,
-		filetype
+		filetype: file.filetype,
+		data: file.data
 	}
 }
 

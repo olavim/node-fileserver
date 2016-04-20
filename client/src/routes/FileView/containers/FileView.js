@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import FileList from '../components/FileList';
+import FileEditor from '../components/FileEditor';
 import DirectoryNav from '../components/DirectoryNav';
+import DirectoryControl from '../components/DirectoryControl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as RouteActions from '../../../actions/RouteActions';
@@ -16,14 +18,18 @@ const FileView = ({
 }) => {
 	return (
 		<div className="file-view">
-			<DirectoryNav currentPath={currentFile.path} onNavigate={routeActions.navigate}/>
+			<div className="top-bar">
+				<DirectoryNav currentPath={currentFile.path} onNavigate={routeActions.navigate}/>
+				{isDir(currentFile) ?
+						<DirectoryControl /> : ''}
+			</div>
 			{
 				isDir(currentFile) ?
 					<FileList
 						currentFile={currentFile}
 						onNavigate={routeActions.navigate}
 						onSort={fileActions.sortFiles} /> :
-					''
+					<FileEditor currentFile={currentFile} />
 			}
 		</div>
 	);
@@ -34,7 +40,8 @@ function mapStateToProps(state) {
 		return {
 			currentFile: {
 				path: state.currentFile.path,
-				filetype: state.currentFile.filetype
+				filetype: state.currentFile.filetype,
+				data: state.currentFile.data
 			},
 		}
 	}

@@ -1,15 +1,15 @@
 import api from '../api';
 import * as ActionType from './FileActions';
-import { changeFile, setFiles } from './FileActions';
+import { fetchFile, setFiles } from './FileActions';
 import { browserHistory } from 'react-router';
 import { batchActions } from 'redux-batched-actions';
 
 export const navigate = (path) => {
 	return (dispatch) => {
-		api.fetchFiles(path).then((response) => {
+		api.fetchFileData(path).then((response) => {
 			dispatch(
 				batchActions([
-					changeFile(path, response.data.filetype),
+					fetchFile(path, response.data),
 					setFiles(response.data.files)
 				])
 			);

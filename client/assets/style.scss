@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
+@import url(github.css);
+
 $responsive-break: 768px;
 
-* {
+html {
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
 }
@@ -11,19 +14,52 @@ a {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .file-view {
-  width: 60%;
-  max-width: 60em;
+  width: 70%;
+  max-width: 70em;
   margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
 
-  @media (max-width: $responsive-break) {
-    width: 90%;
+  .top-bar {
+    overflow: hidden;
+    position: relative;
+
+    .control {
+      position: absolute;
+      display: block;
+      padding: 18px 0;
+      bottom: 0;
+      right: 0;
+
+      span {
+        display: inline-block;
+        $bgsize: 18px;
+        width: $bgsize;
+        height: $bgsize;
+        background-size: $bgsize;
+        margin: 0 0 0 1em;
+      }
+
+      .new-file {
+        background-image: url(new-file.svg)
+      }
+
+      .new-folder {
+        background-image: url(new-folder.svg)
+      }
+    }
   }
 }
 
 .directory-nav {
+  position: relative;
+  display: block;
+  float: left;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -56,12 +92,10 @@ a {
 }
 
 .file-list {
-
   * {
     color: #fff;
   }
 
-  $bgsize: 1.6em;
   $border-height: 8px;
   position: relative;
   list-style-type: none;
@@ -77,20 +111,10 @@ a {
 
   .name, .modified {
     $padding-y: 0.8em;
+    padding: $padding-y 1em $padding-y 1em;
     box-sizing: border-box;
     display: inline-block;
-    padding: $padding-y 1em $padding-y 1em;
     width: 50%;
-
-    @media (max-width: $responsive-break) {
-      display: block;
-    }
-  }
-
-  @media (max-width: $responsive-break) {
-    .name {
-      width: 100%;
-    }
   }
 
   .header {
@@ -105,9 +129,8 @@ a {
 
     background-color: #222;
 
-    $arrow-size: 8px;
-
     .asc, .desc {
+      $arrow-size: 8px;
       display: inline-block;
       background-size: $arrow-size $arrow-size;
       background-repeat: no-repeat;
@@ -128,20 +151,15 @@ a {
       cursor: pointer;
       background-color: #533;
     }
-
-    .modified {
-      @media (max-width: $responsive-break) {
-        display: none;
-      }
-    }
   }
 
   .item {
+    background-size: 1.6em;
     background-image: url(file-empty.svg);
     background-repeat: no-repeat;
     background-position: 1em 50%;
-    background-size: $bgsize;
     overflow: hidden;
+    padding-left: 0;
 
     .name {
       text-overflow: ellipsis;
@@ -152,31 +170,84 @@ a {
 
     .modified {
       overflow: hidden;
-
-      @media (max-width: $responsive-break) {
-        color: #aaa;
-        font-size: 11px;
-      }
-    }
-  }
-
-  @media (max-width: $responsive-break) {
-    .item:not(.dir) .name {
-      padding: 0;
     }
   }
 
   .item.dir {
     background-image: url(folder.svg);
-
-    @media (max-width: $responsive-break) {
-      .modified {
-        display: none;
-      }
-    }
   }
 
   .item:hover {
     background-color: #433;
+  }
+}
+
+.file-editor {
+  position: relative;
+  padding: 0.5em;
+  max-height: 800px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  pre {
+    margin: 0;
+
+    code {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 9pt;
+      overflow: visible;
+    }
+  }
+}
+
+@media (max-width: $responsive-break) {
+  .file-view {
+    width: 90%;
+
+    .file-list {
+      .name {
+        width: 100%;
+      }
+
+      .header .modified,
+      .item.dir .modified {
+        display: none;
+      }
+
+      .item {
+        padding-left: 3.5em;
+
+        .name {
+          padding-left: 0;
+          display: block;
+        }
+
+        .modified {
+          color: #aaa;
+          font-size: 11px;
+        }
+      }
+
+      .item:not(.dir) {
+        $padding-y: 0.4em;
+
+        .name {
+          padding-top: $padding-y;
+          padding-bottom: 0;
+        }
+
+        .modified {
+          display: block;
+          padding-top: 0;
+          padding-bottom: $padding-y;
+          padding-left: 0;
+        }
+
+        .modified:last-child {
+          padding-bottom: $padding-y*2;
+        }
+      }
+    }
   }
 }

@@ -2,74 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d94b6e74-d36b-4b7c-b776-0581fa26ba64" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/FileView/components/DirectoryNav.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/FileView/components/FileLink.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/FileView/components/Heading.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/src/core/dirinfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/src/core/filedata.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/src/tools/file.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/FileActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/RouteActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/creators/routeActionCreator.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/creators/routes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/creators/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/routeAction.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/routeActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/serverAction.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/types/routeAction.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/actions/types/serverAction.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/containers/App.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reducers/files.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reducers/navigation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileList/components/FileList.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileList/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/components/DirectoryLink.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/components/FileLink.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/components/FileList.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/components/FileView.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/containers/FileView.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/FileView/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/Home/containers/Home.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/routes/Home/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/store/configureStore.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/routes/FileView/components/DirectoryLink.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/build/constants/filetypeConstants.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/build/core/dtree.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/build/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server/src/core/dtree.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/testdir/another file.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/testfile.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/reducers/files.js" afterPath="$PROJECT_DIR$/src/reducers/fileReducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/reducers/navigation.js" afterPath="$PROJECT_DIR$/src/reducers/routeReducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../server/src/server.js" afterPath="$PROJECT_DIR$/../server/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/monokai-sublime.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/FileView/components/DirectoryControl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/FileView/components/FileEditor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tools/fileTools.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.js" afterPath="$PROJECT_DIR$/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/style.scss" afterPath="$PROJECT_DIR$/assets/style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/actions/FileActions.js" afterPath="$PROJECT_DIR$/build/actions/FileActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/actions/RouteActions.js" afterPath="$PROJECT_DIR$/build/actions/RouteActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/api.js" afterPath="$PROJECT_DIR$/build/api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.js" afterPath="$PROJECT_DIR$/build/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reducers/fileReducer.js" afterPath="$PROJECT_DIR$/build/reducers/fileReducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/routes/FileView/containers/FileView.js" afterPath="$PROJECT_DIR$/build/routes/FileView/containers/FileView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/FileActions.js" afterPath="$PROJECT_DIR$/src/actions/FileActions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/RouteActions.js" afterPath="$PROJECT_DIR$/src/actions/RouteActions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api.js" afterPath="$PROJECT_DIR$/src/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/App.js" afterPath="$PROJECT_DIR$/src/containers/App.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/FileView/components/FileList.js" afterPath="$PROJECT_DIR$/src/routes/FileView/components/FileList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/fileReducer.js" afterPath="$PROJECT_DIR$/src/reducers/fileReducer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" afterPath="$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/FileView/index.js" afterPath="$PROJECT_DIR$/src/routes/FileView/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/index.html" afterPath="$PROJECT_DIR$/static/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/1.bundle.js" afterPath="$PROJECT_DIR$/static/scripts/1.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/1.bundle.js.map" afterPath="$PROJECT_DIR$/static/scripts/1.bundle.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/bundle.js" afterPath="$PROJECT_DIR$/static/scripts/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/scripts/bundle.js.map" afterPath="$PROJECT_DIR$/static/scripts/bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/../server/.idea/libraries/Generated_files.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/../server/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/package.json" afterPath="$PROJECT_DIR$/../server/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/src/constants/filetypeConstants.js" afterPath="$PROJECT_DIR$/../server/src/constants/filetypeConstants.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/src/core/filedata.js" afterPath="$PROJECT_DIR$/../server/src/core/filedata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/src/tools/file.js" afterPath="$PROJECT_DIR$/../server/src/tools/file.js" />
     </list>
     <ignored path="client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,21 +51,21 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+              <folding>
+                <element signature="e#34#60#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RouteActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/RouteActions.js">
+      <file leaf-file-name="github.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/github.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1207">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,9 +73,11 @@
       <file leaf-file-name="fileReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/fileReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="357">
+              <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,18 +85,31 @@
       <file leaf-file-name="FileActions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/FileActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="255">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/api.js">
+      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="527">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding>
+                <marker date="1461165002776" expanded="true" signature="329:362" placeholder="{...}" />
+                <marker date="1461165002776" expanded="true" signature="375:995" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -144,12 +117,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileLink.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileLink.js">
+      <file leaf-file-name="fileTools.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tools/fileTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectoryControl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/DirectoryControl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding />
+              <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
+              <folding>
+                <marker date="1461165155731" expanded="true" signature="68:264" placeholder="&lt;xml/&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,7 +143,7 @@
         <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -166,34 +151,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Heading.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/Heading.js">
+      <file leaf-file-name="FileEditor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileView.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+            <state relative-caret-position="102">
+              <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/style.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -214,11 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build/client.js" />
-        <option value="$PROJECT_DIR$/.babelrc" />
-        <option value="$PROJECT_DIR$/src/app/App.js" />
-        <option value="$PROJECT_DIR$/src/app/index.js" />
-        <option value="$PROJECT_DIR$/src/routes/FileRoute.js" />
         <option value="$PROJECT_DIR$/src/routes/FileRoute/components/FileRoute.js" />
         <option value="$PROJECT_DIR$/src/routes/FileRoute/index.js" />
         <option value="$PROJECT_DIR$/build/routes/FileList/index.js" />
@@ -242,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/style.sass" />
         <option value="$PROJECT_DIR$/src/style.scss" />
         <option value="$PROJECT_DIR$/config.js" />
-        <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/src/routes/FileView/components/DirectoryLink.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -254,17 +213,23 @@
         <option value="$PROJECT_DIR$/src/containers/App.js" />
         <option value="$PROJECT_DIR$/src/routes/FileView/index.js" />
         <option value="$PROJECT_DIR$/src/routes/FileView/components/FileLink.js" />
-        <option value="$PROJECT_DIR$/src/reducers/fileReducer.js" />
         <option value="$PROJECT_DIR$/assets/ascending.svg" />
         <option value="$PROJECT_DIR$/assets/descending.svg" />
         <option value="$PROJECT_DIR$/src/routes/FileView/components/FileList.js" />
         <option value="$PROJECT_DIR$/src/routes/FileView/components/Heading.js" />
-        <option value="$PROJECT_DIR$/assets/style.scss" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
+        <option value="$PROJECT_DIR$/src/api.js" />
+        <option value="$PROJECT_DIR$/src/reducers/fileReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/RouteActions.js" />
         <option value="$PROJECT_DIR$/src/actions/FileActions.js" />
-        <option value="$PROJECT_DIR$/src/api.js" />
+        <option value="$PROJECT_DIR$/static/index.html" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/assets/github.css" />
+        <option value="$PROJECT_DIR$/assets/style1.scss" />
+        <option value="$PROJECT_DIR$/src/routes/FileView/components/FileEditor.js" />
+        <option value="$PROJECT_DIR$/src/routes/FileView/containers/FileView.js" />
+        <option value="$PROJECT_DIR$/assets/style.scss" />
+        <option value="$PROJECT_DIR$/src/routes/FileView/components/DirectoryControl.js" />
+        <option value="$PROJECT_DIR$/src/tools/fileTools.js" />
       </list>
     </option>
   </component>
@@ -277,7 +242,7 @@
     <scope name="src+assets" pattern="file[client]:src//*||file[client]:assets/*" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1652" />
+    <option name="width" value="1699" />
     <option name="height" value="1415" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -367,6 +332,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,17 +513,17 @@
     <property name="list.type.of.created.stylesheet" value="Sass" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/routes/Home/containers" />
-      <recent name="$PROJECT_DIR$/src/routes/Home" />
-      <recent name="$PROJECT_DIR$/build" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/actions" />
       <recent name="$PROJECT_DIR$/src/actions/types" />
-      <recent name="$PROJECT_DIR$/src/routes/FileView/containers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/routes/Home/containers" />
+      <recent name="$PROJECT_DIR$/src/routes/Home" />
+      <recent name="$PROJECT_DIR$/build" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.webpack">
@@ -633,18 +616,18 @@
       <workItem from="1460520571482" duration="22000" />
       <workItem from="1460520598455" duration="10290000" />
       <workItem from="1460531183526" duration="41612000" />
-      <workItem from="1460843809758" duration="58047000" />
+      <workItem from="1460843809758" duration="77198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164277000" />
+    <option name="totallyTimeSpent" value="183428000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1652" height="1415" extended-state="0" />
+    <frame x="0" y="0" width="1699" height="1415" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14060606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13671185" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1749427" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -678,46 +661,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/actions/creators/server.js" />
-    <entry file="file://$PROJECT_DIR$/src/actions/creators/routes.js" />
-    <entry file="file://$PROJECT_DIR$/src/reducers/routeReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#34#60#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -730,7 +673,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="61" />
           <folding>
-            <element signature="e#34#60#0" expanded="false" />
+            <element signature="e#34#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -873,14 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/folder.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -947,32 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileLink.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/Heading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -989,57 +898,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/RouteActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/fileReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/FileActions.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileLink.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="119">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/RouteActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/fileReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/monokai-sublime.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+          <folding>
+            <element signature="e#34#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/github.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/FileActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/style1.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3264">
+          <caret line="192" column="3" selection-start-line="192" selection-start-column="3" selection-end-line="192" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding>
+            <marker date="1461165002776" expanded="true" signature="329:362" placeholder="{...}" />
+            <marker date="1461165002776" expanded="true" signature="375:995" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/FileList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/FileView/components/DirectoryControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
+          <folding>
+            <marker date="1461165155731" expanded="true" signature="68:264" placeholder="&lt;xml/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/FileView/containers/FileView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/fileTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

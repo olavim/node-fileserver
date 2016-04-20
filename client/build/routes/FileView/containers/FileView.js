@@ -12,9 +12,17 @@ var _FileList = require('../components/FileList');
 
 var _FileList2 = _interopRequireDefault(_FileList);
 
+var _FileEditor = require('../components/FileEditor');
+
+var _FileEditor2 = _interopRequireDefault(_FileEditor);
+
 var _DirectoryNav = require('../components/DirectoryNav');
 
 var _DirectoryNav2 = _interopRequireDefault(_DirectoryNav);
+
+var _DirectoryControl = require('../components/DirectoryControl');
+
+var _DirectoryControl2 = _interopRequireDefault(_DirectoryControl);
 
 var _reactRedux = require('react-redux');
 
@@ -44,11 +52,16 @@ var FileView = function FileView(_ref) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'file-view' },
-		_react2.default.createElement(_DirectoryNav2.default, { currentPath: currentFile.path, onNavigate: routeActions.navigate }),
+		_react2.default.createElement(
+			'div',
+			{ className: 'top-bar' },
+			_react2.default.createElement(_DirectoryNav2.default, { currentPath: currentFile.path, onNavigate: routeActions.navigate }),
+			isDir(currentFile) ? _react2.default.createElement(_DirectoryControl2.default, null) : ''
+		),
 		isDir(currentFile) ? _react2.default.createElement(_FileList2.default, {
 			currentFile: currentFile,
 			onNavigate: routeActions.navigate,
-			onSort: fileActions.sortFiles }) : ''
+			onSort: fileActions.sortFiles }) : _react2.default.createElement(_FileEditor2.default, { currentFile: currentFile })
 	);
 };
 
@@ -57,7 +70,8 @@ function mapStateToProps(state) {
 		return {
 			currentFile: {
 				path: state.currentFile.path,
-				filetype: state.currentFile.filetype
+				filetype: state.currentFile.filetype,
+				data: state.currentFile.data
 			}
 		};
 	}

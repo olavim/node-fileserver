@@ -11,6 +11,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var initialState = {
 	path: '/',
 	filetype: 'directory',
+	data: '',
 	dirData: {
 		files: [],
 		sort: {
@@ -29,6 +30,7 @@ module.exports = function () {
 			return {
 				path: action.path,
 				filetype: action.filetype,
+				data: action.data,
 				dirData: {
 					files: state.dirData.files,
 					sort: {
@@ -41,6 +43,7 @@ module.exports = function () {
 			return {
 				path: state.path,
 				filetype: state.filetype,
+				data: state.data,
 				dirData: {
 					files: action.files,
 					sort: {
@@ -57,6 +60,7 @@ module.exports = function () {
 			return {
 				path: state.path,
 				filetype: state.filetype,
+				data: state.data,
 				dirData: {
 					files: state.dirData.files,
 					sort: {

@@ -4,6 +4,7 @@ import { fileInfoFields } from '../actions/FileActions'
 const initialState = {
 	path: '/',
 	filetype: 'directory',
+	data: '',
 	dirData: {
 		files: [],
 		sort: {
@@ -19,6 +20,7 @@ module.exports = (state = initialState, action) => {
 			return {
 				path: action.path,
 				filetype: action.filetype,
+				data: action.data,
 				dirData: {
 					files: state.dirData.files,
 					sort: {
@@ -31,6 +33,7 @@ module.exports = (state = initialState, action) => {
 			return {
 				path: state.path,
 				filetype: state.filetype,
+				data: state.data,
 				dirData: {
 					files: action.files,
 					sort: {
@@ -47,6 +50,7 @@ module.exports = (state = initialState, action) => {
 			return {
 				path: state.path,
 				filetype: state.filetype,
+				data: state.data,
 				dirData: {
 					files: state.dirData.files,
 					sort: {

@@ -19,12 +19,8 @@ var _path2 = _interopRequireDefault(_path);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-	fetchFiles: function fetchFiles(dir) {
+	fetchFileData: function fetchFileData(dir) {
 		return _axios2.default.get(getFileUrl(dir));
-	},
-
-	loadFileData: function loadFileData(path) {
-		return _axios2.default.get(getFileUrl(path) + '?load=data');
 	}
 };
 

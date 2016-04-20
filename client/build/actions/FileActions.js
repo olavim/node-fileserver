@@ -5,7 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fileInfoFields = exports.SORT_FILES = exports.SET_FILES = exports.CHANGE_FILE = undefined;
 exports.fetchFile = fetchFile;
-exports.changeFile = changeFile;
 exports.setFiles = setFiles;
 exports.sortFiles = sortFiles;
 
@@ -21,19 +20,12 @@ var SORT_FILES = exports.SORT_FILES = 'SORT_FILES';
 
 var fileInfoFields = exports.fileInfoFields = ['name', 'modified'];
 
-function fetchFile(path) {
+function fetchFile(path, file) {
 	return {
 		type: CHANGE_FILE,
 		path: path,
-		filetype: filetype
-	};
-}
-
-function changeFile(path, filetype) {
-	return {
-		type: CHANGE_FILE,
-		path: path,
-		filetype: filetype
+		filetype: file.filetype,
+		data: file.data
 	};
 }
 

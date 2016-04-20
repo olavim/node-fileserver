@@ -8,12 +8,7 @@ export const getFileExtension = file => {
 
 export const getFileType = (dir, file = '') => {
 	let stats = fs.lstatSync(path.join(dir, file));
-	if (stats.isDirectory()) {
-		return filetype.DIRECTORY;
-	}
-	
-	let ext = getFileExtension(file).toLowerCase();
-	return filetype.getByExtension(ext);
+	return stats.isDirectory() ? filetype.DIRECTORY : getFileExtension(file);
 }
 
 export const getFileModified = (dir, file = '') => {
