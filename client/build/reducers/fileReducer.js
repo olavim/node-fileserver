@@ -12,6 +12,7 @@ var initialState = {
 	path: '/',
 	filetype: 'directory',
 	data: '',
+	newDirStage: _FileActions.NewDirStage.NONE,
 	dirData: {
 		files: [],
 		sort: {
@@ -21,54 +22,41 @@ var initialState = {
 	}
 };
 
+var moveElemToStart = function moveElemToStart(arr, elem) {
+	var a = arr.slice(0);
+	a = a.splice(a.indexOf(elem) - 1, 1);
+	return [elem].concat(_toConsumableArray(a));
+};
+
 module.exports = function () {
 	var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
 	var action = arguments[1];
 
 	switch (action.type) {
 		case ActionType.CHANGE_FILE:
-			return {
-				path: action.path,
-				filetype: action.filetype,
-				data: action.data,
-				dirData: {
-					files: state.dirData.files,
-					sort: {
-						by: state.dirData.sort.by,
-						asc: state.dirData.sort.asc
-					}
-				}
-			};
+			return Object.assign({}, state, { path: action.path, filetype: action.filetype, data: action.data });
 		case ActionType.SET_FILES:
-			return {
-				path: state.path,
-				filetype: state.filetype,
-				data: state.data,
-				dirData: {
-					files: action.files,
-					sort: {
-						by: state.dirData.sort.by,
-						asc: state.dirData.sort.asc
-					}
-				}
-			};
+			return Object.assign({}, state, {
+				dirData: Object.assign({}, state.dirData, { files: action.files })
+			});
 		case ActionType.SORT_FILES:
-			var by = state.dirData.sort.by.slice(0);
-			by = by.splice(by.indexOf(action.sort.by), 1);
-			by = [action.sort.by].concat(_toConsumableArray(by));
-
-			return {
-				path: state.path,
-				filetype: state.filetype,
-				data: state.data,
-				dirData: {
-					files: state.dirData.files,
-					sort: {
-						by: by,
-						asc: action.sort.asc
-					}
-				}
-			};
+			var by = moveElemToStart(state.dirData.sort.by, action.sort.by);
+			return Object.assign({}, state, {
+				dirData: Object.assign({}, state.dirData, {
+					sort: Object.assign({}, state.dirData.sort, { by: by, asc: action.sort.asc })
+				})
+			});
+		case ActionType.NEW_DIR:
+			switch (action.stage) {
+				case _FileActions.NewDirStage.NONE:
+				case _FileActions.NewDirStage.PROMPT:
+					return Object.assign({}, state, { newDirStage: action.stage });
+				case _FileActions.NewDirStage.CREATE:
+					return Object.assign({}, state, {
+						newDirStage: _FileActions.NewDirStage.NONE, // reset stage
+						dirData: Object.assign({}, state.dirData, { files: [].concat(_toConsumableArray(state.dirData.files), [action.file]) })
+					});
+			}
 		default:
 			return state;
 	}

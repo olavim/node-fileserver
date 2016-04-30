@@ -3,6 +3,11 @@
 @import url(github.css);
 
 $responsive-break: 768px;
+$item-height: 42px;
+
+@keyframes spin {
+  to { transform: rotate(1turn); }
+}
 
 html {
   font-family: "Open Sans", sans-serif;
@@ -20,10 +25,18 @@ a:hover {
 
 .file-view {
   width: 70%;
+  position: relative;
   max-width: 70em;
-  margin-top: 2em;
+  margin-top: 3em;
   margin-left: auto;
   margin-right: auto;
+
+  .loader {
+    position: absolute;
+    top: 2.2em;
+    left: -20px;
+    z-index: 999;
+  }
 
   .top-bar {
     overflow: hidden;
@@ -43,6 +56,7 @@ a:hover {
         height: $bgsize;
         background-size: $bgsize;
         margin: 0 0 0 1em;
+        cursor: pointer;
       }
 
       .new-file {
@@ -110,11 +124,16 @@ a:hover {
   }
 
   .name, .modified {
-    $padding-y: 0.8em;
-    padding: $padding-y 1em $padding-y 1em;
+    padding: 0 1em;
     box-sizing: border-box;
     display: inline-block;
     width: 50%;
+    height: 100%;
+    line-height: $item-height;
+  }
+
+  .item, .header {
+    height: $item-height;
   }
 
   .header {
@@ -154,12 +173,13 @@ a:hover {
   }
 
   .item {
-    background-size: 1.6em;
+    position: relative;
     background-image: url(file-empty.svg);
+    background-size: 1.6em;
     background-repeat: no-repeat;
     background-position: 1em 50%;
-    overflow: hidden;
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
 
     .name {
       text-overflow: ellipsis;
@@ -171,10 +191,41 @@ a:hover {
     .modified {
       overflow: hidden;
     }
+
+    input {
+      font-family: "Open Sans", sans-serif;
+      border: none;
+      border-radius: 2px;
+      color: #000;
+      width: 100%;
+      height: 50%;
+      padding-left: 0.5em;
+    }
   }
 
   .item.dir {
     background-image: url(folder.svg);
+  }
+
+  .item.active {
+    background-image: none;
+  }
+
+  .item:before {
+    display: none;
+    content: '';
+    position: absolute;
+    background-size: 1.6em;
+    background-image: url(rolling.svg);
+    background-repeat: no-repeat;
+    background-position: 1em 50%;
+    width: 3.5em;
+    height: 100%;
+    animation: spin 1s infinite steps(32);
+  }
+
+  .item.active:before {
+    display: inline;
   }
 
   .item:hover {
@@ -201,6 +252,64 @@ a:hover {
   }
 }
 
+.tooltip {
+  $height: 26px;
+  position: absolute;
+  text-align: center;
+  padding: 0 1em;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 4px;
+  z-index: 999;
+  height: $height;
+
+  span {
+    line-height: $height;
+  }
+
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+}
+
+$arrow-size: 8px;
+
+.tooltip.top .arrow, .tooltip.bottom .arrow {
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-left: $arrow-size solid transparent;
+  border-right: $arrow-size solid transparent;
+}
+
+.tooltip.top .arrow {
+  bottom: -$arrow-size;
+  border-top: $arrow-size solid #f00;
+}
+
+.tooltip.bottom .arrow {
+  top: -$arrow-size;
+  border-bottom: $arrow-size solid #f00;
+}
+
+.tooltip.right .arrow, .tooltip.left .arrow {
+  top: 50%;
+  transform: translate(0, -50%);
+  border-top: $arrow-size solid transparent;
+  border-bottom: $arrow-size solid transparent;
+}
+
+.tooltip.right .arrow {
+  left: -$arrow-size;
+  border-right: $arrow-size solid #f00;
+}
+
+.tooltip.left .arrow {
+  right: -$arrow-size;
+  border-left: $arrow-size solid #f00;
+}
+
 @media (max-width: $responsive-break) {
   .file-view {
     width: 90%;
@@ -216,36 +325,34 @@ a:hover {
       }
 
       .item {
-        padding-left: 3.5em;
-
         .name {
-          padding-left: 0;
+          padding-left: 3.5em;
           display: block;
         }
 
         .modified {
+          padding-left: 4em;
           color: #aaa;
           font-size: 11px;
         }
       }
 
       .item:not(.dir) {
-        $padding-y: 0.4em;
+        .name, .modified {
+          position: relative;
+          top: 4px;
+          height: $item-height/2 - 4px;
+          line-height: $item-height/2 - 4px;
+        }
 
         .name {
-          padding-top: $padding-y;
           padding-bottom: 0;
         }
 
         .modified {
           display: block;
           padding-top: 0;
-          padding-bottom: $padding-y;
-          padding-left: 0;
-        }
-
-        .modified:last-child {
-          padding-bottom: $padding-y*2;
+          width: 100%;
         }
       }
     }

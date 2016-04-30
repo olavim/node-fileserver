@@ -6,6 +6,9 @@ export default {
 	fetchFileData: (dir) => {
 		return axios.get(getFileUrl(dir));
 	},
+	newDirectory: (currentDir, name) => {
+		return axios.post(getFileUrl(currentDir) + '?dir=' + name);
+	}
 }
 
 function getFileUrl(dir) {

@@ -22,6 +22,12 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
 			{
+				test: /\.(jpe?g|png|gif)$/i,
+				loaders: [
+					'file?hash=sha512&digest=hex&name=assets/images/[hash:base58:8].[ext]',
+				]
+			},
+			{
 				test: /\.svg$/,
 				loader: 'file-loader?name=assets/[name].[ext]'
 			}

@@ -21,6 +21,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	fetchFileData: function fetchFileData(dir) {
 		return _axios2.default.get(getFileUrl(dir));
+	},
+	newDirectory: function newDirectory(currentDir, name) {
+		return _axios2.default.post(getFileUrl(currentDir) + '?dir=' + name);
 	}
 };
 

@@ -8,7 +8,7 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _FileList = require('../components/FileList');
+var _FileList = require('./FileList');
 
 var _FileList2 = _interopRequireDefault(_FileList);
 
@@ -20,9 +20,13 @@ var _DirectoryNav = require('../components/DirectoryNav');
 
 var _DirectoryNav2 = _interopRequireDefault(_DirectoryNav);
 
-var _DirectoryControl = require('../components/DirectoryControl');
+var _DirectoryControl = require('./DirectoryControl');
 
 var _DirectoryControl2 = _interopRequireDefault(_DirectoryControl);
+
+var _Tooltip = require('../../../components/Tooltip');
+
+var _Tooltip2 = _interopRequireDefault(_Tooltip);
 
 var _reactRedux = require('react-redux');
 
@@ -36,37 +40,43 @@ var _FileActions = require('../../../actions/FileActions');
 
 var FileActions = _interopRequireWildcard(_FileActions);
 
+var _TooltipActions = require('../../../actions/TooltipActions');
+
+var TooltipActions = _interopRequireWildcard(_TooltipActions);
+
+var _fileTools = require('../../../tools/fileTools');
+
+var fileTools = _interopRequireWildcard(_fileTools);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var isDir = function isDir(file) {
-	return file.filetype === 'directory';
-};
-
 var FileView = function FileView(_ref) {
+	var loading = _ref.loading;
 	var currentFile = _ref.currentFile;
-	var routeActions = _ref.routeActions;
-	var fileActions = _ref.fileActions;
+	var onNavigate = _ref.onNavigate;
+	var tooltip = _ref.tooltip;
 
+	var isDir = fileTools.isDir(currentFile);
 	return _react2.default.createElement(
 		'div',
 		{ className: 'file-view' },
 		_react2.default.createElement(
 			'div',
 			{ className: 'top-bar' },
-			_react2.default.createElement(_DirectoryNav2.default, { currentPath: currentFile.path, onNavigate: routeActions.navigate }),
-			isDir(currentFile) ? _react2.default.createElement(_DirectoryControl2.default, null) : ''
+			_react2.default.createElement(_DirectoryNav2.default, { currentPath: currentFile.path, onNavigate: onNavigate }),
+			isDir ? _react2.default.createElement(_DirectoryControl2.default, null) : ''
 		),
-		isDir(currentFile) ? _react2.default.createElement(_FileList2.default, {
+		isDir ? _react2.default.createElement(_FileList2.default, {
 			currentFile: currentFile,
-			onNavigate: routeActions.navigate,
-			onSort: fileActions.sortFiles }) : _react2.default.createElement(_FileEditor2.default, { currentFile: currentFile })
+			onNavigate: onNavigate,
+			loading: loading }) : _react2.default.createElement(_FileEditor2.default, { currentFile: currentFile })
 	);
 };
 
 function mapStateToProps(state) {
-	if (!isDir(state.currentFile)) {
+	if (!fileTools.isDir(state.currentFile)) {
 		return {
 			currentFile: {
 				path: state.currentFile.path,
@@ -79,22 +89,15 @@ function mapStateToProps(state) {
 	var dirData = state.currentFile.dirData;
 	var files = dirData.files.slice(0);
 
-	files.sort(function (a, b) {
-		if (a.filetype !== b.filetype && (isDir(a) || isDir(b))) return isDir(a) ? -1 : 1;
-
-		for (var i = 0; i < dirData.sort.by.length; i++) {
-			var field = dirData.sort.by[i];
-			var comp = a[field].localeCompare(b[field]);
-			if (comp !== 0) return dirData.sort.asc ? comp : -comp;
-		}
-
-		return 0;
-	});
+	fileTools.sortFiles(files, dirData.sort.asc, dirData.sort.by);
 
 	return {
+		tooltip: state.tooltip,
+		loading: state.loading,
 		currentFile: {
 			path: state.currentFile.path,
 			filetype: state.currentFile.filetype,
+			newDirStage: state.currentFile.newDirStage,
 			dirData: {
 				files: files,
 				sort: dirData.sort
@@ -105,8 +108,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		routeActions: (0, _redux.bindActionCreators)(RouteActions, dispatch),
-		fileActions: (0, _redux.bindActionCreators)(FileActions, dispatch)
+		onNavigate: (0, _redux.bindActionCreators)(RouteActions, dispatch).navigate
 	};
 }
 

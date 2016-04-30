@@ -1,10 +1,11 @@
 import * as ActionType from '../actions/FileActions';
-import { fileInfoFields } from '../actions/FileActions'
+import { fileInfoFields, NewDirStage } from '../actions/FileActions'
 
 const initialState = {
 	path: '/',
 	filetype: 'directory',
 	data: '',
+	newDirStage: NewDirStage.NONE,
 	dirData: {
 		files: [],
 		sort: {
@@ -14,50 +15,37 @@ const initialState = {
 	}
 }
 
+const moveElemToStart = (arr, elem) => {
+	let a = arr.slice(0);
+	a = a.splice(a.indexOf(elem) - 1, 1);
+	return [elem, ...a];
+}
+
 module.exports = (state = initialState, action) => {
 	switch (action.type) {
 		case ActionType.CHANGE_FILE:
-			return {
-				path: action.path,
-				filetype: action.filetype,
-				data: action.data,
-				dirData: {
-					files: state.dirData.files,
-					sort: {
-						by: state.dirData.sort.by,
-						asc: state.dirData.sort.asc,
-					}
-				}
-			}
+			return Object.assign({}, state, {path: action.path, filetype: action.filetype, data: action.data});
 		case ActionType.SET_FILES:
-			return {
-				path: state.path,
-				filetype: state.filetype,
-				data: state.data,
-				dirData: {
-					files: action.files,
-					sort: {
-						by: state.dirData.sort.by,
-						asc: state.dirData.sort.asc,
-					}
-				}
-			}
+			return Object.assign({}, state, {
+				dirData: Object.assign({}, state.dirData, {files: action.files})
+			});
 		case ActionType.SORT_FILES:
-			let by = state.dirData.sort.by.slice(0);
-			by = by.splice(by.indexOf(action.sort.by), 1);
-			by = [action.sort.by, ...by];
-			
-			return {
-				path: state.path,
-				filetype: state.filetype,
-				data: state.data,
-				dirData: {
-					files: state.dirData.files,
-					sort: {
-						by,
-						asc: action.sort.asc,
-					}
-				}
+			let by = moveElemToStart(state.dirData.sort.by, action.sort.by);
+			return Object.assign({}, state, {
+				dirData: Object.assign({}, state.dirData, {
+					sort: Object.assign({}, state.dirData.sort, {by, asc: action.sort.asc})
+				})
+			});
+		case ActionType.NEW_DIR:
+			switch (action.stage) {
+				case NewDirStage.NONE:
+				case NewDirStage.PROMPT:
+					return Object.assign({}, state, {newDirStage: action.stage});
+				case NewDirStage.CREATE:
+					return Object.assign({}, state, {
+						newDirStage: NewDirStage.NONE, // reset stage
+						dirData: Object.assign({}, state.dirData, {files: [...state.dirData.files, action.file]})
+					});
 			}
 		default:
 			return state;

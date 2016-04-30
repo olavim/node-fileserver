@@ -1,34 +1,39 @@
 import React from 'react';
 import axios from 'axios';
-import FileList from '../components/FileList';
+import FileList from './FileList';
 import FileEditor from '../components/FileEditor';
 import DirectoryNav from '../components/DirectoryNav';
-import DirectoryControl from '../components/DirectoryControl';
+import DirectoryControl from './DirectoryControl';
+import Tooltip from '../../../components/Tooltip'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as RouteActions from '../../../actions/RouteActions';
 import * as FileActions from '../../../actions/FileActions';
-
-const isDir = file => file.filetype === 'directory';
+import * as TooltipActions from '../../../actions/TooltipActions';
+import * as fileTools from '../../../tools/fileTools'
 
 const FileView = ({
+	loading,
 	currentFile,
-	routeActions,
-	fileActions
+	onNavigate,
+	tooltip
 }) => {
+	let isDir = fileTools.isDir(currentFile);
 	return (
 		<div className="file-view">
 			<div className="top-bar">
-				<DirectoryNav currentPath={currentFile.path} onNavigate={routeActions.navigate}/>
-				{isDir(currentFile) ?
-						<DirectoryControl /> : ''}
+				<DirectoryNav currentPath={currentFile.path} onNavigate={onNavigate}/>
+				{
+					isDir ?
+						<DirectoryControl /> : ''
+				}
 			</div>
 			{
-				isDir(currentFile) ?
+				isDir ?
 					<FileList
 						currentFile={currentFile}
-						onNavigate={routeActions.navigate}
-						onSort={fileActions.sortFiles} /> :
+						onNavigate={onNavigate}
+						loading={loading} /> :
 					<FileEditor currentFile={currentFile} />
 			}
 		</div>
@@ -36,7 +41,7 @@ const FileView = ({
 }
 
 function mapStateToProps(state) {
-	if (!isDir(state.currentFile)) {
+	if (!fileTools.isDir(state.currentFile)) {
 		return {
 			currentFile: {
 				path: state.currentFile.path,
@@ -49,24 +54,15 @@ function mapStateToProps(state) {
 	let dirData = state.currentFile.dirData;
 	let files = dirData.files.slice(0);
 
-	files.sort((a, b) => {
-		if (a.filetype !==  b.filetype && (isDir(a) || isDir(b)))
-			return isDir(a) ? -1 : 1;
-
-		for (let i = 0; i < dirData.sort.by.length; i++) {
-			let field = dirData.sort.by[i];
-			let comp = a[field].localeCompare(b[field]);
-			if (comp !== 0)
-				return dirData.sort.asc ? comp : -comp;
-		}
-
-		return 0;
-	});
+	fileTools.sortFiles(files, dirData.sort.asc, dirData.sort.by);
 
     return {
+		tooltip: state.tooltip,
+		loading: state.loading,
 		currentFile: { 
 			path: state.currentFile.path,
 			filetype: state.currentFile.filetype,
+			newDirStage: state.currentFile.newDirStage,
 			dirData: {
 				files,
 				sort: dirData.sort
@@ -77,8 +73,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-		routeActions: bindActionCreators(RouteActions, dispatch),
-		fileActions: bindActionCreators(FileActions, dispatch),
+		onNavigate: bindActionCreators(RouteActions, dispatch).navigate
     }
 }
 

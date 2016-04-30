@@ -21,5 +21,5 @@ exports.default = function (_ref) {
 		_reactRouter.Link,
 		{ to: to, onClick: onNavigate, activeClassName: 'active' },
 		children
-	);
+	); //
 };

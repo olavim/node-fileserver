@@ -6,5 +6,5 @@ export default ({
 	to,
 	onNavigate
 }) => {
-	return <Link to={to} onClick={onNavigate} activeClassName="active">{children}</Link>;
+	return <Link to={to} onClick={onNavigate} activeClassName="active">{children}</Link>;//
 }

@@ -1,14 +1,31 @@
 import React from 'react';
+import Tooltip from '../components/Tooltip'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as RouteActions from '../actions/RouteActions';
 
 const App = ({
-	children
+	children,
+	tooltip
 }) => {
 	return (
-		<div>{children}</div>
+		<div>
+			{children}
+			<Tooltip active={tooltip.active}
+					 text={tooltip.text}
+					 parent={tooltip.parent}
+					 orientation={tooltip.orientation}
+					 bgcolor={tooltip.bgcolor} />
+		</div>
 	)
 }
 
-module.exports = App;
+function mapStateToProps(state) {
+	return {
+		tooltip: state.tooltip
+	}
+}
+
+module.exports = connect(
+	mapStateToProps
+)(App);

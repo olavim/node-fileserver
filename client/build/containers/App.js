@@ -4,6 +4,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Tooltip = require('../components/Tooltip');
+
+var _Tooltip2 = _interopRequireDefault(_Tooltip);
+
 var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
@@ -18,12 +22,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = function App(_ref) {
 	var children = _ref.children;
+	var tooltip = _ref.tooltip;
 
 	return _react2.default.createElement(
 		'div',
 		null,
-		children
+		children,
+		_react2.default.createElement(_Tooltip2.default, { active: tooltip.active,
+			text: tooltip.text,
+			parent: tooltip.parent,
+			orientation: tooltip.orientation,
+			bgcolor: tooltip.bgcolor })
 	);
 };
 
-module.exports = App;
+function mapStateToProps(state) {
+	return {
+		tooltip: state.tooltip
+	};
+}
+
+module.exports = (0, _reactRedux.connect)(mapStateToProps)(App);

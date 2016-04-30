@@ -5,21 +5,34 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import navigationReducer from './reducers/routeReducer';
-import fileReducer from './reducers/fileReducer';
-import { fileInfoFields } from './actions/FileActions';
-import { navigate } from './actions/RouteActions';
 import { enableBatching } from 'redux-batched-actions';
+import thunk from 'redux-thunk';
+
+import navigationReducer from './reducers/navigationReducer';
+import fileReducer from './reducers/fileReducer';
+import tooltipReducer from './reducers/tooltipReducer';
+
+import { fileInfoFields, NewDirStage } from './actions/FileActions';
+import { navigate } from './actions/RouteActions';
 
 import App from './containers/App';
+import { Orientation } from './components/Tooltip';
 import FileView from './routes/FileView';
 
 let initialState = {
+	tooltip: {
+		active: false,
+		text: '',
+		parent: document.body,
+		orientation: Orientation.TOP,
+		bgcolor: '#fcc'
+	},
+	loading: false,
     currentFile: {
 		path: '/',
 		filetype: 'directory',
 		data: '',
+		newDirStage: NewDirStage.NONE,
 		dirData: {
 			files: [],
 			sort: {
@@ -31,6 +44,8 @@ let initialState = {
 }
 
 let reducers = combineReducers({
+	tooltip: tooltipReducer,
+	loading: navigationReducer,
     currentFile: fileReducer
 });
 
@@ -44,7 +59,7 @@ navigate(window.location.pathname)(store.dispatch);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory} /*routes={routes}*/>
+        <Router history={browserHistory}>
 			<Route path="/" component={App}>
 				{FileView}
 			</Route>
