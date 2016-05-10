@@ -32,6 +32,10 @@ var _tooltipReducer = require('./reducers/tooltipReducer');
 
 var _tooltipReducer2 = _interopRequireDefault(_tooltipReducer);
 
+var _uploaderReducer = require('./reducers/uploaderReducer');
+
+var _uploaderReducer2 = _interopRequireDefault(_uploaderReducer);
+
 var _FileActions = require('./actions/FileActions');
 
 var _RouteActions = require('./actions/RouteActions');
@@ -59,6 +63,9 @@ var initialState = {
 		bgcolor: '#fcc'
 	},
 	loading: false,
+	uploader: {
+		active: false
+	},
 	currentFile: {
 		path: '/',
 		filetype: 'directory',
@@ -77,6 +84,7 @@ var initialState = {
 var reducers = (0, _redux.combineReducers)({
 	tooltip: _tooltipReducer2.default,
 	loading: _navigationReducer2.default,
+	uploader: _uploaderReducer2.default,
 	currentFile: _fileReducer2.default
 });
 

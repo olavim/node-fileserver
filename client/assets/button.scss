@@ -1,0 +1,78 @@
+$upload-icon-area-size: 2.5em;
+
+.button.upload {
+  $padding-x: 1em;
+  padding: 0.5em $padding-x 0.5em ($padding-x + $upload-icon-area-size);
+
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
+.button.upload:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: $upload-icon-area-size;
+  border-right: 1px solid #0058ad;
+  background-color: #0067c2;
+  background-image: url(images/upload.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 50% 50%;
+}
+
+.button {
+  padding: 0.5em 1em;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  label {
+    font-weight: bold;
+  }
+
+  * {
+    cursor: pointer;
+  }
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button:active {
+  box-shadow: 0px 0px 0px 2px rgb(163, 211, 255);
+}
+
+.button.blue {
+  background-color: #0078db;
+  border: 1px solid #0065bb;
+
+  label {
+    color: #fff;
+  }
+}
+
+.button.blue:hover {
+  background-color: #0086e9;
+}
+
+.button.white {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  color: #333;
+}
+
+.button.white:hover {
+  background-color: #fafafa;
+}

@@ -5,6 +5,7 @@ import FileEditor from '../components/FileEditor';
 import DirectoryNav from '../components/DirectoryNav';
 import DirectoryControl from './DirectoryControl';
 import Tooltip from '../../../components/Tooltip'
+import Uploader from './Uploader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as RouteActions from '../../../actions/RouteActions';
@@ -21,11 +22,11 @@ const FileView = ({
 	let isDir = fileTools.isDir(currentFile);
 	return (
 		<div className="file-view">
+			<Uploader />
 			<div className="top-bar">
 				<DirectoryNav currentPath={currentFile.path} onNavigate={onNavigate}/>
 				{
-					isDir ?
-						<DirectoryControl /> : ''
+					isDir ? <DirectoryControl /> : ''
 				}
 			</div>
 			{

@@ -7826,6 +7826,10 @@
 	
 	var _tooltipReducer2 = _interopRequireDefault(_tooltipReducer);
 	
+	var _uploaderReducer = __webpack_require__(912);
+	
+	var _uploaderReducer2 = _interopRequireDefault(_uploaderReducer);
+	
 	var _FileActions = __webpack_require__(559);
 	
 	var _RouteActions = __webpack_require__(538);
@@ -7853,6 +7857,9 @@
 			bgcolor: '#fcc'
 		},
 		loading: false,
+		uploader: {
+			active: false
+		},
 		currentFile: {
 			path: '/',
 			filetype: 'directory',
@@ -7871,6 +7878,7 @@
 	var reducers = (0, _redux.combineReducers)({
 		tooltip: _tooltipReducer2.default,
 		loading: _navigationReducer2.default,
+		uploader: _uploaderReducer2.default,
 		currentFile: _fileReducer2.default
 	});
 	
@@ -36031,6 +36039,10 @@
 	
 	var _Tooltip2 = _interopRequireDefault(_Tooltip);
 	
+	var _Uploader = __webpack_require__(911);
+	
+	var _Uploader2 = _interopRequireDefault(_Uploader);
+	
 	var _reactRedux = __webpack_require__(514);
 	
 	var _redux = __webpack_require__(520);
@@ -36065,6 +36077,7 @@
 		return _react2.default.createElement(
 			'div',
 			{ className: 'file-view' },
+			_react2.default.createElement(_Uploader2.default, null),
 			_react2.default.createElement(
 				'div',
 				{ className: 'top-bar' },
@@ -49632,7 +49645,7 @@
 	exports.i(__webpack_require__(829), "");
 	
 	// module
-	exports.push([module.id, "@keyframes spin {\n  to {\n    transform: rotate(1turn); } }\n\nhtml {\n  font-family: \"Open Sans\", sans-serif;\n  font-size: 13px; }\n\na {\n  text-decoration: none;\n  cursor: pointer; }\n\na:hover {\n  text-decoration: underline; }\n\n.file-view {\n  width: 70%;\n  position: relative;\n  max-width: 70em;\n  margin-top: 3em;\n  margin-left: auto;\n  margin-right: auto; }\n  .file-view .loader {\n    position: absolute;\n    top: 2.2em;\n    left: -20px;\n    z-index: 999; }\n  .file-view .top-bar {\n    overflow: hidden;\n    position: relative; }\n    .file-view .top-bar .control {\n      position: absolute;\n      display: block;\n      padding: 18px 0;\n      bottom: 0;\n      right: 0; }\n      .file-view .top-bar .control span {\n        display: inline-block;\n        width: 18px;\n        height: 18px;\n        background-size: 18px;\n        margin: 0 0 0 1em;\n        cursor: pointer; }\n      .file-view .top-bar .control .new-file {\n        background-image: url(" + __webpack_require__(831) + "); }\n      .file-view .top-bar .control .new-folder {\n        background-image: url(" + __webpack_require__(832) + "); }\n\n.directory-nav {\n  position: relative;\n  display: block;\n  float: left;\n  list-style-type: none;\n  padding: 0;\n  margin: 0; }\n  .directory-nav li {\n    position: relative;\n    display: inline-block;\n    margin: 0;\n    margin-left: 8px;\n    margin-right: 1.5em;\n    padding: 18px 0;\n    text-decoration: none; }\n    .directory-nav li a {\n      font-size: 11pt;\n      color: #000; }\n    .directory-nav li a:hover:not(.active) {\n      text-decoration: underline; }\n    .directory-nav li a.active {\n      font-weight: bold;\n      font-style: italic;\n      position: relative;\n      cursor: default; }\n\n.file-list {\n  position: relative;\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6); }\n  .file-list * {\n    color: #fff; }\n  .file-list .file-item-list {\n    border-top: 2px solid #1a1a1a;\n    border-bottom: 8px solid #222;\n    background-color: #333; }\n  .file-list .name, .file-list .modified {\n    padding: 0 1em;\n    box-sizing: border-box;\n    display: inline-block;\n    width: 50%;\n    height: 100%;\n    line-height: 42px; }\n  .file-list .item, .file-list .header {\n    height: 42px; }\n  .file-list .header {\n    background-color: #222; }\n    .file-list .header * {\n      -webkit-touch-callout: none;\n      -webkit-user-select: none;\n      -khtml-user-select: none;\n      -moz-user-select: none;\n      -ms-user-select: none;\n      user-select: none; }\n    .file-list .header .asc, .file-list .header .desc {\n      display: inline-block;\n      background-size: 8px 8px;\n      background-repeat: no-repeat;\n      width: 8px;\n      height: 8px;\n      margin-left: 1em; }\n    .file-list .header .asc {\n      background-image: url(" + __webpack_require__(833) + "); }\n    .file-list .header .desc {\n      background-image: url(" + __webpack_require__(834) + "); }\n    .file-list .header .name:hover, .file-list .header .modified:hover {\n      cursor: pointer;\n      background-color: #533; }\n  .file-list .item {\n    position: relative;\n    background-image: url(" + __webpack_require__(835) + ");\n    background-size: 1.6em;\n    background-repeat: no-repeat;\n    background-position: 1em 50%;\n    padding: 0;\n    margin: 0; }\n    .file-list .item .name {\n      text-overflow: ellipsis;\n      white-space: nowrap;\n      overflow: hidden;\n      padding-left: 3.5em; }\n    .file-list .item .modified {\n      overflow: hidden; }\n    .file-list .item input {\n      font-family: \"Open Sans\", sans-serif;\n      border: none;\n      border-radius: 2px;\n      color: #000;\n      width: 100%;\n      height: 50%;\n      padding-left: 0.5em; }\n  .file-list .item.dir {\n    background-image: url(" + __webpack_require__(836) + "); }\n  .file-list .item.active {\n    background-image: none; }\n  .file-list .item:before {\n    display: none;\n    content: '';\n    position: absolute;\n    background-size: 1.6em;\n    background-image: url(" + __webpack_require__(851) + ");\n    background-repeat: no-repeat;\n    background-position: 1em 50%;\n    width: 3.5em;\n    height: 100%;\n    animation: spin 1s infinite steps(32); }\n  .file-list .item.active:before {\n    display: inline; }\n  .file-list .item:hover {\n    background-color: #433; }\n\n.file-editor {\n  position: relative;\n  padding: 0.5em;\n  max-height: 800px;\n  overflow: auto;\n  border: 1px solid #ccc;\n  border-radius: 3px; }\n  .file-editor pre {\n    margin: 0; }\n    .file-editor pre code {\n      font-family: 'Source Code Pro', monospace;\n      font-size: 9pt;\n      overflow: visible; }\n\n.tooltip {\n  position: absolute;\n  text-align: center;\n  padding: 0 1em;\n  font-size: 11px;\n  font-weight: bold;\n  border-radius: 4px;\n  z-index: 999;\n  height: 26px; }\n  .tooltip span {\n    line-height: 26px; }\n  .tooltip .arrow {\n    position: absolute;\n    width: 0;\n    height: 0; }\n\n.tooltip.top .arrow, .tooltip.bottom .arrow {\n  left: 50%;\n  transform: translate(-50%, 0);\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent; }\n\n.tooltip.top .arrow {\n  bottom: -8px;\n  border-top: 8px solid #f00; }\n\n.tooltip.bottom .arrow {\n  top: -8px;\n  border-bottom: 8px solid #f00; }\n\n.tooltip.right .arrow, .tooltip.left .arrow {\n  top: 50%;\n  transform: translate(0, -50%);\n  border-top: 8px solid transparent;\n  border-bottom: 8px solid transparent; }\n\n.tooltip.right .arrow {\n  left: -8px;\n  border-right: 8px solid #f00; }\n\n.tooltip.left .arrow {\n  right: -8px;\n  border-left: 8px solid #f00; }\n\n@media (max-width: 768px) {\n  .file-view {\n    width: 90%; }\n    .file-view .file-list .name {\n      width: 100%; }\n    .file-view .file-list .header .modified,\n    .file-view .file-list .item.dir .modified {\n      display: none; }\n    .file-view .file-list .item .name {\n      padding-left: 3.5em;\n      display: block; }\n    .file-view .file-list .item .modified {\n      padding-left: 4em;\n      color: #aaa;\n      font-size: 11px; }\n    .file-view .file-list .item:not(.dir) .name, .file-view .file-list .item:not(.dir) .modified {\n      position: relative;\n      top: 4px;\n      height: 17px;\n      line-height: 17px; }\n    .file-view .file-list .item:not(.dir) .name {\n      padding-bottom: 0; }\n    .file-view .file-list .item:not(.dir) .modified {\n      display: block;\n      padding-top: 0;\n      width: 100%; } }\n", ""]);
+	exports.push([module.id, ".tooltip {\n  position: absolute;\n  text-align: center;\n  padding: 0 1em;\n  font-size: 11px;\n  font-weight: bold;\n  border-radius: 4px;\n  z-index: 999;\n  height: 26px; }\n  .tooltip span {\n    line-height: 26px; }\n  .tooltip .arrow {\n    position: absolute;\n    width: 0;\n    height: 0; }\n\n.tooltip.top .arrow, .tooltip.bottom .arrow {\n  left: 50%;\n  transform: translate(-50%, 0);\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent; }\n\n.tooltip.top .arrow {\n  bottom: -8px;\n  border-top: 8px solid #f00; }\n\n.tooltip.bottom .arrow {\n  top: -8px;\n  border-bottom: 8px solid #f00; }\n\n.tooltip.right .arrow, .tooltip.left .arrow {\n  top: 50%;\n  transform: translate(0, -50%);\n  border-top: 8px solid transparent;\n  border-bottom: 8px solid transparent; }\n\n.tooltip.right .arrow {\n  left: -8px;\n  border-right: 8px solid #f00; }\n\n.tooltip.left .arrow {\n  right: -8px;\n  border-left: 8px solid #f00; }\n\n.button.upload {\n  padding: 0.5em 1em 0.5em 3.5em; }\n  .button.upload input {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin: 0;\n    padding: 0;\n    font-size: 20px;\n    opacity: 0;\n    filter: alpha(opacity=0); }\n\n.button.upload:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 2.5em;\n  border-right: 1px solid #0058ad;\n  background-color: #0067c2;\n  background-image: url(" + __webpack_require__(923) + ");\n  background-repeat: no-repeat;\n  background-size: 50%;\n  background-position: 50% 50%; }\n\n.button {\n  padding: 0.5em 1em;\n  display: inline-block;\n  position: relative;\n  overflow: hidden; }\n  .button label {\n    font-weight: bold; }\n  .button * {\n    cursor: pointer; }\n\n.button:hover {\n  text-decoration: none; }\n\n.button:active {\n  box-shadow: 0px 0px 0px 2px #a3d3ff; }\n\n.button.blue {\n  background-color: #0078db;\n  border: 1px solid #0065bb; }\n  .button.blue label {\n    color: #fff; }\n\n.button.blue:hover {\n  background-color: #0086e9; }\n\n.button.white {\n  background-color: #fff;\n  border: 1px solid #bbb;\n  color: #333; }\n\n.button.white:hover {\n  background-color: #fafafa; }\n\n@keyframes spin {\n  to {\n    transform: rotate(1turn); } }\n\nhtml {\n  font-family: \"Open Sans\", sans-serif;\n  font-size: 13px; }\n\na {\n  text-decoration: none;\n  cursor: pointer; }\n\na:hover {\n  text-decoration: underline; }\n\n.file-view {\n  width: 70%;\n  max-width: 70em;\n  margin-top: 3em;\n  margin-left: auto;\n  margin-right: auto; }\n  .file-view .loader {\n    position: absolute;\n    top: 2.2em;\n    left: -20px;\n    z-index: 999; }\n  .file-view .top-bar {\n    overflow: hidden;\n    position: relative; }\n    .file-view .top-bar .control {\n      position: absolute;\n      display: block;\n      padding: 18px 0;\n      bottom: 0;\n      right: 0; }\n      .file-view .top-bar .control span {\n        display: inline-block;\n        width: 18px;\n        height: 18px;\n        background-size: 18px;\n        margin: 0 0 0 1em;\n        cursor: pointer; }\n      .file-view .top-bar .control .new-file {\n        background-image: url(" + __webpack_require__(916) + "); }\n      .file-view .top-bar .control .new-folder {\n        background-image: url(" + __webpack_require__(917) + "); }\n\n.directory-nav {\n  position: relative;\n  display: block;\n  float: left;\n  list-style-type: none;\n  padding: 0;\n  margin: 0; }\n  .directory-nav li {\n    position: relative;\n    display: inline-block;\n    margin: 0;\n    margin-left: 8px;\n    margin-right: 1.5em;\n    padding: 18px 0;\n    text-decoration: none; }\n    .directory-nav li a {\n      font-size: 11pt;\n      color: #000; }\n    .directory-nav li a:hover:not(.active) {\n      text-decoration: underline; }\n    .directory-nav li a.active {\n      font-weight: bold;\n      font-style: italic;\n      position: relative;\n      cursor: default; }\n\n.file-list {\n  position: relative;\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6); }\n  .file-list * {\n    color: #fff; }\n  .file-list .file-item-list {\n    border-top: 2px solid #1a1a1a;\n    border-bottom: 8px solid #222;\n    background-color: #333; }\n  .file-list .name, .file-list .modified {\n    padding: 0 1em;\n    box-sizing: border-box;\n    display: inline-block;\n    width: 50%;\n    height: 100%;\n    line-height: 42px; }\n  .file-list .item, .file-list .header {\n    height: 42px; }\n  .file-list .header {\n    background-color: #222; }\n    .file-list .header * {\n      -webkit-touch-callout: none;\n      -webkit-user-select: none;\n      -khtml-user-select: none;\n      -moz-user-select: none;\n      -ms-user-select: none;\n      user-select: none; }\n    .file-list .header .asc, .file-list .header .desc {\n      display: inline-block;\n      background-size: 8px 8px;\n      background-repeat: no-repeat;\n      width: 8px;\n      height: 8px;\n      margin-left: 1em; }\n    .file-list .header .asc {\n      background-image: url(" + __webpack_require__(918) + "); }\n    .file-list .header .desc {\n      background-image: url(" + __webpack_require__(919) + "); }\n    .file-list .header .name:hover, .file-list .header .modified:hover {\n      cursor: pointer;\n      background-color: #533; }\n  .file-list .item {\n    position: relative;\n    background-image: url(" + __webpack_require__(920) + ");\n    background-size: 1.6em;\n    background-repeat: no-repeat;\n    background-position: 1em 50%;\n    padding: 0;\n    margin: 0; }\n    .file-list .item .name {\n      text-overflow: ellipsis;\n      white-space: nowrap;\n      overflow: hidden;\n      padding-left: 3.5em; }\n    .file-list .item .modified {\n      overflow: hidden; }\n    .file-list .item input {\n      font-family: \"Open Sans\", sans-serif;\n      border: none;\n      border-radius: 2px;\n      color: #000;\n      width: 100%;\n      height: 50%;\n      padding-left: 0.5em; }\n  .file-list .item.dir {\n    background-image: url(" + __webpack_require__(921) + "); }\n  .file-list .item.active {\n    background-image: none; }\n  .file-list .item:before {\n    display: none;\n    content: '';\n    position: absolute;\n    background-size: 1.6em;\n    background-image: url(" + __webpack_require__(922) + ");\n    background-repeat: no-repeat;\n    background-position: 1em 50%;\n    width: 3.5em;\n    height: 100%;\n    animation: spin 1s infinite steps(32); }\n  .file-list .item.active:before {\n    display: inline; }\n  .file-list .item:hover {\n    background-color: #433; }\n\n.file-editor {\n  position: relative;\n  padding: 0.5em;\n  max-height: 800px;\n  overflow: auto;\n  border: 1px solid #ccc;\n  border-radius: 3px; }\n  .file-editor pre {\n    margin: 0; }\n    .file-editor pre code {\n      font-family: 'Source Code Pro', monospace;\n      font-size: 9pt;\n      overflow: visible; }\n\n.uploader {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 999; }\n  .uploader .container {\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin-left: auto;\n    margin-right: auto;\n    top: 10em;\n    width: 40em;\n    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6); }\n    .uploader .container .header {\n      border-radius: 4px 4px 0 0;\n      background-color: #fff;\n      padding: 20px 28px;\n      font-size: 18px;\n      border-bottom: 1px solid #e0e0e0; }\n    .uploader .container .content {\n      border-radius: 0 0 4px 4px;\n      background-color: #f8f9ff;\n      padding: 28px;\n      overflow: hidden; }\n      .uploader .container .content p {\n        margin: 0 0 28px 0; }\n\n.buttons {\n  float: right; }\n  .buttons .button {\n    margin-left: 2em; }\n\n@media (max-width: 768px) {\n  .file-view {\n    width: 90%; }\n    .file-view .file-list .name {\n      width: 100%; }\n    .file-view .file-list .header .modified,\n    .file-view .file-list .item.dir .modified {\n      display: none; }\n    .file-view .file-list .item .name {\n      padding-left: 3.5em;\n      display: block; }\n    .file-view .file-list .item .modified {\n      padding-left: 4em;\n      color: #aaa;\n      font-size: 11px; }\n    .file-view .file-list .item:not(.dir) .name, .file-view .file-list .item:not(.dir) .modified {\n      position: relative;\n      top: 4px;\n      height: 17px;\n      line-height: 17px; }\n    .file-view .file-list .item:not(.dir) .name {\n      padding-bottom: 0; }\n    .file-view .file-list .item:not(.dir) .modified {\n      display: block;\n      padding-top: 0;\n      width: 100%; } }\n", ""]);
 	
 	// exports
 
@@ -49709,42 +49722,12 @@
 
 /***/ },
 /* 830 */,
-/* 831 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/new-file.svg";
-
-/***/ },
-/* 832 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/new-folder.svg";
-
-/***/ },
-/* 833 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/ascending.svg";
-
-/***/ },
-/* 834 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/descending.svg";
-
-/***/ },
-/* 835 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/file-empty.svg";
-
-/***/ },
-/* 836 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/folder.svg";
-
-/***/ },
+/* 831 */,
+/* 832 */,
+/* 833 */,
+/* 834 */,
+/* 835 */,
+/* 836 */,
 /* 837 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -50505,6 +50488,10 @@
 	
 	var FileActions = _interopRequireWildcard(_FileActions);
 	
+	var _UploaderActions = __webpack_require__(913);
+	
+	var UploaderActions = _interopRequireWildcard(_UploaderActions);
+	
 	var _TooltipActions = __webpack_require__(848);
 	
 	var TooltipActions = _interopRequireWildcard(_TooltipActions);
@@ -50549,7 +50536,8 @@
 					_react2.default.createElement('span', { className: 'new-file',
 						'data-title': 'Upload...',
 						onMouseOver: this.onMouseOver.bind(this),
-						onMouseOut: this.onMouseOut.bind(this) }),
+						onMouseOut: this.onMouseOut.bind(this),
+						onClick: this.props.onUpload }),
 					_react2.default.createElement('span', { className: 'new-folder',
 						'data-title': 'New folder',
 						onMouseOver: this.onMouseOver.bind(this),
@@ -50564,22 +50552,17 @@
 	
 	function mapDispatchToProps(dispatch) {
 		return {
+			onUpload: (0, _redux.bindActionCreators)(UploaderActions, dispatch).showUploader,
 			onNewDir: (0, _redux.bindActionCreators)(FileActions, dispatch).newDirectoryPrompt,
 			showTooltip: (0, _redux.bindActionCreators)(TooltipActions, dispatch).showTooltip,
 			hideTooltip: (0, _redux.bindActionCreators)(TooltipActions, dispatch).hideTooltip
-	
 		};
 	}
 	
 	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DirectoryControl);
 
 /***/ },
-/* 851 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "assets/rolling.svg";
-
-/***/ },
+/* 851 */,
 /* 852 */,
 /* 853 */,
 /* 854 */,
@@ -50642,7 +50625,351 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function() {
-		return new Worker(__webpack_require__.p + "1f3346a1b90255102361.worker.js");
+		return new Worker(__webpack_require__.p + "ec30f9aa185fc0330217.worker.js");
+	};
+
+/***/ },
+/* 911 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(293);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(514);
+	
+	var _redux = __webpack_require__(520);
+	
+	var _UploaderActions = __webpack_require__(913);
+	
+	var UploaderActions = _interopRequireWildcard(_UploaderActions);
+	
+	var _FileInputButton = __webpack_require__(924);
+	
+	var _FileInputButton2 = _interopRequireDefault(_FileInputButton);
+	
+	var _CancelButton = __webpack_require__(925);
+	
+	var _CancelButton2 = _interopRequireDefault(_CancelButton);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Uploader = function (_React$Component) {
+		_inherits(Uploader, _React$Component);
+	
+		function Uploader() {
+			_classCallCheck(this, Uploader);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Uploader).apply(this, arguments));
+		}
+	
+		_createClass(Uploader, [{
+			key: 'onClick',
+			value: function onClick(e) {
+				if (e.target.className === 'uploader') this.props.hideUploader();
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var style = {
+					display: this.props.active ? 'block' : 'none'
+				};
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'uploader', style: style, onClick: this.onClick.bind(this) },
+					_react2.default.createElement(
+						'div',
+						{ className: 'container' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'header' },
+							_react2.default.createElement(
+								'span',
+								null,
+								'Upload files'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content' },
+							_react2.default.createElement(
+								'p',
+								null,
+								'Choose files to upload. You can select multiple files at the same time.'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'buttons' },
+								_react2.default.createElement(_FileInputButton2.default, null),
+								_react2.default.createElement(_CancelButton2.default, { onAction: this.props.hideUploader })
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return Uploader;
+	}(_react2.default.Component);
+	
+	function mapStateToProps(state) {
+		return {
+			active: state.uploader.active
+		};
+	}
+	
+	function mapDispatchToProps(dispatch) {
+		return {
+			hideUploader: (0, _redux.bindActionCreators)(UploaderActions, dispatch).hideUploader
+		};
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Uploader);
+
+/***/ },
+/* 912 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _UploaderActions = __webpack_require__(913);
+	
+	var ActionType = _interopRequireWildcard(_UploaderActions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var initialState = {
+		active: false
+	};
+	
+	module.exports = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case ActionType.SET_ACTIVE:
+				return Object.assign({}, state, { active: action.active });
+			default:
+				return state;
+		}
+	};
+
+/***/ },
+/* 913 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.showUploader = showUploader;
+	exports.hideUploader = hideUploader;
+	var SET_ACTIVE = exports.SET_ACTIVE = 'SET_ACTIVE';
+	
+	function showUploader() {
+		return function (dispatch) {
+			dispatch({
+				type: SET_ACTIVE,
+				active: true
+			});
+		};
+	}
+	
+	function hideUploader() {
+		return function (dispatch) {
+			dispatch({
+				type: SET_ACTIVE,
+				active: false
+			});
+		};
+	}
+
+/***/ },
+/* 914 */,
+/* 915 */,
+/* 916 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/new-file.svg";
+
+/***/ },
+/* 917 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/new-folder.svg";
+
+/***/ },
+/* 918 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/ascending.svg";
+
+/***/ },
+/* 919 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/descending.svg";
+
+/***/ },
+/* 920 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/file-empty.svg";
+
+/***/ },
+/* 921 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/folder.svg";
+
+/***/ },
+/* 922 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/rolling.svg";
+
+/***/ },
+/* 923 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "assets/upload.svg";
+
+/***/ },
+/* 924 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(293);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(926);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var FileInputButton = function (_React$Component) {
+		_inherits(FileInputButton, _React$Component);
+	
+		function FileInputButton() {
+			_classCallCheck(this, FileInputButton);
+	
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(FileInputButton).apply(this, arguments));
+		}
+	
+		_createClass(FileInputButton, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					_Button2.default,
+					{ className: 'upload blue' },
+					_react2.default.createElement('input', { type: 'file', name: 'fileinput', multiple: true }),
+					_react2.default.createElement(
+						'label',
+						{ 'for': 'fileinput' },
+						'Choose files'
+					)
+				);
+			}
+		}]);
+	
+		return FileInputButton;
+	}(_react2.default.Component);
+	
+	exports.default = FileInputButton;
+
+/***/ },
+/* 925 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(293);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(926);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+		var onAction = _ref.onAction;
+	
+		return _react2.default.createElement(
+			_Button2.default,
+			{ className: 'cancel white', onAction: onAction },
+			_react2.default.createElement(
+				'label',
+				null,
+				'Cancel'
+			)
+		);
+	};
+
+/***/ },
+/* 926 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(293);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+		var onAction = _ref.onAction;
+		var className = _ref.className;
+		var children = _ref.children;
+	
+		return _react2.default.createElement(
+			'a',
+			{ className: 'button ' + className, onClick: onAction },
+			children
+		);
 	};
 
 /***/ }

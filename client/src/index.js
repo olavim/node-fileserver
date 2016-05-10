@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import navigationReducer from './reducers/navigationReducer';
 import fileReducer from './reducers/fileReducer';
 import tooltipReducer from './reducers/tooltipReducer';
+import uploaderReducer from './reducers/uploaderReducer';
 
 import { fileInfoFields, NewDirStage } from './actions/FileActions';
 import { navigate } from './actions/RouteActions';
@@ -28,6 +29,9 @@ let initialState = {
 		bgcolor: '#fcc'
 	},
 	loading: false,
+	uploader: {
+		active: false,
+	},
     currentFile: {
 		path: '/',
 		filetype: 'directory',
@@ -46,6 +50,7 @@ let initialState = {
 let reducers = combineReducers({
 	tooltip: tooltipReducer,
 	loading: navigationReducer,
+	uploader: uploaderReducer,
     currentFile: fileReducer
 });
 

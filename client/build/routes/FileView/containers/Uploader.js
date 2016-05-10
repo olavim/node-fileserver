@@ -14,19 +14,17 @@ var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
 
-var _FileActions = require('../../../actions/FileActions');
-
-var FileActions = _interopRequireWildcard(_FileActions);
-
 var _UploaderActions = require('../../../actions/UploaderActions');
 
 var UploaderActions = _interopRequireWildcard(_UploaderActions);
 
-var _TooltipActions = require('../../../actions/TooltipActions');
+var _FileInputButton = require('../components/FileInputButton');
 
-var TooltipActions = _interopRequireWildcard(_TooltipActions);
+var _FileInputButton2 = _interopRequireDefault(_FileInputButton);
 
-var _Tooltip = require('../../../components/Tooltip');
+var _CancelButton = require('../components/CancelButton');
+
+var _CancelButton2 = _interopRequireDefault(_CancelButton);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -38,55 +36,75 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DirectoryControl = function (_React$Component) {
-	_inherits(DirectoryControl, _React$Component);
+var Uploader = function (_React$Component) {
+	_inherits(Uploader, _React$Component);
 
-	function DirectoryControl(props) {
-		_classCallCheck(this, DirectoryControl);
+	function Uploader() {
+		_classCallCheck(this, Uploader);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(DirectoryControl).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Uploader).apply(this, arguments));
 	}
 
-	_createClass(DirectoryControl, [{
-		key: 'onMouseOver',
-		value: function onMouseOver(e) {
-			this.props.showTooltip(e.target, e.target.getAttribute("data-title"), _Tooltip.Orientation.TOP, '#444');
-		}
-	}, {
-		key: 'onMouseOut',
-		value: function onMouseOut(e) {
-			this.props.hideTooltip();
+	_createClass(Uploader, [{
+		key: 'onClick',
+		value: function onClick(e) {
+			if (e.target.className === 'uploader') this.props.hideUploader();
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var style = {
+				display: this.props.active ? 'block' : 'none'
+			};
+
 			return _react2.default.createElement(
 				'div',
-				{ className: 'control' },
-				_react2.default.createElement('span', { className: 'new-file',
-					'data-title': 'Upload...',
-					onMouseOver: this.onMouseOver.bind(this),
-					onMouseOut: this.onMouseOut.bind(this),
-					onClick: this.props.onUpload }),
-				_react2.default.createElement('span', { className: 'new-folder',
-					'data-title': 'New folder',
-					onMouseOver: this.onMouseOver.bind(this),
-					onMouseOut: this.onMouseOut.bind(this),
-					onClick: this.props.onNewDir })
+				{ className: 'uploader', style: style, onClick: this.onClick.bind(this) },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'header' },
+						_react2.default.createElement(
+							'span',
+							null,
+							'Upload files'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'content' },
+						_react2.default.createElement(
+							'p',
+							null,
+							'Choose files to upload. You can select multiple files at the same time.'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'buttons' },
+							_react2.default.createElement(_FileInputButton2.default, null),
+							_react2.default.createElement(_CancelButton2.default, { onAction: this.props.hideUploader })
+						)
+					)
+				)
 			);
 		}
 	}]);
 
-	return DirectoryControl;
+	return Uploader;
 }(_react2.default.Component);
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
 	return {
-		onUpload: (0, _redux.bindActionCreators)(UploaderActions, dispatch).showUploader,
-		onNewDir: (0, _redux.bindActionCreators)(FileActions, dispatch).newDirectoryPrompt,
-		showTooltip: (0, _redux.bindActionCreators)(TooltipActions, dispatch).showTooltip,
-		hideTooltip: (0, _redux.bindActionCreators)(TooltipActions, dispatch).hideTooltip
+		active: state.uploader.active
 	};
 }
 
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DirectoryControl);
+function mapDispatchToProps(dispatch) {
+	return {
+		hideUploader: (0, _redux.bindActionCreators)(UploaderActions, dispatch).hideUploader
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Uploader);

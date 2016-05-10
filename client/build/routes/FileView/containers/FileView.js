@@ -28,6 +28,10 @@ var _Tooltip = require('../../../components/Tooltip');
 
 var _Tooltip2 = _interopRequireDefault(_Tooltip);
 
+var _Uploader = require('./Uploader');
+
+var _Uploader2 = _interopRequireDefault(_Uploader);
+
 var _reactRedux = require('react-redux');
 
 var _redux = require('redux');
@@ -62,6 +66,7 @@ var FileView = function FileView(_ref) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'file-view' },
+		_react2.default.createElement(_Uploader2.default, null),
 		_react2.default.createElement(
 			'div',
 			{ className: 'top-bar' },

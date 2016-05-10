@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600italic);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
 @import url(github.css);
+@import 'tooltip';
+@import 'button';
 
 $responsive-break: 768px;
 $item-height: 42px;
@@ -25,7 +27,6 @@ a:hover {
 
 .file-view {
   width: 70%;
-  position: relative;
   max-width: 70em;
   margin-top: 3em;
   margin-left: auto;
@@ -60,11 +61,11 @@ a:hover {
       }
 
       .new-file {
-        background-image: url(new-file.svg)
+        background-image: url(images/new-file.svg)
       }
 
       .new-folder {
-        background-image: url(new-folder.svg)
+        background-image: url(images/new-folder.svg)
       }
     }
   }
@@ -159,11 +160,11 @@ a:hover {
     }
 
     .asc {
-      background-image: url(ascending.svg);
+      background-image: url(images/ascending.svg);
     }
 
     .desc {
-      background-image: url(descending.svg);
+      background-image: url(images/descending.svg);
     }
 
     .name:hover, .modified:hover {
@@ -174,7 +175,7 @@ a:hover {
 
   .item {
     position: relative;
-    background-image: url(file-empty.svg);
+    background-image: url(images/file-empty.svg);
     background-size: 1.6em;
     background-repeat: no-repeat;
     background-position: 1em 50%;
@@ -204,7 +205,7 @@ a:hover {
   }
 
   .item.dir {
-    background-image: url(folder.svg);
+    background-image: url(images/folder.svg);
   }
 
   .item.active {
@@ -216,7 +217,7 @@ a:hover {
     content: '';
     position: absolute;
     background-size: 1.6em;
-    background-image: url(rolling.svg);
+    background-image: url(images/rolling.svg);
     background-repeat: no-repeat;
     background-position: 1em 50%;
     width: 3.5em;
@@ -252,62 +253,53 @@ a:hover {
   }
 }
 
-.tooltip {
-  $height: 26px;
+.uploader {
   position: absolute;
-  text-align: center;
-  padding: 0 1em;
-  font-size: 11px;
-  font-weight: bold;
-  border-radius: 4px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  height: $height;
 
-  span {
-    line-height: $height;
-  }
-
-  .arrow {
+  .container {
+    $border-radius: 4px;
     position: absolute;
-    width: 0;
-    height: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 10em;
+    width: 40em;
+    box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.6);
+
+    .header {
+      border-radius: $border-radius $border-radius 0 0;
+      background-color: #fff;
+      padding: 20px 28px;
+      font-size: 18px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .content {
+      border-radius: 0 0 $border-radius $border-radius;
+      background-color: #f8f9ff;
+      padding: 28px;
+      overflow: hidden;
+
+      p {
+        margin: 0 0 28px 0;
+      }
+    }
   }
 }
 
-$arrow-size: 8px;
+.buttons {
+  float: right;
 
-.tooltip.top .arrow, .tooltip.bottom .arrow {
-  left: 50%;
-  transform: translate(-50%, 0);
-  border-left: $arrow-size solid transparent;
-  border-right: $arrow-size solid transparent;
-}
-
-.tooltip.top .arrow {
-  bottom: -$arrow-size;
-  border-top: $arrow-size solid #f00;
-}
-
-.tooltip.bottom .arrow {
-  top: -$arrow-size;
-  border-bottom: $arrow-size solid #f00;
-}
-
-.tooltip.right .arrow, .tooltip.left .arrow {
-  top: 50%;
-  transform: translate(0, -50%);
-  border-top: $arrow-size solid transparent;
-  border-bottom: $arrow-size solid transparent;
-}
-
-.tooltip.right .arrow {
-  left: -$arrow-size;
-  border-right: $arrow-size solid #f00;
-}
-
-.tooltip.left .arrow {
-  right: -$arrow-size;
-  border-left: $arrow-size solid #f00;
+  .button {
+    margin-left: 2em;
+  }
 }
 
 @media (max-width: $responsive-break) {

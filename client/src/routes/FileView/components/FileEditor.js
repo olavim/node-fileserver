@@ -21,16 +21,16 @@ export default class FileEditor extends React.Component {
 						   dangerouslySetInnerHTML={{__html: this.state.data}} />
 				</pre>
 			</div>
-		);
+		)
 	}
 }
 
 function escapeHtml(unsafe) {
 	return unsafe
-	.replace(/&/g, "&amp;")
-	.replace(/</g, "&lt;")
-	.replace(/>/g, "&gt;")
-	.replace(/"/g, "&quot;")
-	.replace(/'/g, "&#039;");
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
 }
 
