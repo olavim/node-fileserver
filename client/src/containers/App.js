@@ -1,7 +1,7 @@
 import React from 'react';
 import Tooltip from '../components/Tooltip'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as RouteActions from '../actions/RouteActions';
 
 const App = ({
@@ -12,10 +12,10 @@ const App = ({
 		<div>
 			{children}
 			<Tooltip active={tooltip.active}
-					 text={tooltip.text}
-					 parent={tooltip.parent}
-					 orientation={tooltip.orientation}
-					 bgcolor={tooltip.bgcolor} />
+			         text={tooltip.text}
+			         parent={tooltip.parent}
+			         orientation={tooltip.orientation}
+			         bgcolor={tooltip.bgcolor}/>
 		</div>
 	)
 }

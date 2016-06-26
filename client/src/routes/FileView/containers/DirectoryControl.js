@@ -1,10 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as FileActions from '../../../actions/FileActions';
 import * as UploaderActions from '../../../actions/UploaderActions';
 import * as TooltipActions from '../../../actions/TooltipActions';
-import { Orientation } from '../../../components/Tooltip';
+import {Orientation} from '../../../components/Tooltip';
 
 class DirectoryControl extends React.Component {
 	constructor(props) {
@@ -23,21 +23,21 @@ class DirectoryControl extends React.Component {
 		return (
 			<div className="control">
 				<span className="new-file"
-					  data-title="Upload..."
-					  onMouseOver={this.onMouseOver.bind(this)}
-					  onMouseOut={this.onMouseOut.bind(this)}
-					  onClick={this.props.onUpload} />
+				      data-title="Upload..."
+				      onMouseOver={this.onMouseOver.bind(this)}
+				      onMouseOut={this.onMouseOut.bind(this)}
+				      onClick={this.props.onUpload}/>
 				<span className="new-folder"
-					  data-title="New folder"
-					  onMouseOver={this.onMouseOver.bind(this)}
-					  onMouseOut={this.onMouseOut.bind(this)}
-					  onClick={this.props.onNewDir} />
+				      data-title="New folder"
+				      onMouseOver={this.onMouseOver.bind(this)}
+				      onMouseOut={this.onMouseOut.bind(this)}
+				      onClick={this.props.onNewDir}/>
 			</div>
 		)
 	}
 }
 
-function mapDispatchToProps(dispatch) {	
+function mapDispatchToProps(dispatch) {
 	return {
 		onUpload: bindActionCreators(UploaderActions, dispatch).showUploader,
 		onNewDir: bindActionCreators(FileActions, dispatch).newDirectoryPrompt,

@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/scripts/";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -45,16 +45,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	var _highlight = __webpack_require__(1);
-	
+
 	var _highlight2 = _interopRequireDefault(_highlight);
-	
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
+
 	onmessage = function onmessage(e) {
-		var result = _highlight2.default.highlightAuto(e.data);
-		postMessage(result.value);
+		if (_highlight2.default.getLanguage(e.data[1])) {
+			var result = _highlight2.default.highlightAuto(e.data[0], [e.data[1]]);
+			postMessage(result.value);
+		} else {
+			postMessage(e.data[0]);
+		}
 	};
 
 /***/ },
@@ -62,160 +66,163 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var hljs = __webpack_require__(2);
-	
+
 	hljs.registerLanguage('1c', __webpack_require__(3));
 	hljs.registerLanguage('accesslog', __webpack_require__(4));
 	hljs.registerLanguage('actionscript', __webpack_require__(5));
-	hljs.registerLanguage('apache', __webpack_require__(6));
-	hljs.registerLanguage('applescript', __webpack_require__(7));
-	hljs.registerLanguage('arduino', __webpack_require__(8));
-	hljs.registerLanguage('armasm', __webpack_require__(9));
-	hljs.registerLanguage('xml', __webpack_require__(10));
-	hljs.registerLanguage('asciidoc', __webpack_require__(11));
-	hljs.registerLanguage('aspectj', __webpack_require__(12));
-	hljs.registerLanguage('autohotkey', __webpack_require__(13));
-	hljs.registerLanguage('autoit', __webpack_require__(14));
-	hljs.registerLanguage('avrasm', __webpack_require__(15));
-	hljs.registerLanguage('axapta', __webpack_require__(16));
-	hljs.registerLanguage('bash', __webpack_require__(17));
-	hljs.registerLanguage('basic', __webpack_require__(18));
-	hljs.registerLanguage('brainfuck', __webpack_require__(19));
-	hljs.registerLanguage('cal', __webpack_require__(20));
-	hljs.registerLanguage('capnproto', __webpack_require__(21));
-	hljs.registerLanguage('ceylon', __webpack_require__(22));
-	hljs.registerLanguage('clojure', __webpack_require__(23));
-	hljs.registerLanguage('clojure-repl', __webpack_require__(24));
-	hljs.registerLanguage('cmake', __webpack_require__(25));
-	hljs.registerLanguage('coffeescript', __webpack_require__(26));
-	hljs.registerLanguage('cos', __webpack_require__(27));
-	hljs.registerLanguage('cpp', __webpack_require__(28));
-	hljs.registerLanguage('crmsh', __webpack_require__(29));
-	hljs.registerLanguage('crystal', __webpack_require__(30));
-	hljs.registerLanguage('cs', __webpack_require__(31));
-	hljs.registerLanguage('csp', __webpack_require__(32));
-	hljs.registerLanguage('css', __webpack_require__(33));
-	hljs.registerLanguage('d', __webpack_require__(34));
-	hljs.registerLanguage('markdown', __webpack_require__(35));
-	hljs.registerLanguage('dart', __webpack_require__(36));
-	hljs.registerLanguage('delphi', __webpack_require__(37));
-	hljs.registerLanguage('diff', __webpack_require__(38));
-	hljs.registerLanguage('django', __webpack_require__(39));
-	hljs.registerLanguage('dns', __webpack_require__(40));
-	hljs.registerLanguage('dockerfile', __webpack_require__(41));
-	hljs.registerLanguage('dos', __webpack_require__(42));
-	hljs.registerLanguage('dts', __webpack_require__(43));
-	hljs.registerLanguage('dust', __webpack_require__(44));
-	hljs.registerLanguage('elixir', __webpack_require__(45));
-	hljs.registerLanguage('elm', __webpack_require__(46));
-	hljs.registerLanguage('ruby', __webpack_require__(47));
-	hljs.registerLanguage('erb', __webpack_require__(48));
-	hljs.registerLanguage('erlang-repl', __webpack_require__(49));
-	hljs.registerLanguage('erlang', __webpack_require__(50));
-	hljs.registerLanguage('fix', __webpack_require__(51));
-	hljs.registerLanguage('fortran', __webpack_require__(52));
-	hljs.registerLanguage('fsharp', __webpack_require__(53));
-	hljs.registerLanguage('gams', __webpack_require__(54));
-	hljs.registerLanguage('gauss', __webpack_require__(55));
-	hljs.registerLanguage('gcode', __webpack_require__(56));
-	hljs.registerLanguage('gherkin', __webpack_require__(57));
-	hljs.registerLanguage('glsl', __webpack_require__(58));
-	hljs.registerLanguage('go', __webpack_require__(59));
-	hljs.registerLanguage('golo', __webpack_require__(60));
-	hljs.registerLanguage('gradle', __webpack_require__(61));
-	hljs.registerLanguage('groovy', __webpack_require__(62));
-	hljs.registerLanguage('haml', __webpack_require__(63));
-	hljs.registerLanguage('handlebars', __webpack_require__(64));
-	hljs.registerLanguage('haskell', __webpack_require__(65));
-	hljs.registerLanguage('haxe', __webpack_require__(66));
-	hljs.registerLanguage('hsp', __webpack_require__(67));
-	hljs.registerLanguage('htmlbars', __webpack_require__(68));
-	hljs.registerLanguage('http', __webpack_require__(69));
-	hljs.registerLanguage('inform7', __webpack_require__(70));
-	hljs.registerLanguage('ini', __webpack_require__(71));
-	hljs.registerLanguage('irpf90', __webpack_require__(72));
-	hljs.registerLanguage('java', __webpack_require__(73));
-	hljs.registerLanguage('javascript', __webpack_require__(74));
-	hljs.registerLanguage('json', __webpack_require__(75));
-	hljs.registerLanguage('julia', __webpack_require__(76));
-	hljs.registerLanguage('kotlin', __webpack_require__(77));
-	hljs.registerLanguage('lasso', __webpack_require__(78));
-	hljs.registerLanguage('less', __webpack_require__(79));
-	hljs.registerLanguage('lisp', __webpack_require__(80));
-	hljs.registerLanguage('livecodeserver', __webpack_require__(81));
-	hljs.registerLanguage('livescript', __webpack_require__(82));
-	hljs.registerLanguage('lua', __webpack_require__(83));
-	hljs.registerLanguage('makefile', __webpack_require__(84));
-	hljs.registerLanguage('mathematica', __webpack_require__(85));
-	hljs.registerLanguage('matlab', __webpack_require__(86));
-	hljs.registerLanguage('maxima', __webpack_require__(87));
-	hljs.registerLanguage('mel', __webpack_require__(88));
-	hljs.registerLanguage('mercury', __webpack_require__(89));
-	hljs.registerLanguage('mipsasm', __webpack_require__(90));
-	hljs.registerLanguage('mizar', __webpack_require__(91));
-	hljs.registerLanguage('perl', __webpack_require__(92));
-	hljs.registerLanguage('mojolicious', __webpack_require__(93));
-	hljs.registerLanguage('monkey', __webpack_require__(94));
-	hljs.registerLanguage('moonscript', __webpack_require__(95));
-	hljs.registerLanguage('nginx', __webpack_require__(96));
-	hljs.registerLanguage('nimrod', __webpack_require__(97));
-	hljs.registerLanguage('nix', __webpack_require__(98));
-	hljs.registerLanguage('nsis', __webpack_require__(99));
-	hljs.registerLanguage('objectivec', __webpack_require__(100));
-	hljs.registerLanguage('ocaml', __webpack_require__(101));
-	hljs.registerLanguage('openscad', __webpack_require__(102));
-	hljs.registerLanguage('oxygene', __webpack_require__(103));
-	hljs.registerLanguage('parser3', __webpack_require__(104));
-	hljs.registerLanguage('pf', __webpack_require__(105));
-	hljs.registerLanguage('php', __webpack_require__(106));
-	hljs.registerLanguage('powershell', __webpack_require__(107));
-	hljs.registerLanguage('processing', __webpack_require__(108));
-	hljs.registerLanguage('profile', __webpack_require__(109));
-	hljs.registerLanguage('prolog', __webpack_require__(110));
-	hljs.registerLanguage('protobuf', __webpack_require__(111));
-	hljs.registerLanguage('puppet', __webpack_require__(112));
-	hljs.registerLanguage('python', __webpack_require__(113));
-	hljs.registerLanguage('q', __webpack_require__(114));
-	hljs.registerLanguage('qml', __webpack_require__(115));
-	hljs.registerLanguage('r', __webpack_require__(116));
-	hljs.registerLanguage('rib', __webpack_require__(117));
-	hljs.registerLanguage('roboconf', __webpack_require__(118));
-	hljs.registerLanguage('rsl', __webpack_require__(119));
-	hljs.registerLanguage('ruleslanguage', __webpack_require__(120));
-	hljs.registerLanguage('rust', __webpack_require__(121));
-	hljs.registerLanguage('scala', __webpack_require__(122));
-	hljs.registerLanguage('scheme', __webpack_require__(123));
-	hljs.registerLanguage('scilab', __webpack_require__(124));
-	hljs.registerLanguage('scss', __webpack_require__(125));
-	hljs.registerLanguage('smali', __webpack_require__(126));
-	hljs.registerLanguage('smalltalk', __webpack_require__(127));
-	hljs.registerLanguage('sml', __webpack_require__(128));
-	hljs.registerLanguage('sqf', __webpack_require__(129));
-	hljs.registerLanguage('sql', __webpack_require__(130));
-	hljs.registerLanguage('stan', __webpack_require__(131));
-	hljs.registerLanguage('stata', __webpack_require__(132));
-	hljs.registerLanguage('step21', __webpack_require__(133));
-	hljs.registerLanguage('stylus', __webpack_require__(134));
-	hljs.registerLanguage('swift', __webpack_require__(135));
-	hljs.registerLanguage('taggerscript', __webpack_require__(136));
-	hljs.registerLanguage('tcl', __webpack_require__(137));
-	hljs.registerLanguage('tex', __webpack_require__(138));
-	hljs.registerLanguage('thrift', __webpack_require__(139));
-	hljs.registerLanguage('tp', __webpack_require__(140));
-	hljs.registerLanguage('twig', __webpack_require__(141));
-	hljs.registerLanguage('typescript', __webpack_require__(142));
-	hljs.registerLanguage('vala', __webpack_require__(143));
-	hljs.registerLanguage('vbnet', __webpack_require__(144));
-	hljs.registerLanguage('vbscript', __webpack_require__(145));
-	hljs.registerLanguage('vbscript-html', __webpack_require__(146));
-	hljs.registerLanguage('verilog', __webpack_require__(147));
-	hljs.registerLanguage('vhdl', __webpack_require__(148));
-	hljs.registerLanguage('vim', __webpack_require__(149));
-	hljs.registerLanguage('x86asm', __webpack_require__(150));
-	hljs.registerLanguage('xl', __webpack_require__(151));
-	hljs.registerLanguage('xquery', __webpack_require__(152));
-	hljs.registerLanguage('yaml', __webpack_require__(153));
-	hljs.registerLanguage('zephir', __webpack_require__(154));
-	
+	hljs.registerLanguage('ada', __webpack_require__(6));
+	hljs.registerLanguage('apache', __webpack_require__(7));
+	hljs.registerLanguage('applescript', __webpack_require__(8));
+	hljs.registerLanguage('cpp', __webpack_require__(9));
+	hljs.registerLanguage('arduino', __webpack_require__(10));
+	hljs.registerLanguage('armasm', __webpack_require__(11));
+	hljs.registerLanguage('xml', __webpack_require__(12));
+	hljs.registerLanguage('asciidoc', __webpack_require__(13));
+	hljs.registerLanguage('aspectj', __webpack_require__(14));
+	hljs.registerLanguage('autohotkey', __webpack_require__(15));
+	hljs.registerLanguage('autoit', __webpack_require__(16));
+	hljs.registerLanguage('avrasm', __webpack_require__(17));
+	hljs.registerLanguage('axapta', __webpack_require__(18));
+	hljs.registerLanguage('bash', __webpack_require__(19));
+	hljs.registerLanguage('basic', __webpack_require__(20));
+	hljs.registerLanguage('bnf', __webpack_require__(21));
+	hljs.registerLanguage('brainfuck', __webpack_require__(22));
+	hljs.registerLanguage('cal', __webpack_require__(23));
+	hljs.registerLanguage('capnproto', __webpack_require__(24));
+	hljs.registerLanguage('ceylon', __webpack_require__(25));
+	hljs.registerLanguage('clojure', __webpack_require__(26));
+	hljs.registerLanguage('clojure-repl', __webpack_require__(27));
+	hljs.registerLanguage('cmake', __webpack_require__(28));
+	hljs.registerLanguage('coffeescript', __webpack_require__(29));
+	hljs.registerLanguage('cos', __webpack_require__(30));
+	hljs.registerLanguage('crmsh', __webpack_require__(31));
+	hljs.registerLanguage('crystal', __webpack_require__(32));
+	hljs.registerLanguage('cs', __webpack_require__(33));
+	hljs.registerLanguage('csp', __webpack_require__(34));
+	hljs.registerLanguage('css', __webpack_require__(35));
+	hljs.registerLanguage('d', __webpack_require__(36));
+	hljs.registerLanguage('markdown', __webpack_require__(37));
+	hljs.registerLanguage('dart', __webpack_require__(38));
+	hljs.registerLanguage('delphi', __webpack_require__(39));
+	hljs.registerLanguage('diff', __webpack_require__(40));
+	hljs.registerLanguage('django', __webpack_require__(41));
+	hljs.registerLanguage('dns', __webpack_require__(42));
+	hljs.registerLanguage('dockerfile', __webpack_require__(43));
+	hljs.registerLanguage('dos', __webpack_require__(44));
+	hljs.registerLanguage('dts', __webpack_require__(45));
+	hljs.registerLanguage('dust', __webpack_require__(46));
+	hljs.registerLanguage('elixir', __webpack_require__(47));
+	hljs.registerLanguage('elm', __webpack_require__(48));
+	hljs.registerLanguage('ruby', __webpack_require__(49));
+	hljs.registerLanguage('erb', __webpack_require__(50));
+	hljs.registerLanguage('erlang-repl', __webpack_require__(51));
+	hljs.registerLanguage('erlang', __webpack_require__(52));
+	hljs.registerLanguage('fix', __webpack_require__(53));
+	hljs.registerLanguage('fortran', __webpack_require__(54));
+	hljs.registerLanguage('fsharp', __webpack_require__(55));
+	hljs.registerLanguage('gams', __webpack_require__(56));
+	hljs.registerLanguage('gauss', __webpack_require__(57));
+	hljs.registerLanguage('gcode', __webpack_require__(58));
+	hljs.registerLanguage('gherkin', __webpack_require__(59));
+	hljs.registerLanguage('glsl', __webpack_require__(60));
+	hljs.registerLanguage('go', __webpack_require__(61));
+	hljs.registerLanguage('golo', __webpack_require__(62));
+	hljs.registerLanguage('gradle', __webpack_require__(63));
+	hljs.registerLanguage('groovy', __webpack_require__(64));
+	hljs.registerLanguage('haml', __webpack_require__(65));
+	hljs.registerLanguage('handlebars', __webpack_require__(66));
+	hljs.registerLanguage('haskell', __webpack_require__(67));
+	hljs.registerLanguage('haxe', __webpack_require__(68));
+	hljs.registerLanguage('hsp', __webpack_require__(69));
+	hljs.registerLanguage('htmlbars', __webpack_require__(70));
+	hljs.registerLanguage('http', __webpack_require__(71));
+	hljs.registerLanguage('inform7', __webpack_require__(72));
+	hljs.registerLanguage('ini', __webpack_require__(73));
+	hljs.registerLanguage('irpf90', __webpack_require__(74));
+	hljs.registerLanguage('java', __webpack_require__(75));
+	hljs.registerLanguage('javascript', __webpack_require__(76));
+	hljs.registerLanguage('json', __webpack_require__(77));
+	hljs.registerLanguage('julia', __webpack_require__(78));
+	hljs.registerLanguage('kotlin', __webpack_require__(79));
+	hljs.registerLanguage('lasso', __webpack_require__(80));
+	hljs.registerLanguage('less', __webpack_require__(81));
+	hljs.registerLanguage('lisp', __webpack_require__(82));
+	hljs.registerLanguage('livecodeserver', __webpack_require__(83));
+	hljs.registerLanguage('livescript', __webpack_require__(84));
+	hljs.registerLanguage('lua', __webpack_require__(85));
+	hljs.registerLanguage('makefile', __webpack_require__(86));
+	hljs.registerLanguage('mathematica', __webpack_require__(87));
+	hljs.registerLanguage('matlab', __webpack_require__(88));
+	hljs.registerLanguage('maxima', __webpack_require__(89));
+	hljs.registerLanguage('mel', __webpack_require__(90));
+	hljs.registerLanguage('mercury', __webpack_require__(91));
+	hljs.registerLanguage('mipsasm', __webpack_require__(92));
+	hljs.registerLanguage('mizar', __webpack_require__(93));
+	hljs.registerLanguage('perl', __webpack_require__(94));
+	hljs.registerLanguage('mojolicious', __webpack_require__(95));
+	hljs.registerLanguage('monkey', __webpack_require__(96));
+	hljs.registerLanguage('moonscript', __webpack_require__(97));
+	hljs.registerLanguage('nginx', __webpack_require__(98));
+	hljs.registerLanguage('nimrod', __webpack_require__(99));
+	hljs.registerLanguage('nix', __webpack_require__(100));
+	hljs.registerLanguage('nsis', __webpack_require__(101));
+	hljs.registerLanguage('objectivec', __webpack_require__(102));
+	hljs.registerLanguage('ocaml', __webpack_require__(103));
+	hljs.registerLanguage('openscad', __webpack_require__(104));
+	hljs.registerLanguage('oxygene', __webpack_require__(105));
+	hljs.registerLanguage('parser3', __webpack_require__(106));
+	hljs.registerLanguage('pf', __webpack_require__(107));
+	hljs.registerLanguage('php', __webpack_require__(108));
+	hljs.registerLanguage('powershell', __webpack_require__(109));
+	hljs.registerLanguage('processing', __webpack_require__(110));
+	hljs.registerLanguage('profile', __webpack_require__(111));
+	hljs.registerLanguage('prolog', __webpack_require__(112));
+	hljs.registerLanguage('protobuf', __webpack_require__(113));
+	hljs.registerLanguage('puppet', __webpack_require__(114));
+	hljs.registerLanguage('purebasic', __webpack_require__(115));
+	hljs.registerLanguage('python', __webpack_require__(116));
+	hljs.registerLanguage('q', __webpack_require__(117));
+	hljs.registerLanguage('qml', __webpack_require__(118));
+	hljs.registerLanguage('r', __webpack_require__(119));
+	hljs.registerLanguage('rib', __webpack_require__(120));
+	hljs.registerLanguage('roboconf', __webpack_require__(121));
+	hljs.registerLanguage('rsl', __webpack_require__(122));
+	hljs.registerLanguage('ruleslanguage', __webpack_require__(123));
+	hljs.registerLanguage('rust', __webpack_require__(124));
+	hljs.registerLanguage('scala', __webpack_require__(125));
+	hljs.registerLanguage('scheme', __webpack_require__(126));
+	hljs.registerLanguage('scilab', __webpack_require__(127));
+	hljs.registerLanguage('scss', __webpack_require__(128));
+	hljs.registerLanguage('smali', __webpack_require__(129));
+	hljs.registerLanguage('smalltalk', __webpack_require__(130));
+	hljs.registerLanguage('sml', __webpack_require__(131));
+	hljs.registerLanguage('sqf', __webpack_require__(132));
+	hljs.registerLanguage('sql', __webpack_require__(133));
+	hljs.registerLanguage('stan', __webpack_require__(134));
+	hljs.registerLanguage('stata', __webpack_require__(135));
+	hljs.registerLanguage('step21', __webpack_require__(136));
+	hljs.registerLanguage('stylus', __webpack_require__(137));
+	hljs.registerLanguage('swift', __webpack_require__(138));
+	hljs.registerLanguage('taggerscript', __webpack_require__(139));
+	hljs.registerLanguage('tcl', __webpack_require__(140));
+	hljs.registerLanguage('tex', __webpack_require__(141));
+	hljs.registerLanguage('thrift', __webpack_require__(142));
+	hljs.registerLanguage('tp', __webpack_require__(143));
+	hljs.registerLanguage('twig', __webpack_require__(144));
+	hljs.registerLanguage('typescript', __webpack_require__(145));
+	hljs.registerLanguage('vala', __webpack_require__(146));
+	hljs.registerLanguage('vbnet', __webpack_require__(147));
+	hljs.registerLanguage('vbscript', __webpack_require__(148));
+	hljs.registerLanguage('vbscript-html', __webpack_require__(149));
+	hljs.registerLanguage('verilog', __webpack_require__(150));
+	hljs.registerLanguage('vhdl', __webpack_require__(151));
+	hljs.registerLanguage('vim', __webpack_require__(152));
+	hljs.registerLanguage('x86asm', __webpack_require__(153));
+	hljs.registerLanguage('xl', __webpack_require__(154));
+	hljs.registerLanguage('xquery', __webpack_require__(155));
+	hljs.registerLanguage('yaml', __webpack_require__(156));
+	hljs.registerLanguage('zephir', __webpack_require__(157));
+
 	module.exports = hljs;
 
 /***/ },
@@ -226,13 +233,13 @@
 	Syntax highlighting with language autodetection.
 	https://highlightjs.org/
 	*/
-	
+
 	(function(factory) {
-	
+
 	  // Find the global object for export to both the browser and web workers.
 	  var globalObject = typeof window == 'object' && window ||
 	                     typeof self == 'object' && self;
-	
+
 	  // Setup highlight.js for different environments. First is Node.js or
 	  // CommonJS.
 	  if(true) {
@@ -241,7 +248,7 @@
 	    // Export hljs globally even when using AMD for cases when this script
 	    // is loaded with others that may still expect a global hljs.
 	    globalObject.hljs = factory({});
-	
+
 	    // Finally register the global hljs with AMD.
 	    if(typeof define === 'function' && define.amd) {
 	      define([], function() {
@@ -249,40 +256,40 @@
 	      });
 	    }
 	  }
-	
+
 	}(function(hljs) {
-	
+
 	  /* Utility functions */
-	
+
 	  function escape(value) {
 	    return value.replace(/&/gm, '&amp;').replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
 	  }
-	
+
 	  function tag(node) {
 	    return node.nodeName.toLowerCase();
 	  }
-	
+
 	  function testRe(re, lexeme) {
 	    var match = re && re.exec(lexeme);
 	    return match && match.index == 0;
 	  }
-	
+
 	  function isNotHighlighted(language) {
 	    return (/^(no-?highlight|plain|text)$/i).test(language);
 	  }
-	
+
 	  function blockLanguage(block) {
 	    var i, match, length,
 	        classes = block.className + ' ';
-	
+
 	    classes += block.parentNode ? block.parentNode.className : '';
-	
+
 	    // language-* takes precedence over non-prefixed class names.
 	    match = (/\blang(?:uage)?-([\w-]+)\b/i).exec(classes);
 	    if (match) {
 	      return getLanguage(match[1]) ? match[1] : 'no-highlight';
 	    }
-	
+
 	    classes = classes.split(/\s+/);
 	    for (i = 0, length = classes.length; i < length; i++) {
 	      if (getLanguage(classes[i]) || isNotHighlighted(classes[i])) {
@@ -290,7 +297,7 @@
 	      }
 	    }
 	  }
-	
+
 	  function inherit(parent, obj) {
 	    var result = {}, key;
 	    for (key in parent)
@@ -300,9 +307,9 @@
 	        result[key] = obj[key];
 	    return result;
 	  }
-	
+
 	  /* Stream merging */
-	
+
 	  function nodeStream(node) {
 	    var result = [];
 	    (function _nodeStream(node, offset) {
@@ -332,12 +339,12 @@
 	    })(node, 0);
 	    return result;
 	  }
-	
+
 	  function mergeStreams(original, highlighted, value) {
 	    var processed = 0;
 	    var result = '';
 	    var nodeStack = [];
-	
+
 	    function selectStream() {
 	      if (!original.length || !highlighted.length) {
 	        return original.length ? original : highlighted;
@@ -345,11 +352,11 @@
 	      if (original[0].offset != highlighted[0].offset) {
 	        return (original[0].offset < highlighted[0].offset) ? original : highlighted;
 	      }
-	
+
 	      /*
 	      To avoid starting the stream just before it should stop the order is
 	      ensured that original always starts first and closes last:
-	
+
 	      if (event1 == 'start' && event2 == 'start')
 	        return original;
 	      if (event1 == 'start' && event2 == 'stop')
@@ -358,25 +365,25 @@
 	        return original;
 	      if (event1 == 'stop' && event2 == 'stop')
 	        return highlighted;
-	
+
 	      ... which is collapsed to:
 	      */
 	      return highlighted[0].event == 'start' ? original : highlighted;
 	    }
-	
+
 	    function open(node) {
 	      function attr_str(a) {return ' ' + a.nodeName + '="' + escape(a.value) + '"';}
 	      result += '<' + tag(node) + Array.prototype.map.call(node.attributes, attr_str).join('') + '>';
 	    }
-	
+
 	    function close(node) {
 	      result += '</' + tag(node) + '>';
 	    }
-	
+
 	    function render(event) {
 	      (event.event == 'start' ? open : close)(event.node);
 	    }
-	
+
 	    while (original.length || highlighted.length) {
 	      var stream = selectStream();
 	      result += escape(value.substr(processed, stream[0].offset - processed));
@@ -405,31 +412,31 @@
 	    }
 	    return result + escape(value.substr(processed));
 	  }
-	
+
 	  /* Initialization */
-	
+
 	  function compileLanguage(language) {
-	
+
 	    function reStr(re) {
 	        return (re && re.source) || re;
 	    }
-	
+
 	    function langRe(value, global) {
 	      return new RegExp(
 	        reStr(value),
 	        'm' + (language.case_insensitive ? 'i' : '') + (global ? 'g' : '')
 	      );
 	    }
-	
+
 	    function compileMode(mode, parent) {
 	      if (mode.compiled)
 	        return;
 	      mode.compiled = true;
-	
+
 	      mode.keywords = mode.keywords || mode.beginKeywords;
 	      if (mode.keywords) {
 	        var compiled_keywords = {};
-	
+
 	        var flatten = function(className, str) {
 	          if (language.case_insensitive) {
 	            str = str.toLowerCase();
@@ -439,7 +446,7 @@
 	            compiled_keywords[pair[0]] = [className, pair[1] ? Number(pair[1]) : 1];
 	          });
 	        };
-	
+
 	        if (typeof mode.keywords == 'string') { // string
 	          flatten('keyword', mode.keywords);
 	        } else {
@@ -450,7 +457,7 @@
 	        mode.keywords = compiled_keywords;
 	      }
 	      mode.lexemesRe = langRe(mode.lexemes || /\w+/, true);
-	
+
 	      if (parent) {
 	        if (mode.beginKeywords) {
 	          mode.begin = '\\b(' + mode.beginKeywords.split(' ').join('|') + ')\\b';
@@ -483,11 +490,11 @@
 	      });
 	      mode.contains = expanded_contains;
 	      mode.contains.forEach(function(c) {compileMode(c, mode);});
-	
+
 	      if (mode.starts) {
 	        compileMode(mode.starts, parent);
 	      }
-	
+
 	      var terminators =
 	        mode.contains.map(function(c) {
 	          return c.beginKeywords ? '\\.?(' + c.begin + ')\\.?' : c.begin;
@@ -497,21 +504,21 @@
 	        .filter(Boolean);
 	      mode.terminators = terminators.length ? langRe(terminators.join('|'), true) : {exec: function(/*s*/) {return null;}};
 	    }
-	
+
 	    compileMode(language);
 	  }
-	
+
 	  /*
 	  Core highlighting function. Accepts a language name, or an alias, and a
 	  string with the code to highlight. Returns an object with the following
 	  properties:
-	
+
 	  - relevance (int)
 	  - value (an HTML string with highlighting markup)
-	
+
 	  */
 	  function highlight(name, value, ignore_illegals, continuation) {
-	
+
 	    function subMode(lexeme, mode) {
 	      for (var i = 0; i < mode.contains.length; i++) {
 	        if (testRe(mode.contains[i].beginRe, lexeme)) {
@@ -519,7 +526,7 @@
 	        }
 	      }
 	    }
-	
+
 	    function endOfMode(mode, lexeme) {
 	      if (testRe(mode.endRe, lexeme)) {
 	        while (mode.endsParent && mode.parent) {
@@ -531,26 +538,26 @@
 	        return endOfMode(mode.parent, lexeme);
 	      }
 	    }
-	
+
 	    function isIllegal(lexeme, mode) {
 	      return !ignore_illegals && testRe(mode.illegalRe, lexeme);
 	    }
-	
+
 	    function keywordMatch(mode, match) {
 	      var match_str = language.case_insensitive ? match[0].toLowerCase() : match[0];
 	      return mode.keywords.hasOwnProperty(match_str) && mode.keywords[match_str];
 	    }
-	
+
 	    function buildSpan(classname, insideSpan, leaveOpen, noPrefix) {
 	      var classPrefix = noPrefix ? '' : options.classPrefix,
 	          openSpan    = '<span class="' + classPrefix,
 	          closeSpan   = leaveOpen ? '' : '</span>';
-	
+
 	      openSpan += classname + '">';
-	
+
 	      return openSpan + insideSpan + closeSpan;
 	    }
-	
+
 	    function processKeywords() {
 	      if (!top.keywords)
 	        return escape(mode_buffer);
@@ -572,17 +579,17 @@
 	      }
 	      return result + escape(mode_buffer.substr(last_index));
 	    }
-	
+
 	    function processSubLanguage() {
 	      var explicit = typeof top.subLanguage == 'string';
 	      if (explicit && !languages[top.subLanguage]) {
 	        return escape(mode_buffer);
 	      }
-	
+
 	      var result = explicit ?
 	                   highlight(top.subLanguage, mode_buffer, true, continuations[top.subLanguage]) :
 	                   highlightAuto(mode_buffer, top.subLanguage.length ? top.subLanguage : undefined);
-	
+
 	      // Counting embedded language score towards the host language may be disabled
 	      // with zeroing the containing mode relevance. Usecase in point is Markdown that
 	      // allows XML everywhere and makes every XML snippet to have a much larger Markdown
@@ -595,26 +602,26 @@
 	      }
 	      return buildSpan(result.language, result.value, false, true);
 	    }
-	
+
 	    function processBuffer() {
 	      result += (top.subLanguage !== undefined ? processSubLanguage() : processKeywords());
 	      mode_buffer = '';
 	    }
-	
+
 	    function startNewMode(mode, lexeme) {
 	      result += mode.className? buildSpan(mode.className, '', true): '';
 	      top = Object.create(mode, {parent: {value: top}});
 	    }
-	
+
 	    function processLexeme(buffer, lexeme) {
-	
+
 	      mode_buffer += buffer;
-	
+
 	      if (lexeme === undefined) {
 	        processBuffer();
 	        return 0;
 	      }
-	
+
 	      var new_mode = subMode(lexeme, top);
 	      if (new_mode) {
 	        if (new_mode.skip) {
@@ -631,7 +638,7 @@
 	        startNewMode(new_mode, lexeme);
 	        return new_mode.returnBegin ? 0 : lexeme.length;
 	      }
-	
+
 	      var end_mode = endOfMode(top, lexeme);
 	      if (end_mode) {
 	        var origin = top;
@@ -660,10 +667,10 @@
 	        }
 	        return origin.returnEnd ? 0 : lexeme.length;
 	      }
-	
+
 	      if (isIllegal(lexeme, top))
 	        throw new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top.className || '<unnamed>') + '"');
-	
+
 	      /*
 	      Parser should not reach this point as all types of lexemes should be caught
 	      earlier, but if it does due to some bug make sure it advances at least one
@@ -672,12 +679,12 @@
 	      mode_buffer += lexeme;
 	      return lexeme.length || 1;
 	    }
-	
+
 	    var language = getLanguage(name);
 	    if (!language) {
 	      throw new Error('Unknown language: "' + name + '"');
 	    }
-	
+
 	    compileLanguage(language);
 	    var top = continuation || language;
 	    var continuations = {}; // keep continuations for sub-languages
@@ -722,17 +729,17 @@
 	      }
 	    }
 	  }
-	
+
 	  /*
 	  Highlighting with language detection. Accepts a string with the code to
 	  highlight. Returns an object with the following properties:
-	
+
 	  - language (detected language)
 	  - relevance (int)
 	  - value (an HTML string with highlighting markup)
 	  - second_best (object with the same structure for second-best heuristically
 	    detected language, may be absent)
-	
+
 	  */
 	  function highlightAuto(text, languageSubset) {
 	    languageSubset = languageSubset || options.languages || Object.keys(languages);
@@ -757,13 +764,13 @@
 	    }
 	    return result;
 	  }
-	
+
 	  /*
 	  Post-processing of the highlighted markup:
-	
+
 	  - replace TABs with something more useful
 	  - replace real line-breaks with '<br>' for non-pre containers
-	
+
 	  */
 	  function fixMarkup(value) {
 	    if (options.tabReplace) {
@@ -776,22 +783,22 @@
 	    }
 	    return value;
 	  }
-	
+
 	  function buildClassName(prevClassName, currentLang, resultLang) {
 	    var language = currentLang ? aliases[currentLang] : resultLang,
 	        result   = [prevClassName.trim()];
-	
+
 	    if (!prevClassName.match(/\bhljs\b/)) {
 	      result.push('hljs');
 	    }
-	
+
 	    if (prevClassName.indexOf(language) === -1) {
 	      result.push(language);
 	    }
-	
+
 	    return result.join(' ').trim();
 	  }
-	
+
 	  /*
 	  Applies highlighting to a DOM node containing code. Accepts a DOM node and
 	  two optional parameters for fixMarkup.
@@ -800,7 +807,7 @@
 	    var language = blockLanguage(block);
 	    if (isNotHighlighted(language))
 	        return;
-	
+
 	    var node;
 	    if (options.useBR) {
 	      node = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
@@ -810,7 +817,7 @@
 	    }
 	    var text = node.textContent;
 	    var result = language ? highlight(language, text, true) : highlightAuto(text);
-	
+
 	    var originalStream = nodeStream(node);
 	    if (originalStream.length) {
 	      var resultNode = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
@@ -818,7 +825,7 @@
 	      result.value = mergeStreams(originalStream, nodeStream(resultNode), text);
 	    }
 	    result.value = fixMarkup(result.value);
-	
+
 	    block.innerHTML = result.value;
 	    block.className = buildClassName(block.className, language, result.language);
 	    block.result = {
@@ -832,21 +839,21 @@
 	      };
 	    }
 	  }
-	
+
 	  var options = {
 	    classPrefix: 'hljs-',
 	    tabReplace: null,
 	    useBR: false,
 	    languages: undefined
 	  };
-	
+
 	  /*
 	  Updates highlight.js global options with values passed in the form of an object.
 	  */
 	  function configure(user_options) {
 	    options = inherit(options, user_options);
 	  }
-	
+
 	  /*
 	  Applies highlighting to all <pre><code>..</code></pre> blocks on a page.
 	  */
@@ -854,11 +861,11 @@
 	    if (initHighlighting.called)
 	      return;
 	    initHighlighting.called = true;
-	
+
 	    var blocks = document.querySelectorAll('pre code');
 	    Array.prototype.forEach.call(blocks, highlightBlock);
 	  }
-	
+
 	  /*
 	  Attaches highlighting to the page load event.
 	  */
@@ -866,28 +873,28 @@
 	    addEventListener('DOMContentLoaded', initHighlighting, false);
 	    addEventListener('load', initHighlighting, false);
 	  }
-	
+
 	  var languages = {};
 	  var aliases = {};
-	
+
 	  function registerLanguage(name, language) {
 	    var lang = languages[name] = language(hljs);
 	    if (lang.aliases) {
 	      lang.aliases.forEach(function(alias) {aliases[alias] = name;});
 	    }
 	  }
-	
+
 	  function listLanguages() {
 	    return Object.keys(languages);
 	  }
-	
+
 	  function getLanguage(name) {
 	    name = (name || '').toLowerCase();
 	    return languages[name] || languages[aliases[name]];
 	  }
-	
+
 	  /* Interface definition */
-	
+
 	  hljs.highlight = highlight;
 	  hljs.highlightAuto = highlightAuto;
 	  hljs.fixMarkup = fixMarkup;
@@ -899,7 +906,7 @@
 	  hljs.listLanguages = listLanguages;
 	  hljs.getLanguage = getLanguage;
 	  hljs.inherit = inherit;
-	
+
 	  // Common regexps
 	  hljs.IDENT_RE = '[a-zA-Z]\\w*';
 	  hljs.UNDERSCORE_IDENT_RE = '[a-zA-Z_]\\w*';
@@ -907,7 +914,7 @@
 	  hljs.C_NUMBER_RE = '(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)'; // 0x..., 0..., decimal, float
 	  hljs.BINARY_NUMBER_RE = '\\b(0b[01]+)'; // 0b...
 	  hljs.RE_STARTERS_RE = '!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~';
-	
+
 	  // Common modes
 	  hljs.BACKSLASH_ESCAPE = {
 	    begin: '\\\\[\\s\\S]', relevance: 0
@@ -1003,7 +1010,7 @@
 	    begin: '\\.\\s*' + hljs.UNDERSCORE_IDENT_RE,
 	    relevance: 0
 	  };
-	
+
 	  return hljs;
 	}));
 
@@ -1053,7 +1060,7 @@
 	    begin: '\\|', end: '"|$',
 	    contains: [DQUOTE]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    lexemes: IDENT_RE_RU,
@@ -1140,13 +1147,13 @@
 	module.exports = function(hljs) {
 	  var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
 	  var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
-	
+
 	  var AS3_REST_ARG_MODE = {
 	    className: 'rest_arg',
 	    begin: '[.]{3}', end: IDENT_RE,
 	    relevance: 10
 	  };
-	
+
 	  return {
 	    aliases: ['as'],
 	    keywords: {
@@ -1215,6 +1222,183 @@
 /* 6 */
 /***/ function(module, exports) {
 
+	module.exports = // We try to support full Ada2012
+	//
+	// We highlight all appearances of types, keywords, literals (string, char, number, bool)
+	// and titles (user defined function/procedure/package)
+	// CSS classes are set accordingly
+	//
+	// Languages causing problems for language detection:
+	// xml (broken by Foo : Bar type), elm (broken by Foo : Bar type), vbscript-html (broken by body keyword)
+	// sql (ada default.txt has a lot of sql keywords)
+
+	function(hljs) {
+	    // Regular expression for Ada numeric literals.
+	    // stolen form the VHDL highlighter
+
+	    // Decimal literal:
+	    var INTEGER_RE = '\\d(_|\\d)*';
+	    var EXPONENT_RE = '[eE][-+]?' + INTEGER_RE;
+	    var DECIMAL_LITERAL_RE = INTEGER_RE + '(\\.' + INTEGER_RE + ')?' + '(' + EXPONENT_RE + ')?';
+
+	    // Based literal:
+	    var BASED_INTEGER_RE = '\\w+';
+	    var BASED_LITERAL_RE = INTEGER_RE + '#' + BASED_INTEGER_RE + '(\\.' + BASED_INTEGER_RE + ')?' + '#' + '(' + EXPONENT_RE + ')?';
+
+	    var NUMBER_RE = '\\b(' + BASED_LITERAL_RE + '|' + DECIMAL_LITERAL_RE + ')';
+
+	    // Identifier regex
+	    var ID_REGEX = '[A-Za-z](_?[A-Za-z0-9.])*';
+
+	    // bad chars, only allowed in literals
+	    var BAD_CHARS = '[]{}%#\'\"'
+
+	    // Ada doesn't have block comments, only line comments
+	    var COMMENTS = hljs.COMMENT('--', '$');
+
+	    // variable declarations of the form
+	    // Foo : Bar := Baz;
+	    // where only Bar will be highlighted
+	    var VAR_DECLS = {
+	        // TODO: These spaces are not required by the Ada syntax
+	        // however, I have yet to see handwritten Ada code where
+	        // someone does not put spaces around :
+	        begin: '\\s+:\\s+', end: '\\s*(:=|;|\\)|=>|$)',
+	        // endsWithParent: true,
+	        // returnBegin: true,
+	        illegal: BAD_CHARS,
+	        contains: [
+	            {
+	                // workaround to avoid highlighting
+	                // named loops and declare blocks
+	                beginKeywords: 'loop for declare others',
+	                endsParent: true,
+	            },
+	            {
+	                // properly highlight all modifiers
+	                className: 'keyword',
+	                beginKeywords: 'not null constant access function procedure in out aliased exception'
+	            },
+	            {
+	                className: 'type',
+	                begin: ID_REGEX,
+	                endsParent: true,
+	                relevance: 0,
+	            }
+	        ]
+	    };
+
+	    return {
+	        case_insensitive: true,
+	        keywords: {
+	            keyword:
+	                'abort else new return abs elsif not reverse abstract end ' +
+	                'accept entry select access exception of separate aliased exit or some ' +
+	                'all others subtype and for out synchronized array function overriding ' +
+	                'at tagged generic package task begin goto pragma terminate ' +
+	                'body private then if procedure type case in protected constant interface ' +
+	                'is raise use declare range delay limited record when delta loop rem while ' +
+	                'digits renames with do mod requeue xor',
+	            literal:
+	                'True False',
+	        },
+	        contains: [
+	            COMMENTS,
+	            // strings "foobar"
+	            {
+	                className: 'string',
+	                begin: /"/, end: /"/,
+	                contains: [{begin: /""/, relevance: 0}]
+	            },
+	            // characters ''
+	            {
+	                // character literals always contain one char
+	                className: 'string',
+	                begin: /'.'/
+	            },
+	            {
+	                // number literals
+	                className: 'number',
+	                begin: NUMBER_RE,
+	                relevance: 0
+	            },
+	            {
+	                // Attributes
+	                className: 'symbol',
+	                begin: "'" + ID_REGEX,
+	            },
+	            {
+	                // package definition, maybe inside generic
+	                className: 'title',
+	                begin: '(\\bwith\\s+)?(\\bprivate\\s+)?\\bpackage\\s+(\\bbody\\s+)?', end: '(is|$)',
+	                keywords: 'package body',
+	                excludeBegin: true,
+	                excludeEnd: true,
+	                illegal: BAD_CHARS
+	            },
+	            {
+	                // function/procedure declaration/definition
+	                // maybe inside generic
+	                begin: '(\\b(with|overriding)\\s+)?\\b(function|procedure)\\s+', end: '(\\bis|\\bwith|\\brenames|\\)\\s*;)',
+	                keywords: 'overriding function procedure with is renames return',
+	                // we need to re-match the 'function' keyword, so that
+	                // the title mode below matches only exactly once
+	                returnBegin: true,
+	                contains:
+	                [
+	                    COMMENTS,
+	                    {
+	                        // name of the function/procedure
+	                        className: 'title',
+	                        begin: '(\\bwith\\s+)?\\b(function|procedure)\\s+',
+	                        end: '(\\(|\\s+|$)',
+	                        excludeBegin: true,
+	                        excludeEnd: true,
+	                        illegal: BAD_CHARS
+	                    },
+	                    // 'self'
+	                    // // parameter types
+	                    VAR_DECLS,
+	                    {
+	                        // return type
+	                        className: 'type',
+	                        begin: '\\breturn\\s+', end: '(\\s+|;|$)',
+	                        keywords: 'return',
+	                        excludeBegin: true,
+	                        excludeEnd: true,
+	                        // we are done with functions
+	                        endsParent: true,
+	                        illegal: BAD_CHARS
+
+	                    },
+	                ]
+	            },
+	            {
+	                // new type declarations
+	                // maybe inside generic
+	                className: 'type',
+	                begin: '\\b(sub)?type\\s+', end: '\\s+',
+	                keywords: 'type',
+	                excludeBegin: true,
+	                illegal: BAD_CHARS
+	            },
+
+	            // see comment above the definition
+	            VAR_DECLS,
+
+	            // no markup
+	            // relevance boosters for small snippets
+	            // {begin: '\\s*=>\\s*'},
+	            // {begin: '\\s*:=\\s*'},
+	            // {begin: '\\s+:=\\s+'},
+	        ]
+	    };
+	};
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
 	module.exports = function(hljs) {
 	  var NUMBER = {className: 'number', begin: '[\\$%]\\d+'};
 	  return {
@@ -1262,7 +1446,7 @@
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -1285,7 +1469,7 @@
 	    COMMENT_MODE_2,
 	    hljs.HASH_COMMENT_MODE
 	  ];
-	
+
 	  return {
 	    aliases: ['osascript'],
 	    keywords: {
@@ -1352,165 +1536,276 @@
 	};
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
-		// CPP Strings
-		var STRINGS = {
-		    className: 'string',
-		    variants: [
-		      hljs.inherit(hljs.QUOTE_STRING_MODE, { begin: '((u8?|U)|L)?"' }),
-		      {
-		        begin: '(u8?|U)?R"', end: '"',
-		        contains: [hljs.BACKSLASH_ESCAPE]
-		      },
-		      {
-		        begin: '\'\\\\?.', end: '\'',
-		        illegal: '.'
-		      }
-		    ]
-		  };
-	
-		// CPP preprocessor
-		var PREPROCESSOR =       {
-		    className: 'meta',
-		    begin: '#', end: '$',
-		    keywords: {'meta-keyword': 'if else elif endif define undef warning error line ' +
-		                  'pragma ifdef ifndef'},
-		    contains: [
-		      {
-		        begin: /\\\n/, relevance: 0
-		      },
-		      {
-		        beginKeywords: 'include', end: '$',
-		        keywords: {'meta-keyword': 'include'},
-		        contains: [
-		          hljs.inherit(STRINGS, {className: 'meta-string'}),
-		          {
-		            className: 'meta-string',
-		            begin: '<', end: '>',
-		            illegal: '\\n',
-		          }
-		        ]
-		      },
-		      STRINGS,
-		      hljs.C_LINE_COMMENT_MODE,
-		      hljs.C_BLOCK_COMMENT_MODE
-		    ]
-		  };
-	
-	  	return {
-		    keywords: {
-		      keyword: 'boolean byte word string String array ' +
-		      // CPP keywords
-		      'int float private char export virtual operator sizeof uint8_t uint16_t ' +
-		      'uint32_t uint64_t int8_t int16_t int32_t int64_t ' +
-		      'dynamic_cast typedef const_cast const struct static_cast union namespace ' +
-		      'unsigned long volatile static protected bool template mutable public friend ' +
-		      'auto void enum extern using class asm typeid ' +
-		      'short reinterpret_cast double register explicit signed typename this ' +
-		      'inline delete alignof constexpr decltype ' +
-		      'noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary ' +
-		      'atomic_bool atomic_char atomic_schar ' +
-		      'atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong ' +
-		      'atomic_ullong',
-		      built_in:
-	              'setup loop while catch for if do goto try switch case else ' +
-	              'default break continue return ' +
-	              'KeyboardController MouseController SoftwareSerial ' +
-		            'EthernetServer EthernetClient LiquidCrystal ' +
-		            'RobotControl GSMVoiceCall EthernetUDP EsploraTFT ' +
-		            'HttpClient RobotMotor WiFiClient GSMScanner ' +
-		            'FileSystem Scheduler GSMServer YunClient YunServer ' +
-		            'IPAddress GSMClient GSMModem Keyboard Ethernet ' +
-		            'Console GSMBand Esplora Stepper Process ' +
-		            'WiFiUDP GSM_SMS Mailbox USBHost Firmata PImage ' +
-		            'Client Server GSMPIN FileIO Bridge Serial ' +
-		            'EEPROM Stream Mouse Audio Servo File Task ' +
-		            'GPRS WiFi Wire TFT GSM SPI SD ' +
-		            'runShellCommandAsynchronously analogWriteResolution ' +
-		            'retrieveCallingNumber printFirmwareVersion ' +
-		            'analogReadResolution sendDigitalPortPair ' +
-		            'noListenOnLocalhost readJoystickButton setFirmwareVersion ' +
-		            'readJoystickSwitch scrollDisplayRight getVoiceCallStatus ' +
-		            'scrollDisplayLeft writeMicroseconds delayMicroseconds ' +
-		            'beginTransmission getSignalStrength runAsynchronously ' +
-		            'getAsynchronously listenOnLocalhost getCurrentCarrier ' +
-		            'readAccelerometer messageAvailable sendDigitalPorts ' +
-		            'lineFollowConfig countryNameWrite runShellCommand ' +
-		            'readStringUntil rewindDirectory readTemperature ' +
-		            'setClockDivider readLightSensor endTransmission ' +
-		            'analogReference detachInterrupt countryNameRead ' +
-		            'attachInterrupt encryptionType readBytesUntil ' +
-		            'robotNameWrite readMicrophone robotNameRead cityNameWrite ' +
-		            'userNameWrite readJoystickY readJoystickX mouseReleased ' +
-		            'openNextFile scanNetworks noInterrupts digitalWrite ' +
-		            'beginSpeaker mousePressed isActionDone mouseDragged ' +
-		            'displayLogos noAutoscroll addParameter remoteNumber ' +
-		            'getModifiers keyboardRead userNameRead waitContinue ' +
-		            'processInput parseCommand printVersion readNetworks ' +
-		            'writeMessage blinkVersion cityNameRead readMessage ' +
-		            'setDataMode parsePacket isListening setBitOrder ' +
-		            'beginPacket isDirectory motorsWrite drawCompass ' +
-		            'digitalRead clearScreen serialEvent rightToLeft ' +
-		            'setTextSize leftToRight requestFrom keyReleased ' +
-		            'compassRead analogWrite interrupts WiFiServer ' +
-		            'disconnect playMelody parseFloat autoscroll ' +
-		            'getPINUsed setPINUsed setTimeout sendAnalog ' +
-		            'readSlider analogRead beginWrite createChar ' +
-		            'motorsStop keyPressed tempoWrite readButton ' +
-		            'subnetMask debugPrint macAddress writeGreen ' +
-		            'randomSeed attachGPRS readString sendString ' +
-		            'remotePort releaseAll mouseMoved background ' +
-		            'getXChange getYChange answerCall getResult ' +
-		            'voiceCall endPacket constrain getSocket writeJSON ' +
-		            'getButton available connected findUntil readBytes ' +
-		            'exitValue readGreen writeBlue startLoop IPAddress ' +
-		            'isPressed sendSysex pauseMode gatewayIP setCursor ' +
-		            'getOemKey tuneWrite noDisplay loadImage switchPIN ' +
-		            'onRequest onReceive changePIN playFile noBuffer ' +
-		            'parseInt overflow checkPIN knobRead beginTFT ' +
-		            'bitClear updateIR bitWrite position writeRGB ' +
-		            'highByte writeRed setSpeed readBlue noStroke ' +
-		            'remoteIP transfer shutdown hangCall beginSMS ' +
-		            'endWrite attached maintain noCursor checkReg ' +
-		            'checkPUK shiftOut isValid shiftIn pulseIn ' +
-		            'connect println localIP pinMode getIMEI ' +
-		            'display noBlink process getBand running beginSD ' +
-		            'drawBMP lowByte setBand release bitRead prepare ' +
-		            'pointTo readRed setMode noFill remove listen ' +
-		            'stroke detach attach noTone exists buffer ' +
-		            'height bitSet circle config cursor random ' +
-		            'IRread setDNS endSMS getKey micros ' +
-		            'millis begin print write ready flush width ' +
-		            'isPIN blink clear press mkdir rmdir close ' +
-		            'point yield image BSSID click delay ' +
-		            'read text move peek beep rect line open ' +
-		            'seek fill size turn stop home find ' +
-		            'step tone sqrt RSSI SSID ' +
-		            'end bit tan cos sin pow map abs max ' +
-		            'min get run put',
-		        literal: 'DIGITAL_MESSAGE FIRMATA_STRING ANALOG_MESSAGE ' +
-		            'REPORT_DIGITAL REPORT_ANALOG INPUT_PULLUP ' +
-		            'SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN ' +
-		            'INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL ' +
-		            'DEFAULT OUTPUT INPUT HIGH LOW'
-		    },
-		    contains: [
-		      PREPROCESSOR,
-		      hljs.C_LINE_COMMENT_MODE,
-		      hljs.C_BLOCK_COMMENT_MODE,
-		      hljs.APOS_STRING_MODE,
-		      hljs.QUOTE_STRING_MODE,
-		      hljs.C_NUMBER_MODE
-		    ]
-	    };
+	  var CPP_PRIMITIVE_TYPES = {
+	    className: 'keyword',
+	    begin: '\\b[a-z\\d_]*_t\\b'
+	  };
+
+	  var STRINGS = {
+	    className: 'string',
+	    variants: [
+	      hljs.inherit(hljs.QUOTE_STRING_MODE, { begin: '((u8?|U)|L)?"' }),
+	      {
+	        begin: '(u8?|U)?R"', end: '"',
+	        contains: [hljs.BACKSLASH_ESCAPE]
+	      },
+	      {
+	        begin: '\'\\\\?.', end: '\'',
+	        illegal: '.'
+	      }
+	    ]
+	  };
+
+	  var NUMBERS = {
+	    className: 'number',
+	    variants: [
+	      { begin: '\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)' },
+	      { begin: hljs.C_NUMBER_RE }
+	    ],
+	    relevance: 0
+	  };
+
+	  var PREPROCESSOR =       {
+	    className: 'meta',
+	    begin: /#[a-z]+\b/, end: /$/,
+	    keywords: {
+	      'meta-keyword':
+	        'if else elif endif define undef warning error line ' +
+	        'pragma ifdef ifndef include'
+	    },
+	    contains: [
+	      {
+	        begin: /\\\n/, relevance: 0
+	      },
+	      hljs.inherit(STRINGS, {className: 'meta-string'}),
+	      {
+	        className: 'meta-string',
+	        begin: '<', end: '>',
+	        illegal: '\\n',
+	      },
+	      hljs.C_LINE_COMMENT_MODE,
+	      hljs.C_BLOCK_COMMENT_MODE
+	    ]
+	  };
+
+	  var FUNCTION_TITLE = hljs.IDENT_RE + '\\s*\\(';
+
+	  var CPP_KEYWORDS = {
+	    keyword: 'int float while private char catch export virtual operator sizeof ' +
+	      'dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace ' +
+	      'unsigned long volatile static protected bool template mutable if public friend ' +
+	      'do goto auto void enum else break extern using class asm case typeid ' +
+	      'short reinterpret_cast|10 default double register explicit signed typename try this ' +
+	      'switch continue inline delete alignof constexpr decltype ' +
+	      'noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary ' +
+	      'atomic_bool atomic_char atomic_schar ' +
+	      'atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong ' +
+	      'atomic_ullong new throw return',
+	    built_in: 'std string cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
+	      'auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set ' +
+	      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos ' +
+	      'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp ' +
+	      'fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
+	      'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow ' +
+	      'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp ' +
+	      'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan ' +
+	      'vfprintf vprintf vsprintf endl initializer_list unique_ptr',
+	    literal: 'true false nullptr NULL'
+	  };
+
+	  var EXPRESSION_CONTAINS = [
+	    CPP_PRIMITIVE_TYPES,
+	    hljs.C_LINE_COMMENT_MODE,
+	    hljs.C_BLOCK_COMMENT_MODE,
+	    NUMBERS,
+	    STRINGS
+	  ];
+
+	  return {
+	    aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp'],
+	    keywords: CPP_KEYWORDS,
+	    illegal: '</',
+	    contains: EXPRESSION_CONTAINS.concat([
+	      PREPROCESSOR,
+	      {
+	        begin: '\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<', end: '>',
+	        keywords: CPP_KEYWORDS,
+	        contains: ['self', CPP_PRIMITIVE_TYPES]
+	      },
+	      {
+	        begin: hljs.IDENT_RE + '::',
+	        keywords: CPP_KEYWORDS
+	      },
+	      {
+	        // This mode covers expression context where we can't expect a function
+	        // definition and shouldn't highlight anything that looks like one:
+	        // `return some()`, `else if()`, `(x*sum(1, 2))`
+	        variants: [
+	          {begin: /=/, end: /;/},
+	          {begin: /\(/, end: /\)/},
+	          {beginKeywords: 'new throw return else', end: /;/}
+	        ],
+	        keywords: CPP_KEYWORDS,
+	        contains: EXPRESSION_CONTAINS.concat([
+	          {
+	            begin: /\(/, end: /\)/,
+	            keywords: CPP_KEYWORDS,
+	            contains: EXPRESSION_CONTAINS.concat(['self']),
+	            relevance: 0
+	          }
+	        ]),
+	        relevance: 0
+	      },
+	      {
+	        className: 'function',
+	        begin: '(' + hljs.IDENT_RE + '[\\*&\\s]+)+' + FUNCTION_TITLE,
+	        returnBegin: true, end: /[{;=]/,
+	        excludeEnd: true,
+	        keywords: CPP_KEYWORDS,
+	        illegal: /[^\w\s\*&]/,
+	        contains: [
+	          {
+	            begin: FUNCTION_TITLE, returnBegin: true,
+	            contains: [hljs.TITLE_MODE],
+	            relevance: 0
+	          },
+	          {
+	            className: 'params',
+	            begin: /\(/, end: /\)/,
+	            keywords: CPP_KEYWORDS,
+	            relevance: 0,
+	            contains: [
+	              hljs.C_LINE_COMMENT_MODE,
+	              hljs.C_BLOCK_COMMENT_MODE,
+	              STRINGS,
+	              NUMBERS,
+	              CPP_PRIMITIVE_TYPES
+	            ]
+	          },
+	          hljs.C_LINE_COMMENT_MODE,
+	          hljs.C_BLOCK_COMMENT_MODE,
+	          PREPROCESSOR
+	        ]
+	      }
+	    ]),
+	    exports: {
+	      preprocessor: PREPROCESSOR,
+	      strings: STRINGS,
+	      keywords: CPP_KEYWORDS
+	    }
+	  };
 	};
 
 /***/ },
-/* 9 */
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = function(hljs) {
+	  var CPP = hljs.getLanguage('cpp').exports;
+		return {
+	    keywords: {
+	      keyword:
+	        'boolean byte word string String array ' + CPP.keywords.keyword,
+	      built_in:
+	        'setup loop while catch for if do goto try switch case else ' +
+	        'default break continue return ' +
+	        'KeyboardController MouseController SoftwareSerial ' +
+	        'EthernetServer EthernetClient LiquidCrystal ' +
+	        'RobotControl GSMVoiceCall EthernetUDP EsploraTFT ' +
+	        'HttpClient RobotMotor WiFiClient GSMScanner ' +
+	        'FileSystem Scheduler GSMServer YunClient YunServer ' +
+	        'IPAddress GSMClient GSMModem Keyboard Ethernet ' +
+	        'Console GSMBand Esplora Stepper Process ' +
+	        'WiFiUDP GSM_SMS Mailbox USBHost Firmata PImage ' +
+	        'Client Server GSMPIN FileIO Bridge Serial ' +
+	        'EEPROM Stream Mouse Audio Servo File Task ' +
+	        'GPRS WiFi Wire TFT GSM SPI SD ' +
+	        'runShellCommandAsynchronously analogWriteResolution ' +
+	        'retrieveCallingNumber printFirmwareVersion ' +
+	        'analogReadResolution sendDigitalPortPair ' +
+	        'noListenOnLocalhost readJoystickButton setFirmwareVersion ' +
+	        'readJoystickSwitch scrollDisplayRight getVoiceCallStatus ' +
+	        'scrollDisplayLeft writeMicroseconds delayMicroseconds ' +
+	        'beginTransmission getSignalStrength runAsynchronously ' +
+	        'getAsynchronously listenOnLocalhost getCurrentCarrier ' +
+	        'readAccelerometer messageAvailable sendDigitalPorts ' +
+	        'lineFollowConfig countryNameWrite runShellCommand ' +
+	        'readStringUntil rewindDirectory readTemperature ' +
+	        'setClockDivider readLightSensor endTransmission ' +
+	        'analogReference detachInterrupt countryNameRead ' +
+	        'attachInterrupt encryptionType readBytesUntil ' +
+	        'robotNameWrite readMicrophone robotNameRead cityNameWrite ' +
+	        'userNameWrite readJoystickY readJoystickX mouseReleased ' +
+	        'openNextFile scanNetworks noInterrupts digitalWrite ' +
+	        'beginSpeaker mousePressed isActionDone mouseDragged ' +
+	        'displayLogos noAutoscroll addParameter remoteNumber ' +
+	        'getModifiers keyboardRead userNameRead waitContinue ' +
+	        'processInput parseCommand printVersion readNetworks ' +
+	        'writeMessage blinkVersion cityNameRead readMessage ' +
+	        'setDataMode parsePacket isListening setBitOrder ' +
+	        'beginPacket isDirectory motorsWrite drawCompass ' +
+	        'digitalRead clearScreen serialEvent rightToLeft ' +
+	        'setTextSize leftToRight requestFrom keyReleased ' +
+	        'compassRead analogWrite interrupts WiFiServer ' +
+	        'disconnect playMelody parseFloat autoscroll ' +
+	        'getPINUsed setPINUsed setTimeout sendAnalog ' +
+	        'readSlider analogRead beginWrite createChar ' +
+	        'motorsStop keyPressed tempoWrite readButton ' +
+	        'subnetMask debugPrint macAddress writeGreen ' +
+	        'randomSeed attachGPRS readString sendString ' +
+	        'remotePort releaseAll mouseMoved background ' +
+	        'getXChange getYChange answerCall getResult ' +
+	        'voiceCall endPacket constrain getSocket writeJSON ' +
+	        'getButton available connected findUntil readBytes ' +
+	        'exitValue readGreen writeBlue startLoop IPAddress ' +
+	        'isPressed sendSysex pauseMode gatewayIP setCursor ' +
+	        'getOemKey tuneWrite noDisplay loadImage switchPIN ' +
+	        'onRequest onReceive changePIN playFile noBuffer ' +
+	        'parseInt overflow checkPIN knobRead beginTFT ' +
+	        'bitClear updateIR bitWrite position writeRGB ' +
+	        'highByte writeRed setSpeed readBlue noStroke ' +
+	        'remoteIP transfer shutdown hangCall beginSMS ' +
+	        'endWrite attached maintain noCursor checkReg ' +
+	        'checkPUK shiftOut isValid shiftIn pulseIn ' +
+	        'connect println localIP pinMode getIMEI ' +
+	        'display noBlink process getBand running beginSD ' +
+	        'drawBMP lowByte setBand release bitRead prepare ' +
+	        'pointTo readRed setMode noFill remove listen ' +
+	        'stroke detach attach noTone exists buffer ' +
+	        'height bitSet circle config cursor random ' +
+	        'IRread setDNS endSMS getKey micros ' +
+	        'millis begin print write ready flush width ' +
+	        'isPIN blink clear press mkdir rmdir close ' +
+	        'point yield image BSSID click delay ' +
+	        'read text move peek beep rect line open ' +
+	        'seek fill size turn stop home find ' +
+	        'step tone sqrt RSSI SSID ' +
+	        'end bit tan cos sin pow map abs max ' +
+	        'min get run put',
+	      literal:
+	        'DIGITAL_MESSAGE FIRMATA_STRING ANALOG_MESSAGE ' +
+	        'REPORT_DIGITAL REPORT_ANALOG INPUT_PULLUP ' +
+	        'SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN ' +
+	        'INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL ' +
+	        'DEFAULT OUTPUT INPUT HIGH LOW'
+	    },
+	    contains: [
+	      CPP.preprocessor,
+	      hljs.C_LINE_COMMENT_MODE,
+	      hljs.C_BLOCK_COMMENT_MODE,
+	      hljs.APOS_STRING_MODE,
+	      hljs.QUOTE_STRING_MODE,
+	      hljs.C_NUMBER_MODE
+	    ]
+	  };
+	};
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -1532,17 +1827,17 @@
 	        'p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 '+ //coprocessor regs
 	        'c0 c1 c2 c3 c4 c5 c6 c7 c8 c9 c10 c11 c12 c13 c14 c15 '+ //more coproc
 	        'q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 q14 q15 '+ //advanced SIMD NEON regs
-	
+
 	        //program status registers
 	        'cpsr_c cpsr_x cpsr_s cpsr_f cpsr_cx cpsr_cxs cpsr_xs cpsr_xsf cpsr_sf cpsr_cxsf '+
 	        'spsr_c spsr_x spsr_s spsr_f spsr_cx spsr_cxs spsr_xs spsr_xsf spsr_sf spsr_cxsf '+
-	
+
 	        //NEON and VFP registers
 	        's0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 '+
 	        's16 s17 s18 s19 s20 s21 s22 s23 s24 s25 s26 s27 s28 s29 s30 s31 '+
 	        'd0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 '+
 	        'd16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 d28 d29 d30 d31 ' +
-	
+
 	        '{PC} {VAR} {TRUE} {FALSE} {OPT} {CONFIG} {ENDIAN} {CODESIZE} {CPU} {FPU} {ARCHITECTURE} {PCSTOREOFFSET} {ARMASM_VERSION} {INTER} {ROPI} {RWPI} {SWST} {NOSWST} . @'
 	    },
 	    contains: [
@@ -1606,7 +1901,7 @@
 	};
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -1639,7 +1934,7 @@
 	    ]
 	  };
 	  return {
-	    aliases: ['html', 'xhtml', 'rss', 'atom', 'xsl', 'plist'],
+	    aliases: ['html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist'],
 	    case_insensitive: true,
 	    contains: [
 	      {
@@ -1713,7 +2008,7 @@
 	};
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -1905,7 +2200,7 @@
 	};
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function (hljs) {
@@ -2053,14 +2348,14 @@
 	};
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var BACKTICK_ESCAPE = {
 	    begin: /`[\s\S]/
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    keywords: {
@@ -2105,7 +2400,7 @@
 	};
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -2114,1600 +2409,12 @@
 	        'EndSwitch EndWith Enum Exit ExitLoop For Func ' +
 	        'Global If In Local Next ReDim Return Select Static ' +
 	        'Step Switch Then To Until Volatile WEnd While With',
-	
+
 	        LITERAL = 'True False And Null Not Or',
-	
-	        BUILT_IN = 'Abs ACos AdlibRegister AdlibUnRegister Asc AscW ASin ' +
-	        'Assign ATan AutoItSetOption AutoItWinGetTitle ' +
-	        'AutoItWinSetTitle Beep Binary BinaryLen BinaryMid ' +
-	        'BinaryToString BitAND BitNOT BitOR BitRotate BitShift ' +
-	        'BitXOR BlockInput Break Call CDTray Ceiling Chr ' +
-	        'ChrW ClipGet ClipPut ConsoleRead ConsoleWrite ' +
-	        'ConsoleWriteError ControlClick ControlCommand ' +
-	        'ControlDisable ControlEnable ControlFocus ControlGetFocus ' +
-	        'ControlGetHandle ControlGetPos ControlGetText ControlHide ' +
-	        'ControlListView ControlMove ControlSend ControlSetText ' +
-	        'ControlShow ControlTreeView Cos Dec DirCopy DirCreate ' +
-	        'DirGetSize DirMove DirRemove DllCall DllCallAddress ' +
-	        'DllCallbackFree DllCallbackGetPtr DllCallbackRegister ' +
-	        'DllClose DllOpen DllStructCreate DllStructGetData ' +
-	        'DllStructGetPtr DllStructGetSize DllStructSetData ' +
-	        'DriveGetDrive DriveGetFileSystem DriveGetLabel ' +
-	        'DriveGetSerial DriveGetType DriveMapAdd DriveMapDel ' +
-	        'DriveMapGet DriveSetLabel DriveSpaceFree DriveSpaceTotal ' +
-	        'DriveStatus EnvGet EnvSet EnvUpdate Eval Execute Exp ' +
-	        'FileChangeDir FileClose FileCopy FileCreateNTFSLink ' +
-	        'FileCreateShortcut FileDelete FileExists FileFindFirstFile ' +
-	        'FileFindNextFile FileFlush FileGetAttrib FileGetEncoding ' +
-	        'FileGetLongName FileGetPos FileGetShortcut FileGetShortName ' +
-	        'FileGetSize FileGetTime FileGetVersion FileInstall ' +
-	        'FileMove FileOpen FileOpenDialog FileRead FileReadLine ' +
-	        'FileReadToArray FileRecycle FileRecycleEmpty FileSaveDialog ' +
-	        'FileSelectFolder FileSetAttrib FileSetEnd FileSetPos ' +
-	        'FileSetTime FileWrite FileWriteLine Floor FtpSetProxy ' +
-	        'FuncName GUICreate GUICtrlCreateAvi GUICtrlCreateButton ' +
-	        'GUICtrlCreateCheckbox GUICtrlCreateCombo ' +
-	        'GUICtrlCreateContextMenu GUICtrlCreateDate GUICtrlCreateDummy ' +
-	        'GUICtrlCreateEdit GUICtrlCreateGraphic GUICtrlCreateGroup ' +
-	        'GUICtrlCreateIcon GUICtrlCreateInput GUICtrlCreateLabel ' +
-	        'GUICtrlCreateList GUICtrlCreateListView ' +
-	        'GUICtrlCreateListViewItem GUICtrlCreateMenu ' +
-	        'GUICtrlCreateMenuItem GUICtrlCreateMonthCal GUICtrlCreateObj ' +
-	        'GUICtrlCreatePic GUICtrlCreateProgress GUICtrlCreateRadio ' +
-	        'GUICtrlCreateSlider GUICtrlCreateTab GUICtrlCreateTabItem ' +
-	        'GUICtrlCreateTreeView GUICtrlCreateTreeViewItem ' +
-	        'GUICtrlCreateUpdown GUICtrlDelete GUICtrlGetHandle ' +
-	        'GUICtrlGetState GUICtrlRead GUICtrlRecvMsg ' +
-	        'GUICtrlRegisterListViewSort GUICtrlSendMsg GUICtrlSendToDummy ' +
-	        'GUICtrlSetBkColor GUICtrlSetColor GUICtrlSetCursor ' +
-	        'GUICtrlSetData GUICtrlSetDefBkColor GUICtrlSetDefColor ' +
-	        'GUICtrlSetFont GUICtrlSetGraphic GUICtrlSetImage ' +
-	        'GUICtrlSetLimit GUICtrlSetOnEvent GUICtrlSetPos ' +
-	        'GUICtrlSetResizing GUICtrlSetState GUICtrlSetStyle ' +
-	        'GUICtrlSetTip GUIDelete GUIGetCursorInfo GUIGetMsg ' +
-	        'GUIGetStyle GUIRegisterMsg GUISetAccelerators GUISetBkColor ' +
-	        'GUISetCoord GUISetCursor GUISetFont GUISetHelp GUISetIcon ' +
-	        'GUISetOnEvent GUISetState GUISetStyle GUIStartGroup ' +
-	        'GUISwitch Hex HotKeySet HttpSetProxy HttpSetUserAgent ' +
-	        'HWnd InetClose InetGet InetGetInfo InetGetSize InetRead ' +
-	        'IniDelete IniRead IniReadSection IniReadSectionNames ' +
-	        'IniRenameSection IniWrite IniWriteSection InputBox Int ' +
-	        'IsAdmin IsArray IsBinary IsBool IsDeclared IsDllStruct ' +
-	        'IsFloat IsFunc IsHWnd IsInt IsKeyword IsNumber IsObj ' +
-	        'IsPtr IsString Log MemGetStats Mod MouseClick ' +
-	        'MouseClickDrag MouseDown MouseGetCursor MouseGetPos ' +
-	        'MouseMove MouseUp MouseWheel MsgBox Number ObjCreate ' +
-	        'ObjCreateInterface ObjEvent ObjGet ObjName ' +
-	        'OnAutoItExitRegister OnAutoItExitUnRegister Opt Ping ' +
-	        'PixelChecksum PixelGetColor PixelSearch ProcessClose ' +
-	        'ProcessExists ProcessGetStats ProcessList ' +
-	        'ProcessSetPriority ProcessWait ProcessWaitClose ProgressOff ' +
-	        'ProgressOn ProgressSet Ptr Random RegDelete RegEnumKey ' +
-	        'RegEnumVal RegRead RegWrite Round Run RunAs RunAsWait ' +
-	        'RunWait Send SendKeepActive SetError SetExtended ' +
-	        'ShellExecute ShellExecuteWait Shutdown Sin Sleep ' +
-	        'SoundPlay SoundSetWaveVolume SplashImageOn SplashOff ' +
-	        'SplashTextOn Sqrt SRandom StatusbarGetText StderrRead ' +
-	        'StdinWrite StdioClose StdoutRead String StringAddCR ' +
-	        'StringCompare StringFormat StringFromASCIIArray StringInStr ' +
-	        'StringIsAlNum StringIsAlpha StringIsASCII StringIsDigit ' +
-	        'StringIsFloat StringIsInt StringIsLower StringIsSpace ' +
-	        'StringIsUpper StringIsXDigit StringLeft StringLen ' +
-	        'StringLower StringMid StringRegExp StringRegExpReplace ' +
-	        'StringReplace StringReverse StringRight StringSplit ' +
-	        'StringStripCR StringStripWS StringToASCIIArray ' +
-	        'StringToBinary StringTrimLeft StringTrimRight StringUpper ' +
-	        'Tan TCPAccept TCPCloseSocket TCPConnect TCPListen ' +
-	        'TCPNameToIP TCPRecv TCPSend TCPShutdown TCPStartup ' +
-	        'TimerDiff TimerInit ToolTip TrayCreateItem TrayCreateMenu ' +
-	        'TrayGetMsg TrayItemDelete TrayItemGetHandle ' +
-	        'TrayItemGetState TrayItemGetText TrayItemSetOnEvent ' +
-	        'TrayItemSetState TrayItemSetText TraySetClick TraySetIcon ' +
-	        'TraySetOnEvent TraySetPauseIcon TraySetState TraySetToolTip ' +
-	        'TrayTip UBound UDPBind UDPCloseSocket UDPOpen UDPRecv ' +
-	        'UDPSend UDPShutdown UDPStartup VarGetType WinActivate ' +
-	        'WinActive WinClose WinExists WinFlash WinGetCaretPos ' +
-	        'WinGetClassList WinGetClientSize WinGetHandle WinGetPos ' +
-	        'WinGetProcess WinGetState WinGetText WinGetTitle WinKill ' +
-	        'WinList WinMenuSelectItem WinMinimizeAll WinMinimizeAllUndo ' +
-	        'WinMove WinSetOnTop WinSetState WinSetTitle WinSetTrans ' +
-	        'WinWait WinWaitActive WinWaitClose WinWaitNotActive ' +
-	        'Array1DToHistogram ArrayAdd ArrayBinarySearch ' +
-	        'ArrayColDelete ArrayColInsert ArrayCombinations ' +
-	        'ArrayConcatenate ArrayDelete ArrayDisplay ArrayExtract ' +
-	        'ArrayFindAll ArrayInsert ArrayMax ArrayMaxIndex ArrayMin ' +
-	        'ArrayMinIndex ArrayPermute ArrayPop ArrayPush ' +
-	        'ArrayReverse ArraySearch ArrayShuffle ArraySort ArraySwap ' +
-	        'ArrayToClip ArrayToString ArrayTranspose ArrayTrim ' +
-	        'ArrayUnique Assert ChooseColor ChooseFont ' +
-	        'ClipBoard_ChangeChain ClipBoard_Close ClipBoard_CountFormats ' +
-	        'ClipBoard_Empty ClipBoard_EnumFormats ClipBoard_FormatStr ' +
-	        'ClipBoard_GetData ClipBoard_GetDataEx ClipBoard_GetFormatName ' +
-	        'ClipBoard_GetOpenWindow ClipBoard_GetOwner ' +
-	        'ClipBoard_GetPriorityFormat ClipBoard_GetSequenceNumber ' +
-	        'ClipBoard_GetViewer ClipBoard_IsFormatAvailable ' +
-	        'ClipBoard_Open ClipBoard_RegisterFormat ClipBoard_SetData ' +
-	        'ClipBoard_SetDataEx ClipBoard_SetViewer ClipPutFile ' +
-	        'ColorConvertHSLtoRGB ColorConvertRGBtoHSL ColorGetBlue ' +
-	        'ColorGetCOLORREF ColorGetGreen ColorGetRed ColorGetRGB ' +
-	        'ColorSetCOLORREF ColorSetRGB Crypt_DecryptData ' +
-	        'Crypt_DecryptFile Crypt_DeriveKey Crypt_DestroyKey ' +
-	        'Crypt_EncryptData Crypt_EncryptFile Crypt_GenRandom ' +
-	        'Crypt_HashData Crypt_HashFile Crypt_Shutdown Crypt_Startup ' +
-	        'DateAdd DateDayOfWeek DateDaysInMonth DateDiff ' +
-	        'DateIsLeapYear DateIsValid DateTimeFormat DateTimeSplit ' +
-	        'DateToDayOfWeek DateToDayOfWeekISO DateToDayValue ' +
-	        'DateToMonth Date_Time_CompareFileTime ' +
-	        'Date_Time_DOSDateTimeToArray Date_Time_DOSDateTimeToFileTime ' +
-	        'Date_Time_DOSDateTimeToStr Date_Time_DOSDateToArray ' +
-	        'Date_Time_DOSDateToStr Date_Time_DOSTimeToArray ' +
-	        'Date_Time_DOSTimeToStr Date_Time_EncodeFileTime ' +
-	        'Date_Time_EncodeSystemTime Date_Time_FileTimeToArray ' +
-	        'Date_Time_FileTimeToDOSDateTime ' +
-	        'Date_Time_FileTimeToLocalFileTime Date_Time_FileTimeToStr ' +
-	        'Date_Time_FileTimeToSystemTime Date_Time_GetFileTime ' +
-	        'Date_Time_GetLocalTime Date_Time_GetSystemTime ' +
-	        'Date_Time_GetSystemTimeAdjustment ' +
-	        'Date_Time_GetSystemTimeAsFileTime Date_Time_GetSystemTimes ' +
-	        'Date_Time_GetTickCount Date_Time_GetTimeZoneInformation ' +
-	        'Date_Time_LocalFileTimeToFileTime Date_Time_SetFileTime ' +
-	        'Date_Time_SetLocalTime Date_Time_SetSystemTime ' +
-	        'Date_Time_SetSystemTimeAdjustment ' +
-	        'Date_Time_SetTimeZoneInformation Date_Time_SystemTimeToArray ' +
-	        'Date_Time_SystemTimeToDateStr Date_Time_SystemTimeToDateTimeStr ' +
-	        'Date_Time_SystemTimeToFileTime Date_Time_SystemTimeToTimeStr ' +
-	        'Date_Time_SystemTimeToTzSpecificLocalTime ' +
-	        'Date_Time_TzSpecificLocalTimeToSystemTime DayValueToDate ' +
-	        'DebugBugReportEnv DebugCOMError DebugOut DebugReport ' +
-	        'DebugReportEx DebugReportVar DebugSetup Degree ' +
-	        'EventLog__Backup EventLog__Clear EventLog__Close ' +
-	        'EventLog__Count EventLog__DeregisterSource EventLog__Full ' +
-	        'EventLog__Notify EventLog__Oldest EventLog__Open ' +
-	        'EventLog__OpenBackup EventLog__Read EventLog__RegisterSource ' +
-	        'EventLog__Report Excel_BookAttach Excel_BookClose ' +
-	        'Excel_BookList Excel_BookNew Excel_BookOpen ' +
-	        'Excel_BookOpenText Excel_BookSave Excel_BookSaveAs ' +
-	        'Excel_Close Excel_ColumnToLetter Excel_ColumnToNumber ' +
-	        'Excel_ConvertFormula Excel_Export Excel_FilterGet ' +
-	        'Excel_FilterSet Excel_Open Excel_PictureAdd Excel_Print ' +
-	        'Excel_RangeCopyPaste Excel_RangeDelete Excel_RangeFind ' +
-	        'Excel_RangeInsert Excel_RangeLinkAddRemove Excel_RangeRead ' +
-	        'Excel_RangeReplace Excel_RangeSort Excel_RangeValidate ' +
-	        'Excel_RangeWrite Excel_SheetAdd Excel_SheetCopyMove ' +
-	        'Excel_SheetDelete Excel_SheetList FileCountLines FileCreate ' +
-	        'FileListToArray FileListToArrayRec FilePrint ' +
-	        'FileReadToArray FileWriteFromArray FileWriteLog ' +
-	        'FileWriteToLine FTP_Close FTP_Command FTP_Connect ' +
-	        'FTP_DecodeInternetStatus FTP_DirCreate FTP_DirDelete ' +
-	        'FTP_DirGetCurrent FTP_DirPutContents FTP_DirSetCurrent ' +
-	        'FTP_FileClose FTP_FileDelete FTP_FileGet FTP_FileGetSize ' +
-	        'FTP_FileOpen FTP_FilePut FTP_FileRead FTP_FileRename ' +
-	        'FTP_FileTimeLoHiToStr FTP_FindFileClose FTP_FindFileFirst ' +
-	        'FTP_FindFileNext FTP_GetLastResponseInfo FTP_ListToArray ' +
-	        'FTP_ListToArray2D FTP_ListToArrayEx FTP_Open ' +
-	        'FTP_ProgressDownload FTP_ProgressUpload FTP_SetStatusCallback ' +
-	        'GDIPlus_ArrowCapCreate GDIPlus_ArrowCapDispose ' +
-	        'GDIPlus_ArrowCapGetFillState GDIPlus_ArrowCapGetHeight ' +
-	        'GDIPlus_ArrowCapGetMiddleInset GDIPlus_ArrowCapGetWidth ' +
-	        'GDIPlus_ArrowCapSetFillState GDIPlus_ArrowCapSetHeight ' +
-	        'GDIPlus_ArrowCapSetMiddleInset GDIPlus_ArrowCapSetWidth ' +
-	        'GDIPlus_BitmapApplyEffect GDIPlus_BitmapApplyEffectEx ' +
-	        'GDIPlus_BitmapCloneArea GDIPlus_BitmapConvertFormat ' +
-	        'GDIPlus_BitmapCreateApplyEffect ' +
-	        'GDIPlus_BitmapCreateApplyEffectEx ' +
-	        'GDIPlus_BitmapCreateDIBFromBitmap GDIPlus_BitmapCreateFromFile ' +
-	        'GDIPlus_BitmapCreateFromGraphics ' +
-	        'GDIPlus_BitmapCreateFromHBITMAP GDIPlus_BitmapCreateFromHICON ' +
-	        'GDIPlus_BitmapCreateFromHICON32 GDIPlus_BitmapCreateFromMemory ' +
-	        'GDIPlus_BitmapCreateFromResource GDIPlus_BitmapCreateFromScan0 ' +
-	        'GDIPlus_BitmapCreateFromStream ' +
-	        'GDIPlus_BitmapCreateHBITMAPFromBitmap GDIPlus_BitmapDispose ' +
-	        'GDIPlus_BitmapGetHistogram GDIPlus_BitmapGetHistogramEx ' +
-	        'GDIPlus_BitmapGetHistogramSize GDIPlus_BitmapGetPixel ' +
-	        'GDIPlus_BitmapLockBits GDIPlus_BitmapSetPixel ' +
-	        'GDIPlus_BitmapUnlockBits GDIPlus_BrushClone ' +
-	        'GDIPlus_BrushCreateSolid GDIPlus_BrushDispose ' +
-	        'GDIPlus_BrushGetSolidColor GDIPlus_BrushGetType ' +
-	        'GDIPlus_BrushSetSolidColor GDIPlus_ColorMatrixCreate ' +
-	        'GDIPlus_ColorMatrixCreateGrayScale ' +
-	        'GDIPlus_ColorMatrixCreateNegative ' +
-	        'GDIPlus_ColorMatrixCreateSaturation ' +
-	        'GDIPlus_ColorMatrixCreateScale ' +
-	        'GDIPlus_ColorMatrixCreateTranslate GDIPlus_CustomLineCapClone ' +
-	        'GDIPlus_CustomLineCapCreate GDIPlus_CustomLineCapDispose ' +
-	        'GDIPlus_CustomLineCapGetStrokeCaps ' +
-	        'GDIPlus_CustomLineCapSetStrokeCaps GDIPlus_Decoders ' +
-	        'GDIPlus_DecodersGetCount GDIPlus_DecodersGetSize ' +
-	        'GDIPlus_DrawImageFX GDIPlus_DrawImageFXEx ' +
-	        'GDIPlus_DrawImagePoints GDIPlus_EffectCreate ' +
-	        'GDIPlus_EffectCreateBlur GDIPlus_EffectCreateBrightnessContrast ' +
-	        'GDIPlus_EffectCreateColorBalance GDIPlus_EffectCreateColorCurve ' +
-	        'GDIPlus_EffectCreateColorLUT GDIPlus_EffectCreateColorMatrix ' +
-	        'GDIPlus_EffectCreateHueSaturationLightness ' +
-	        'GDIPlus_EffectCreateLevels GDIPlus_EffectCreateRedEyeCorrection ' +
-	        'GDIPlus_EffectCreateSharpen GDIPlus_EffectCreateTint ' +
-	        'GDIPlus_EffectDispose GDIPlus_EffectGetParameters ' +
-	        'GDIPlus_EffectSetParameters GDIPlus_Encoders ' +
-	        'GDIPlus_EncodersGetCLSID GDIPlus_EncodersGetCount ' +
-	        'GDIPlus_EncodersGetParamList GDIPlus_EncodersGetParamListSize ' +
-	        'GDIPlus_EncodersGetSize GDIPlus_FontCreate ' +
-	        'GDIPlus_FontDispose GDIPlus_FontFamilyCreate ' +
-	        'GDIPlus_FontFamilyCreateFromCollection ' +
-	        'GDIPlus_FontFamilyDispose GDIPlus_FontFamilyGetCellAscent ' +
-	        'GDIPlus_FontFamilyGetCellDescent GDIPlus_FontFamilyGetEmHeight ' +
-	        'GDIPlus_FontFamilyGetLineSpacing GDIPlus_FontGetHeight ' +
-	        'GDIPlus_FontPrivateAddFont GDIPlus_FontPrivateAddMemoryFont ' +
-	        'GDIPlus_FontPrivateCollectionDispose ' +
-	        'GDIPlus_FontPrivateCreateCollection GDIPlus_GraphicsClear ' +
-	        'GDIPlus_GraphicsCreateFromHDC GDIPlus_GraphicsCreateFromHWND ' +
-	        'GDIPlus_GraphicsDispose GDIPlus_GraphicsDrawArc ' +
-	        'GDIPlus_GraphicsDrawBezier GDIPlus_GraphicsDrawClosedCurve ' +
-	        'GDIPlus_GraphicsDrawClosedCurve2 GDIPlus_GraphicsDrawCurve ' +
-	        'GDIPlus_GraphicsDrawCurve2 GDIPlus_GraphicsDrawEllipse ' +
-	        'GDIPlus_GraphicsDrawImage GDIPlus_GraphicsDrawImagePointsRect ' +
-	        'GDIPlus_GraphicsDrawImageRect GDIPlus_GraphicsDrawImageRectRect ' +
-	        'GDIPlus_GraphicsDrawLine GDIPlus_GraphicsDrawPath ' +
-	        'GDIPlus_GraphicsDrawPie GDIPlus_GraphicsDrawPolygon ' +
-	        'GDIPlus_GraphicsDrawRect GDIPlus_GraphicsDrawString ' +
-	        'GDIPlus_GraphicsDrawStringEx GDIPlus_GraphicsFillClosedCurve ' +
-	        'GDIPlus_GraphicsFillClosedCurve2 GDIPlus_GraphicsFillEllipse ' +
-	        'GDIPlus_GraphicsFillPath GDIPlus_GraphicsFillPie ' +
-	        'GDIPlus_GraphicsFillPolygon GDIPlus_GraphicsFillRect ' +
-	        'GDIPlus_GraphicsFillRegion GDIPlus_GraphicsGetCompositingMode ' +
-	        'GDIPlus_GraphicsGetCompositingQuality GDIPlus_GraphicsGetDC ' +
-	        'GDIPlus_GraphicsGetInterpolationMode ' +
-	        'GDIPlus_GraphicsGetSmoothingMode GDIPlus_GraphicsGetTransform ' +
-	        'GDIPlus_GraphicsMeasureCharacterRanges ' +
-	        'GDIPlus_GraphicsMeasureString GDIPlus_GraphicsReleaseDC ' +
-	        'GDIPlus_GraphicsResetClip GDIPlus_GraphicsResetTransform ' +
-	        'GDIPlus_GraphicsRestore GDIPlus_GraphicsRotateTransform ' +
-	        'GDIPlus_GraphicsSave GDIPlus_GraphicsScaleTransform ' +
-	        'GDIPlus_GraphicsSetClipPath GDIPlus_GraphicsSetClipRect ' +
-	        'GDIPlus_GraphicsSetClipRegion ' +
-	        'GDIPlus_GraphicsSetCompositingMode ' +
-	        'GDIPlus_GraphicsSetCompositingQuality ' +
-	        'GDIPlus_GraphicsSetInterpolationMode ' +
-	        'GDIPlus_GraphicsSetPixelOffsetMode ' +
-	        'GDIPlus_GraphicsSetSmoothingMode ' +
-	        'GDIPlus_GraphicsSetTextRenderingHint ' +
-	        'GDIPlus_GraphicsSetTransform GDIPlus_GraphicsTransformPoints ' +
-	        'GDIPlus_GraphicsTranslateTransform GDIPlus_HatchBrushCreate ' +
-	        'GDIPlus_HICONCreateFromBitmap GDIPlus_ImageAttributesCreate ' +
-	        'GDIPlus_ImageAttributesDispose ' +
-	        'GDIPlus_ImageAttributesSetColorKeys ' +
-	        'GDIPlus_ImageAttributesSetColorMatrix GDIPlus_ImageDispose ' +
-	        'GDIPlus_ImageGetDimension GDIPlus_ImageGetFlags ' +
-	        'GDIPlus_ImageGetGraphicsContext GDIPlus_ImageGetHeight ' +
-	        'GDIPlus_ImageGetHorizontalResolution ' +
-	        'GDIPlus_ImageGetPixelFormat GDIPlus_ImageGetRawFormat ' +
-	        'GDIPlus_ImageGetThumbnail GDIPlus_ImageGetType ' +
-	        'GDIPlus_ImageGetVerticalResolution GDIPlus_ImageGetWidth ' +
-	        'GDIPlus_ImageLoadFromFile GDIPlus_ImageLoadFromStream ' +
-	        'GDIPlus_ImageResize GDIPlus_ImageRotateFlip ' +
-	        'GDIPlus_ImageSaveToFile GDIPlus_ImageSaveToFileEx ' +
-	        'GDIPlus_ImageSaveToStream GDIPlus_ImageScale ' +
-	        'GDIPlus_LineBrushCreate GDIPlus_LineBrushCreateFromRect ' +
-	        'GDIPlus_LineBrushCreateFromRectWithAngle ' +
-	        'GDIPlus_LineBrushGetColors GDIPlus_LineBrushGetRect ' +
-	        'GDIPlus_LineBrushMultiplyTransform ' +
-	        'GDIPlus_LineBrushResetTransform GDIPlus_LineBrushSetBlend ' +
-	        'GDIPlus_LineBrushSetColors GDIPlus_LineBrushSetGammaCorrection ' +
-	        'GDIPlus_LineBrushSetLinearBlend GDIPlus_LineBrushSetPresetBlend ' +
-	        'GDIPlus_LineBrushSetSigmaBlend GDIPlus_LineBrushSetTransform ' +
-	        'GDIPlus_MatrixClone GDIPlus_MatrixCreate ' +
-	        'GDIPlus_MatrixDispose GDIPlus_MatrixGetElements ' +
-	        'GDIPlus_MatrixInvert GDIPlus_MatrixMultiply ' +
-	        'GDIPlus_MatrixRotate GDIPlus_MatrixScale ' +
-	        'GDIPlus_MatrixSetElements GDIPlus_MatrixShear ' +
-	        'GDIPlus_MatrixTransformPoints GDIPlus_MatrixTranslate ' +
-	        'GDIPlus_PaletteInitialize GDIPlus_ParamAdd GDIPlus_ParamInit ' +
-	        'GDIPlus_ParamSize GDIPlus_PathAddArc GDIPlus_PathAddBezier ' +
-	        'GDIPlus_PathAddClosedCurve GDIPlus_PathAddClosedCurve2 ' +
-	        'GDIPlus_PathAddCurve GDIPlus_PathAddCurve2 ' +
-	        'GDIPlus_PathAddCurve3 GDIPlus_PathAddEllipse ' +
-	        'GDIPlus_PathAddLine GDIPlus_PathAddLine2 GDIPlus_PathAddPath ' +
-	        'GDIPlus_PathAddPie GDIPlus_PathAddPolygon ' +
-	        'GDIPlus_PathAddRectangle GDIPlus_PathAddString ' +
-	        'GDIPlus_PathBrushCreate GDIPlus_PathBrushCreateFromPath ' +
-	        'GDIPlus_PathBrushGetCenterPoint GDIPlus_PathBrushGetFocusScales ' +
-	        'GDIPlus_PathBrushGetPointCount GDIPlus_PathBrushGetRect ' +
-	        'GDIPlus_PathBrushGetWrapMode GDIPlus_PathBrushMultiplyTransform ' +
-	        'GDIPlus_PathBrushResetTransform GDIPlus_PathBrushSetBlend ' +
-	        'GDIPlus_PathBrushSetCenterColor GDIPlus_PathBrushSetCenterPoint ' +
-	        'GDIPlus_PathBrushSetFocusScales ' +
-	        'GDIPlus_PathBrushSetGammaCorrection ' +
-	        'GDIPlus_PathBrushSetLinearBlend GDIPlus_PathBrushSetPresetBlend ' +
-	        'GDIPlus_PathBrushSetSigmaBlend ' +
-	        'GDIPlus_PathBrushSetSurroundColor ' +
-	        'GDIPlus_PathBrushSetSurroundColorsWithCount ' +
-	        'GDIPlus_PathBrushSetTransform GDIPlus_PathBrushSetWrapMode ' +
-	        'GDIPlus_PathClone GDIPlus_PathCloseFigure GDIPlus_PathCreate ' +
-	        'GDIPlus_PathCreate2 GDIPlus_PathDispose GDIPlus_PathFlatten ' +
-	        'GDIPlus_PathGetData GDIPlus_PathGetFillMode ' +
-	        'GDIPlus_PathGetLastPoint GDIPlus_PathGetPointCount ' +
-	        'GDIPlus_PathGetPoints GDIPlus_PathGetWorldBounds ' +
-	        'GDIPlus_PathIsOutlineVisiblePoint GDIPlus_PathIsVisiblePoint ' +
-	        'GDIPlus_PathIterCreate GDIPlus_PathIterDispose ' +
-	        'GDIPlus_PathIterGetSubpathCount GDIPlus_PathIterNextMarkerPath ' +
-	        'GDIPlus_PathIterNextSubpathPath GDIPlus_PathIterRewind ' +
-	        'GDIPlus_PathReset GDIPlus_PathReverse GDIPlus_PathSetFillMode ' +
-	        'GDIPlus_PathSetMarker GDIPlus_PathStartFigure ' +
-	        'GDIPlus_PathTransform GDIPlus_PathWarp GDIPlus_PathWiden ' +
-	        'GDIPlus_PathWindingModeOutline GDIPlus_PenCreate ' +
-	        'GDIPlus_PenCreate2 GDIPlus_PenDispose GDIPlus_PenGetAlignment ' +
-	        'GDIPlus_PenGetColor GDIPlus_PenGetCustomEndCap ' +
-	        'GDIPlus_PenGetDashCap GDIPlus_PenGetDashStyle ' +
-	        'GDIPlus_PenGetEndCap GDIPlus_PenGetMiterLimit ' +
-	        'GDIPlus_PenGetWidth GDIPlus_PenSetAlignment ' +
-	        'GDIPlus_PenSetColor GDIPlus_PenSetCustomEndCap ' +
-	        'GDIPlus_PenSetDashCap GDIPlus_PenSetDashStyle ' +
-	        'GDIPlus_PenSetEndCap GDIPlus_PenSetLineCap ' +
-	        'GDIPlus_PenSetLineJoin GDIPlus_PenSetMiterLimit ' +
-	        'GDIPlus_PenSetStartCap GDIPlus_PenSetWidth ' +
-	        'GDIPlus_RectFCreate GDIPlus_RegionClone ' +
-	        'GDIPlus_RegionCombinePath GDIPlus_RegionCombineRect ' +
-	        'GDIPlus_RegionCombineRegion GDIPlus_RegionCreate ' +
-	        'GDIPlus_RegionCreateFromPath GDIPlus_RegionCreateFromRect ' +
-	        'GDIPlus_RegionDispose GDIPlus_RegionGetBounds ' +
-	        'GDIPlus_RegionGetHRgn GDIPlus_RegionTransform ' +
-	        'GDIPlus_RegionTranslate GDIPlus_Shutdown GDIPlus_Startup ' +
-	        'GDIPlus_StringFormatCreate GDIPlus_StringFormatDispose ' +
-	        'GDIPlus_StringFormatGetMeasurableCharacterRangeCount ' +
-	        'GDIPlus_StringFormatSetAlign GDIPlus_StringFormatSetLineAlign ' +
-	        'GDIPlus_StringFormatSetMeasurableCharacterRanges ' +
-	        'GDIPlus_TextureCreate GDIPlus_TextureCreate2 ' +
-	        'GDIPlus_TextureCreateIA GetIP GUICtrlAVI_Close ' +
-	        'GUICtrlAVI_Create GUICtrlAVI_Destroy GUICtrlAVI_IsPlaying ' +
-	        'GUICtrlAVI_Open GUICtrlAVI_OpenEx GUICtrlAVI_Play ' +
-	        'GUICtrlAVI_Seek GUICtrlAVI_Show GUICtrlAVI_Stop ' +
-	        'GUICtrlButton_Click GUICtrlButton_Create ' +
-	        'GUICtrlButton_Destroy GUICtrlButton_Enable ' +
-	        'GUICtrlButton_GetCheck GUICtrlButton_GetFocus ' +
-	        'GUICtrlButton_GetIdealSize GUICtrlButton_GetImage ' +
-	        'GUICtrlButton_GetImageList GUICtrlButton_GetNote ' +
-	        'GUICtrlButton_GetNoteLength GUICtrlButton_GetSplitInfo ' +
-	        'GUICtrlButton_GetState GUICtrlButton_GetText ' +
-	        'GUICtrlButton_GetTextMargin GUICtrlButton_SetCheck ' +
-	        'GUICtrlButton_SetDontClick GUICtrlButton_SetFocus ' +
-	        'GUICtrlButton_SetImage GUICtrlButton_SetImageList ' +
-	        'GUICtrlButton_SetNote GUICtrlButton_SetShield ' +
-	        'GUICtrlButton_SetSize GUICtrlButton_SetSplitInfo ' +
-	        'GUICtrlButton_SetState GUICtrlButton_SetStyle ' +
-	        'GUICtrlButton_SetText GUICtrlButton_SetTextMargin ' +
-	        'GUICtrlButton_Show GUICtrlComboBoxEx_AddDir ' +
-	        'GUICtrlComboBoxEx_AddString GUICtrlComboBoxEx_BeginUpdate ' +
-	        'GUICtrlComboBoxEx_Create GUICtrlComboBoxEx_CreateSolidBitMap ' +
-	        'GUICtrlComboBoxEx_DeleteString GUICtrlComboBoxEx_Destroy ' +
-	        'GUICtrlComboBoxEx_EndUpdate GUICtrlComboBoxEx_FindStringExact ' +
-	        'GUICtrlComboBoxEx_GetComboBoxInfo ' +
-	        'GUICtrlComboBoxEx_GetComboControl GUICtrlComboBoxEx_GetCount ' +
-	        'GUICtrlComboBoxEx_GetCurSel ' +
-	        'GUICtrlComboBoxEx_GetDroppedControlRect ' +
-	        'GUICtrlComboBoxEx_GetDroppedControlRectEx ' +
-	        'GUICtrlComboBoxEx_GetDroppedState ' +
-	        'GUICtrlComboBoxEx_GetDroppedWidth ' +
-	        'GUICtrlComboBoxEx_GetEditControl GUICtrlComboBoxEx_GetEditSel ' +
-	        'GUICtrlComboBoxEx_GetEditText ' +
-	        'GUICtrlComboBoxEx_GetExtendedStyle ' +
-	        'GUICtrlComboBoxEx_GetExtendedUI GUICtrlComboBoxEx_GetImageList ' +
-	        'GUICtrlComboBoxEx_GetItem GUICtrlComboBoxEx_GetItemEx ' +
-	        'GUICtrlComboBoxEx_GetItemHeight GUICtrlComboBoxEx_GetItemImage ' +
-	        'GUICtrlComboBoxEx_GetItemIndent ' +
-	        'GUICtrlComboBoxEx_GetItemOverlayImage ' +
-	        'GUICtrlComboBoxEx_GetItemParam ' +
-	        'GUICtrlComboBoxEx_GetItemSelectedImage ' +
-	        'GUICtrlComboBoxEx_GetItemText GUICtrlComboBoxEx_GetItemTextLen ' +
-	        'GUICtrlComboBoxEx_GetList GUICtrlComboBoxEx_GetListArray ' +
-	        'GUICtrlComboBoxEx_GetLocale GUICtrlComboBoxEx_GetLocaleCountry ' +
-	        'GUICtrlComboBoxEx_GetLocaleLang ' +
-	        'GUICtrlComboBoxEx_GetLocalePrimLang ' +
-	        'GUICtrlComboBoxEx_GetLocaleSubLang ' +
-	        'GUICtrlComboBoxEx_GetMinVisible GUICtrlComboBoxEx_GetTopIndex ' +
-	        'GUICtrlComboBoxEx_GetUnicode GUICtrlComboBoxEx_InitStorage ' +
-	        'GUICtrlComboBoxEx_InsertString GUICtrlComboBoxEx_LimitText ' +
-	        'GUICtrlComboBoxEx_ReplaceEditSel GUICtrlComboBoxEx_ResetContent ' +
-	        'GUICtrlComboBoxEx_SetCurSel GUICtrlComboBoxEx_SetDroppedWidth ' +
-	        'GUICtrlComboBoxEx_SetEditSel GUICtrlComboBoxEx_SetEditText ' +
-	        'GUICtrlComboBoxEx_SetExtendedStyle ' +
-	        'GUICtrlComboBoxEx_SetExtendedUI GUICtrlComboBoxEx_SetImageList ' +
-	        'GUICtrlComboBoxEx_SetItem GUICtrlComboBoxEx_SetItemEx ' +
-	        'GUICtrlComboBoxEx_SetItemHeight GUICtrlComboBoxEx_SetItemImage ' +
-	        'GUICtrlComboBoxEx_SetItemIndent ' +
-	        'GUICtrlComboBoxEx_SetItemOverlayImage ' +
-	        'GUICtrlComboBoxEx_SetItemParam ' +
-	        'GUICtrlComboBoxEx_SetItemSelectedImage ' +
-	        'GUICtrlComboBoxEx_SetMinVisible GUICtrlComboBoxEx_SetTopIndex ' +
-	        'GUICtrlComboBoxEx_SetUnicode GUICtrlComboBoxEx_ShowDropDown ' +
-	        'GUICtrlComboBox_AddDir GUICtrlComboBox_AddString ' +
-	        'GUICtrlComboBox_AutoComplete GUICtrlComboBox_BeginUpdate ' +
-	        'GUICtrlComboBox_Create GUICtrlComboBox_DeleteString ' +
-	        'GUICtrlComboBox_Destroy GUICtrlComboBox_EndUpdate ' +
-	        'GUICtrlComboBox_FindString GUICtrlComboBox_FindStringExact ' +
-	        'GUICtrlComboBox_GetComboBoxInfo GUICtrlComboBox_GetCount ' +
-	        'GUICtrlComboBox_GetCueBanner GUICtrlComboBox_GetCurSel ' +
-	        'GUICtrlComboBox_GetDroppedControlRect ' +
-	        'GUICtrlComboBox_GetDroppedControlRectEx ' +
-	        'GUICtrlComboBox_GetDroppedState GUICtrlComboBox_GetDroppedWidth ' +
-	        'GUICtrlComboBox_GetEditSel GUICtrlComboBox_GetEditText ' +
-	        'GUICtrlComboBox_GetExtendedUI ' +
-	        'GUICtrlComboBox_GetHorizontalExtent ' +
-	        'GUICtrlComboBox_GetItemHeight GUICtrlComboBox_GetLBText ' +
-	        'GUICtrlComboBox_GetLBTextLen GUICtrlComboBox_GetList ' +
-	        'GUICtrlComboBox_GetListArray GUICtrlComboBox_GetLocale ' +
-	        'GUICtrlComboBox_GetLocaleCountry GUICtrlComboBox_GetLocaleLang ' +
-	        'GUICtrlComboBox_GetLocalePrimLang ' +
-	        'GUICtrlComboBox_GetLocaleSubLang GUICtrlComboBox_GetMinVisible ' +
-	        'GUICtrlComboBox_GetTopIndex GUICtrlComboBox_InitStorage ' +
-	        'GUICtrlComboBox_InsertString GUICtrlComboBox_LimitText ' +
-	        'GUICtrlComboBox_ReplaceEditSel GUICtrlComboBox_ResetContent ' +
-	        'GUICtrlComboBox_SelectString GUICtrlComboBox_SetCueBanner ' +
-	        'GUICtrlComboBox_SetCurSel GUICtrlComboBox_SetDroppedWidth ' +
-	        'GUICtrlComboBox_SetEditSel GUICtrlComboBox_SetEditText ' +
-	        'GUICtrlComboBox_SetExtendedUI ' +
-	        'GUICtrlComboBox_SetHorizontalExtent ' +
-	        'GUICtrlComboBox_SetItemHeight GUICtrlComboBox_SetMinVisible ' +
-	        'GUICtrlComboBox_SetTopIndex GUICtrlComboBox_ShowDropDown ' +
-	        'GUICtrlDTP_Create GUICtrlDTP_Destroy GUICtrlDTP_GetMCColor ' +
-	        'GUICtrlDTP_GetMCFont GUICtrlDTP_GetMonthCal ' +
-	        'GUICtrlDTP_GetRange GUICtrlDTP_GetRangeEx ' +
-	        'GUICtrlDTP_GetSystemTime GUICtrlDTP_GetSystemTimeEx ' +
-	        'GUICtrlDTP_SetFormat GUICtrlDTP_SetMCColor ' +
-	        'GUICtrlDTP_SetMCFont GUICtrlDTP_SetRange ' +
-	        'GUICtrlDTP_SetRangeEx GUICtrlDTP_SetSystemTime ' +
-	        'GUICtrlDTP_SetSystemTimeEx GUICtrlEdit_AppendText ' +
-	        'GUICtrlEdit_BeginUpdate GUICtrlEdit_CanUndo ' +
-	        'GUICtrlEdit_CharFromPos GUICtrlEdit_Create ' +
-	        'GUICtrlEdit_Destroy GUICtrlEdit_EmptyUndoBuffer ' +
-	        'GUICtrlEdit_EndUpdate GUICtrlEdit_Find GUICtrlEdit_FmtLines ' +
-	        'GUICtrlEdit_GetCueBanner GUICtrlEdit_GetFirstVisibleLine ' +
-	        'GUICtrlEdit_GetLimitText GUICtrlEdit_GetLine ' +
-	        'GUICtrlEdit_GetLineCount GUICtrlEdit_GetMargins ' +
-	        'GUICtrlEdit_GetModify GUICtrlEdit_GetPasswordChar ' +
-	        'GUICtrlEdit_GetRECT GUICtrlEdit_GetRECTEx GUICtrlEdit_GetSel ' +
-	        'GUICtrlEdit_GetText GUICtrlEdit_GetTextLen ' +
-	        'GUICtrlEdit_HideBalloonTip GUICtrlEdit_InsertText ' +
-	        'GUICtrlEdit_LineFromChar GUICtrlEdit_LineIndex ' +
-	        'GUICtrlEdit_LineLength GUICtrlEdit_LineScroll ' +
-	        'GUICtrlEdit_PosFromChar GUICtrlEdit_ReplaceSel ' +
-	        'GUICtrlEdit_Scroll GUICtrlEdit_SetCueBanner ' +
-	        'GUICtrlEdit_SetLimitText GUICtrlEdit_SetMargins ' +
-	        'GUICtrlEdit_SetModify GUICtrlEdit_SetPasswordChar ' +
-	        'GUICtrlEdit_SetReadOnly GUICtrlEdit_SetRECT ' +
-	        'GUICtrlEdit_SetRECTEx GUICtrlEdit_SetRECTNP ' +
-	        'GUICtrlEdit_SetRectNPEx GUICtrlEdit_SetSel ' +
-	        'GUICtrlEdit_SetTabStops GUICtrlEdit_SetText ' +
-	        'GUICtrlEdit_ShowBalloonTip GUICtrlEdit_Undo ' +
-	        'GUICtrlHeader_AddItem GUICtrlHeader_ClearFilter ' +
-	        'GUICtrlHeader_ClearFilterAll GUICtrlHeader_Create ' +
-	        'GUICtrlHeader_CreateDragImage GUICtrlHeader_DeleteItem ' +
-	        'GUICtrlHeader_Destroy GUICtrlHeader_EditFilter ' +
-	        'GUICtrlHeader_GetBitmapMargin GUICtrlHeader_GetImageList ' +
-	        'GUICtrlHeader_GetItem GUICtrlHeader_GetItemAlign ' +
-	        'GUICtrlHeader_GetItemBitmap GUICtrlHeader_GetItemCount ' +
-	        'GUICtrlHeader_GetItemDisplay GUICtrlHeader_GetItemFlags ' +
-	        'GUICtrlHeader_GetItemFormat GUICtrlHeader_GetItemImage ' +
-	        'GUICtrlHeader_GetItemOrder GUICtrlHeader_GetItemParam ' +
-	        'GUICtrlHeader_GetItemRect GUICtrlHeader_GetItemRectEx ' +
-	        'GUICtrlHeader_GetItemText GUICtrlHeader_GetItemWidth ' +
-	        'GUICtrlHeader_GetOrderArray GUICtrlHeader_GetUnicodeFormat ' +
-	        'GUICtrlHeader_HitTest GUICtrlHeader_InsertItem ' +
-	        'GUICtrlHeader_Layout GUICtrlHeader_OrderToIndex ' +
-	        'GUICtrlHeader_SetBitmapMargin ' +
-	        'GUICtrlHeader_SetFilterChangeTimeout ' +
-	        'GUICtrlHeader_SetHotDivider GUICtrlHeader_SetImageList ' +
-	        'GUICtrlHeader_SetItem GUICtrlHeader_SetItemAlign ' +
-	        'GUICtrlHeader_SetItemBitmap GUICtrlHeader_SetItemDisplay ' +
-	        'GUICtrlHeader_SetItemFlags GUICtrlHeader_SetItemFormat ' +
-	        'GUICtrlHeader_SetItemImage GUICtrlHeader_SetItemOrder ' +
-	        'GUICtrlHeader_SetItemParam GUICtrlHeader_SetItemText ' +
-	        'GUICtrlHeader_SetItemWidth GUICtrlHeader_SetOrderArray ' +
-	        'GUICtrlHeader_SetUnicodeFormat GUICtrlIpAddress_ClearAddress ' +
-	        'GUICtrlIpAddress_Create GUICtrlIpAddress_Destroy ' +
-	        'GUICtrlIpAddress_Get GUICtrlIpAddress_GetArray ' +
-	        'GUICtrlIpAddress_GetEx GUICtrlIpAddress_IsBlank ' +
-	        'GUICtrlIpAddress_Set GUICtrlIpAddress_SetArray ' +
-	        'GUICtrlIpAddress_SetEx GUICtrlIpAddress_SetFocus ' +
-	        'GUICtrlIpAddress_SetFont GUICtrlIpAddress_SetRange ' +
-	        'GUICtrlIpAddress_ShowHide GUICtrlListBox_AddFile ' +
-	        'GUICtrlListBox_AddString GUICtrlListBox_BeginUpdate ' +
-	        'GUICtrlListBox_ClickItem GUICtrlListBox_Create ' +
-	        'GUICtrlListBox_DeleteString GUICtrlListBox_Destroy ' +
-	        'GUICtrlListBox_Dir GUICtrlListBox_EndUpdate ' +
-	        'GUICtrlListBox_FindInText GUICtrlListBox_FindString ' +
-	        'GUICtrlListBox_GetAnchorIndex GUICtrlListBox_GetCaretIndex ' +
-	        'GUICtrlListBox_GetCount GUICtrlListBox_GetCurSel ' +
-	        'GUICtrlListBox_GetHorizontalExtent GUICtrlListBox_GetItemData ' +
-	        'GUICtrlListBox_GetItemHeight GUICtrlListBox_GetItemRect ' +
-	        'GUICtrlListBox_GetItemRectEx GUICtrlListBox_GetListBoxInfo ' +
-	        'GUICtrlListBox_GetLocale GUICtrlListBox_GetLocaleCountry ' +
-	        'GUICtrlListBox_GetLocaleLang GUICtrlListBox_GetLocalePrimLang ' +
-	        'GUICtrlListBox_GetLocaleSubLang GUICtrlListBox_GetSel ' +
-	        'GUICtrlListBox_GetSelCount GUICtrlListBox_GetSelItems ' +
-	        'GUICtrlListBox_GetSelItemsText GUICtrlListBox_GetText ' +
-	        'GUICtrlListBox_GetTextLen GUICtrlListBox_GetTopIndex ' +
-	        'GUICtrlListBox_InitStorage GUICtrlListBox_InsertString ' +
-	        'GUICtrlListBox_ItemFromPoint GUICtrlListBox_ReplaceString ' +
-	        'GUICtrlListBox_ResetContent GUICtrlListBox_SelectString ' +
-	        'GUICtrlListBox_SelItemRange GUICtrlListBox_SelItemRangeEx ' +
-	        'GUICtrlListBox_SetAnchorIndex GUICtrlListBox_SetCaretIndex ' +
-	        'GUICtrlListBox_SetColumnWidth GUICtrlListBox_SetCurSel ' +
-	        'GUICtrlListBox_SetHorizontalExtent GUICtrlListBox_SetItemData ' +
-	        'GUICtrlListBox_SetItemHeight GUICtrlListBox_SetLocale ' +
-	        'GUICtrlListBox_SetSel GUICtrlListBox_SetTabStops ' +
-	        'GUICtrlListBox_SetTopIndex GUICtrlListBox_Sort ' +
-	        'GUICtrlListBox_SwapString GUICtrlListBox_UpdateHScroll ' +
-	        'GUICtrlListView_AddArray GUICtrlListView_AddColumn ' +
-	        'GUICtrlListView_AddItem GUICtrlListView_AddSubItem ' +
-	        'GUICtrlListView_ApproximateViewHeight ' +
-	        'GUICtrlListView_ApproximateViewRect ' +
-	        'GUICtrlListView_ApproximateViewWidth GUICtrlListView_Arrange ' +
-	        'GUICtrlListView_BeginUpdate GUICtrlListView_CancelEditLabel ' +
-	        'GUICtrlListView_ClickItem GUICtrlListView_CopyItems ' +
-	        'GUICtrlListView_Create GUICtrlListView_CreateDragImage ' +
-	        'GUICtrlListView_CreateSolidBitMap ' +
-	        'GUICtrlListView_DeleteAllItems GUICtrlListView_DeleteColumn ' +
-	        'GUICtrlListView_DeleteItem GUICtrlListView_DeleteItemsSelected ' +
-	        'GUICtrlListView_Destroy GUICtrlListView_DrawDragImage ' +
-	        'GUICtrlListView_EditLabel GUICtrlListView_EnableGroupView ' +
-	        'GUICtrlListView_EndUpdate GUICtrlListView_EnsureVisible ' +
-	        'GUICtrlListView_FindInText GUICtrlListView_FindItem ' +
-	        'GUICtrlListView_FindNearest GUICtrlListView_FindParam ' +
-	        'GUICtrlListView_FindText GUICtrlListView_GetBkColor ' +
-	        'GUICtrlListView_GetBkImage GUICtrlListView_GetCallbackMask ' +
-	        'GUICtrlListView_GetColumn GUICtrlListView_GetColumnCount ' +
-	        'GUICtrlListView_GetColumnOrder ' +
-	        'GUICtrlListView_GetColumnOrderArray ' +
-	        'GUICtrlListView_GetColumnWidth GUICtrlListView_GetCounterPage ' +
-	        'GUICtrlListView_GetEditControl ' +
-	        'GUICtrlListView_GetExtendedListViewStyle ' +
-	        'GUICtrlListView_GetFocusedGroup GUICtrlListView_GetGroupCount ' +
-	        'GUICtrlListView_GetGroupInfo ' +
-	        'GUICtrlListView_GetGroupInfoByIndex ' +
-	        'GUICtrlListView_GetGroupRect ' +
-	        'GUICtrlListView_GetGroupViewEnabled GUICtrlListView_GetHeader ' +
-	        'GUICtrlListView_GetHotCursor GUICtrlListView_GetHotItem ' +
-	        'GUICtrlListView_GetHoverTime GUICtrlListView_GetImageList ' +
-	        'GUICtrlListView_GetISearchString GUICtrlListView_GetItem ' +
-	        'GUICtrlListView_GetItemChecked GUICtrlListView_GetItemCount ' +
-	        'GUICtrlListView_GetItemCut GUICtrlListView_GetItemDropHilited ' +
-	        'GUICtrlListView_GetItemEx GUICtrlListView_GetItemFocused ' +
-	        'GUICtrlListView_GetItemGroupID GUICtrlListView_GetItemImage ' +
-	        'GUICtrlListView_GetItemIndent GUICtrlListView_GetItemParam ' +
-	        'GUICtrlListView_GetItemPosition ' +
-	        'GUICtrlListView_GetItemPositionX ' +
-	        'GUICtrlListView_GetItemPositionY GUICtrlListView_GetItemRect ' +
-	        'GUICtrlListView_GetItemRectEx GUICtrlListView_GetItemSelected ' +
-	        'GUICtrlListView_GetItemSpacing GUICtrlListView_GetItemSpacingX ' +
-	        'GUICtrlListView_GetItemSpacingY GUICtrlListView_GetItemState ' +
-	        'GUICtrlListView_GetItemStateImage GUICtrlListView_GetItemText ' +
-	        'GUICtrlListView_GetItemTextArray ' +
-	        'GUICtrlListView_GetItemTextString GUICtrlListView_GetNextItem ' +
-	        'GUICtrlListView_GetNumberOfWorkAreas GUICtrlListView_GetOrigin ' +
-	        'GUICtrlListView_GetOriginX GUICtrlListView_GetOriginY ' +
-	        'GUICtrlListView_GetOutlineColor ' +
-	        'GUICtrlListView_GetSelectedColumn ' +
-	        'GUICtrlListView_GetSelectedCount ' +
-	        'GUICtrlListView_GetSelectedIndices ' +
-	        'GUICtrlListView_GetSelectionMark GUICtrlListView_GetStringWidth ' +
-	        'GUICtrlListView_GetSubItemRect GUICtrlListView_GetTextBkColor ' +
-	        'GUICtrlListView_GetTextColor GUICtrlListView_GetToolTips ' +
-	        'GUICtrlListView_GetTopIndex GUICtrlListView_GetUnicodeFormat ' +
-	        'GUICtrlListView_GetView GUICtrlListView_GetViewDetails ' +
-	        'GUICtrlListView_GetViewLarge GUICtrlListView_GetViewList ' +
-	        'GUICtrlListView_GetViewRect GUICtrlListView_GetViewSmall ' +
-	        'GUICtrlListView_GetViewTile GUICtrlListView_HideColumn ' +
-	        'GUICtrlListView_HitTest GUICtrlListView_InsertColumn ' +
-	        'GUICtrlListView_InsertGroup GUICtrlListView_InsertItem ' +
-	        'GUICtrlListView_JustifyColumn GUICtrlListView_MapIDToIndex ' +
-	        'GUICtrlListView_MapIndexToID GUICtrlListView_RedrawItems ' +
-	        'GUICtrlListView_RegisterSortCallBack ' +
-	        'GUICtrlListView_RemoveAllGroups GUICtrlListView_RemoveGroup ' +
-	        'GUICtrlListView_Scroll GUICtrlListView_SetBkColor ' +
-	        'GUICtrlListView_SetBkImage GUICtrlListView_SetCallBackMask ' +
-	        'GUICtrlListView_SetColumn GUICtrlListView_SetColumnOrder ' +
-	        'GUICtrlListView_SetColumnOrderArray ' +
-	        'GUICtrlListView_SetColumnWidth ' +
-	        'GUICtrlListView_SetExtendedListViewStyle ' +
-	        'GUICtrlListView_SetGroupInfo GUICtrlListView_SetHotItem ' +
-	        'GUICtrlListView_SetHoverTime GUICtrlListView_SetIconSpacing ' +
-	        'GUICtrlListView_SetImageList GUICtrlListView_SetItem ' +
-	        'GUICtrlListView_SetItemChecked GUICtrlListView_SetItemCount ' +
-	        'GUICtrlListView_SetItemCut GUICtrlListView_SetItemDropHilited ' +
-	        'GUICtrlListView_SetItemEx GUICtrlListView_SetItemFocused ' +
-	        'GUICtrlListView_SetItemGroupID GUICtrlListView_SetItemImage ' +
-	        'GUICtrlListView_SetItemIndent GUICtrlListView_SetItemParam ' +
-	        'GUICtrlListView_SetItemPosition ' +
-	        'GUICtrlListView_SetItemPosition32 ' +
-	        'GUICtrlListView_SetItemSelected GUICtrlListView_SetItemState ' +
-	        'GUICtrlListView_SetItemStateImage GUICtrlListView_SetItemText ' +
-	        'GUICtrlListView_SetOutlineColor ' +
-	        'GUICtrlListView_SetSelectedColumn ' +
-	        'GUICtrlListView_SetSelectionMark GUICtrlListView_SetTextBkColor ' +
-	        'GUICtrlListView_SetTextColor GUICtrlListView_SetToolTips ' +
-	        'GUICtrlListView_SetUnicodeFormat GUICtrlListView_SetView ' +
-	        'GUICtrlListView_SetWorkAreas GUICtrlListView_SimpleSort ' +
-	        'GUICtrlListView_SortItems GUICtrlListView_SubItemHitTest ' +
-	        'GUICtrlListView_UnRegisterSortCallBack GUICtrlMenu_AddMenuItem ' +
-	        'GUICtrlMenu_AppendMenu GUICtrlMenu_CalculatePopupWindowPosition ' +
-	        'GUICtrlMenu_CheckMenuItem GUICtrlMenu_CheckRadioItem ' +
-	        'GUICtrlMenu_CreateMenu GUICtrlMenu_CreatePopup ' +
-	        'GUICtrlMenu_DeleteMenu GUICtrlMenu_DestroyMenu ' +
-	        'GUICtrlMenu_DrawMenuBar GUICtrlMenu_EnableMenuItem ' +
-	        'GUICtrlMenu_FindItem GUICtrlMenu_FindParent ' +
-	        'GUICtrlMenu_GetItemBmp GUICtrlMenu_GetItemBmpChecked ' +
-	        'GUICtrlMenu_GetItemBmpUnchecked GUICtrlMenu_GetItemChecked ' +
-	        'GUICtrlMenu_GetItemCount GUICtrlMenu_GetItemData ' +
-	        'GUICtrlMenu_GetItemDefault GUICtrlMenu_GetItemDisabled ' +
-	        'GUICtrlMenu_GetItemEnabled GUICtrlMenu_GetItemGrayed ' +
-	        'GUICtrlMenu_GetItemHighlighted GUICtrlMenu_GetItemID ' +
-	        'GUICtrlMenu_GetItemInfo GUICtrlMenu_GetItemRect ' +
-	        'GUICtrlMenu_GetItemRectEx GUICtrlMenu_GetItemState ' +
-	        'GUICtrlMenu_GetItemStateEx GUICtrlMenu_GetItemSubMenu ' +
-	        'GUICtrlMenu_GetItemText GUICtrlMenu_GetItemType ' +
-	        'GUICtrlMenu_GetMenu GUICtrlMenu_GetMenuBackground ' +
-	        'GUICtrlMenu_GetMenuBarInfo GUICtrlMenu_GetMenuContextHelpID ' +
-	        'GUICtrlMenu_GetMenuData GUICtrlMenu_GetMenuDefaultItem ' +
-	        'GUICtrlMenu_GetMenuHeight GUICtrlMenu_GetMenuInfo ' +
-	        'GUICtrlMenu_GetMenuStyle GUICtrlMenu_GetSystemMenu ' +
-	        'GUICtrlMenu_InsertMenuItem GUICtrlMenu_InsertMenuItemEx ' +
-	        'GUICtrlMenu_IsMenu GUICtrlMenu_LoadMenu ' +
-	        'GUICtrlMenu_MapAccelerator GUICtrlMenu_MenuItemFromPoint ' +
-	        'GUICtrlMenu_RemoveMenu GUICtrlMenu_SetItemBitmaps ' +
-	        'GUICtrlMenu_SetItemBmp GUICtrlMenu_SetItemBmpChecked ' +
-	        'GUICtrlMenu_SetItemBmpUnchecked GUICtrlMenu_SetItemChecked ' +
-	        'GUICtrlMenu_SetItemData GUICtrlMenu_SetItemDefault ' +
-	        'GUICtrlMenu_SetItemDisabled GUICtrlMenu_SetItemEnabled ' +
-	        'GUICtrlMenu_SetItemGrayed GUICtrlMenu_SetItemHighlighted ' +
-	        'GUICtrlMenu_SetItemID GUICtrlMenu_SetItemInfo ' +
-	        'GUICtrlMenu_SetItemState GUICtrlMenu_SetItemSubMenu ' +
-	        'GUICtrlMenu_SetItemText GUICtrlMenu_SetItemType ' +
-	        'GUICtrlMenu_SetMenu GUICtrlMenu_SetMenuBackground ' +
-	        'GUICtrlMenu_SetMenuContextHelpID GUICtrlMenu_SetMenuData ' +
-	        'GUICtrlMenu_SetMenuDefaultItem GUICtrlMenu_SetMenuHeight ' +
-	        'GUICtrlMenu_SetMenuInfo GUICtrlMenu_SetMenuStyle ' +
-	        'GUICtrlMenu_TrackPopupMenu GUICtrlMonthCal_Create ' +
-	        'GUICtrlMonthCal_Destroy GUICtrlMonthCal_GetCalendarBorder ' +
-	        'GUICtrlMonthCal_GetCalendarCount GUICtrlMonthCal_GetColor ' +
-	        'GUICtrlMonthCal_GetColorArray GUICtrlMonthCal_GetCurSel ' +
-	        'GUICtrlMonthCal_GetCurSelStr GUICtrlMonthCal_GetFirstDOW ' +
-	        'GUICtrlMonthCal_GetFirstDOWStr GUICtrlMonthCal_GetMaxSelCount ' +
-	        'GUICtrlMonthCal_GetMaxTodayWidth ' +
-	        'GUICtrlMonthCal_GetMinReqHeight GUICtrlMonthCal_GetMinReqRect ' +
-	        'GUICtrlMonthCal_GetMinReqRectArray ' +
-	        'GUICtrlMonthCal_GetMinReqWidth GUICtrlMonthCal_GetMonthDelta ' +
-	        'GUICtrlMonthCal_GetMonthRange GUICtrlMonthCal_GetMonthRangeMax ' +
-	        'GUICtrlMonthCal_GetMonthRangeMaxStr ' +
-	        'GUICtrlMonthCal_GetMonthRangeMin ' +
-	        'GUICtrlMonthCal_GetMonthRangeMinStr ' +
-	        'GUICtrlMonthCal_GetMonthRangeSpan GUICtrlMonthCal_GetRange ' +
-	        'GUICtrlMonthCal_GetRangeMax GUICtrlMonthCal_GetRangeMaxStr ' +
-	        'GUICtrlMonthCal_GetRangeMin GUICtrlMonthCal_GetRangeMinStr ' +
-	        'GUICtrlMonthCal_GetSelRange GUICtrlMonthCal_GetSelRangeMax ' +
-	        'GUICtrlMonthCal_GetSelRangeMaxStr ' +
-	        'GUICtrlMonthCal_GetSelRangeMin ' +
-	        'GUICtrlMonthCal_GetSelRangeMinStr GUICtrlMonthCal_GetToday ' +
-	        'GUICtrlMonthCal_GetTodayStr GUICtrlMonthCal_GetUnicodeFormat ' +
-	        'GUICtrlMonthCal_HitTest GUICtrlMonthCal_SetCalendarBorder ' +
-	        'GUICtrlMonthCal_SetColor GUICtrlMonthCal_SetCurSel ' +
-	        'GUICtrlMonthCal_SetDayState GUICtrlMonthCal_SetFirstDOW ' +
-	        'GUICtrlMonthCal_SetMaxSelCount GUICtrlMonthCal_SetMonthDelta ' +
-	        'GUICtrlMonthCal_SetRange GUICtrlMonthCal_SetSelRange ' +
-	        'GUICtrlMonthCal_SetToday GUICtrlMonthCal_SetUnicodeFormat ' +
-	        'GUICtrlRebar_AddBand GUICtrlRebar_AddToolBarBand ' +
-	        'GUICtrlRebar_BeginDrag GUICtrlRebar_Create ' +
-	        'GUICtrlRebar_DeleteBand GUICtrlRebar_Destroy ' +
-	        'GUICtrlRebar_DragMove GUICtrlRebar_EndDrag ' +
-	        'GUICtrlRebar_GetBandBackColor GUICtrlRebar_GetBandBorders ' +
-	        'GUICtrlRebar_GetBandBordersEx GUICtrlRebar_GetBandChildHandle ' +
-	        'GUICtrlRebar_GetBandChildSize GUICtrlRebar_GetBandCount ' +
-	        'GUICtrlRebar_GetBandForeColor GUICtrlRebar_GetBandHeaderSize ' +
-	        'GUICtrlRebar_GetBandID GUICtrlRebar_GetBandIdealSize ' +
-	        'GUICtrlRebar_GetBandLength GUICtrlRebar_GetBandLParam ' +
-	        'GUICtrlRebar_GetBandMargins GUICtrlRebar_GetBandMarginsEx ' +
-	        'GUICtrlRebar_GetBandRect GUICtrlRebar_GetBandRectEx ' +
-	        'GUICtrlRebar_GetBandStyle GUICtrlRebar_GetBandStyleBreak ' +
-	        'GUICtrlRebar_GetBandStyleChildEdge ' +
-	        'GUICtrlRebar_GetBandStyleFixedBMP ' +
-	        'GUICtrlRebar_GetBandStyleFixedSize ' +
-	        'GUICtrlRebar_GetBandStyleGripperAlways ' +
-	        'GUICtrlRebar_GetBandStyleHidden ' +
-	        'GUICtrlRebar_GetBandStyleHideTitle ' +
-	        'GUICtrlRebar_GetBandStyleNoGripper ' +
-	        'GUICtrlRebar_GetBandStyleTopAlign ' +
-	        'GUICtrlRebar_GetBandStyleUseChevron ' +
-	        'GUICtrlRebar_GetBandStyleVariableHeight ' +
-	        'GUICtrlRebar_GetBandText GUICtrlRebar_GetBarHeight ' +
-	        'GUICtrlRebar_GetBarInfo GUICtrlRebar_GetBKColor ' +
-	        'GUICtrlRebar_GetColorScheme GUICtrlRebar_GetRowCount ' +
-	        'GUICtrlRebar_GetRowHeight GUICtrlRebar_GetTextColor ' +
-	        'GUICtrlRebar_GetToolTips GUICtrlRebar_GetUnicodeFormat ' +
-	        'GUICtrlRebar_HitTest GUICtrlRebar_IDToIndex ' +
-	        'GUICtrlRebar_MaximizeBand GUICtrlRebar_MinimizeBand ' +
-	        'GUICtrlRebar_MoveBand GUICtrlRebar_SetBandBackColor ' +
-	        'GUICtrlRebar_SetBandForeColor GUICtrlRebar_SetBandHeaderSize ' +
-	        'GUICtrlRebar_SetBandID GUICtrlRebar_SetBandIdealSize ' +
-	        'GUICtrlRebar_SetBandLength GUICtrlRebar_SetBandLParam ' +
-	        'GUICtrlRebar_SetBandStyle GUICtrlRebar_SetBandStyleBreak ' +
-	        'GUICtrlRebar_SetBandStyleChildEdge ' +
-	        'GUICtrlRebar_SetBandStyleFixedBMP ' +
-	        'GUICtrlRebar_SetBandStyleFixedSize ' +
-	        'GUICtrlRebar_SetBandStyleGripperAlways ' +
-	        'GUICtrlRebar_SetBandStyleHidden ' +
-	        'GUICtrlRebar_SetBandStyleHideTitle ' +
-	        'GUICtrlRebar_SetBandStyleNoGripper ' +
-	        'GUICtrlRebar_SetBandStyleTopAlign ' +
-	        'GUICtrlRebar_SetBandStyleUseChevron ' +
-	        'GUICtrlRebar_SetBandStyleVariableHeight ' +
-	        'GUICtrlRebar_SetBandText GUICtrlRebar_SetBarInfo ' +
-	        'GUICtrlRebar_SetBKColor GUICtrlRebar_SetColorScheme ' +
-	        'GUICtrlRebar_SetTextColor GUICtrlRebar_SetToolTips ' +
-	        'GUICtrlRebar_SetUnicodeFormat GUICtrlRebar_ShowBand ' +
-	        'GUICtrlRichEdit_AppendText GUICtrlRichEdit_AutoDetectURL ' +
-	        'GUICtrlRichEdit_CanPaste GUICtrlRichEdit_CanPasteSpecial ' +
-	        'GUICtrlRichEdit_CanRedo GUICtrlRichEdit_CanUndo ' +
-	        'GUICtrlRichEdit_ChangeFontSize GUICtrlRichEdit_Copy ' +
-	        'GUICtrlRichEdit_Create GUICtrlRichEdit_Cut ' +
-	        'GUICtrlRichEdit_Deselect GUICtrlRichEdit_Destroy ' +
-	        'GUICtrlRichEdit_EmptyUndoBuffer GUICtrlRichEdit_FindText ' +
-	        'GUICtrlRichEdit_FindTextInRange GUICtrlRichEdit_GetBkColor ' +
-	        'GUICtrlRichEdit_GetCharAttributes ' +
-	        'GUICtrlRichEdit_GetCharBkColor GUICtrlRichEdit_GetCharColor ' +
-	        'GUICtrlRichEdit_GetCharPosFromXY ' +
-	        'GUICtrlRichEdit_GetCharPosOfNextWord ' +
-	        'GUICtrlRichEdit_GetCharPosOfPreviousWord ' +
-	        'GUICtrlRichEdit_GetCharWordBreakInfo ' +
-	        'GUICtrlRichEdit_GetFirstCharPosOnLine GUICtrlRichEdit_GetFont ' +
-	        'GUICtrlRichEdit_GetLineCount GUICtrlRichEdit_GetLineLength ' +
-	        'GUICtrlRichEdit_GetLineNumberFromCharPos ' +
-	        'GUICtrlRichEdit_GetNextRedo GUICtrlRichEdit_GetNextUndo ' +
-	        'GUICtrlRichEdit_GetNumberOfFirstVisibleLine ' +
-	        'GUICtrlRichEdit_GetParaAlignment ' +
-	        'GUICtrlRichEdit_GetParaAttributes GUICtrlRichEdit_GetParaBorder ' +
-	        'GUICtrlRichEdit_GetParaIndents GUICtrlRichEdit_GetParaNumbering ' +
-	        'GUICtrlRichEdit_GetParaShading GUICtrlRichEdit_GetParaSpacing ' +
-	        'GUICtrlRichEdit_GetParaTabStops GUICtrlRichEdit_GetPasswordChar ' +
-	        'GUICtrlRichEdit_GetRECT GUICtrlRichEdit_GetScrollPos ' +
-	        'GUICtrlRichEdit_GetSel GUICtrlRichEdit_GetSelAA ' +
-	        'GUICtrlRichEdit_GetSelText GUICtrlRichEdit_GetSpaceUnit ' +
-	        'GUICtrlRichEdit_GetText GUICtrlRichEdit_GetTextInLine ' +
-	        'GUICtrlRichEdit_GetTextInRange GUICtrlRichEdit_GetTextLength ' +
-	        'GUICtrlRichEdit_GetVersion GUICtrlRichEdit_GetXYFromCharPos ' +
-	        'GUICtrlRichEdit_GetZoom GUICtrlRichEdit_GotoCharPos ' +
-	        'GUICtrlRichEdit_HideSelection GUICtrlRichEdit_InsertText ' +
-	        'GUICtrlRichEdit_IsModified GUICtrlRichEdit_IsTextSelected ' +
-	        'GUICtrlRichEdit_Paste GUICtrlRichEdit_PasteSpecial ' +
-	        'GUICtrlRichEdit_PauseRedraw GUICtrlRichEdit_Redo ' +
-	        'GUICtrlRichEdit_ReplaceText GUICtrlRichEdit_ResumeRedraw ' +
-	        'GUICtrlRichEdit_ScrollLineOrPage GUICtrlRichEdit_ScrollLines ' +
-	        'GUICtrlRichEdit_ScrollToCaret GUICtrlRichEdit_SetBkColor ' +
-	        'GUICtrlRichEdit_SetCharAttributes ' +
-	        'GUICtrlRichEdit_SetCharBkColor GUICtrlRichEdit_SetCharColor ' +
-	        'GUICtrlRichEdit_SetEventMask GUICtrlRichEdit_SetFont ' +
-	        'GUICtrlRichEdit_SetLimitOnText GUICtrlRichEdit_SetModified ' +
-	        'GUICtrlRichEdit_SetParaAlignment ' +
-	        'GUICtrlRichEdit_SetParaAttributes GUICtrlRichEdit_SetParaBorder ' +
-	        'GUICtrlRichEdit_SetParaIndents GUICtrlRichEdit_SetParaNumbering ' +
-	        'GUICtrlRichEdit_SetParaShading GUICtrlRichEdit_SetParaSpacing ' +
-	        'GUICtrlRichEdit_SetParaTabStops GUICtrlRichEdit_SetPasswordChar ' +
-	        'GUICtrlRichEdit_SetReadOnly GUICtrlRichEdit_SetRECT ' +
-	        'GUICtrlRichEdit_SetScrollPos GUICtrlRichEdit_SetSel ' +
-	        'GUICtrlRichEdit_SetSpaceUnit GUICtrlRichEdit_SetTabStops ' +
-	        'GUICtrlRichEdit_SetText GUICtrlRichEdit_SetUndoLimit ' +
-	        'GUICtrlRichEdit_SetZoom GUICtrlRichEdit_StreamFromFile ' +
-	        'GUICtrlRichEdit_StreamFromVar GUICtrlRichEdit_StreamToFile ' +
-	        'GUICtrlRichEdit_StreamToVar GUICtrlRichEdit_Undo ' +
-	        'GUICtrlSlider_ClearSel GUICtrlSlider_ClearTics ' +
-	        'GUICtrlSlider_Create GUICtrlSlider_Destroy ' +
-	        'GUICtrlSlider_GetBuddy GUICtrlSlider_GetChannelRect ' +
-	        'GUICtrlSlider_GetChannelRectEx GUICtrlSlider_GetLineSize ' +
-	        'GUICtrlSlider_GetLogicalTics GUICtrlSlider_GetNumTics ' +
-	        'GUICtrlSlider_GetPageSize GUICtrlSlider_GetPos ' +
-	        'GUICtrlSlider_GetRange GUICtrlSlider_GetRangeMax ' +
-	        'GUICtrlSlider_GetRangeMin GUICtrlSlider_GetSel ' +
-	        'GUICtrlSlider_GetSelEnd GUICtrlSlider_GetSelStart ' +
-	        'GUICtrlSlider_GetThumbLength GUICtrlSlider_GetThumbRect ' +
-	        'GUICtrlSlider_GetThumbRectEx GUICtrlSlider_GetTic ' +
-	        'GUICtrlSlider_GetTicPos GUICtrlSlider_GetToolTips ' +
-	        'GUICtrlSlider_GetUnicodeFormat GUICtrlSlider_SetBuddy ' +
-	        'GUICtrlSlider_SetLineSize GUICtrlSlider_SetPageSize ' +
-	        'GUICtrlSlider_SetPos GUICtrlSlider_SetRange ' +
-	        'GUICtrlSlider_SetRangeMax GUICtrlSlider_SetRangeMin ' +
-	        'GUICtrlSlider_SetSel GUICtrlSlider_SetSelEnd ' +
-	        'GUICtrlSlider_SetSelStart GUICtrlSlider_SetThumbLength ' +
-	        'GUICtrlSlider_SetTic GUICtrlSlider_SetTicFreq ' +
-	        'GUICtrlSlider_SetTipSide GUICtrlSlider_SetToolTips ' +
-	        'GUICtrlSlider_SetUnicodeFormat GUICtrlStatusBar_Create ' +
-	        'GUICtrlStatusBar_Destroy GUICtrlStatusBar_EmbedControl ' +
-	        'GUICtrlStatusBar_GetBorders GUICtrlStatusBar_GetBordersHorz ' +
-	        'GUICtrlStatusBar_GetBordersRect GUICtrlStatusBar_GetBordersVert ' +
-	        'GUICtrlStatusBar_GetCount GUICtrlStatusBar_GetHeight ' +
-	        'GUICtrlStatusBar_GetIcon GUICtrlStatusBar_GetParts ' +
-	        'GUICtrlStatusBar_GetRect GUICtrlStatusBar_GetRectEx ' +
-	        'GUICtrlStatusBar_GetText GUICtrlStatusBar_GetTextFlags ' +
-	        'GUICtrlStatusBar_GetTextLength GUICtrlStatusBar_GetTextLengthEx ' +
-	        'GUICtrlStatusBar_GetTipText GUICtrlStatusBar_GetUnicodeFormat ' +
-	        'GUICtrlStatusBar_GetWidth GUICtrlStatusBar_IsSimple ' +
-	        'GUICtrlStatusBar_Resize GUICtrlStatusBar_SetBkColor ' +
-	        'GUICtrlStatusBar_SetIcon GUICtrlStatusBar_SetMinHeight ' +
-	        'GUICtrlStatusBar_SetParts GUICtrlStatusBar_SetSimple ' +
-	        'GUICtrlStatusBar_SetText GUICtrlStatusBar_SetTipText ' +
-	        'GUICtrlStatusBar_SetUnicodeFormat GUICtrlStatusBar_ShowHide ' +
-	        'GUICtrlTab_ActivateTab GUICtrlTab_ClickTab GUICtrlTab_Create ' +
-	        'GUICtrlTab_DeleteAllItems GUICtrlTab_DeleteItem ' +
-	        'GUICtrlTab_DeselectAll GUICtrlTab_Destroy GUICtrlTab_FindTab ' +
-	        'GUICtrlTab_GetCurFocus GUICtrlTab_GetCurSel ' +
-	        'GUICtrlTab_GetDisplayRect GUICtrlTab_GetDisplayRectEx ' +
-	        'GUICtrlTab_GetExtendedStyle GUICtrlTab_GetImageList ' +
-	        'GUICtrlTab_GetItem GUICtrlTab_GetItemCount ' +
-	        'GUICtrlTab_GetItemImage GUICtrlTab_GetItemParam ' +
-	        'GUICtrlTab_GetItemRect GUICtrlTab_GetItemRectEx ' +
-	        'GUICtrlTab_GetItemState GUICtrlTab_GetItemText ' +
-	        'GUICtrlTab_GetRowCount GUICtrlTab_GetToolTips ' +
-	        'GUICtrlTab_GetUnicodeFormat GUICtrlTab_HighlightItem ' +
-	        'GUICtrlTab_HitTest GUICtrlTab_InsertItem ' +
-	        'GUICtrlTab_RemoveImage GUICtrlTab_SetCurFocus ' +
-	        'GUICtrlTab_SetCurSel GUICtrlTab_SetExtendedStyle ' +
-	        'GUICtrlTab_SetImageList GUICtrlTab_SetItem ' +
-	        'GUICtrlTab_SetItemImage GUICtrlTab_SetItemParam ' +
-	        'GUICtrlTab_SetItemSize GUICtrlTab_SetItemState ' +
-	        'GUICtrlTab_SetItemText GUICtrlTab_SetMinTabWidth ' +
-	        'GUICtrlTab_SetPadding GUICtrlTab_SetToolTips ' +
-	        'GUICtrlTab_SetUnicodeFormat GUICtrlToolbar_AddBitmap ' +
-	        'GUICtrlToolbar_AddButton GUICtrlToolbar_AddButtonSep ' +
-	        'GUICtrlToolbar_AddString GUICtrlToolbar_ButtonCount ' +
-	        'GUICtrlToolbar_CheckButton GUICtrlToolbar_ClickAccel ' +
-	        'GUICtrlToolbar_ClickButton GUICtrlToolbar_ClickIndex ' +
-	        'GUICtrlToolbar_CommandToIndex GUICtrlToolbar_Create ' +
-	        'GUICtrlToolbar_Customize GUICtrlToolbar_DeleteButton ' +
-	        'GUICtrlToolbar_Destroy GUICtrlToolbar_EnableButton ' +
-	        'GUICtrlToolbar_FindToolbar GUICtrlToolbar_GetAnchorHighlight ' +
-	        'GUICtrlToolbar_GetBitmapFlags GUICtrlToolbar_GetButtonBitmap ' +
-	        'GUICtrlToolbar_GetButtonInfo GUICtrlToolbar_GetButtonInfoEx ' +
-	        'GUICtrlToolbar_GetButtonParam GUICtrlToolbar_GetButtonRect ' +
-	        'GUICtrlToolbar_GetButtonRectEx GUICtrlToolbar_GetButtonSize ' +
-	        'GUICtrlToolbar_GetButtonState GUICtrlToolbar_GetButtonStyle ' +
-	        'GUICtrlToolbar_GetButtonText GUICtrlToolbar_GetColorScheme ' +
-	        'GUICtrlToolbar_GetDisabledImageList ' +
-	        'GUICtrlToolbar_GetExtendedStyle GUICtrlToolbar_GetHotImageList ' +
-	        'GUICtrlToolbar_GetHotItem GUICtrlToolbar_GetImageList ' +
-	        'GUICtrlToolbar_GetInsertMark GUICtrlToolbar_GetInsertMarkColor ' +
-	        'GUICtrlToolbar_GetMaxSize GUICtrlToolbar_GetMetrics ' +
-	        'GUICtrlToolbar_GetPadding GUICtrlToolbar_GetRows ' +
-	        'GUICtrlToolbar_GetString GUICtrlToolbar_GetStyle ' +
-	        'GUICtrlToolbar_GetStyleAltDrag ' +
-	        'GUICtrlToolbar_GetStyleCustomErase GUICtrlToolbar_GetStyleFlat ' +
-	        'GUICtrlToolbar_GetStyleList GUICtrlToolbar_GetStyleRegisterDrop ' +
-	        'GUICtrlToolbar_GetStyleToolTips ' +
-	        'GUICtrlToolbar_GetStyleTransparent ' +
-	        'GUICtrlToolbar_GetStyleWrapable GUICtrlToolbar_GetTextRows ' +
-	        'GUICtrlToolbar_GetToolTips GUICtrlToolbar_GetUnicodeFormat ' +
-	        'GUICtrlToolbar_HideButton GUICtrlToolbar_HighlightButton ' +
-	        'GUICtrlToolbar_HitTest GUICtrlToolbar_IndexToCommand ' +
-	        'GUICtrlToolbar_InsertButton GUICtrlToolbar_InsertMarkHitTest ' +
-	        'GUICtrlToolbar_IsButtonChecked GUICtrlToolbar_IsButtonEnabled ' +
-	        'GUICtrlToolbar_IsButtonHidden ' +
-	        'GUICtrlToolbar_IsButtonHighlighted ' +
-	        'GUICtrlToolbar_IsButtonIndeterminate ' +
-	        'GUICtrlToolbar_IsButtonPressed GUICtrlToolbar_LoadBitmap ' +
-	        'GUICtrlToolbar_LoadImages GUICtrlToolbar_MapAccelerator ' +
-	        'GUICtrlToolbar_MoveButton GUICtrlToolbar_PressButton ' +
-	        'GUICtrlToolbar_SetAnchorHighlight GUICtrlToolbar_SetBitmapSize ' +
-	        'GUICtrlToolbar_SetButtonBitMap GUICtrlToolbar_SetButtonInfo ' +
-	        'GUICtrlToolbar_SetButtonInfoEx GUICtrlToolbar_SetButtonParam ' +
-	        'GUICtrlToolbar_SetButtonSize GUICtrlToolbar_SetButtonState ' +
-	        'GUICtrlToolbar_SetButtonStyle GUICtrlToolbar_SetButtonText ' +
-	        'GUICtrlToolbar_SetButtonWidth GUICtrlToolbar_SetCmdID ' +
-	        'GUICtrlToolbar_SetColorScheme ' +
-	        'GUICtrlToolbar_SetDisabledImageList ' +
-	        'GUICtrlToolbar_SetDrawTextFlags GUICtrlToolbar_SetExtendedStyle ' +
-	        'GUICtrlToolbar_SetHotImageList GUICtrlToolbar_SetHotItem ' +
-	        'GUICtrlToolbar_SetImageList GUICtrlToolbar_SetIndent ' +
-	        'GUICtrlToolbar_SetIndeterminate GUICtrlToolbar_SetInsertMark ' +
-	        'GUICtrlToolbar_SetInsertMarkColor GUICtrlToolbar_SetMaxTextRows ' +
-	        'GUICtrlToolbar_SetMetrics GUICtrlToolbar_SetPadding ' +
-	        'GUICtrlToolbar_SetParent GUICtrlToolbar_SetRows ' +
-	        'GUICtrlToolbar_SetStyle GUICtrlToolbar_SetStyleAltDrag ' +
-	        'GUICtrlToolbar_SetStyleCustomErase GUICtrlToolbar_SetStyleFlat ' +
-	        'GUICtrlToolbar_SetStyleList GUICtrlToolbar_SetStyleRegisterDrop ' +
-	        'GUICtrlToolbar_SetStyleToolTips ' +
-	        'GUICtrlToolbar_SetStyleTransparent ' +
-	        'GUICtrlToolbar_SetStyleWrapable GUICtrlToolbar_SetToolTips ' +
-	        'GUICtrlToolbar_SetUnicodeFormat GUICtrlToolbar_SetWindowTheme ' +
-	        'GUICtrlTreeView_Add GUICtrlTreeView_AddChild ' +
-	        'GUICtrlTreeView_AddChildFirst GUICtrlTreeView_AddFirst ' +
-	        'GUICtrlTreeView_BeginUpdate GUICtrlTreeView_ClickItem ' +
-	        'GUICtrlTreeView_Create GUICtrlTreeView_CreateDragImage ' +
-	        'GUICtrlTreeView_CreateSolidBitMap GUICtrlTreeView_Delete ' +
-	        'GUICtrlTreeView_DeleteAll GUICtrlTreeView_DeleteChildren ' +
-	        'GUICtrlTreeView_Destroy GUICtrlTreeView_DisplayRect ' +
-	        'GUICtrlTreeView_DisplayRectEx GUICtrlTreeView_EditText ' +
-	        'GUICtrlTreeView_EndEdit GUICtrlTreeView_EndUpdate ' +
-	        'GUICtrlTreeView_EnsureVisible GUICtrlTreeView_Expand ' +
-	        'GUICtrlTreeView_ExpandedOnce GUICtrlTreeView_FindItem ' +
-	        'GUICtrlTreeView_FindItemEx GUICtrlTreeView_GetBkColor ' +
-	        'GUICtrlTreeView_GetBold GUICtrlTreeView_GetChecked ' +
-	        'GUICtrlTreeView_GetChildCount GUICtrlTreeView_GetChildren ' +
-	        'GUICtrlTreeView_GetCount GUICtrlTreeView_GetCut ' +
-	        'GUICtrlTreeView_GetDropTarget GUICtrlTreeView_GetEditControl ' +
-	        'GUICtrlTreeView_GetExpanded GUICtrlTreeView_GetFirstChild ' +
-	        'GUICtrlTreeView_GetFirstItem GUICtrlTreeView_GetFirstVisible ' +
-	        'GUICtrlTreeView_GetFocused GUICtrlTreeView_GetHeight ' +
-	        'GUICtrlTreeView_GetImageIndex ' +
-	        'GUICtrlTreeView_GetImageListIconHandle ' +
-	        'GUICtrlTreeView_GetIndent GUICtrlTreeView_GetInsertMarkColor ' +
-	        'GUICtrlTreeView_GetISearchString GUICtrlTreeView_GetItemByIndex ' +
-	        'GUICtrlTreeView_GetItemHandle GUICtrlTreeView_GetItemParam ' +
-	        'GUICtrlTreeView_GetLastChild GUICtrlTreeView_GetLineColor ' +
-	        'GUICtrlTreeView_GetNext GUICtrlTreeView_GetNextChild ' +
-	        'GUICtrlTreeView_GetNextSibling GUICtrlTreeView_GetNextVisible ' +
-	        'GUICtrlTreeView_GetNormalImageList ' +
-	        'GUICtrlTreeView_GetParentHandle GUICtrlTreeView_GetParentParam ' +
-	        'GUICtrlTreeView_GetPrev GUICtrlTreeView_GetPrevChild ' +
-	        'GUICtrlTreeView_GetPrevSibling GUICtrlTreeView_GetPrevVisible ' +
-	        'GUICtrlTreeView_GetScrollTime GUICtrlTreeView_GetSelected ' +
-	        'GUICtrlTreeView_GetSelectedImageIndex ' +
-	        'GUICtrlTreeView_GetSelection GUICtrlTreeView_GetSiblingCount ' +
-	        'GUICtrlTreeView_GetState GUICtrlTreeView_GetStateImageIndex ' +
-	        'GUICtrlTreeView_GetStateImageList GUICtrlTreeView_GetText ' +
-	        'GUICtrlTreeView_GetTextColor GUICtrlTreeView_GetToolTips ' +
-	        'GUICtrlTreeView_GetTree GUICtrlTreeView_GetUnicodeFormat ' +
-	        'GUICtrlTreeView_GetVisible GUICtrlTreeView_GetVisibleCount ' +
-	        'GUICtrlTreeView_HitTest GUICtrlTreeView_HitTestEx ' +
-	        'GUICtrlTreeView_HitTestItem GUICtrlTreeView_Index ' +
-	        'GUICtrlTreeView_InsertItem GUICtrlTreeView_IsFirstItem ' +
-	        'GUICtrlTreeView_IsParent GUICtrlTreeView_Level ' +
-	        'GUICtrlTreeView_SelectItem GUICtrlTreeView_SelectItemByIndex ' +
-	        'GUICtrlTreeView_SetBkColor GUICtrlTreeView_SetBold ' +
-	        'GUICtrlTreeView_SetChecked GUICtrlTreeView_SetCheckedByIndex ' +
-	        'GUICtrlTreeView_SetChildren GUICtrlTreeView_SetCut ' +
-	        'GUICtrlTreeView_SetDropTarget GUICtrlTreeView_SetFocused ' +
-	        'GUICtrlTreeView_SetHeight GUICtrlTreeView_SetIcon ' +
-	        'GUICtrlTreeView_SetImageIndex GUICtrlTreeView_SetIndent ' +
-	        'GUICtrlTreeView_SetInsertMark ' +
-	        'GUICtrlTreeView_SetInsertMarkColor ' +
-	        'GUICtrlTreeView_SetItemHeight GUICtrlTreeView_SetItemParam ' +
-	        'GUICtrlTreeView_SetLineColor GUICtrlTreeView_SetNormalImageList ' +
-	        'GUICtrlTreeView_SetScrollTime GUICtrlTreeView_SetSelected ' +
-	        'GUICtrlTreeView_SetSelectedImageIndex GUICtrlTreeView_SetState ' +
-	        'GUICtrlTreeView_SetStateImageIndex ' +
-	        'GUICtrlTreeView_SetStateImageList GUICtrlTreeView_SetText ' +
-	        'GUICtrlTreeView_SetTextColor GUICtrlTreeView_SetToolTips ' +
-	        'GUICtrlTreeView_SetUnicodeFormat GUICtrlTreeView_Sort ' +
-	        'GUIImageList_Add GUIImageList_AddBitmap GUIImageList_AddIcon ' +
-	        'GUIImageList_AddMasked GUIImageList_BeginDrag ' +
-	        'GUIImageList_Copy GUIImageList_Create GUIImageList_Destroy ' +
-	        'GUIImageList_DestroyIcon GUIImageList_DragEnter ' +
-	        'GUIImageList_DragLeave GUIImageList_DragMove ' +
-	        'GUIImageList_Draw GUIImageList_DrawEx GUIImageList_Duplicate ' +
-	        'GUIImageList_EndDrag GUIImageList_GetBkColor ' +
-	        'GUIImageList_GetIcon GUIImageList_GetIconHeight ' +
-	        'GUIImageList_GetIconSize GUIImageList_GetIconSizeEx ' +
-	        'GUIImageList_GetIconWidth GUIImageList_GetImageCount ' +
-	        'GUIImageList_GetImageInfoEx GUIImageList_Remove ' +
-	        'GUIImageList_ReplaceIcon GUIImageList_SetBkColor ' +
-	        'GUIImageList_SetIconSize GUIImageList_SetImageCount ' +
-	        'GUIImageList_Swap GUIScrollBars_EnableScrollBar ' +
-	        'GUIScrollBars_GetScrollBarInfoEx GUIScrollBars_GetScrollBarRect ' +
-	        'GUIScrollBars_GetScrollBarRGState ' +
-	        'GUIScrollBars_GetScrollBarXYLineButton ' +
-	        'GUIScrollBars_GetScrollBarXYThumbBottom ' +
-	        'GUIScrollBars_GetScrollBarXYThumbTop ' +
-	        'GUIScrollBars_GetScrollInfo GUIScrollBars_GetScrollInfoEx ' +
-	        'GUIScrollBars_GetScrollInfoMax GUIScrollBars_GetScrollInfoMin ' +
-	        'GUIScrollBars_GetScrollInfoPage GUIScrollBars_GetScrollInfoPos ' +
-	        'GUIScrollBars_GetScrollInfoTrackPos GUIScrollBars_GetScrollPos ' +
-	        'GUIScrollBars_GetScrollRange GUIScrollBars_Init ' +
-	        'GUIScrollBars_ScrollWindow GUIScrollBars_SetScrollInfo ' +
-	        'GUIScrollBars_SetScrollInfoMax GUIScrollBars_SetScrollInfoMin ' +
-	        'GUIScrollBars_SetScrollInfoPage GUIScrollBars_SetScrollInfoPos ' +
-	        'GUIScrollBars_SetScrollRange GUIScrollBars_ShowScrollBar ' +
-	        'GUIToolTip_Activate GUIToolTip_AddTool GUIToolTip_AdjustRect ' +
-	        'GUIToolTip_BitsToTTF GUIToolTip_Create GUIToolTip_Deactivate ' +
-	        'GUIToolTip_DelTool GUIToolTip_Destroy GUIToolTip_EnumTools ' +
-	        'GUIToolTip_GetBubbleHeight GUIToolTip_GetBubbleSize ' +
-	        'GUIToolTip_GetBubbleWidth GUIToolTip_GetCurrentTool ' +
-	        'GUIToolTip_GetDelayTime GUIToolTip_GetMargin ' +
-	        'GUIToolTip_GetMarginEx GUIToolTip_GetMaxTipWidth ' +
-	        'GUIToolTip_GetText GUIToolTip_GetTipBkColor ' +
-	        'GUIToolTip_GetTipTextColor GUIToolTip_GetTitleBitMap ' +
-	        'GUIToolTip_GetTitleText GUIToolTip_GetToolCount ' +
-	        'GUIToolTip_GetToolInfo GUIToolTip_HitTest ' +
-	        'GUIToolTip_NewToolRect GUIToolTip_Pop GUIToolTip_PopUp ' +
-	        'GUIToolTip_SetDelayTime GUIToolTip_SetMargin ' +
-	        'GUIToolTip_SetMaxTipWidth GUIToolTip_SetTipBkColor ' +
-	        'GUIToolTip_SetTipTextColor GUIToolTip_SetTitle ' +
-	        'GUIToolTip_SetToolInfo GUIToolTip_SetWindowTheme ' +
-	        'GUIToolTip_ToolExists GUIToolTip_ToolToArray ' +
-	        'GUIToolTip_TrackActivate GUIToolTip_TrackPosition ' +
-	        'GUIToolTip_Update GUIToolTip_UpdateTipText HexToString ' +
-	        'IEAction IEAttach IEBodyReadHTML IEBodyReadText ' +
-	        'IEBodyWriteHTML IECreate IECreateEmbedded IEDocGetObj ' +
-	        'IEDocInsertHTML IEDocInsertText IEDocReadHTML ' +
-	        'IEDocWriteHTML IEErrorNotify IEFormElementCheckBoxSelect ' +
-	        'IEFormElementGetCollection IEFormElementGetObjByName ' +
-	        'IEFormElementGetValue IEFormElementOptionSelect ' +
-	        'IEFormElementRadioSelect IEFormElementSetValue ' +
-	        'IEFormGetCollection IEFormGetObjByName IEFormImageClick ' +
-	        'IEFormReset IEFormSubmit IEFrameGetCollection ' +
-	        'IEFrameGetObjByName IEGetObjById IEGetObjByName ' +
-	        'IEHeadInsertEventScript IEImgClick IEImgGetCollection ' +
-	        'IEIsFrameSet IELinkClickByIndex IELinkClickByText ' +
-	        'IELinkGetCollection IELoadWait IELoadWaitTimeout IENavigate ' +
-	        'IEPropertyGet IEPropertySet IEQuit IETableGetCollection ' +
-	        'IETableWriteToArray IETagNameAllGetCollection ' +
-	        'IETagNameGetCollection IE_Example IE_Introduction ' +
-	        'IE_VersionInfo INetExplorerCapable INetGetSource INetMail ' +
-	        'INetSmtpMail IsPressed MathCheckDiv Max MemGlobalAlloc ' +
-	        'MemGlobalFree MemGlobalLock MemGlobalSize MemGlobalUnlock ' +
-	        'MemMoveMemory MemVirtualAlloc MemVirtualAllocEx ' +
-	        'MemVirtualFree MemVirtualFreeEx Min MouseTrap ' +
-	        'NamedPipes_CallNamedPipe NamedPipes_ConnectNamedPipe ' +
-	        'NamedPipes_CreateNamedPipe NamedPipes_CreatePipe ' +
-	        'NamedPipes_DisconnectNamedPipe ' +
-	        'NamedPipes_GetNamedPipeHandleState NamedPipes_GetNamedPipeInfo ' +
-	        'NamedPipes_PeekNamedPipe NamedPipes_SetNamedPipeHandleState ' +
-	        'NamedPipes_TransactNamedPipe NamedPipes_WaitNamedPipe ' +
-	        'Net_Share_ConnectionEnum Net_Share_FileClose ' +
-	        'Net_Share_FileEnum Net_Share_FileGetInfo Net_Share_PermStr ' +
-	        'Net_Share_ResourceStr Net_Share_SessionDel ' +
-	        'Net_Share_SessionEnum Net_Share_SessionGetInfo ' +
-	        'Net_Share_ShareAdd Net_Share_ShareCheck Net_Share_ShareDel ' +
-	        'Net_Share_ShareEnum Net_Share_ShareGetInfo ' +
-	        'Net_Share_ShareSetInfo Net_Share_StatisticsGetSvr ' +
-	        'Net_Share_StatisticsGetWrk Now NowCalc NowCalcDate ' +
-	        'NowDate NowTime PathFull PathGetRelative PathMake ' +
-	        'PathSplit ProcessGetName ProcessGetPriority Radian ' +
-	        'ReplaceStringInFile RunDos ScreenCapture_Capture ' +
-	        'ScreenCapture_CaptureWnd ScreenCapture_SaveImage ' +
-	        'ScreenCapture_SetBMPFormat ScreenCapture_SetJPGQuality ' +
-	        'ScreenCapture_SetTIFColorDepth ScreenCapture_SetTIFCompression ' +
-	        'Security__AdjustTokenPrivileges ' +
-	        'Security__CreateProcessWithToken Security__DuplicateTokenEx ' +
-	        'Security__GetAccountSid Security__GetLengthSid ' +
-	        'Security__GetTokenInformation Security__ImpersonateSelf ' +
-	        'Security__IsValidSid Security__LookupAccountName ' +
-	        'Security__LookupAccountSid Security__LookupPrivilegeValue ' +
-	        'Security__OpenProcessToken Security__OpenThreadToken ' +
-	        'Security__OpenThreadTokenEx Security__SetPrivilege ' +
-	        'Security__SetTokenInformation Security__SidToStringSid ' +
-	        'Security__SidTypeStr Security__StringSidToSid SendMessage ' +
-	        'SendMessageA SetDate SetTime Singleton SoundClose ' +
-	        'SoundLength SoundOpen SoundPause SoundPlay SoundPos ' +
-	        'SoundResume SoundSeek SoundStatus SoundStop ' +
-	        'SQLite_Changes SQLite_Close SQLite_Display2DResult ' +
-	        'SQLite_Encode SQLite_ErrCode SQLite_ErrMsg SQLite_Escape ' +
-	        'SQLite_Exec SQLite_FastEncode SQLite_FastEscape ' +
-	        'SQLite_FetchData SQLite_FetchNames SQLite_GetTable ' +
-	        'SQLite_GetTable2d SQLite_LastInsertRowID SQLite_LibVersion ' +
-	        'SQLite_Open SQLite_Query SQLite_QueryFinalize ' +
-	        'SQLite_QueryReset SQLite_QuerySingleRow SQLite_SafeMode ' +
-	        'SQLite_SetTimeout SQLite_Shutdown SQLite_SQLiteExe ' +
-	        'SQLite_Startup SQLite_TotalChanges StringBetween ' +
-	        'StringExplode StringInsert StringProper StringRepeat ' +
-	        'StringTitleCase StringToHex TCPIpToName TempFile ' +
-	        'TicksToTime Timer_Diff Timer_GetIdleTime Timer_GetTimerID ' +
-	        'Timer_Init Timer_KillAllTimers Timer_KillTimer ' +
-	        'Timer_SetTimer TimeToTicks VersionCompare viClose ' +
-	        'viExecCommand viFindGpib viGpibBusReset viGTL ' +
-	        'viInteractiveControl viOpen viSetAttribute viSetTimeout ' +
-	        'WeekNumberISO WinAPI_AbortPath WinAPI_ActivateKeyboardLayout ' +
-	        'WinAPI_AddClipboardFormatListener WinAPI_AddFontMemResourceEx ' +
-	        'WinAPI_AddFontResourceEx WinAPI_AddIconOverlay ' +
-	        'WinAPI_AddIconTransparency WinAPI_AddMRUString ' +
-	        'WinAPI_AdjustBitmap WinAPI_AdjustTokenPrivileges ' +
-	        'WinAPI_AdjustWindowRectEx WinAPI_AlphaBlend WinAPI_AngleArc ' +
-	        'WinAPI_AnimateWindow WinAPI_Arc WinAPI_ArcTo ' +
-	        'WinAPI_ArrayToStruct WinAPI_AssignProcessToJobObject ' +
-	        'WinAPI_AssocGetPerceivedType WinAPI_AssocQueryString ' +
-	        'WinAPI_AttachConsole WinAPI_AttachThreadInput ' +
-	        'WinAPI_BackupRead WinAPI_BackupReadAbort WinAPI_BackupSeek ' +
-	        'WinAPI_BackupWrite WinAPI_BackupWriteAbort WinAPI_Beep ' +
-	        'WinAPI_BeginBufferedPaint WinAPI_BeginDeferWindowPos ' +
-	        'WinAPI_BeginPaint WinAPI_BeginPath WinAPI_BeginUpdateResource ' +
-	        'WinAPI_BitBlt WinAPI_BringWindowToTop ' +
-	        'WinAPI_BroadcastSystemMessage WinAPI_BrowseForFolderDlg ' +
-	        'WinAPI_BufferedPaintClear WinAPI_BufferedPaintInit ' +
-	        'WinAPI_BufferedPaintSetAlpha WinAPI_BufferedPaintUnInit ' +
-	        'WinAPI_CallNextHookEx WinAPI_CallWindowProc ' +
-	        'WinAPI_CallWindowProcW WinAPI_CascadeWindows ' +
-	        'WinAPI_ChangeWindowMessageFilterEx WinAPI_CharToOem ' +
-	        'WinAPI_ChildWindowFromPointEx WinAPI_ClientToScreen ' +
-	        'WinAPI_ClipCursor WinAPI_CloseDesktop WinAPI_CloseEnhMetaFile ' +
-	        'WinAPI_CloseFigure WinAPI_CloseHandle WinAPI_CloseThemeData ' +
-	        'WinAPI_CloseWindow WinAPI_CloseWindowStation ' +
-	        'WinAPI_CLSIDFromProgID WinAPI_CoInitialize ' +
-	        'WinAPI_ColorAdjustLuma WinAPI_ColorHLSToRGB ' +
-	        'WinAPI_ColorRGBToHLS WinAPI_CombineRgn ' +
-	        'WinAPI_CombineTransform WinAPI_CommandLineToArgv ' +
-	        'WinAPI_CommDlgExtendedError WinAPI_CommDlgExtendedErrorEx ' +
-	        'WinAPI_CompareString WinAPI_CompressBitmapBits ' +
-	        'WinAPI_CompressBuffer WinAPI_ComputeCrc32 ' +
-	        'WinAPI_ConfirmCredentials WinAPI_CopyBitmap WinAPI_CopyCursor ' +
-	        'WinAPI_CopyEnhMetaFile WinAPI_CopyFileEx WinAPI_CopyIcon ' +
-	        'WinAPI_CopyImage WinAPI_CopyRect WinAPI_CopyStruct ' +
-	        'WinAPI_CoTaskMemAlloc WinAPI_CoTaskMemFree ' +
-	        'WinAPI_CoTaskMemRealloc WinAPI_CoUninitialize ' +
-	        'WinAPI_Create32BitHBITMAP WinAPI_Create32BitHICON ' +
-	        'WinAPI_CreateANDBitmap WinAPI_CreateBitmap ' +
-	        'WinAPI_CreateBitmapIndirect WinAPI_CreateBrushIndirect ' +
-	        'WinAPI_CreateBuffer WinAPI_CreateBufferFromStruct ' +
-	        'WinAPI_CreateCaret WinAPI_CreateColorAdjustment ' +
-	        'WinAPI_CreateCompatibleBitmap WinAPI_CreateCompatibleBitmapEx ' +
-	        'WinAPI_CreateCompatibleDC WinAPI_CreateDesktop ' +
-	        'WinAPI_CreateDIB WinAPI_CreateDIBColorTable ' +
-	        'WinAPI_CreateDIBitmap WinAPI_CreateDIBSection ' +
-	        'WinAPI_CreateDirectory WinAPI_CreateDirectoryEx ' +
-	        'WinAPI_CreateEllipticRgn WinAPI_CreateEmptyIcon ' +
-	        'WinAPI_CreateEnhMetaFile WinAPI_CreateEvent WinAPI_CreateFile ' +
-	        'WinAPI_CreateFileEx WinAPI_CreateFileMapping ' +
-	        'WinAPI_CreateFont WinAPI_CreateFontEx ' +
-	        'WinAPI_CreateFontIndirect WinAPI_CreateGUID ' +
-	        'WinAPI_CreateHardLink WinAPI_CreateIcon ' +
-	        'WinAPI_CreateIconFromResourceEx WinAPI_CreateIconIndirect ' +
-	        'WinAPI_CreateJobObject WinAPI_CreateMargins ' +
-	        'WinAPI_CreateMRUList WinAPI_CreateMutex WinAPI_CreateNullRgn ' +
-	        'WinAPI_CreateNumberFormatInfo WinAPI_CreateObjectID ' +
-	        'WinAPI_CreatePen WinAPI_CreatePoint WinAPI_CreatePolygonRgn ' +
-	        'WinAPI_CreateProcess WinAPI_CreateProcessWithToken ' +
-	        'WinAPI_CreateRect WinAPI_CreateRectEx WinAPI_CreateRectRgn ' +
-	        'WinAPI_CreateRectRgnIndirect WinAPI_CreateRoundRectRgn ' +
-	        'WinAPI_CreateSemaphore WinAPI_CreateSize ' +
-	        'WinAPI_CreateSolidBitmap WinAPI_CreateSolidBrush ' +
-	        'WinAPI_CreateStreamOnHGlobal WinAPI_CreateString ' +
-	        'WinAPI_CreateSymbolicLink WinAPI_CreateTransform ' +
-	        'WinAPI_CreateWindowEx WinAPI_CreateWindowStation ' +
-	        'WinAPI_DecompressBuffer WinAPI_DecryptFile ' +
-	        'WinAPI_DeferWindowPos WinAPI_DefineDosDevice ' +
-	        'WinAPI_DefRawInputProc WinAPI_DefSubclassProc ' +
-	        'WinAPI_DefWindowProc WinAPI_DefWindowProcW WinAPI_DeleteDC ' +
-	        'WinAPI_DeleteEnhMetaFile WinAPI_DeleteFile ' +
-	        'WinAPI_DeleteObject WinAPI_DeleteObjectID ' +
-	        'WinAPI_DeleteVolumeMountPoint WinAPI_DeregisterShellHookWindow ' +
-	        'WinAPI_DestroyCaret WinAPI_DestroyCursor WinAPI_DestroyIcon ' +
-	        'WinAPI_DestroyWindow WinAPI_DeviceIoControl ' +
-	        'WinAPI_DisplayStruct WinAPI_DllGetVersion WinAPI_DllInstall ' +
-	        'WinAPI_DllUninstall WinAPI_DPtoLP WinAPI_DragAcceptFiles ' +
-	        'WinAPI_DragFinish WinAPI_DragQueryFileEx ' +
-	        'WinAPI_DragQueryPoint WinAPI_DrawAnimatedRects ' +
-	        'WinAPI_DrawBitmap WinAPI_DrawEdge WinAPI_DrawFocusRect ' +
-	        'WinAPI_DrawFrameControl WinAPI_DrawIcon WinAPI_DrawIconEx ' +
-	        'WinAPI_DrawLine WinAPI_DrawShadowText WinAPI_DrawText ' +
-	        'WinAPI_DrawThemeBackground WinAPI_DrawThemeEdge ' +
-	        'WinAPI_DrawThemeIcon WinAPI_DrawThemeParentBackground ' +
-	        'WinAPI_DrawThemeText WinAPI_DrawThemeTextEx ' +
-	        'WinAPI_DuplicateEncryptionInfoFile WinAPI_DuplicateHandle ' +
-	        'WinAPI_DuplicateTokenEx WinAPI_DwmDefWindowProc ' +
-	        'WinAPI_DwmEnableBlurBehindWindow WinAPI_DwmEnableComposition ' +
-	        'WinAPI_DwmExtendFrameIntoClientArea ' +
-	        'WinAPI_DwmGetColorizationColor ' +
-	        'WinAPI_DwmGetColorizationParameters ' +
-	        'WinAPI_DwmGetWindowAttribute WinAPI_DwmInvalidateIconicBitmaps ' +
-	        'WinAPI_DwmIsCompositionEnabled ' +
-	        'WinAPI_DwmQueryThumbnailSourceSize WinAPI_DwmRegisterThumbnail ' +
-	        'WinAPI_DwmSetColorizationParameters ' +
-	        'WinAPI_DwmSetIconicLivePreviewBitmap ' +
-	        'WinAPI_DwmSetIconicThumbnail WinAPI_DwmSetWindowAttribute ' +
-	        'WinAPI_DwmUnregisterThumbnail ' +
-	        'WinAPI_DwmUpdateThumbnailProperties WinAPI_DWordToFloat ' +
-	        'WinAPI_DWordToInt WinAPI_EjectMedia WinAPI_Ellipse ' +
-	        'WinAPI_EmptyWorkingSet WinAPI_EnableWindow WinAPI_EncryptFile ' +
-	        'WinAPI_EncryptionDisable WinAPI_EndBufferedPaint ' +
-	        'WinAPI_EndDeferWindowPos WinAPI_EndPaint WinAPI_EndPath ' +
-	        'WinAPI_EndUpdateResource WinAPI_EnumChildProcess ' +
-	        'WinAPI_EnumChildWindows WinAPI_EnumDesktops ' +
-	        'WinAPI_EnumDesktopWindows WinAPI_EnumDeviceDrivers ' +
-	        'WinAPI_EnumDisplayDevices WinAPI_EnumDisplayMonitors ' +
-	        'WinAPI_EnumDisplaySettings WinAPI_EnumDllProc ' +
-	        'WinAPI_EnumFiles WinAPI_EnumFileStreams ' +
-	        'WinAPI_EnumFontFamilies WinAPI_EnumHardLinks ' +
-	        'WinAPI_EnumMRUList WinAPI_EnumPageFiles ' +
-	        'WinAPI_EnumProcessHandles WinAPI_EnumProcessModules ' +
-	        'WinAPI_EnumProcessThreads WinAPI_EnumProcessWindows ' +
-	        'WinAPI_EnumRawInputDevices WinAPI_EnumResourceLanguages ' +
-	        'WinAPI_EnumResourceNames WinAPI_EnumResourceTypes ' +
-	        'WinAPI_EnumSystemGeoID WinAPI_EnumSystemLocales ' +
-	        'WinAPI_EnumUILanguages WinAPI_EnumWindows ' +
-	        'WinAPI_EnumWindowsPopup WinAPI_EnumWindowStations ' +
-	        'WinAPI_EnumWindowsTop WinAPI_EqualMemory WinAPI_EqualRect ' +
-	        'WinAPI_EqualRgn WinAPI_ExcludeClipRect ' +
-	        'WinAPI_ExpandEnvironmentStrings WinAPI_ExtCreatePen ' +
-	        'WinAPI_ExtCreateRegion WinAPI_ExtFloodFill WinAPI_ExtractIcon ' +
-	        'WinAPI_ExtractIconEx WinAPI_ExtSelectClipRgn ' +
-	        'WinAPI_FatalAppExit WinAPI_FatalExit ' +
-	        'WinAPI_FileEncryptionStatus WinAPI_FileExists ' +
-	        'WinAPI_FileIconInit WinAPI_FileInUse WinAPI_FillMemory ' +
-	        'WinAPI_FillPath WinAPI_FillRect WinAPI_FillRgn ' +
-	        'WinAPI_FindClose WinAPI_FindCloseChangeNotification ' +
-	        'WinAPI_FindExecutable WinAPI_FindFirstChangeNotification ' +
-	        'WinAPI_FindFirstFile WinAPI_FindFirstFileName ' +
-	        'WinAPI_FindFirstStream WinAPI_FindNextChangeNotification ' +
-	        'WinAPI_FindNextFile WinAPI_FindNextFileName ' +
-	        'WinAPI_FindNextStream WinAPI_FindResource ' +
-	        'WinAPI_FindResourceEx WinAPI_FindTextDlg WinAPI_FindWindow ' +
-	        'WinAPI_FlashWindow WinAPI_FlashWindowEx WinAPI_FlattenPath ' +
-	        'WinAPI_FloatToDWord WinAPI_FloatToInt WinAPI_FlushFileBuffers ' +
-	        'WinAPI_FlushFRBuffer WinAPI_FlushViewOfFile ' +
-	        'WinAPI_FormatDriveDlg WinAPI_FormatMessage WinAPI_FrameRect ' +
-	        'WinAPI_FrameRgn WinAPI_FreeLibrary WinAPI_FreeMemory ' +
-	        'WinAPI_FreeMRUList WinAPI_FreeResource WinAPI_GdiComment ' +
-	        'WinAPI_GetActiveWindow WinAPI_GetAllUsersProfileDirectory ' +
-	        'WinAPI_GetAncestor WinAPI_GetApplicationRestartSettings ' +
-	        'WinAPI_GetArcDirection WinAPI_GetAsyncKeyState ' +
-	        'WinAPI_GetBinaryType WinAPI_GetBitmapBits ' +
-	        'WinAPI_GetBitmapDimension WinAPI_GetBitmapDimensionEx ' +
-	        'WinAPI_GetBkColor WinAPI_GetBkMode WinAPI_GetBoundsRect ' +
-	        'WinAPI_GetBrushOrg WinAPI_GetBufferedPaintBits ' +
-	        'WinAPI_GetBufferedPaintDC WinAPI_GetBufferedPaintTargetDC ' +
-	        'WinAPI_GetBufferedPaintTargetRect WinAPI_GetBValue ' +
-	        'WinAPI_GetCaretBlinkTime WinAPI_GetCaretPos WinAPI_GetCDType ' +
-	        'WinAPI_GetClassInfoEx WinAPI_GetClassLongEx ' +
-	        'WinAPI_GetClassName WinAPI_GetClientHeight ' +
-	        'WinAPI_GetClientRect WinAPI_GetClientWidth ' +
-	        'WinAPI_GetClipboardSequenceNumber WinAPI_GetClipBox ' +
-	        'WinAPI_GetClipCursor WinAPI_GetClipRgn ' +
-	        'WinAPI_GetColorAdjustment WinAPI_GetCompressedFileSize ' +
-	        'WinAPI_GetCompression WinAPI_GetConnectedDlg ' +
-	        'WinAPI_GetCurrentDirectory WinAPI_GetCurrentHwProfile ' +
-	        'WinAPI_GetCurrentObject WinAPI_GetCurrentPosition ' +
-	        'WinAPI_GetCurrentProcess ' +
-	        'WinAPI_GetCurrentProcessExplicitAppUserModelID ' +
-	        'WinAPI_GetCurrentProcessID WinAPI_GetCurrentThemeName ' +
-	        'WinAPI_GetCurrentThread WinAPI_GetCurrentThreadId ' +
-	        'WinAPI_GetCursor WinAPI_GetCursorInfo WinAPI_GetDateFormat ' +
-	        'WinAPI_GetDC WinAPI_GetDCEx WinAPI_GetDefaultPrinter ' +
-	        'WinAPI_GetDefaultUserProfileDirectory WinAPI_GetDesktopWindow ' +
-	        'WinAPI_GetDeviceCaps WinAPI_GetDeviceDriverBaseName ' +
-	        'WinAPI_GetDeviceDriverFileName WinAPI_GetDeviceGammaRamp ' +
-	        'WinAPI_GetDIBColorTable WinAPI_GetDIBits ' +
-	        'WinAPI_GetDiskFreeSpaceEx WinAPI_GetDlgCtrlID ' +
-	        'WinAPI_GetDlgItem WinAPI_GetDllDirectory ' +
-	        'WinAPI_GetDriveBusType WinAPI_GetDriveGeometryEx ' +
-	        'WinAPI_GetDriveNumber WinAPI_GetDriveType ' +
-	        'WinAPI_GetDurationFormat WinAPI_GetEffectiveClientRect ' +
-	        'WinAPI_GetEnhMetaFile WinAPI_GetEnhMetaFileBits ' +
-	        'WinAPI_GetEnhMetaFileDescription WinAPI_GetEnhMetaFileDimension ' +
-	        'WinAPI_GetEnhMetaFileHeader WinAPI_GetErrorMessage ' +
-	        'WinAPI_GetErrorMode WinAPI_GetExitCodeProcess ' +
-	        'WinAPI_GetExtended WinAPI_GetFileAttributes WinAPI_GetFileID ' +
-	        'WinAPI_GetFileInformationByHandle ' +
-	        'WinAPI_GetFileInformationByHandleEx WinAPI_GetFilePointerEx ' +
-	        'WinAPI_GetFileSizeEx WinAPI_GetFileSizeOnDisk ' +
-	        'WinAPI_GetFileTitle WinAPI_GetFileType ' +
-	        'WinAPI_GetFileVersionInfo WinAPI_GetFinalPathNameByHandle ' +
-	        'WinAPI_GetFinalPathNameByHandleEx WinAPI_GetFocus ' +
-	        'WinAPI_GetFontMemoryResourceInfo WinAPI_GetFontName ' +
-	        'WinAPI_GetFontResourceInfo WinAPI_GetForegroundWindow ' +
-	        'WinAPI_GetFRBuffer WinAPI_GetFullPathName WinAPI_GetGeoInfo ' +
-	        'WinAPI_GetGlyphOutline WinAPI_GetGraphicsMode ' +
-	        'WinAPI_GetGuiResources WinAPI_GetGUIThreadInfo ' +
-	        'WinAPI_GetGValue WinAPI_GetHandleInformation ' +
-	        'WinAPI_GetHGlobalFromStream WinAPI_GetIconDimension ' +
-	        'WinAPI_GetIconInfo WinAPI_GetIconInfoEx WinAPI_GetIdleTime ' +
-	        'WinAPI_GetKeyboardLayout WinAPI_GetKeyboardLayoutList ' +
-	        'WinAPI_GetKeyboardState WinAPI_GetKeyboardType ' +
-	        'WinAPI_GetKeyNameText WinAPI_GetKeyState ' +
-	        'WinAPI_GetLastActivePopup WinAPI_GetLastError ' +
-	        'WinAPI_GetLastErrorMessage WinAPI_GetLayeredWindowAttributes ' +
-	        'WinAPI_GetLocaleInfo WinAPI_GetLogicalDrives ' +
-	        'WinAPI_GetMapMode WinAPI_GetMemorySize ' +
-	        'WinAPI_GetMessageExtraInfo WinAPI_GetModuleFileNameEx ' +
-	        'WinAPI_GetModuleHandle WinAPI_GetModuleHandleEx ' +
-	        'WinAPI_GetModuleInformation WinAPI_GetMonitorInfo ' +
-	        'WinAPI_GetMousePos WinAPI_GetMousePosX WinAPI_GetMousePosY ' +
-	        'WinAPI_GetMUILanguage WinAPI_GetNumberFormat WinAPI_GetObject ' +
-	        'WinAPI_GetObjectID WinAPI_GetObjectInfoByHandle ' +
-	        'WinAPI_GetObjectNameByHandle WinAPI_GetObjectType ' +
-	        'WinAPI_GetOpenFileName WinAPI_GetOutlineTextMetrics ' +
-	        'WinAPI_GetOverlappedResult WinAPI_GetParent ' +
-	        'WinAPI_GetParentProcess WinAPI_GetPerformanceInfo ' +
-	        'WinAPI_GetPEType WinAPI_GetPhysicallyInstalledSystemMemory ' +
-	        'WinAPI_GetPixel WinAPI_GetPolyFillMode WinAPI_GetPosFromRect ' +
-	        'WinAPI_GetPriorityClass WinAPI_GetProcAddress ' +
-	        'WinAPI_GetProcessAffinityMask WinAPI_GetProcessCommandLine ' +
-	        'WinAPI_GetProcessFileName WinAPI_GetProcessHandleCount ' +
-	        'WinAPI_GetProcessID WinAPI_GetProcessIoCounters ' +
-	        'WinAPI_GetProcessMemoryInfo WinAPI_GetProcessName ' +
-	        'WinAPI_GetProcessShutdownParameters WinAPI_GetProcessTimes ' +
-	        'WinAPI_GetProcessUser WinAPI_GetProcessWindowStation ' +
-	        'WinAPI_GetProcessWorkingDirectory WinAPI_GetProfilesDirectory ' +
-	        'WinAPI_GetPwrCapabilities WinAPI_GetRawInputBuffer ' +
-	        'WinAPI_GetRawInputBufferLength WinAPI_GetRawInputData ' +
-	        'WinAPI_GetRawInputDeviceInfo WinAPI_GetRegionData ' +
-	        'WinAPI_GetRegisteredRawInputDevices ' +
-	        'WinAPI_GetRegKeyNameByHandle WinAPI_GetRgnBox WinAPI_GetROP2 ' +
-	        'WinAPI_GetRValue WinAPI_GetSaveFileName WinAPI_GetShellWindow ' +
-	        'WinAPI_GetStartupInfo WinAPI_GetStdHandle ' +
-	        'WinAPI_GetStockObject WinAPI_GetStretchBltMode ' +
-	        'WinAPI_GetString WinAPI_GetSysColor WinAPI_GetSysColorBrush ' +
-	        'WinAPI_GetSystemDefaultLangID WinAPI_GetSystemDefaultLCID ' +
-	        'WinAPI_GetSystemDefaultUILanguage WinAPI_GetSystemDEPPolicy ' +
-	        'WinAPI_GetSystemInfo WinAPI_GetSystemMetrics ' +
-	        'WinAPI_GetSystemPowerStatus WinAPI_GetSystemTimes ' +
-	        'WinAPI_GetSystemWow64Directory WinAPI_GetTabbedTextExtent ' +
-	        'WinAPI_GetTempFileName WinAPI_GetTextAlign ' +
-	        'WinAPI_GetTextCharacterExtra WinAPI_GetTextColor ' +
-	        'WinAPI_GetTextExtentPoint32 WinAPI_GetTextFace ' +
-	        'WinAPI_GetTextMetrics WinAPI_GetThemeAppProperties ' +
-	        'WinAPI_GetThemeBackgroundContentRect ' +
-	        'WinAPI_GetThemeBackgroundExtent WinAPI_GetThemeBackgroundRegion ' +
-	        'WinAPI_GetThemeBitmap WinAPI_GetThemeBool ' +
-	        'WinAPI_GetThemeColor WinAPI_GetThemeDocumentationProperty ' +
-	        'WinAPI_GetThemeEnumValue WinAPI_GetThemeFilename ' +
-	        'WinAPI_GetThemeFont WinAPI_GetThemeInt WinAPI_GetThemeMargins ' +
-	        'WinAPI_GetThemeMetric WinAPI_GetThemePartSize ' +
-	        'WinAPI_GetThemePosition WinAPI_GetThemePropertyOrigin ' +
-	        'WinAPI_GetThemeRect WinAPI_GetThemeString ' +
-	        'WinAPI_GetThemeSysBool WinAPI_GetThemeSysColor ' +
-	        'WinAPI_GetThemeSysColorBrush WinAPI_GetThemeSysFont ' +
-	        'WinAPI_GetThemeSysInt WinAPI_GetThemeSysSize ' +
-	        'WinAPI_GetThemeSysString WinAPI_GetThemeTextExtent ' +
-	        'WinAPI_GetThemeTextMetrics WinAPI_GetThemeTransitionDuration ' +
-	        'WinAPI_GetThreadDesktop WinAPI_GetThreadErrorMode ' +
-	        'WinAPI_GetThreadLocale WinAPI_GetThreadUILanguage ' +
-	        'WinAPI_GetTickCount WinAPI_GetTickCount64 ' +
-	        'WinAPI_GetTimeFormat WinAPI_GetTopWindow ' +
-	        'WinAPI_GetUDFColorMode WinAPI_GetUpdateRect ' +
-	        'WinAPI_GetUpdateRgn WinAPI_GetUserDefaultLangID ' +
-	        'WinAPI_GetUserDefaultLCID WinAPI_GetUserDefaultUILanguage ' +
-	        'WinAPI_GetUserGeoID WinAPI_GetUserObjectInformation ' +
-	        'WinAPI_GetVersion WinAPI_GetVersionEx ' +
-	        'WinAPI_GetVolumeInformation WinAPI_GetVolumeInformationByHandle ' +
-	        'WinAPI_GetVolumeNameForVolumeMountPoint WinAPI_GetWindow ' +
-	        'WinAPI_GetWindowDC WinAPI_GetWindowDisplayAffinity ' +
-	        'WinAPI_GetWindowExt WinAPI_GetWindowFileName ' +
-	        'WinAPI_GetWindowHeight WinAPI_GetWindowInfo ' +
-	        'WinAPI_GetWindowLong WinAPI_GetWindowOrg ' +
-	        'WinAPI_GetWindowPlacement WinAPI_GetWindowRect ' +
-	        'WinAPI_GetWindowRgn WinAPI_GetWindowRgnBox ' +
-	        'WinAPI_GetWindowSubclass WinAPI_GetWindowText ' +
-	        'WinAPI_GetWindowTheme WinAPI_GetWindowThreadProcessId ' +
-	        'WinAPI_GetWindowWidth WinAPI_GetWorkArea ' +
-	        'WinAPI_GetWorldTransform WinAPI_GetXYFromPoint ' +
-	        'WinAPI_GlobalMemoryStatus WinAPI_GradientFill ' +
-	        'WinAPI_GUIDFromString WinAPI_GUIDFromStringEx WinAPI_HashData ' +
-	        'WinAPI_HashString WinAPI_HiByte WinAPI_HideCaret ' +
-	        'WinAPI_HiDWord WinAPI_HiWord WinAPI_InflateRect ' +
-	        'WinAPI_InitMUILanguage WinAPI_InProcess ' +
-	        'WinAPI_IntersectClipRect WinAPI_IntersectRect ' +
-	        'WinAPI_IntToDWord WinAPI_IntToFloat WinAPI_InvalidateRect ' +
-	        'WinAPI_InvalidateRgn WinAPI_InvertANDBitmap ' +
-	        'WinAPI_InvertColor WinAPI_InvertRect WinAPI_InvertRgn ' +
-	        'WinAPI_IOCTL WinAPI_IsAlphaBitmap WinAPI_IsBadCodePtr ' +
-	        'WinAPI_IsBadReadPtr WinAPI_IsBadStringPtr ' +
-	        'WinAPI_IsBadWritePtr WinAPI_IsChild WinAPI_IsClassName ' +
-	        'WinAPI_IsDoorOpen WinAPI_IsElevated WinAPI_IsHungAppWindow ' +
-	        'WinAPI_IsIconic WinAPI_IsInternetConnected ' +
-	        'WinAPI_IsLoadKBLayout WinAPI_IsMemory ' +
-	        'WinAPI_IsNameInExpression WinAPI_IsNetworkAlive ' +
-	        'WinAPI_IsPathShared WinAPI_IsProcessInJob ' +
-	        'WinAPI_IsProcessorFeaturePresent WinAPI_IsRectEmpty ' +
-	        'WinAPI_IsThemeActive ' +
-	        'WinAPI_IsThemeBackgroundPartiallyTransparent ' +
-	        'WinAPI_IsThemePartDefined WinAPI_IsValidLocale ' +
-	        'WinAPI_IsWindow WinAPI_IsWindowEnabled WinAPI_IsWindowUnicode ' +
-	        'WinAPI_IsWindowVisible WinAPI_IsWow64Process ' +
-	        'WinAPI_IsWritable WinAPI_IsZoomed WinAPI_Keybd_Event ' +
-	        'WinAPI_KillTimer WinAPI_LineDDA WinAPI_LineTo ' +
-	        'WinAPI_LoadBitmap WinAPI_LoadCursor WinAPI_LoadCursorFromFile ' +
-	        'WinAPI_LoadIcon WinAPI_LoadIconMetric ' +
-	        'WinAPI_LoadIconWithScaleDown WinAPI_LoadImage ' +
-	        'WinAPI_LoadIndirectString WinAPI_LoadKeyboardLayout ' +
-	        'WinAPI_LoadLibrary WinAPI_LoadLibraryEx WinAPI_LoadMedia ' +
-	        'WinAPI_LoadResource WinAPI_LoadShell32Icon WinAPI_LoadString ' +
-	        'WinAPI_LoadStringEx WinAPI_LoByte WinAPI_LocalFree ' +
-	        'WinAPI_LockDevice WinAPI_LockFile WinAPI_LockResource ' +
-	        'WinAPI_LockWindowUpdate WinAPI_LockWorkStation WinAPI_LoDWord ' +
-	        'WinAPI_LongMid WinAPI_LookupIconIdFromDirectoryEx ' +
-	        'WinAPI_LoWord WinAPI_LPtoDP WinAPI_MAKELANGID ' +
-	        'WinAPI_MAKELCID WinAPI_MakeLong WinAPI_MakeQWord ' +
-	        'WinAPI_MakeWord WinAPI_MapViewOfFile WinAPI_MapVirtualKey ' +
-	        'WinAPI_MaskBlt WinAPI_MessageBeep WinAPI_MessageBoxCheck ' +
-	        'WinAPI_MessageBoxIndirect WinAPI_MirrorIcon ' +
-	        'WinAPI_ModifyWorldTransform WinAPI_MonitorFromPoint ' +
-	        'WinAPI_MonitorFromRect WinAPI_MonitorFromWindow ' +
-	        'WinAPI_Mouse_Event WinAPI_MoveFileEx WinAPI_MoveMemory ' +
-	        'WinAPI_MoveTo WinAPI_MoveToEx WinAPI_MoveWindow ' +
-	        'WinAPI_MsgBox WinAPI_MulDiv WinAPI_MultiByteToWideChar ' +
-	        'WinAPI_MultiByteToWideCharEx WinAPI_NtStatusToDosError ' +
-	        'WinAPI_OemToChar WinAPI_OffsetClipRgn WinAPI_OffsetPoints ' +
-	        'WinAPI_OffsetRect WinAPI_OffsetRgn WinAPI_OffsetWindowOrg ' +
-	        'WinAPI_OpenDesktop WinAPI_OpenFileById WinAPI_OpenFileDlg ' +
-	        'WinAPI_OpenFileMapping WinAPI_OpenIcon ' +
-	        'WinAPI_OpenInputDesktop WinAPI_OpenJobObject WinAPI_OpenMutex ' +
-	        'WinAPI_OpenProcess WinAPI_OpenProcessToken ' +
-	        'WinAPI_OpenSemaphore WinAPI_OpenThemeData ' +
-	        'WinAPI_OpenWindowStation WinAPI_PageSetupDlg ' +
-	        'WinAPI_PaintDesktop WinAPI_PaintRgn WinAPI_ParseURL ' +
-	        'WinAPI_ParseUserName WinAPI_PatBlt WinAPI_PathAddBackslash ' +
-	        'WinAPI_PathAddExtension WinAPI_PathAppend ' +
-	        'WinAPI_PathBuildRoot WinAPI_PathCanonicalize ' +
-	        'WinAPI_PathCommonPrefix WinAPI_PathCompactPath ' +
-	        'WinAPI_PathCompactPathEx WinAPI_PathCreateFromUrl ' +
-	        'WinAPI_PathFindExtension WinAPI_PathFindFileName ' +
-	        'WinAPI_PathFindNextComponent WinAPI_PathFindOnPath ' +
-	        'WinAPI_PathGetArgs WinAPI_PathGetCharType ' +
-	        'WinAPI_PathGetDriveNumber WinAPI_PathIsContentType ' +
-	        'WinAPI_PathIsDirectory WinAPI_PathIsDirectoryEmpty ' +
-	        'WinAPI_PathIsExe WinAPI_PathIsFileSpec ' +
-	        'WinAPI_PathIsLFNFileSpec WinAPI_PathIsRelative ' +
-	        'WinAPI_PathIsRoot WinAPI_PathIsSameRoot ' +
-	        'WinAPI_PathIsSystemFolder WinAPI_PathIsUNC ' +
-	        'WinAPI_PathIsUNCServer WinAPI_PathIsUNCServerShare ' +
-	        'WinAPI_PathMakeSystemFolder WinAPI_PathMatchSpec ' +
-	        'WinAPI_PathParseIconLocation WinAPI_PathRelativePathTo ' +
-	        'WinAPI_PathRemoveArgs WinAPI_PathRemoveBackslash ' +
-	        'WinAPI_PathRemoveExtension WinAPI_PathRemoveFileSpec ' +
-	        'WinAPI_PathRenameExtension WinAPI_PathSearchAndQualify ' +
-	        'WinAPI_PathSkipRoot WinAPI_PathStripPath ' +
-	        'WinAPI_PathStripToRoot WinAPI_PathToRegion ' +
-	        'WinAPI_PathUndecorate WinAPI_PathUnExpandEnvStrings ' +
-	        'WinAPI_PathUnmakeSystemFolder WinAPI_PathUnquoteSpaces ' +
-	        'WinAPI_PathYetAnotherMakeUniqueName WinAPI_PickIconDlg ' +
-	        'WinAPI_PlayEnhMetaFile WinAPI_PlaySound WinAPI_PlgBlt ' +
-	        'WinAPI_PointFromRect WinAPI_PolyBezier WinAPI_PolyBezierTo ' +
-	        'WinAPI_PolyDraw WinAPI_Polygon WinAPI_PostMessage ' +
-	        'WinAPI_PrimaryLangId WinAPI_PrintDlg WinAPI_PrintDlgEx ' +
-	        'WinAPI_PrintWindow WinAPI_ProgIDFromCLSID WinAPI_PtInRect ' +
-	        'WinAPI_PtInRectEx WinAPI_PtInRegion WinAPI_PtVisible ' +
-	        'WinAPI_QueryDosDevice WinAPI_QueryInformationJobObject ' +
-	        'WinAPI_QueryPerformanceCounter WinAPI_QueryPerformanceFrequency ' +
-	        'WinAPI_RadialGradientFill WinAPI_ReadDirectoryChanges ' +
-	        'WinAPI_ReadFile WinAPI_ReadProcessMemory WinAPI_Rectangle ' +
-	        'WinAPI_RectInRegion WinAPI_RectIsEmpty WinAPI_RectVisible ' +
-	        'WinAPI_RedrawWindow WinAPI_RegCloseKey ' +
-	        'WinAPI_RegConnectRegistry WinAPI_RegCopyTree ' +
-	        'WinAPI_RegCopyTreeEx WinAPI_RegCreateKey ' +
-	        'WinAPI_RegDeleteEmptyKey WinAPI_RegDeleteKey ' +
-	        'WinAPI_RegDeleteKeyValue WinAPI_RegDeleteTree ' +
-	        'WinAPI_RegDeleteTreeEx WinAPI_RegDeleteValue ' +
-	        'WinAPI_RegDisableReflectionKey WinAPI_RegDuplicateHKey ' +
-	        'WinAPI_RegEnableReflectionKey WinAPI_RegEnumKey ' +
-	        'WinAPI_RegEnumValue WinAPI_RegFlushKey ' +
-	        'WinAPI_RegisterApplicationRestart WinAPI_RegisterClass ' +
-	        'WinAPI_RegisterClassEx WinAPI_RegisterHotKey ' +
-	        'WinAPI_RegisterPowerSettingNotification ' +
-	        'WinAPI_RegisterRawInputDevices WinAPI_RegisterShellHookWindow ' +
-	        'WinAPI_RegisterWindowMessage WinAPI_RegLoadMUIString ' +
-	        'WinAPI_RegNotifyChangeKeyValue WinAPI_RegOpenKey ' +
-	        'WinAPI_RegQueryInfoKey WinAPI_RegQueryLastWriteTime ' +
-	        'WinAPI_RegQueryMultipleValues WinAPI_RegQueryReflectionKey ' +
-	        'WinAPI_RegQueryValue WinAPI_RegRestoreKey WinAPI_RegSaveKey ' +
-	        'WinAPI_RegSetValue WinAPI_ReleaseCapture WinAPI_ReleaseDC ' +
-	        'WinAPI_ReleaseMutex WinAPI_ReleaseSemaphore ' +
-	        'WinAPI_ReleaseStream WinAPI_RemoveClipboardFormatListener ' +
-	        'WinAPI_RemoveDirectory WinAPI_RemoveFontMemResourceEx ' +
-	        'WinAPI_RemoveFontResourceEx WinAPI_RemoveWindowSubclass ' +
-	        'WinAPI_ReOpenFile WinAPI_ReplaceFile WinAPI_ReplaceTextDlg ' +
-	        'WinAPI_ResetEvent WinAPI_RestartDlg WinAPI_RestoreDC ' +
-	        'WinAPI_RGB WinAPI_RotatePoints WinAPI_RoundRect ' +
-	        'WinAPI_SaveDC WinAPI_SaveFileDlg WinAPI_SaveHBITMAPToFile ' +
-	        'WinAPI_SaveHICONToFile WinAPI_ScaleWindowExt ' +
-	        'WinAPI_ScreenToClient WinAPI_SearchPath WinAPI_SelectClipPath ' +
-	        'WinAPI_SelectClipRgn WinAPI_SelectObject ' +
-	        'WinAPI_SendMessageTimeout WinAPI_SetActiveWindow ' +
-	        'WinAPI_SetArcDirection WinAPI_SetBitmapBits ' +
-	        'WinAPI_SetBitmapDimensionEx WinAPI_SetBkColor ' +
-	        'WinAPI_SetBkMode WinAPI_SetBoundsRect WinAPI_SetBrushOrg ' +
-	        'WinAPI_SetCapture WinAPI_SetCaretBlinkTime WinAPI_SetCaretPos ' +
-	        'WinAPI_SetClassLongEx WinAPI_SetColorAdjustment ' +
-	        'WinAPI_SetCompression WinAPI_SetCurrentDirectory ' +
-	        'WinAPI_SetCurrentProcessExplicitAppUserModelID WinAPI_SetCursor ' +
-	        'WinAPI_SetDCBrushColor WinAPI_SetDCPenColor ' +
-	        'WinAPI_SetDefaultPrinter WinAPI_SetDeviceGammaRamp ' +
-	        'WinAPI_SetDIBColorTable WinAPI_SetDIBits ' +
-	        'WinAPI_SetDIBitsToDevice WinAPI_SetDllDirectory ' +
-	        'WinAPI_SetEndOfFile WinAPI_SetEnhMetaFileBits ' +
-	        'WinAPI_SetErrorMode WinAPI_SetEvent WinAPI_SetFileAttributes ' +
-	        'WinAPI_SetFileInformationByHandleEx WinAPI_SetFilePointer ' +
-	        'WinAPI_SetFilePointerEx WinAPI_SetFileShortName ' +
-	        'WinAPI_SetFileValidData WinAPI_SetFocus WinAPI_SetFont ' +
-	        'WinAPI_SetForegroundWindow WinAPI_SetFRBuffer ' +
-	        'WinAPI_SetGraphicsMode WinAPI_SetHandleInformation ' +
-	        'WinAPI_SetInformationJobObject WinAPI_SetKeyboardLayout ' +
-	        'WinAPI_SetKeyboardState WinAPI_SetLastError ' +
-	        'WinAPI_SetLayeredWindowAttributes WinAPI_SetLocaleInfo ' +
-	        'WinAPI_SetMapMode WinAPI_SetMessageExtraInfo WinAPI_SetParent ' +
-	        'WinAPI_SetPixel WinAPI_SetPolyFillMode ' +
-	        'WinAPI_SetPriorityClass WinAPI_SetProcessAffinityMask ' +
-	        'WinAPI_SetProcessShutdownParameters ' +
-	        'WinAPI_SetProcessWindowStation WinAPI_SetRectRgn ' +
-	        'WinAPI_SetROP2 WinAPI_SetSearchPathMode ' +
-	        'WinAPI_SetStretchBltMode WinAPI_SetSysColors ' +
-	        'WinAPI_SetSystemCursor WinAPI_SetTextAlign ' +
-	        'WinAPI_SetTextCharacterExtra WinAPI_SetTextColor ' +
-	        'WinAPI_SetTextJustification WinAPI_SetThemeAppProperties ' +
-	        'WinAPI_SetThreadDesktop WinAPI_SetThreadErrorMode ' +
-	        'WinAPI_SetThreadExecutionState WinAPI_SetThreadLocale ' +
-	        'WinAPI_SetThreadUILanguage WinAPI_SetTimer ' +
-	        'WinAPI_SetUDFColorMode WinAPI_SetUserGeoID ' +
-	        'WinAPI_SetUserObjectInformation WinAPI_SetVolumeMountPoint ' +
-	        'WinAPI_SetWindowDisplayAffinity WinAPI_SetWindowExt ' +
-	        'WinAPI_SetWindowLong WinAPI_SetWindowOrg ' +
-	        'WinAPI_SetWindowPlacement WinAPI_SetWindowPos ' +
-	        'WinAPI_SetWindowRgn WinAPI_SetWindowsHookEx ' +
-	        'WinAPI_SetWindowSubclass WinAPI_SetWindowText ' +
-	        'WinAPI_SetWindowTheme WinAPI_SetWinEventHook ' +
-	        'WinAPI_SetWorldTransform WinAPI_SfcIsFileProtected ' +
-	        'WinAPI_SfcIsKeyProtected WinAPI_ShellAboutDlg ' +
-	        'WinAPI_ShellAddToRecentDocs WinAPI_ShellChangeNotify ' +
-	        'WinAPI_ShellChangeNotifyDeregister ' +
-	        'WinAPI_ShellChangeNotifyRegister WinAPI_ShellCreateDirectory ' +
-	        'WinAPI_ShellEmptyRecycleBin WinAPI_ShellExecute ' +
-	        'WinAPI_ShellExecuteEx WinAPI_ShellExtractAssociatedIcon ' +
-	        'WinAPI_ShellExtractIcon WinAPI_ShellFileOperation ' +
-	        'WinAPI_ShellFlushSFCache WinAPI_ShellGetFileInfo ' +
-	        'WinAPI_ShellGetIconOverlayIndex WinAPI_ShellGetImageList ' +
-	        'WinAPI_ShellGetKnownFolderIDList WinAPI_ShellGetKnownFolderPath ' +
-	        'WinAPI_ShellGetLocalizedName WinAPI_ShellGetPathFromIDList ' +
-	        'WinAPI_ShellGetSetFolderCustomSettings WinAPI_ShellGetSettings ' +
-	        'WinAPI_ShellGetSpecialFolderLocation ' +
-	        'WinAPI_ShellGetSpecialFolderPath WinAPI_ShellGetStockIconInfo ' +
-	        'WinAPI_ShellILCreateFromPath WinAPI_ShellNotifyIcon ' +
-	        'WinAPI_ShellNotifyIconGetRect WinAPI_ShellObjectProperties ' +
-	        'WinAPI_ShellOpenFolderAndSelectItems WinAPI_ShellOpenWithDlg ' +
-	        'WinAPI_ShellQueryRecycleBin ' +
-	        'WinAPI_ShellQueryUserNotificationState ' +
-	        'WinAPI_ShellRemoveLocalizedName WinAPI_ShellRestricted ' +
-	        'WinAPI_ShellSetKnownFolderPath WinAPI_ShellSetLocalizedName ' +
-	        'WinAPI_ShellSetSettings WinAPI_ShellStartNetConnectionDlg ' +
-	        'WinAPI_ShellUpdateImage WinAPI_ShellUserAuthenticationDlg ' +
-	        'WinAPI_ShellUserAuthenticationDlgEx WinAPI_ShortToWord ' +
-	        'WinAPI_ShowCaret WinAPI_ShowCursor WinAPI_ShowError ' +
-	        'WinAPI_ShowLastError WinAPI_ShowMsg WinAPI_ShowOwnedPopups ' +
-	        'WinAPI_ShowWindow WinAPI_ShutdownBlockReasonCreate ' +
-	        'WinAPI_ShutdownBlockReasonDestroy ' +
-	        'WinAPI_ShutdownBlockReasonQuery WinAPI_SizeOfResource ' +
-	        'WinAPI_StretchBlt WinAPI_StretchDIBits ' +
-	        'WinAPI_StrFormatByteSize WinAPI_StrFormatByteSizeEx ' +
-	        'WinAPI_StrFormatKBSize WinAPI_StrFromTimeInterval ' +
-	        'WinAPI_StringFromGUID WinAPI_StringLenA WinAPI_StringLenW ' +
-	        'WinAPI_StrLen WinAPI_StrokeAndFillPath WinAPI_StrokePath ' +
-	        'WinAPI_StructToArray WinAPI_SubLangId WinAPI_SubtractRect ' +
-	        'WinAPI_SwapDWord WinAPI_SwapQWord WinAPI_SwapWord ' +
-	        'WinAPI_SwitchColor WinAPI_SwitchDesktop ' +
-	        'WinAPI_SwitchToThisWindow WinAPI_SystemParametersInfo ' +
-	        'WinAPI_TabbedTextOut WinAPI_TerminateJobObject ' +
-	        'WinAPI_TerminateProcess WinAPI_TextOut WinAPI_TileWindows ' +
-	        'WinAPI_TrackMouseEvent WinAPI_TransparentBlt ' +
-	        'WinAPI_TwipsPerPixelX WinAPI_TwipsPerPixelY ' +
-	        'WinAPI_UnhookWindowsHookEx WinAPI_UnhookWinEvent ' +
-	        'WinAPI_UnionRect WinAPI_UnionStruct WinAPI_UniqueHardwareID ' +
-	        'WinAPI_UnloadKeyboardLayout WinAPI_UnlockFile ' +
-	        'WinAPI_UnmapViewOfFile WinAPI_UnregisterApplicationRestart ' +
-	        'WinAPI_UnregisterClass WinAPI_UnregisterHotKey ' +
-	        'WinAPI_UnregisterPowerSettingNotification ' +
-	        'WinAPI_UpdateLayeredWindow WinAPI_UpdateLayeredWindowEx ' +
-	        'WinAPI_UpdateLayeredWindowIndirect WinAPI_UpdateResource ' +
-	        'WinAPI_UpdateWindow WinAPI_UrlApplyScheme ' +
-	        'WinAPI_UrlCanonicalize WinAPI_UrlCombine WinAPI_UrlCompare ' +
-	        'WinAPI_UrlCreateFromPath WinAPI_UrlFixup WinAPI_UrlGetPart ' +
-	        'WinAPI_UrlHash WinAPI_UrlIs WinAPI_UserHandleGrantAccess ' +
-	        'WinAPI_ValidateRect WinAPI_ValidateRgn WinAPI_VerQueryRoot ' +
-	        'WinAPI_VerQueryValue WinAPI_VerQueryValueEx ' +
-	        'WinAPI_WaitForInputIdle WinAPI_WaitForMultipleObjects ' +
-	        'WinAPI_WaitForSingleObject WinAPI_WideCharToMultiByte ' +
-	        'WinAPI_WidenPath WinAPI_WindowFromDC WinAPI_WindowFromPoint ' +
-	        'WinAPI_WordToShort WinAPI_Wow64EnableWow64FsRedirection ' +
-	        'WinAPI_WriteConsole WinAPI_WriteFile ' +
-	        'WinAPI_WriteProcessMemory WinAPI_ZeroMemory ' +
-	        'WinNet_AddConnection WinNet_AddConnection2 ' +
-	        'WinNet_AddConnection3 WinNet_CancelConnection ' +
-	        'WinNet_CancelConnection2 WinNet_CloseEnum ' +
-	        'WinNet_ConnectionDialog WinNet_ConnectionDialog1 ' +
-	        'WinNet_DisconnectDialog WinNet_DisconnectDialog1 ' +
-	        'WinNet_EnumResource WinNet_GetConnection ' +
-	        'WinNet_GetConnectionPerformance WinNet_GetLastError ' +
-	        'WinNet_GetNetworkInformation WinNet_GetProviderName ' +
-	        'WinNet_GetResourceInformation WinNet_GetResourceParent ' +
-	        'WinNet_GetUniversalName WinNet_GetUser WinNet_OpenEnum ' +
-	        'WinNet_RestoreConnection WinNet_UseConnection Word_Create ' +
-	        'Word_DocAdd Word_DocAttach Word_DocClose Word_DocExport ' +
-	        'Word_DocFind Word_DocFindReplace Word_DocGet ' +
-	        'Word_DocLinkAdd Word_DocLinkGet Word_DocOpen ' +
-	        'Word_DocPictureAdd Word_DocPrint Word_DocRangeSet ' +
-	        'Word_DocSave Word_DocSaveAs Word_DocTableRead ' +
-	        'Word_DocTableWrite Word_Quit',
-	
+
+	        BUILT_IN =
+	          'Abs ACos AdlibRegister AdlibUnRegister Asc AscW ASin Assign ATan AutoItSetOption AutoItWinGetTitle AutoItWinSetTitle Beep Binary BinaryLen BinaryMid BinaryToString BitAND BitNOT BitOR BitRotate BitShift BitXOR BlockInput Break Call CDTray Ceiling Chr ChrW ClipGet ClipPut ConsoleRead ConsoleWrite ConsoleWriteError ControlClick ControlCommand ControlDisable ControlEnable ControlFocus ControlGetFocus ControlGetHandle ControlGetPos ControlGetText ControlHide ControlListView ControlMove ControlSend ControlSetText ControlShow ControlTreeView Cos Dec DirCopy DirCreate DirGetSize DirMove DirRemove DllCall DllCallAddress DllCallbackFree DllCallbackGetPtr DllCallbackRegister DllClose DllOpen DllStructCreate DllStructGetData DllStructGetPtr DllStructGetSize DllStructSetData DriveGetDrive DriveGetFileSystem DriveGetLabel DriveGetSerial DriveGetType DriveMapAdd DriveMapDel DriveMapGet DriveSetLabel DriveSpaceFree DriveSpaceTotal DriveStatus EnvGet EnvSet EnvUpdate Eval Execute Exp FileChangeDir FileClose FileCopy FileCreateNTFSLink FileCreateShortcut FileDelete FileExists FileFindFirstFile FileFindNextFile FileFlush FileGetAttrib FileGetEncoding FileGetLongName FileGetPos FileGetShortcut FileGetShortName FileGetSize FileGetTime FileGetVersion FileInstall FileMove FileOpen FileOpenDialog FileRead FileReadLine FileReadToArray FileRecycle FileRecycleEmpty FileSaveDialog FileSelectFolder FileSetAttrib FileSetEnd FileSetPos FileSetTime FileWrite FileWriteLine Floor FtpSetProxy FuncName GUICreate GUICtrlCreateAvi GUICtrlCreateButton GUICtrlCreateCheckbox GUICtrlCreateCombo GUICtrlCreateContextMenu GUICtrlCreateDate GUICtrlCreateDummy GUICtrlCreateEdit GUICtrlCreateGraphic GUICtrlCreateGroup GUICtrlCreateIcon GUICtrlCreateInput GUICtrlCreateLabel GUICtrlCreateList GUICtrlCreateListView GUICtrlCreateListViewItem GUICtrlCreateMenu GUICtrlCreateMenuItem GUICtrlCreateMonthCal GUICtrlCreateObj GUICtrlCreatePic GUICtrlCreateProgress GUICtrlCreateRadio GUICtrlCreateSlider GUICtrlCreateTab GUICtrlCreateTabItem GUICtrlCreateTreeView GUICtrlCreateTreeViewItem GUICtrlCreateUpdown GUICtrlDelete GUICtrlGetHandle GUICtrlGetState GUICtrlRead GUICtrlRecvMsg GUICtrlRegisterListViewSort GUICtrlSendMsg GUICtrlSendToDummy GUICtrlSetBkColor GUICtrlSetColor GUICtrlSetCursor GUICtrlSetData GUICtrlSetDefBkColor GUICtrlSetDefColor GUICtrlSetFont GUICtrlSetGraphic GUICtrlSetImage GUICtrlSetLimit GUICtrlSetOnEvent GUICtrlSetPos GUICtrlSetResizing GUICtrlSetState GUICtrlSetStyle GUICtrlSetTip GUIDelete GUIGetCursorInfo GUIGetMsg GUIGetStyle GUIRegisterMsg GUISetAccelerators GUISetBkColor GUISetCoord GUISetCursor GUISetFont GUISetHelp GUISetIcon GUISetOnEvent GUISetState GUISetStyle GUIStartGroup GUISwitch Hex HotKeySet HttpSetProxy HttpSetUserAgent HWnd InetClose InetGet InetGetInfo InetGetSize InetRead IniDelete IniRead IniReadSection IniReadSectionNames IniRenameSection IniWrite IniWriteSection InputBox Int IsAdmin IsArray IsBinary IsBool IsDeclared IsDllStruct IsFloat IsFunc IsHWnd IsInt IsKeyword IsNumber IsObj IsPtr IsString Log MemGetStats Mod MouseClick MouseClickDrag MouseDown MouseGetCursor MouseGetPos MouseMove MouseUp MouseWheel MsgBox Number ObjCreate ObjCreateInterface ObjEvent ObjGet ObjName OnAutoItExitRegister OnAutoItExitUnRegister Ping PixelChecksum PixelGetColor PixelSearch ProcessClose ProcessExists ProcessGetStats ProcessList ProcessSetPriority ProcessWait ProcessWaitClose ProgressOff ProgressOn ProgressSet Ptr Random RegDelete RegEnumKey RegEnumVal RegRead RegWrite Round Run RunAs RunAsWait RunWait Send SendKeepActive SetError SetExtended ShellExecute ShellExecuteWait Shutdown Sin Sleep SoundPlay SoundSetWaveVolume SplashImageOn SplashOff SplashTextOn Sqrt SRandom StatusbarGetText StderrRead StdinWrite StdioClose StdoutRead String StringAddCR StringCompare StringFormat StringFromASCIIArray StringInStr StringIsAlNum StringIsAlpha StringIsASCII StringIsDigit StringIsFloat StringIsInt StringIsLower StringIsSpace StringIsUpper StringIsXDigit StringLeft StringLen StringLower StringMid StringRegExp StringRegExpReplace StringReplace StringReverse StringRight StringSplit StringStripCR StringStripWS StringToASCIIArray StringToBinary StringTrimLeft StringTrimRight StringUpper Tan TCPAccept TCPCloseSocket TCPConnect TCPListen TCPNameToIP TCPRecv TCPSend TCPShutdown, UDPShutdown TCPStartup, UDPStartup TimerDiff TimerInit ToolTip TrayCreateItem TrayCreateMenu TrayGetMsg TrayItemDelete TrayItemGetHandle TrayItemGetState TrayItemGetText TrayItemSetOnEvent TrayItemSetState TrayItemSetText TraySetClick TraySetIcon TraySetOnEvent TraySetPauseIcon TraySetState TraySetToolTip TrayTip UBound UDPBind UDPCloseSocket UDPOpen UDPRecv UDPSend VarGetType WinActivate WinActive WinClose WinExists WinFlash WinGetCaretPos WinGetClassList WinGetClientSize WinGetHandle WinGetPos WinGetProcess WinGetState WinGetText WinGetTitle WinKill WinList WinMenuSelectItem WinMinimizeAll WinMinimizeAllUndo WinMove WinSetOnTop WinSetState WinSetTitle WinSetTrans WinWait',
+
 	        COMMENT = {
 	            variants: [
 	              hljs.COMMENT(';', '$', {relevance: 0}),
@@ -3715,11 +2422,11 @@
 	              hljs.COMMENT('#comments-start', '#comments-end')
 	            ]
 	        },
-	
+
 	        VARIABLE = {
 	            begin: '\\$[A-z0-9_]+'
 	        },
-	
+
 	        STRING = {
 	            className: 'string',
 	            variants: [{
@@ -3738,46 +2445,16 @@
 	                }]
 	            }]
 	        },
-	
+
 	        NUMBER = {
 	            variants: [hljs.BINARY_NUMBER_MODE, hljs.C_NUMBER_MODE]
 	        },
-	
+
 	        PREPROCESSOR = {
 	            className: 'meta',
 	            begin: '#',
 	            end: '$',
-	            keywords: {'meta-keyword': 'include include-once NoTrayIcon OnAutoItStartRegister RequireAdmin pragma ' +
-	                'Au3Stripper_Ignore_Funcs Au3Stripper_Ignore_Variables ' +
-	                'Au3Stripper_Off Au3Stripper_On Au3Stripper_Parameters ' +
-	                'AutoIt3Wrapper_Add_Constants AutoIt3Wrapper_Au3Check_Parameters ' +
-	                'AutoIt3Wrapper_Au3Check_Stop_OnWarning AutoIt3Wrapper_Aut2Exe ' +
-	                'AutoIt3Wrapper_AutoIt3 AutoIt3Wrapper_AutoIt3Dir ' +
-	                'AutoIt3Wrapper_Change2CUI AutoIt3Wrapper_Compile_Both ' +
-	                'AutoIt3Wrapper_Compression AutoIt3Wrapper_EndIf ' +
-	                'AutoIt3Wrapper_Icon AutoIt3Wrapper_If_Compile ' +
-	                'AutoIt3Wrapper_If_Run AutoIt3Wrapper_Jump_To_First_Error ' +
-	                'AutoIt3Wrapper_OutFile AutoIt3Wrapper_OutFile_Type ' +
-	                'AutoIt3Wrapper_OutFile_X64 AutoIt3Wrapper_PlugIn_Funcs ' +
-	                'AutoIt3Wrapper_Res_Comment Autoit3Wrapper_Res_Compatibility ' +
-	                'AutoIt3Wrapper_Res_Description AutoIt3Wrapper_Res_Field ' +
-	                'AutoIt3Wrapper_Res_File_Add AutoIt3Wrapper_Res_FileVersion ' +
-	                'AutoIt3Wrapper_Res_FileVersion_AutoIncrement ' +
-	                'AutoIt3Wrapper_Res_Icon_Add AutoIt3Wrapper_Res_Language ' +
-	                'AutoIt3Wrapper_Res_LegalCopyright ' +
-	                'AutoIt3Wrapper_Res_ProductVersion ' +
-	                'AutoIt3Wrapper_Res_requestedExecutionLevel ' +
-	                'AutoIt3Wrapper_Res_SaveSource AutoIt3Wrapper_Run_After ' +
-	                'AutoIt3Wrapper_Run_Au3Check AutoIt3Wrapper_Run_Au3Stripper ' +
-	                'AutoIt3Wrapper_Run_Before AutoIt3Wrapper_Run_Debug_Mode ' +
-	                'AutoIt3Wrapper_Run_SciTE_Minimized ' +
-	                'AutoIt3Wrapper_Run_SciTE_OutputPane_Minimized ' +
-	                'AutoIt3Wrapper_Run_Tidy AutoIt3Wrapper_ShowProgress ' +
-	                'AutoIt3Wrapper_Testing AutoIt3Wrapper_Tidy_Stop_OnError ' +
-	                'AutoIt3Wrapper_UPX_Parameters AutoIt3Wrapper_UseUPX ' +
-	                'AutoIt3Wrapper_UseX64 AutoIt3Wrapper_Version ' +
-	                'AutoIt3Wrapper_Versioning AutoIt3Wrapper_Versioning_Parameters ' +
-	                'Tidy_Off Tidy_On Tidy_Parameters EndRegion Region'},
+	            keywords: {'meta-keyword': 'comments include include-once NoTrayIcon OnAutoItStartRegister pragma compile RequireAdmin'},
 	            contains: [{
 	                    begin: /\\\n/,
 	                    relevance: 0
@@ -3813,7 +2490,7 @@
 	                COMMENT
 	            ]
 	        },
-	
+
 	        CONSTANT = {
 	            className: 'symbol',
 	            // begin: '@',
@@ -3822,7 +2499,7 @@
 	            // relevance: 5
 	            begin: '@[A-z0-9_]+'
 	        },
-	
+
 	        FUNCTION = {
 	            className: 'function',
 	            beginKeywords: 'Func',
@@ -3841,7 +2518,7 @@
 	                }
 	            ]
 	        };
-	
+
 	    return {
 	        case_insensitive: true,
 	        illegal: /\/\*/,
@@ -3863,7 +2540,7 @@
 	};
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -3929,7 +2606,7 @@
 	};
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -3964,7 +2641,7 @@
 	};
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -3992,7 +2669,7 @@
 	    className: 'string',
 	    begin: /'/, end: /'/
 	  };
-	
+
 	  return {
 	    aliases: ['sh', 'zsh'],
 	    lexemes: /-?[a-z\.]+/,
@@ -4043,7 +2720,7 @@
 	};
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4098,7 +2775,40 @@
 	};
 
 /***/ },
-/* 19 */
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = function(hljs){
+	  return {
+	    contains: [
+	      // Attribute
+	      {
+	        className: 'attribute',
+	        begin: /</, end: />/
+	      },
+	      // Specific
+	      {
+	        begin: /::=/,
+	        starts: {
+	          end: /$/,
+	          contains: [
+	            {
+	              begin: /</, end: />/
+	            },
+	            // Common
+	            hljs.C_LINE_COMMENT_MODE,
+	            hljs.C_BLOCK_COMMENT_MODE,
+	            hljs.APOS_STRING_MODE,
+	            hljs.QUOTE_STRING_MODE
+	          ]
+	        }
+	      }
+	    ]
+	  };
+	};
+
+/***/ },
+/* 22 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs){
@@ -4139,7 +2849,7 @@
 	};
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4182,7 +2892,7 @@
 	      begin: '"',
 	      end: '"'
 	  };
-	
+
 	  var PROCEDURE = {
 	    className: 'function',
 	    beginKeywords: 'procedure', end: /[:;]/,
@@ -4197,7 +2907,7 @@
 	      }
 	    ].concat(COMMENT_MODES)
 	  };
-	
+
 	  var OBJECT = {
 	    className: 'class',
 	    begin: 'OBJECT (Table|Form|Report|Dataport|Codeunit|XMLport|MenuSuite|Page|Query) (\\d+) ([^\\r\\n]+)',
@@ -4207,7 +2917,7 @@
 	        PROCEDURE
 	    ]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    keywords: { keyword: KEYWORDS, literal: LITERALS },
@@ -4223,7 +2933,7 @@
 	};
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4276,7 +2986,7 @@
 	};
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4327,7 +3037,7 @@
 	    }
 	  ];
 	  SUBST.contains = EXPRESSIONS;
-	
+
 	  return {
 	    keywords: {
 	      keyword: KEYWORDS + ' ' + DECLARATION_MODIFIERS,
@@ -4347,7 +3057,7 @@
 	};
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4382,11 +3092,11 @@
 	      'unchecked-add-int unchecked-add unchecked-subtract-int unchecked-subtract chunk-next chunk-cons chunked-seq? prn vary-meta '+
 	      'lazy-seq spread list* str find-keyword keyword symbol gensym force rationalize'
 	   };
-	
+
 	  var SYMBOLSTART = 'a-zA-Z_\\-!.?+*=<>&#\'';
 	  var SYMBOL_RE = '[' + SYMBOLSTART + '][' + SYMBOLSTART + '0-9/;:]*';
 	  var SIMPLE_NUMBER_RE = '[-+]?\\d+(\\.\\d+)?';
-	
+
 	  var SYMBOL = {
 	    begin: SYMBOL_RE,
 	    relevance: 0
@@ -4417,7 +3127,7 @@
 	  var HINT_COL = hljs.COMMENT('\\^\\{', '\\}');
 	  var KEY = {
 	    className: 'symbol',
-	    begin: '[:]' + SYMBOL_RE
+	    begin: '[:]{1,2}' + SYMBOL_RE
 	  };
 	  var LIST = {
 	    begin: '\\(', end: '\\)'
@@ -4433,11 +3143,11 @@
 	    starts: BODY
 	  };
 	  var DEFAULT_CONTAINS = [LIST, STRING, HINT, HINT_COL, COMMENT, KEY, COLLECTION, NUMBER, LITERAL, SYMBOL];
-	
+
 	  LIST.contains = [hljs.COMMENT('comment', ''), NAME, BODY];
 	  BODY.contains = DEFAULT_CONTAINS;
 	  COLLECTION.contains = DEFAULT_CONTAINS;
-	
+
 	  return {
 	    aliases: ['clj'],
 	    illegal: /\S/,
@@ -4446,7 +3156,7 @@
 	};
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4465,7 +3175,7 @@
 	};
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4507,7 +3217,7 @@
 	};
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -4584,7 +3294,7 @@
 	    }
 	  ];
 	  SUBST.contains = EXPRESSIONS;
-	
+
 	  var TITLE = hljs.inherit(hljs.TITLE_MODE, {begin: JS_IDENT_RE});
 	  var PARAMS_RE = '(\\(.*\\))?\\s*\\B[-=]>';
 	  var PARAMS = {
@@ -4598,7 +3308,7 @@
 	      contains: ['self'].concat(EXPRESSIONS)
 	    }]
 	  };
-	
+
 	  return {
 	    aliases: ['coffee', 'cson', 'iced'],
 	    keywords: KEYWORDS,
@@ -4650,11 +3360,11 @@
 	};
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = function cos (hljs) {
-	
+
 	  var STRINGS = {
 	    className: 'string',
 	    variants: [
@@ -4668,16 +3378,16 @@
 	      }
 	    ]
 	  };
-	
+
 	  var NUMBERS = {
 	    className: "number",
 	    begin: "\\b(\\d+(\\.\\d*)?|\\.\\d+)",
 	    relevance: 0
 	  };
-	
+
 	  var COS_KEYWORDS = {
 	    keyword: [
-	
+
 	      "property", "parameter", "class", "classmethod", "clientmethod", "extends",
 	      "as", "break", "catch", "close", "continue", "do", "d", "else",
 	      "elseif", "for", "goto", "halt", "hang", "h", "if", "job",
@@ -4688,10 +3398,10 @@
 	      "zw", "zzdump", "zzwrite", "print", "zbreak", "zinsert", "zload",
 	      "zprint", "zremove", "zsave", "zzprint", "mv", "mvcall", "mvcrt",
 	      "mvdim", "mvprint", "zquit", "zsync", "ascii"
-	
+
 	      // registered function - no need in them due to all functions are highlighted,
 	      // but I'll just leave this here.
-	
+
 	      //"$bit", "$bitcount",
 	      //"$bitfind", "$bitlogic", "$case", "$char", "$classmethod", "$classname",
 	      //"$compile", "$data", "$decimal", "$double", "$extract", "$factor",
@@ -4725,10 +3435,10 @@
 	      //"$zhorolog", "$zio", "$zjob", "$zmode", "$znspace", "$zparent", "$zpi",
 	      //"$zpos", "$zreference", "$zstorage", "$ztimestamp", "$ztimezone",
 	      //"$ztrap", "$zversion"
-	
+
 	    ].join(" ")
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    aliases: ["cos", "cls"],
@@ -4763,7 +3473,7 @@
 	        className: "keyword",
 	        begin: /##class|##super|#define|#dim/
 	      },
-	
+
 	      // sub-languages: are not fully supported by hljs by 11/15/2015
 	      // left for the future implementation.
 	      {
@@ -4786,190 +3496,28 @@
 	};
 
 /***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	module.exports = function(hljs) {
-	  var CPP_PRIMATIVE_TYPES = {
-	    className: 'keyword',
-	    begin: '\\b[a-z\\d_]*_t\\b'
-	  };
-	
-	  var STRINGS = {
-	    className: 'string',
-	    variants: [
-	      hljs.inherit(hljs.QUOTE_STRING_MODE, { begin: '((u8?|U)|L)?"' }),
-	      {
-	        begin: '(u8?|U)?R"', end: '"',
-	        contains: [hljs.BACKSLASH_ESCAPE]
-	      },
-	      {
-	        begin: '\'\\\\?.', end: '\'',
-	        illegal: '.'
-	      }
-	    ]
-	  };
-	
-	  var NUMBERS = {
-	    className: 'number',
-	    variants: [
-	      { begin: '\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)' },
-	      { begin: hljs.C_NUMBER_RE }
-	    ],
-	    relevance: 0
-	  };
-	
-	  var PREPROCESSOR =       {
-	    className: 'meta',
-	    begin: '#', end: '$',
-	    keywords: {'meta-keyword': 'if else elif endif define undef warning error line ' +
-	                  'pragma ifdef ifndef'},
-	    contains: [
-	      {
-	        begin: /\\\n/, relevance: 0
-	      },
-	      {
-	        beginKeywords: 'include', end: '$',
-	        keywords: {'meta-keyword': 'include'},
-	        contains: [
-	          hljs.inherit(STRINGS, {className: 'meta-string'}),
-	          {
-	            className: 'meta-string',
-	            begin: '<', end: '>',
-	            illegal: '\\n',
-	          }
-	        ]
-	      },
-	      STRINGS,
-	      hljs.C_LINE_COMMENT_MODE,
-	      hljs.C_BLOCK_COMMENT_MODE
-	    ]
-	  };
-	
-	  var FUNCTION_TITLE = hljs.IDENT_RE + '\\s*\\(';
-	
-	  var CPP_KEYWORDS = {
-	    keyword: 'int float while private char catch export virtual operator sizeof ' +
-	      'dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace ' +
-	      'unsigned long volatile static protected bool template mutable if public friend ' +
-	      'do goto auto void enum else break extern using class asm case typeid ' +
-	      'short reinterpret_cast|10 default double register explicit signed typename try this ' +
-	      'switch continue inline delete alignof constexpr decltype ' +
-	      'noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary ' +
-	      'atomic_bool atomic_char atomic_schar ' +
-	      'atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong ' +
-	      'atomic_ullong',
-	    built_in: 'std string cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
-	      'auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set ' +
-	      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos ' +
-	      'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp ' +
-	      'fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
-	      'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow ' +
-	      'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp ' +
-	      'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan ' +
-	      'vfprintf vprintf vsprintf endl initializer_list unique_ptr',
-	    literal: 'true false nullptr NULL'
-	  };
-	
-	  var EXPRESSION_CONTAINS = [
-	    CPP_PRIMATIVE_TYPES,
-	    hljs.C_LINE_COMMENT_MODE,
-	    hljs.C_BLOCK_COMMENT_MODE,
-	    NUMBERS,
-	    STRINGS
-	  ];
-	
-	  return {
-	    aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp'],
-	    keywords: CPP_KEYWORDS,
-	    illegal: '</',
-	    contains: EXPRESSION_CONTAINS.concat([
-	      PREPROCESSOR,
-	      {
-	        begin: '\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<', end: '>',
-	        keywords: CPP_KEYWORDS,
-	        contains: ['self', CPP_PRIMATIVE_TYPES]
-	      },
-	      {
-	        begin: hljs.IDENT_RE + '::',
-	        keywords: CPP_KEYWORDS
-	      },
-	      {
-	        // This mode covers expression context where we can't expect a function
-	        // definition and shouldn't highlight anything that looks like one:
-	        // `return some()`, `else if()`, `(x*sum(1, 2))`
-	        variants: [
-	          {begin: /=/, end: /;/},
-	          {begin: /\(/, end: /\)/},
-	          {beginKeywords: 'new throw return else', end: /;/}
-	        ],
-	        keywords: CPP_KEYWORDS,
-	        contains: EXPRESSION_CONTAINS.concat([
-	          {
-	            begin: /\(/, end: /\)/,
-	            contains: EXPRESSION_CONTAINS.concat(['self']),
-	            relevance: 0
-	          }
-	        ]),
-	        relevance: 0
-	      },
-	      {
-	        className: 'function',
-	        begin: '(' + hljs.IDENT_RE + '[\\*&\\s]+)+' + FUNCTION_TITLE,
-	        returnBegin: true, end: /[{;=]/,
-	        excludeEnd: true,
-	        keywords: CPP_KEYWORDS,
-	        illegal: /[^\w\s\*&]/,
-	        contains: [
-	          {
-	            begin: FUNCTION_TITLE, returnBegin: true,
-	            contains: [hljs.TITLE_MODE],
-	            relevance: 0
-	          },
-	          {
-	            className: 'params',
-	            begin: /\(/, end: /\)/,
-	            keywords: CPP_KEYWORDS,
-	            relevance: 0,
-	            contains: [
-	              hljs.C_LINE_COMMENT_MODE,
-	              hljs.C_BLOCK_COMMENT_MODE,
-	              STRINGS,
-	              NUMBERS
-	            ]
-	          },
-	          hljs.C_LINE_COMMENT_MODE,
-	          hljs.C_BLOCK_COMMENT_MODE,
-	          PREPROCESSOR
-	        ]
-	      }
-	    ])
-	  };
-	};
-
-/***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var RESOURCES = 'primitive rsc_template';
-	
+
 	  var COMMANDS = 'group clone ms master location colocation order fencing_topology ' +
 	      'rsc_ticket acl_target acl_group user role ' +
 	      'tag xml';
-	
+
 	  var PROPERTY_SETS = 'property rsc_defaults op_defaults';
-	
+
 	  var KEYWORDS = 'params meta operations op rule attributes utilization';
-	
+
 	  var OPERATORS = 'read write deny defined not_defined in_range date spec in ' +
 	      'ref reference attribute type xpath version and or lt gt tag ' +
 	      'lte gte eq ne \\';
-	
+
 	  var TYPES = 'number string';
-	
+
 	  var LITERALS = 'Master Started Slave Stopped start promote demote stop monitor true false';
-	
+
 	  return {
 	    aliases: ['crm', 'pcmk'],
 	    case_insensitive: true,
@@ -5046,7 +3594,7 @@
 	};
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -5074,10 +3622,9 @@
 	      {begin: '\\{\\{', end: '\\}\\}'},
 	      {begin: '\\{%', end: '%\\}'}
 	    ],
-	    keywords: CRYSTAL_KEYWORDS,
-	    relevance: 10
+	    keywords: CRYSTAL_KEYWORDS
 	  };
-	
+
 	  function recursiveParen(begin, end) {
 	    var
 	    contains = [{begin: begin, end: end}];
@@ -5218,7 +3765,7 @@
 	  ];
 	  SUBST.contains = CRYSTAL_DEFAULT_CONTAINS;
 	  EXPANSION.contains = CRYSTAL_DEFAULT_CONTAINS.slice(1); // without EXPANSION
-	
+
 	  return {
 	    aliases: ['cr'],
 	    lexemes: CRYSTAL_IDENT_RE,
@@ -5228,7 +3775,7 @@
 	};
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -5241,13 +3788,69 @@
 	      'object operator out override params private protected public readonly ref sbyte ' +
 	      'sealed short sizeof stackalloc static string struct switch this try typeof ' +
 	      'uint ulong unchecked unsafe ushort using virtual volatile void while async ' +
-	      'protected public private internal ' +
+	      'nameof ' +
 	      // Contextual keywords.
 	      'ascending descending from get group into join let orderby partial select set value var ' +
 	      'where yield',
 	    literal:
 	      'null false true'
 	  };
+
+	  var VERBATIM_STRING = {
+	    className: 'string',
+	    begin: '@"', end: '"',
+	    contains: [{begin: '""'}]
+	  };
+	  var VERBATIM_STRING_NO_LF = hljs.inherit(VERBATIM_STRING, {illegal: /\n/});
+	  var SUBST = {
+	    className: 'subst',
+	    begin: '{', end: '}',
+	    keywords: KEYWORDS
+	  };
+	  var SUBST_NO_LF = hljs.inherit(SUBST, {illegal: /\n/});
+	  var INTERPOLATED_STRING = {
+	    className: 'string',
+	    begin: /\$"/, end: '"',
+	    illegal: /\n/,
+	    contains: [{begin: '{{'}, {begin: '}}'}, hljs.BACKSLASH_ESCAPE, SUBST_NO_LF]
+	  };
+	  var INTERPOLATED_VERBATIM_STRING = {
+	    className: 'string',
+	    begin: /\$@"/, end: '"',
+	    contains: [{begin: '{{'}, {begin: '}}'}, {begin: '""'}, SUBST]
+	  };
+	  var INTERPOLATED_VERBATIM_STRING_NO_LF = hljs.inherit(INTERPOLATED_VERBATIM_STRING, {
+	    illegal: /\n/,
+	    contains: [{begin: '{{'}, {begin: '}}'}, {begin: '""'}, SUBST_NO_LF]
+	  });
+	  SUBST.contains = [
+	    INTERPOLATED_VERBATIM_STRING,
+	    INTERPOLATED_STRING,
+	    VERBATIM_STRING,
+	    hljs.APOS_STRING_MODE,
+	    hljs.QUOTE_STRING_MODE,
+	    hljs.C_NUMBER_MODE,
+	    hljs.C_BLOCK_COMMENT_MODE
+	  ];
+	  SUBST_NO_LF.contains = [
+	    INTERPOLATED_VERBATIM_STRING_NO_LF,
+	    INTERPOLATED_STRING,
+	    VERBATIM_STRING_NO_LF,
+	    hljs.APOS_STRING_MODE,
+	    hljs.QUOTE_STRING_MODE,
+	    hljs.C_NUMBER_MODE,
+	    hljs.inherit(hljs.C_BLOCK_COMMENT_MODE, {illegal: /\n/})
+	  ];
+	  var STRING = {
+	    variants: [
+	      INTERPOLATED_VERBATIM_STRING,
+	      INTERPOLATED_STRING,
+	      VERBATIM_STRING,
+	      hljs.APOS_STRING_MODE,
+	      hljs.QUOTE_STRING_MODE
+	    ]
+	  };
+
 	  var TYPE_IDENT_RE = hljs.IDENT_RE + '(<' + hljs.IDENT_RE + '>)?(\\[\\])?';
 	  return {
 	    aliases: ['csharp'],
@@ -5284,13 +3887,7 @@
 	        begin: '#', end: '$',
 	        keywords: {'meta-keyword': 'if else elif endif define undef warning error line region endregion pragma checksum'}
 	      },
-	      {
-	        className: 'string',
-	        begin: '@"', end: '"',
-	        contains: [{begin: '""'}]
-	      },
-	      hljs.APOS_STRING_MODE,
-	      hljs.QUOTE_STRING_MODE,
+	      STRING,
 	      hljs.C_NUMBER_MODE,
 	      {
 	        beginKeywords: 'class interface', end: /[{;=]/,
@@ -5335,8 +3932,7 @@
 	            keywords: KEYWORDS,
 	            relevance: 0,
 	            contains: [
-	              hljs.APOS_STRING_MODE,
-	              hljs.QUOTE_STRING_MODE,
+	              STRING,
 	              hljs.C_NUMBER_MODE,
 	              hljs.C_BLOCK_COMMENT_MODE
 	            ]
@@ -5350,7 +3946,7 @@
 	};
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -5376,7 +3972,7 @@
 	};
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -5421,7 +4017,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    illegal: /[=\/|'\$]/,
@@ -5485,7 +4081,7 @@
 	};
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = /**
@@ -5503,7 +4099,7 @@
 	 * - special token sequence rule is not strictly following D grammar (anything following #line
 	 *   up to the end of line is matched as special token sequence)
 	 */
-	
+
 	function(hljs) {
 	  /**
 	   * Language keywords
@@ -5527,7 +4123,7 @@
 	    literal:
 	      'false null true'
 	  };
-	
+
 	  /**
 	   * Number literal regexps
 	   *
@@ -5538,7 +4134,7 @@
 	    binary_integer_re = '0[bB][01_]+',
 	    hexadecimal_digits_re = '([\\da-fA-F][\\da-fA-F_]*|_[\\da-fA-F][\\da-fA-F_]*)',
 	    hexadecimal_integer_re = '0[xX]' + hexadecimal_digits_re,
-	
+
 	    decimal_exponent_re = '([eE][+-]?' + decimal_integer_nosus_re + ')',
 	    decimal_float_re = '(' + decimal_integer_nosus_re + '(\\.\\d*|' + decimal_exponent_re + ')|' +
 	                '\\d+\\.' + decimal_integer_nosus_re + decimal_integer_nosus_re + '|' +
@@ -5548,18 +4144,18 @@
 	                  hexadecimal_digits_re + '\\.' + hexadecimal_digits_re + '|'+
 	                  '\\.?' + hexadecimal_digits_re +
 	                 ')[pP][+-]?' + decimal_integer_nosus_re + ')',
-	
+
 	    integer_re = '(' +
 	      decimal_integer_re + '|' +
 	      binary_integer_re  + '|' +
 	       hexadecimal_integer_re   +
 	    ')',
-	
+
 	    float_re = '(' +
 	      hexadecimal_float_re + '|' +
 	      decimal_float_re  +
 	    ')';
-	
+
 	  /**
 	   * Escape sequence supported in D string and character literals
 	   *
@@ -5573,7 +4169,7 @@
 	              'U[\\dA-Fa-f]{8}' +      // eight hex digit unicode codepoint
 	              ')|' +
 	              '&[a-zA-Z\\d]{2,};';      // named character entity
-	
+
 	  /**
 	   * D integer number literals
 	   *
@@ -5584,7 +4180,7 @@
 	      begin: '\\b' + integer_re + '(L|u|U|Lu|LU|uL|UL)?',
 	      relevance: 0
 	  };
-	
+
 	  /**
 	   * [D_FLOAT_MODE description]
 	   * @type {Object}
@@ -5597,7 +4193,7 @@
 	      ')',
 	    relevance: 0
 	  };
-	
+
 	  /**
 	   * D character literal
 	   *
@@ -5608,7 +4204,7 @@
 	    begin: '\'(' + escape_sequence_re + '|.)', end: '\'',
 	    illegal: '.'
 	  };
-	
+
 	  /**
 	   * D string escape sequence
 	   *
@@ -5618,7 +4214,7 @@
 	    begin: escape_sequence_re,
 	    relevance: 0
 	  };
-	
+
 	  /**
 	   * D double quoted string literal
 	   *
@@ -5630,7 +4226,7 @@
 	    contains: [D_ESCAPE_SEQUENCE],
 	    end: '"[cwd]?'
 	  };
-	
+
 	  /**
 	   * D wysiwyg and delimited string literals
 	   *
@@ -5642,7 +4238,7 @@
 	    end: '"[cwd]?',
 	    relevance: 5
 	  };
-	
+
 	  /**
 	   * D alternate wysiwyg string literal
 	   *
@@ -5653,7 +4249,7 @@
 	    begin: '`',
 	    end: '`[cwd]?'
 	  };
-	
+
 	  /**
 	   * D hexadecimal string literal
 	   *
@@ -5664,7 +4260,7 @@
 	    begin: 'x"[\\da-fA-F\\s\\n\\r]*"[cwd]?',
 	    relevance: 10
 	  };
-	
+
 	  /**
 	   * D delimited string literal
 	   *
@@ -5675,7 +4271,7 @@
 	    begin: 'q"\\{',
 	    end: '\\}"'
 	  };
-	
+
 	  /**
 	   * Hashbang support
 	   *
@@ -5687,7 +4283,7 @@
 	    end: '$',
 	    relevance: 5
 	  };
-	
+
 	  /**
 	   * D special token sequence
 	   *
@@ -5699,7 +4295,7 @@
 	    end: '$',
 	    relevance: 5
 	  };
-	
+
 	  /**
 	   * D attributes
 	   *
@@ -5709,7 +4305,7 @@
 	    className: 'keyword',
 	    begin: '@[a-zA-Z_][a-zA-Z_\\d]*'
 	  };
-	
+
 	  /**
 	   * D nesting comment
 	   *
@@ -5723,7 +4319,7 @@
 	      relevance: 10
 	    }
 	  );
-	
+
 	  return {
 	    lexemes: hljs.UNDERSCORE_IDENT_RE,
 	    keywords: D_KEYWORDS,
@@ -5747,7 +4343,7 @@
 	};
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -5839,17 +4435,18 @@
 	        relevance: 10
 	      },
 	      {
-	        begin: '^\\[\.+\\]:',
+	        begin: /^\[[^\n]+\]:/,
 	        returnBegin: true,
 	        contains: [
 	          {
 	            className: 'symbol',
-	            begin: '\\[', end: '\\]:',
-	            excludeBegin: true, excludeEnd: true,
-	            starts: {
-	              className: 'link',
-	              end: '$'
-	            }
+	            begin: /\[/, end: /\]/,
+	            excludeBegin: true, excludeEnd: true
+	          },
+	          {
+	            className: 'link',
+	            begin: /:\s*/, end: /$/,
+	            excludeBegin: true
 	          }
 	        ]
 	      }
@@ -5858,7 +4455,7 @@
 	};
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = function (hljs) {
@@ -5867,7 +4464,7 @@
 	    begin: '\\$\\{', end: '}',
 	    keywords: 'true false null this is new super'
 	  };
-	
+
 	  var STRING = {
 	    className: 'string',
 	    variants: [
@@ -5908,7 +4505,7 @@
 	  SUBST.contains = [
 	    hljs.C_NUMBER_MODE, STRING
 	  ];
-	
+
 	  var KEYWORDS = {
 	    keyword: 'assert async await break case catch class const continue default do else enum extends false final ' +
 	      'finally for if in is new null rethrow return super switch sync this throw true try var void while with yield ' +
@@ -5920,7 +4517,7 @@
 	      // dart:html
 	      'document window querySelector querySelectorAll Element ElementList'
 	  };
-	
+
 	  return {
 	    keywords: KEYWORDS,
 	    contains: [
@@ -5963,7 +4560,7 @@
 	};
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6035,7 +4632,7 @@
 	};
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6079,7 +4676,7 @@
 	};
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6101,7 +4698,7 @@
 	      hljs.APOS_STRING_MODE
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['jinja'],
 	    case_insensitive: true,
@@ -6147,7 +4744,7 @@
 	};
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6159,7 +4756,7 @@
 	        'LOC MX NAPTR NS NSEC NSEC3 NSEC3PARAM PTR RRSIG RP SIG SOA SRV SSHFP TA TKEY TLSA TSIG TXT'
 	    },
 	    contains: [
-	      hljs.COMMENT(';', '$'),
+	      hljs.COMMENT(';', '$', {relevance: 0}),
 	      {
 	        className: 'meta',
 	        begin: /^\$(TTL|GENERATE|INCLUDE|ORIGIN)\b/
@@ -6180,7 +4777,7 @@
 	};
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6213,7 +4810,7 @@
 	};
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6269,7 +4866,7 @@
 	};
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6287,7 +4884,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var NUMBERS = {
 	    className: 'number',
 	    variants: [
@@ -6296,7 +4893,7 @@
 	    ],
 	    relevance: 0
 	  };
-	
+
 	  var PREPROCESSOR = {
 	    className: 'meta',
 	    begin: '#', end: '$',
@@ -6313,7 +4910,7 @@
 	          {
 	            className: 'meta-string',
 	            begin: '<', end: '>',
-	            illegal: '\\n',
+	            illegal: '\\n'
 	          }
 	        ]
 	      },
@@ -6322,40 +4919,40 @@
 	      hljs.C_BLOCK_COMMENT_MODE
 	    ]
 	  };
-	
+
 	  var DTS_REFERENCE = {
 	    className: 'variable',
 	    begin: '\\&[a-z\\d_]*\\b'
 	  };
-	
+
 	  var DTS_KEYWORD = {
 	    className: 'meta-keyword',
 	    begin: '/[a-z][a-z\\d-]*/'
 	  };
-	
+
 	  var DTS_LABEL = {
 	    className: 'symbol',
-	    begin: '^\\s*[a-zA-Z_][a-zA-Z\\d_]*:',
+	    begin: '^\\s*[a-zA-Z_][a-zA-Z\\d_]*:'
 	  };
-	
+
 	  var DTS_CELL_PROPERTY = {
 	    className: 'params',
 	    begin: '<',
 	    end: '>',
 	    contains: [
 	      NUMBERS,
-	      DTS_REFERENCE,
-	    ],
+	      DTS_REFERENCE
+	    ]
 	  };
-	
+
 	  var DTS_NODE = {
 	    className: 'class',
 	    begin: /[a-zA-Z_][a-zA-Z\d_@]*\s{/,
 	    end: /[{;=]/,
 	    returnBegin: true,
-	    excludeEnd: true,
+	    excludeEnd: true
 	  };
-	
+
 	  var DTS_ROOT_NODE = {
 	    className: 'class',
 	    begin: '/\\s*{',
@@ -6370,10 +4967,10 @@
 	      hljs.C_LINE_COMMENT_MODE,
 	      hljs.C_BLOCK_COMMENT_MODE,
 	      NUMBERS,
-	      STRINGS,
-	    ],
+	      STRINGS
+	    ]
 	  };
-	
+
 	  return {
 	    keywords: "",
 	    contains: [
@@ -6390,14 +4987,14 @@
 	      PREPROCESSOR,
 	      {
 	        begin: hljs.IDENT_RE + '::',
-	        keywords: "",
-	      },
+	        keywords: ""
+	      }
 	    ]
 	  };
 	};
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6433,7 +5030,7 @@
 	};
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6473,7 +5070,7 @@
 	  };
 	  var CLASS = hljs.inherit(FUNCTION, {
 	    className: 'class',
-	    beginKeywords: 'defmodule defrecord', end: /\bdo\b|$|;/
+	    beginKeywords: 'defimpl defmodule defprotocol defrecord', end: /\bdo\b|$|;/
 	  });
 	  var ELIXIR_DEFAULT_CONTAINS = [
 	    STRING,
@@ -6525,7 +5122,7 @@
 	    }
 	  ];
 	  SUBST.contains = ELIXIR_DEFAULT_CONTAINS;
-	
+
 	  return {
 	    lexemes: ELIXIR_IDENT_RE,
 	    keywords: ELIXIR_KEYWORDS,
@@ -6534,7 +5131,7 @@
 	};
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6550,13 +5147,13 @@
 	      )
 	    ]
 	  };
-	
+
 	  var CONSTRUCTOR = {
 	    className: 'type',
 	    begin: '\\b[A-Z][\\w\']*', // TODO: other constructors (built-in, infix).
 	    relevance: 0
 	  };
-	
+
 	  var LIST = {
 	    begin: '\\(', end: '\\)',
 	    illegal: '"',
@@ -6565,23 +5162,23 @@
 	      COMMENT
 	    ]
 	  };
-	
+
 	  var RECORD = {
 	    begin: '{', end: '}',
 	    contains: LIST.contains
 	  };
-	
+
 	  return {
 	    keywords:
 	      'let in if then else case of where module import exposing ' +
-	      'type alias as infix infixl infixr port',
+	      'type alias as infix infixl infixr port effect command',
 	    contains: [
-	
+
 	      // Top-level constructions.
-	
+
 	      {
-	        beginKeywords: 'module', end: 'where',
-	        keywords: 'module where',
+	        beginKeywords: 'port effect module', end: 'exposing',
+	        keywords: 'port effect module where command exposing',
 	        contains: [LIST, COMMENT],
 	        illegal: '\\W\\.|;'
 	      },
@@ -6605,23 +5202,23 @@
 	        keywords: 'port',
 	        contains: [COMMENT]
 	      },
-	
+
 	      // Literals and names.
-	
+
 	      // TODO: characters.
 	      hljs.QUOTE_STRING_MODE,
 	      hljs.C_NUMBER_MODE,
 	      CONSTRUCTOR,
 	      hljs.inherit(hljs.TITLE_MODE, {begin: '^[_a-z][\\w\']*'}),
 	      COMMENT,
-	
+
 	      {begin: '->|<-'} // No markup, relevance booster
 	    ]
 	  };
 	};
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6691,7 +5288,7 @@
 	    begin: '\\(', end: '\\)', endsParent: true,
 	    keywords: RUBY_KEYWORDS
 	  };
-	
+
 	  var RUBY_DEFAULT_CONTAINS = [
 	    STRING,
 	    IRB_OBJECT,
@@ -6765,14 +5362,14 @@
 	      relevance: 0
 	    }
 	  ].concat(COMMENT_MODES);
-	
+
 	  SUBST.contains = RUBY_DEFAULT_CONTAINS;
 	  PARAMS.contains = RUBY_DEFAULT_CONTAINS;
-	
+
 	  var SIMPLE_PROMPT = "[>?]>";
 	  var DEFAULT_PROMPT = "[\\w#]+\\(\\w+\\):\\d+:\\d+>";
 	  var RVM_PROMPT = "(\\w+-)?\\d+\\.\\d+\\.\\d(p\\d+)?[^>]+>";
-	
+
 	  var IRB_DEFAULT = [
 	    {
 	      begin: /^\s*=>/,
@@ -6788,7 +5385,7 @@
 	      }
 	    }
 	  ];
-	
+
 	  return {
 	    aliases: ['rb', 'gemspec', 'podspec', 'thor', 'irb'],
 	    keywords: RUBY_KEYWORDS,
@@ -6798,7 +5395,7 @@
 	};
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6817,7 +5414,7 @@
 	};
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6867,7 +5464,7 @@
 	};
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -6880,7 +5477,7 @@
 	    literal:
 	      'false true'
 	  };
-	
+
 	  var COMMENT = hljs.COMMENT('%', '$');
 	  var NUMBER = {
 	    className: 'number',
@@ -6935,7 +5532,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var BLOCK_STATEMENTS = {
 	    beginKeywords: 'fun receive if try case', end: 'end',
 	    keywords: ERLANG_RESERVED
@@ -6952,7 +5549,7 @@
 	    VAR1, VAR2,
 	    RECORD_ACCESS
 	  ];
-	
+
 	  var BASIC_MODES = [
 	    COMMENT,
 	    NAMED_FUN,
@@ -6967,7 +5564,7 @@
 	  FUNCTION_CALL.contains[1].contains = BASIC_MODES;
 	  TUPLE.contains = BASIC_MODES;
 	  RECORD_ACCESS.contains[1].contains = BASIC_MODES;
-	
+
 	  var PARAMS = {
 	    className: 'params',
 	    begin: '\\(', end: '\\)',
@@ -7017,7 +5614,7 @@
 	};
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7050,7 +5647,7 @@
 	};
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7058,7 +5655,7 @@
 	    className: 'params',
 	    begin: '\\(', end: '\\)'
 	  };
-	
+
 	  var F_KEYWORDS = {
 	    literal: '.False. .True.',
 	    keyword: 'kind do while private call intrinsic where elsewhere ' +
@@ -7125,7 +5722,7 @@
 	};
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7135,7 +5732,7 @@
 	      hljs.inherit(hljs.TITLE_MODE, {begin: /'[a-zA-Z0-9_]+/})
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['fs'],
 	    keywords:
@@ -7188,7 +5785,7 @@
 	};
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = function (hljs) {
@@ -7265,7 +5862,7 @@
 	      },
 	    ],
 	  };
-	
+
 	  return {
 	    aliases: ['gms'],
 	    case_insensitive: true,
@@ -7345,7 +5942,7 @@
 	};
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7447,7 +6044,7 @@
 	             'DB_POSITIONAL_PLACEHOLDERS DB_PREPARED_QUERIES DB_QUERY_SIZE DB_SIMPLE_LOCKING DB_SYSTEM_TABLES DB_TABLES ' +
 	             'DB_TRANSACTIONS DB_UNICODE DB_VIEWS'
 	  };
-	
+
 	  var PREPROCESSOR =
 	  {
 	    className: 'meta',
@@ -7472,7 +6069,7 @@
 	      hljs.C_BLOCK_COMMENT_MODE
 	    ]
 	  };
-	
+
 	  var FUNCTION_TITLE = hljs.UNDERSCORE_IDENT_RE + '\\s*\\(?';
 	  var PARSE_PARAMS = [
 	    {
@@ -7487,7 +6084,7 @@
 	      ]
 	    }
 	  ];
-	
+
 	  return {
 	    aliases: ['gss'],
 	    case_insensitive: true, // language is case-insensitive
@@ -7571,7 +6168,7 @@
 	};
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7623,7 +6220,7 @@
 	            ]
 	        }
 	    ];
-	
+
 	    return {
 	        aliases: ['nc'],
 	        // Some implementations (CNC controls) of G-code are interoperable with uppercase and lowercase letters seamlessly.
@@ -7642,7 +6239,7 @@
 	};
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = function (hljs) {
@@ -7683,7 +6280,7 @@
 	};
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7804,7 +6401,7 @@
 	};
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7826,27 +6423,43 @@
 	    contains: [
 	      hljs.C_LINE_COMMENT_MODE,
 	      hljs.C_BLOCK_COMMENT_MODE,
-	      hljs.QUOTE_STRING_MODE,
 	      {
 	        className: 'string',
-	        begin: '\'', end: '[^\\\\]\''
-	      },
-	      {
-	        className: 'string',
-	        begin: '`', end: '`'
+	        variants: [
+	          hljs.QUOTE_STRING_MODE,
+	          {begin: '\'', end: '[^\\\\]\''},
+	          {begin: '`', end: '`'},
+	        ]
 	      },
 	      {
 	        className: 'number',
-	        begin: hljs.C_NUMBER_RE + '[dflsi]?',
-	        relevance: 0
+	        variants: [
+	          {begin: hljs.C_NUMBER_RE + '[dflsi]', relevance: 1},
+	          hljs.C_NUMBER_MODE
+	        ]
 	      },
-	      hljs.C_NUMBER_MODE
+	      {
+	        begin: /:=/ // relevance booster
+	      },
+	      {
+	        className: 'function',
+	        beginKeywords: 'func', end: /\s*\{/, excludeEnd: true,
+	        contains: [
+	          hljs.TITLE_MODE,
+	          {
+	            className: 'params',
+	            begin: /\(/, end: /\)/,
+	            keywords: GO_KEYWORDS,
+	            illegal: /["']/
+	          }
+	        ]
+	      }
 	    ]
 	  };
 	};
 
 /***/ },
-/* 60 */
+/* 62 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7873,7 +6486,7 @@
 	};
 
 /***/ },
-/* 61 */
+/* 63 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7906,13 +6519,13 @@
 	      hljs.QUOTE_STRING_MODE,
 	      hljs.NUMBER_MODE,
 	      hljs.REGEXP_MODE
-	
+
 	    ]
 	  }
 	};
 
 /***/ },
-/* 62 */
+/* 64 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -7928,7 +6541,7 @@
 	            'class interface enum if else for while switch case break default continue ' +
 	            'throw throws try catch finally implements extends new import package return instanceof'
 	        },
-	
+
 	        contains: [
 	            hljs.COMMENT(
 	                '/\\*\\*',
@@ -8010,7 +6623,7 @@
 	};
 
 /***/ },
-/* 63 */
+/* 65 */
 /***/ function(module, exports) {
 
 	module.exports = // TODO support filter tags like :javascript, support inline HTML
@@ -8121,7 +6734,7 @@
 	};
 
 /***/ },
-/* 64 */
+/* 66 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8159,7 +6772,7 @@
 	};
 
 /***/ },
-/* 65 */
+/* 67 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8175,23 +6788,23 @@
 	      )
 	    ]
 	  };
-	
+
 	  var PRAGMA = {
 	    className: 'meta',
 	    begin: '{-#', end: '#-}'
 	  };
-	
+
 	  var PREPROCESSOR = {
 	    className: 'meta',
 	    begin: '^#', end: '$'
 	  };
-	
+
 	  var CONSTRUCTOR = {
 	    className: 'type',
 	    begin: '\\b[A-Z][\\w\']*', // TODO: other constructors (build-in, infix).
 	    relevance: 0
 	  };
-	
+
 	  var LIST = {
 	    begin: '\\(', end: '\\)',
 	    illegal: '"',
@@ -8203,12 +6816,12 @@
 	      COMMENT
 	    ]
 	  };
-	
+
 	  var RECORD = {
 	    begin: '{', end: '}',
 	    contains: LIST.contains
 	  };
-	
+
 	  return {
 	    aliases: ['hs'],
 	    keywords:
@@ -8217,9 +6830,9 @@
 	      'infix infixl infixr foreign export ccall stdcall cplusplus ' +
 	      'jvm dotnet safe unsafe family forall mdo proc rec',
 	    contains: [
-	
+
 	      // Top-level constructions.
-	
+
 	      {
 	        beginKeywords: 'module', end: 'where',
 	        keywords: 'module where',
@@ -8232,7 +6845,7 @@
 	        contains: [LIST, COMMENT],
 	        illegal: '\\W\\.|;'
 	      },
-	
+
 	      {
 	        className: 'class',
 	        begin: '^(\\s*)?(class|instance)\\b', end: 'where',
@@ -8263,35 +6876,35 @@
 	        className: 'meta',
 	        begin: '#!\\/usr\\/bin\\/env\ runhaskell', end: '$'
 	      },
-	
+
 	      // "Whitespaces".
-	
+
 	      PRAGMA,
 	      PREPROCESSOR,
-	
+
 	      // Literals and names.
-	
+
 	      // TODO: characters.
 	      hljs.QUOTE_STRING_MODE,
 	      hljs.C_NUMBER_MODE,
 	      CONSTRUCTOR,
 	      hljs.inherit(hljs.TITLE_MODE, {begin: '^[_a-z][\\w\']*'}),
-	
+
 	      COMMENT,
-	
+
 	      {begin: '->|<-'} // No markup, relevance booster
 	    ]
 	  };
 	};
 
 /***/ },
-/* 66 */
+/* 68 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
 	  var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
-	
+
 	  return {
 	    aliases: ['hx'],
 	    keywords: {
@@ -8347,7 +6960,7 @@
 	};
 
 /***/ },
-/* 67 */
+/* 69 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8360,16 +6973,16 @@
 	      hljs.C_BLOCK_COMMENT_MODE,
 	      hljs.QUOTE_STRING_MODE,
 	      hljs.APOS_STRING_MODE,
-	
+
 	      {
 	        // multi-line string
 	        className: 'string',
 	        begin: '{"', end: '"}',
 	        contains: [hljs.BACKSLASH_ESCAPE]
 	      },
-	
+
 	      hljs.COMMENT(';', '$', {relevance: 0}),
-	
+
 	      {
 	        // pre-processor
 	        className: 'meta',
@@ -8383,13 +6996,13 @@
 	          hljs.C_BLOCK_COMMENT_MODE
 	        ]
 	      },
-	
+
 	      {
 	        // label
 	        className: 'symbol',
 	        begin: '^\\*(\\w+|@)'
 	      },
-	
+
 	      hljs.NUMBER_MODE,
 	      hljs.C_NUMBER_MODE
 	    ]
@@ -8397,12 +7010,12 @@
 	};
 
 /***/ },
-/* 68 */
+/* 70 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var BUILT_INS = 'action collection component concat debugger each each-in else get hash if input link-to loc log mut outlet partial query-params render textarea unbound unless with yield view';
-	
+
 	  var ATTR_ASSIGNMENT = {
 	    illegal: /\}\}/,
 	    begin: /[a-zA-Z0-9_]+=/,
@@ -8414,7 +7027,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var SUB_EXPR = {
 	    illegal: /\}\}/,
 	    begin: /\)/, end: /\)/,
@@ -8431,7 +7044,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var TAG_INNARDS = {
 	    endsWithParent: true, relevance: 0,
 	    keywords: {keyword: 'as', built_in: BUILT_INS},
@@ -8441,7 +7054,7 @@
 	      hljs.NUMBER_MODE
 	    ]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    subLanguage: 'xml',
@@ -8472,7 +7085,7 @@
 	};
 
 /***/ },
-/* 69 */
+/* 71 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8517,7 +7130,7 @@
 	};
 
 /***/ },
-/* 70 */
+/* 72 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8578,7 +7191,7 @@
 	};
 
 /***/ },
-/* 71 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8648,7 +7261,7 @@
 	};
 
 /***/ },
-/* 72 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8656,7 +7269,7 @@
 	    className: 'params',
 	    begin: '\\(', end: '\\)'
 	  };
-	
+
 	  var F_KEYWORDS = {
 	    literal: '.False. .True.',
 	    keyword: 'kind do while private call intrinsic where elsewhere ' +
@@ -8728,7 +7341,7 @@
 	};
 
 /***/ },
-/* 73 */
+/* 75 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8739,7 +7352,7 @@
 	    'enum else break transient catch instanceof byte super volatile case assert short ' +
 	    'package default double public try this switch continue throws protected public private ' +
 	    'module requires exports';
-	
+
 	  // https://docs.oracle.com/javase/7/docs/technotes/guides/language/underscores-literals.html
 	  var JAVA_NUMBER_RE = '\\b' +
 	    '(' +
@@ -8760,7 +7373,7 @@
 	    begin: JAVA_NUMBER_RE,
 	    relevance: 0
 	  };
-	
+
 	  return {
 	    aliases: ['jsp'],
 	    keywords: KEYWORDS,
@@ -8839,7 +7452,7 @@
 	};
 
 /***/ },
-/* 74 */
+/* 76 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8957,7 +7570,7 @@
 	};
 
 /***/ },
-/* 75 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -8998,7 +7611,7 @@
 	};
 
 /***/ },
-/* 76 */
+/* 78 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -9006,7 +7619,7 @@
 	  // to maintain them by hand. Hence these names (i.e. keywords, literals and
 	  // built-ins) are automatically generated from Julia (v0.3.0 and v0.4.1)
 	  // itself through following scripts for each.
-	
+
 	  var KEYWORDS = {
 	    // # keyword generator
 	    // println("in")
@@ -9017,7 +7630,7 @@
 	      'in abstract baremodule begin bitstype break catch ccall const continue do else elseif end export ' +
 	      'finally for function global if immutable import importall let local macro module quote return try type ' +
 	      'typealias using while',
-	
+
 	    // # literal generator
 	    // println("true")
 	    // println("false")
@@ -9047,7 +7660,7 @@
 	      'eulergamma golden im nothing pi γ π φ ' +
 	      // v0.4 (diff)
 	      'Inf64 NaN64 RoundNearestTiesAway RoundNearestTiesUp ',
-	
+
 	    // # built_in generator:
 	    // for name in Base.REPLCompletions.completions("", 0)[1]
 	    //     try
@@ -9087,23 +7700,23 @@
 	      'DenseMatrix DenseVecOrMat DenseVector Matrix SharedMatrix SharedVector StridedArray StridedMatrix ' +
 	      'StridedVecOrMat StridedVector VecOrMat Vector '
 	  };
-	
+
 	  // ref: http://julia.readthedocs.org/en/latest/manual/variables/#allowed-variable-names
 	  var VARIABLE_NAME_RE = '[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*';
-	
+
 	  // placeholder for recursive self-reference
 	  var DEFAULT = { lexemes: VARIABLE_NAME_RE, keywords: KEYWORDS, illegal: /<\// };
-	
+
 	  var TYPE_ANNOTATION = {
 	    className: 'type',
 	    begin: /::/
 	  };
-	
+
 	  var SUBTYPE = {
 	    className: 'type',
 	    begin: /<:/
 	  };
-	
+
 	  // ref: http://julia.readthedocs.org/en/latest/manual/integers-and-floating-point-numbers/
 	  var NUMBER = {
 	    className: 'number',
@@ -9117,23 +7730,23 @@
 	    begin: /(\b0x[\d_]*(\.[\d_]*)?|0x\.\d[\d_]*)p[-+]?\d+|\b0[box][a-fA-F0-9][a-fA-F0-9_]*|(\b\d[\d_]*(\.[\d_]*)?|\.\d[\d_]*)([eEfF][-+]?\d+)?/,
 	    relevance: 0
 	  };
-	
+
 	  var CHAR = {
 	    className: 'string',
 	    begin: /'(.|\\[xXuU][a-zA-Z0-9]+)'/
 	  };
-	
+
 	  var INTERPOLATION = {
 	    className: 'subst',
 	    begin: /\$\(/, end: /\)/,
 	    keywords: KEYWORDS
 	  };
-	
+
 	  var INTERPOLATED_VARIABLE = {
 	    className: 'variable',
 	    begin: '\\$' + VARIABLE_NAME_RE
 	  };
-	
+
 	  // TODO: neatly escape normal code in string literal
 	  var STRING = {
 	    className: 'string',
@@ -9143,18 +7756,18 @@
 	      { begin: /\w*"/, end: /"\w*/ }
 	    ]
 	  };
-	
+
 	  var COMMAND = {
 	    className: 'string',
 	    contains: [hljs.BACKSLASH_ESCAPE, INTERPOLATION, INTERPOLATED_VARIABLE],
 	    begin: '`', end: '`'
 	  };
-	
+
 	  var MACROCALL = {
 	    className: 'meta',
 	    begin: '@' + VARIABLE_NAME_RE
 	  };
-	
+
 	  var COMMENT = {
 	    className: 'comment',
 	    variants: [
@@ -9162,7 +7775,7 @@
 	      { begin: '#', end: '$' }
 	    ]
 	  };
-	
+
 	  DEFAULT.contains = [
 	    NUMBER,
 	    CHAR,
@@ -9175,12 +7788,12 @@
 	    hljs.HASH_COMMENT_MODE
 	  ];
 	  INTERPOLATION.contains = DEFAULT.contains;
-	
+
 	  return DEFAULT;
 	};
 
 /***/ },
-/* 77 */
+/* 79 */
 /***/ function(module, exports) {
 
 	module.exports = function (hljs) {
@@ -9212,7 +7825,7 @@
 	  var LABEL = {
 	    className: 'symbol', begin: hljs.UNDERSCORE_IDENT_RE + '@'
 	  };
-	
+
 	  // for string templates
 	  var SUBST = {
 	    className: 'subst',
@@ -9243,7 +7856,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var ANNOTATION_USE_SITE = {
 	    className: 'meta', begin: '@(?:file|property|field|get|set|receiver|param|setparam|delegate)\\s*:(?:\\s*' + hljs.UNDERSCORE_IDENT_RE + ')?'
 	  };
@@ -9258,7 +7871,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  return {
 	    keywords: KEYWORDS,
 	    contains : [
@@ -9358,7 +7971,7 @@
 	};
 
 /***/ },
-/* 78 */
+/* 80 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -9530,31 +8143,31 @@
 	};
 
 /***/ },
-/* 79 */
+/* 81 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var IDENT_RE        = '[\\w-]+'; // yes, Less identifiers may begin with a digit
 	  var INTERP_IDENT_RE = '(' + IDENT_RE + '|@{' + IDENT_RE + '})';
-	
+
 	  /* Generic Modes */
-	
+
 	  var RULES = [], VALUE = []; // forward def. for recursive modes
-	
+
 	  var STRING_MODE = function(c) { return {
 	    // Less strings are not multiline (also include '~' for more consistent coloring of "escaped" strings)
 	    className: 'string', begin: '~?' + c + '.*?' + c
 	  };};
-	
+
 	  var IDENT_MODE = function(name, begin, relevance) { return {
 	    className: name, begin: begin, relevance: relevance
 	  };};
-	
+
 	  var PARENS_MODE = {
 	    // used only to properly balance nested parens inside mixin call, def. arg list
 	    begin: '\\(', end: '\\)', contains: VALUE, relevance: 0
 	  };
-	
+
 	  // generic Less highlighter (used almost everywhere except selectors):
 	  VALUE.push(
 	    hljs.C_LINE_COMMENT_MODE,
@@ -9579,18 +8192,18 @@
 	      begin: '!important'
 	    }
 	  );
-	
+
 	  var VALUE_WITH_RULESETS = VALUE.concat({
 	    begin: '{', end: '}', contains: RULES
 	  });
-	
+
 	  var MIXIN_GUARD_MODE = {
 	    beginKeywords: 'when', endsWithParent: true,
 	    contains: [{beginKeywords: 'and not'}].concat(VALUE) // using this form to override VALUE’s 'function' match
 	  };
-	
+
 	  /* Rule-Level Modes */
-	
+
 	  var RULE_MODE = {
 	    begin: INTERP_IDENT_RE + '\\s*:', returnBegin: true, end: '[;}]',
 	    relevance: 0,
@@ -9606,13 +8219,13 @@
 	      }
 	    ]
 	  };
-	
+
 	  var AT_RULE_MODE = {
 	    className: 'keyword',
 	    begin: '@(import|media|charset|font-face|(-[a-z]+-)?keyframes|supports|document|namespace|page|viewport|host)\\b',
 	    starts: {end: '[;{}]', returnEnd: true, contains: VALUE, relevance: 0}
 	  };
-	
+
 	  // variable definitions and calls
 	  var VAR_RULE_MODE = {
 	    className: 'variable',
@@ -9626,7 +8239,7 @@
 	    ],
 	    starts: {end: '[;}]', returnEnd: true, contains: VALUE_WITH_RULESETS}
 	  };
-	
+
 	  var SELECTOR_MODE = {
 	    // first parse unambiguous selectors (i.e. those not starting with tag)
 	    // then fall into the scary lookahead-discriminator variant.
@@ -9656,7 +8269,7 @@
 	      {begin: '!important'} // eat !important after mixin call or it will be colored as tag
 	    ]
 	  };
-	
+
 	  RULES.push(
 	    hljs.C_LINE_COMMENT_MODE,
 	    hljs.C_BLOCK_COMMENT_MODE,
@@ -9665,7 +8278,7 @@
 	    RULE_MODE,
 	    SELECTOR_MODE
 	  );
-	
+
 	  return {
 	    case_insensitive: true,
 	    illegal: '[=>\'/<($"]',
@@ -9674,7 +8287,7 @@
 	};
 
 /***/ },
-/* 80 */
+/* 82 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -9763,7 +8376,7 @@
 	    BODY
 	  ];
 	  BODY.contains = [QUOTED, QUOTED_ATOM, LIST, LITERAL, NUMBER, STRING, COMMENT, VARIABLE, KEYWORD, MEC, IDENT];
-	
+
 	  return {
 	    illegal: /\S/,
 	    contains: [
@@ -9781,7 +8394,7 @@
 	};
 
 /***/ },
-/* 81 */
+/* 83 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -9942,7 +8555,7 @@
 	};
 
 /***/ },
-/* 82 */
+/* 84 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10032,7 +8645,7 @@
 	    }
 	  ];
 	  SUBST.contains = EXPRESSIONS;
-	
+
 	  var PARAMS = {
 	    className: 'params',
 	    begin: '\\(', returnBegin: true,
@@ -10046,7 +8659,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['ls'],
 	    keywords: KEYWORDS,
@@ -10095,7 +8708,7 @@
 	};
 
 /***/ },
-/* 83 */
+/* 85 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10155,7 +8768,7 @@
 	};
 
 /***/ },
-/* 84 */
+/* 86 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10204,7 +8817,7 @@
 	};
 
 /***/ },
-/* 85 */
+/* 87 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10266,7 +8879,7 @@
 	};
 
 /***/ },
-/* 86 */
+/* 88 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10286,7 +8899,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  return {
 	    keywords: {
 	      keyword:
@@ -10358,7 +8971,7 @@
 	};
 
 /***/ },
-/* 87 */
+/* 89 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10719,7 +9332,7 @@
 	      + ' yv_grid y_voxel yx_ratio zaxis zaxis_color zaxis_type zaxis_width zeroa zerob'
 	      + ' zerobern zeta%pi zlabel zlabel_rotate zlength zmin zn_primroot_limit zn_primroot_pretest';
 	  var SYMBOLS = '_ __ %|0 %%|0';
-	
+
 	  return {
 	    lexemes: '[A-Za-z_%][0-9A-Za-z_%]*',
 	    keywords: {
@@ -10762,12 +9375,13 @@
 	          }
 	        ]
 	      }
-	    ]
+	    ],
+	    illegal: /@/
 	  }
 	};
 
 /***/ },
-/* 88 */
+/* 90 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -10996,7 +9610,7 @@
 	};
 
 /***/ },
-/* 89 */
+/* 91 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11028,14 +9642,14 @@
 	      'some all not if then else true fail false try catch catch_any ' +
 	      'semidet_true semidet_false semidet_fail impure_true impure semipure'
 	  };
-	
+
 	  var COMMENT = hljs.COMMENT('%', '$');
-	
+
 	  var NUMCODE = {
 	    className: 'number',
 	    begin: "0'.\\|0[box][0-9a-fA-F]*"
 	  };
-	
+
 	  var ATOM = hljs.inherit(hljs.APOS_STRING_MODE, {relevance: 0});
 	  var STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, {relevance: 0});
 	  var STRING_FMT = {
@@ -11044,7 +9658,7 @@
 	    relevance: 0
 	  };
 	  STRING.contains.push(STRING_FMT);
-	
+
 	  var IMPLICATION = {
 	    className: 'built_in',
 	    variants: [
@@ -11055,7 +9669,7 @@
 	      {begin: '\\\\/'}
 	    ]
 	  };
-	
+
 	  var HEAD_BODY_CONJUNCTION = {
 	    className: 'built_in',
 	    variants: [
@@ -11063,7 +9677,7 @@
 	      {begin: '=', relevance: 0}
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['m', 'moo'],
 	    keywords: KEYWORDS,
@@ -11082,7 +9696,7 @@
 	};
 
 /***/ },
-/* 90 */
+/* 92 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11172,7 +9786,7 @@
 	};
 
 /***/ },
-/* 91 */
+/* 93 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11195,7 +9809,7 @@
 	};
 
 /***/ },
-/* 92 */
+/* 94 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11346,7 +9960,7 @@
 	  ];
 	  SUBST.contains = PERL_DEFAULT_CONTAINS;
 	  METHOD.contains = PERL_DEFAULT_CONTAINS;
-	
+
 	  return {
 	    aliases: ['pl', 'pm'],
 	    lexemes: /[\w\.]+/,
@@ -11356,7 +9970,7 @@
 	};
 
 /***/ },
-/* 93 */
+/* 95 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11385,7 +9999,7 @@
 	};
 
 /***/ },
-/* 94 */
+/* 96 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11398,7 +10012,7 @@
 	      hljs.NUMBER_MODE
 	    ]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    keywords: {
@@ -11406,10 +10020,10 @@
 	        'eachin not abstract final select case default const local global field ' +
 	        'end if then else elseif endif while wend repeat until forever for ' +
 	        'to step next return module inline throw import',
-	
+
 	      built_in: 'DebugLog DebugStop Error Print ACos ACosr ASin ASinr ATan ATan2 ATan2r ATanr Abs Abs Ceil ' +
 	        'Clamp Clamp Cos Cosr Exp Floor Log Max Max Min Min Pow Sgn Sgn Sin Sinr Sqrt Tan Tanr Seed PI HALFPI TWOPI',
-	
+
 	      literal: 'true false null and or shl shr mod'
 	    },
 	    illegal: /\/\*/,
@@ -11464,7 +10078,7 @@
 	};
 
 /***/ },
-/* 95 */
+/* 97 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11515,7 +10129,7 @@
 	    }
 	  ];
 	  SUBST.contains = EXPRESSIONS;
-	
+
 	  var TITLE = hljs.inherit(hljs.TITLE_MODE, {begin: JS_IDENT_RE});
 	  var PARAMS_RE = '(\\(.*\\))?\\s*\\B[-=]>';
 	  var PARAMS = {
@@ -11529,7 +10143,7 @@
 	      contains: ['self'].concat(EXPRESSIONS)
 	    }]
 	  };
-	
+
 	  return {
 	    aliases: ['moon'],
 	    keywords: KEYWORDS,
@@ -11580,7 +10194,7 @@
 	};
 
 /***/ },
-/* 96 */
+/* 98 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11644,7 +10258,7 @@
 	      VAR
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['nginxconf'],
 	    contains: [
@@ -11677,7 +10291,7 @@
 	};
 
 /***/ },
-/* 97 */
+/* 99 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11736,7 +10350,7 @@
 	};
 
 /***/ },
-/* 98 */
+/* 100 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11789,7 +10403,7 @@
 	};
 
 /***/ },
-/* 99 */
+/* 101 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -11797,38 +10411,38 @@
 	    className: 'variable',
 	    begin: '\\$(ADMINTOOLS|APPDATA|CDBURN_AREA|CMDLINE|COMMONFILES32|COMMONFILES64|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|EXEFILE|EXEPATH|FAVORITES|FONTS|HISTORY|HWNDPARENT|INSTDIR|INTERNET_CACHE|LANGUAGE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES32|PROGRAMFILES64|PROGRAMFILES|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)'
 	  };
-	
+
 	  var DEFINES = {
 	    // ${defines}
 	    className: 'variable',
 	    begin: '\\$+{[a-zA-Z0-9_]+}'
 	  };
-	
+
 	  var VARIABLES = {
 	    // $variables
 	    className: 'variable',
 	    begin: '\\$+[a-zA-Z0-9_]+',
 	    illegal: '\\(\\){}'
 	  };
-	
+
 	  var LANGUAGES = {
 	    // $(language_strings)
 	    className: 'variable',
 	    begin: '\\$+\\([a-zA-Z0-9_]+\\)'
 	  };
-	
+
 	  var PARAMETERS = {
 	    // command parameters
 	    className: 'built_in',
 	    begin: '(ARCHIVE|FILE_ATTRIBUTE_ARCHIVE|FILE_ATTRIBUTE_NORMAL|FILE_ATTRIBUTE_OFFLINE|FILE_ATTRIBUTE_READONLY|FILE_ATTRIBUTE_SYSTEM|FILE_ATTRIBUTE_TEMPORARY|HKCR|HKCU|HKDD|HKEY_CLASSES_ROOT|HKEY_CURRENT_CONFIG|HKEY_CURRENT_USER|HKEY_DYN_DATA|HKEY_LOCAL_MACHINE|HKEY_PERFORMANCE_DATA|HKEY_USERS|HKLM|HKPD|HKU|IDABORT|IDCANCEL|IDIGNORE|IDNO|IDOK|IDRETRY|IDYES|MB_ABORTRETRYIGNORE|MB_DEFBUTTON1|MB_DEFBUTTON2|MB_DEFBUTTON3|MB_DEFBUTTON4|MB_ICONEXCLAMATION|MB_ICONINFORMATION|MB_ICONQUESTION|MB_ICONSTOP|MB_OK|MB_OKCANCEL|MB_RETRYCANCEL|MB_RIGHT|MB_RTLREADING|MB_SETFOREGROUND|MB_TOPMOST|MB_USERICON|MB_YESNO|NORMAL|OFFLINE|READONLY|SHCTX|SHELL_CONTEXT|SYSTEM|TEMPORARY)'
 	  };
-	
+
 	  var COMPILER ={
 	    // !compiler_flags
 	    className: 'keyword',
 	    begin: '\\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|makensis|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warning)'
 	  };
-	
+
 	  return {
 	    case_insensitive: false,
 	    keywords: {
@@ -11879,13 +10493,13 @@
 	};
 
 /***/ },
-/* 100 */
+/* 102 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var API_CLASS = {
 	    className: 'built_in',
-	    begin: '(AV|CA|CF|CG|CI|MK|MP|NS|UI|XC)\\w+',
+	    begin: '\\b(AV|CA|CF|CG|CI|MK|MP|NS|UI|XC)\\w+',
 	  };
 	  var OBJC_KEYWORDS = {
 	    keyword:
@@ -11961,7 +10575,7 @@
 	};
 
 /***/ },
-/* 101 */
+/* 103 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12036,7 +10650,7 @@
 	};
 
 /***/ },
-/* 102 */
+/* 104 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12075,7 +10689,7 @@
 			end: '\\=|\\{',
 			contains: [PARAMS, hljs.UNDERSCORE_TITLE_MODE]
 		};
-	
+
 		return {
 			aliases: ['scad'],
 			keywords: {
@@ -12097,7 +10711,7 @@
 	};
 
 /***/ },
-/* 103 */
+/* 105 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12171,7 +10785,7 @@
 	};
 
 /***/ },
-/* 104 */
+/* 106 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12223,7 +10837,7 @@
 	};
 
 /***/ },
-/* 105 */
+/* 107 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12239,7 +10853,7 @@
 	    className: 'string',
 	    begin: /"/, end: /"/
 	  };
-	
+
 	  return {
 	    aliases: ['pf.conf'],
 	    lexemes: /[a-z0-9_<>-]+/,
@@ -12279,7 +10893,7 @@
 	};
 
 /***/ },
-/* 106 */
+/* 108 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12355,6 +10969,9 @@
 	        ]
 	      },
 	      PREPROCESSOR,
+	      {
+	        className: 'keyword', begin: /\$this\b/
+	      },
 	      VARIABLE,
 	      {
 	        // swallow composed identifiers to avoid parsing them as keywords
@@ -12407,11 +11024,11 @@
 	};
 
 /***/ },
-/* 107 */
+/* 109 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	  var backtickEscape = {
+	  var BACKTICK_ESCAPE = {
 	    begin: '`[\\s\\S]',
 	    relevance: 0
 	  };
@@ -12427,9 +11044,12 @@
 	  };
 	  var QUOTE_STRING = {
 	    className: 'string',
-	    begin: /"/, end: /"/,
+	    variants: [
+	      { begin: /"/, end: /"/ },
+	      { begin: /@"/, end: /^"@/ }
+	    ],
 	    contains: [
-	      backtickEscape,
+	      BACKTICK_ESCAPE,
 	      VAR,
 	      {
 	        className: 'variable',
@@ -12439,31 +11059,57 @@
 	  };
 	  var APOS_STRING = {
 	    className: 'string',
-	    begin: /'/, end: /'/
+	    variants: [
+	      { begin: /'/, end: /'/ },
+	      { begin: /@'/, end: /^'@/ }
+	    ]
 	  };
-	
+
+	  var PS_HELPTAGS = {
+	    className: 'doctag',
+	    variants: [
+	      /* no paramater help tags */ 
+	      { begin: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/ },
+	      /* one parameter help tags */
+	      { begin: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/ }
+	    ]
+	  };
+	  var PS_COMMENT = hljs.inherit(
+	    hljs.COMMENT(null, null),
+	    {
+	      variants: [
+	        /* single-line comment */
+	        { begin: /#/, end: /$/ },
+	        /* multi-line comment */
+	        { begin: /<#/, end: /#>/ }
+	      ],
+	      contains: [PS_HELPTAGS]
+	    }
+	  );
+
 	  return {
 	    aliases: ['ps'],
 	    lexemes: /-?[A-z\.\-]+/,
 	    case_insensitive: true,
 	    keywords: {
 	      keyword: 'if else foreach return function do while until elseif begin for trap data dynamicparam end break throw param continue finally in switch exit filter try process catch',
-	      built_in: 'Add-Content Add-History Add-Member Add-PSSnapin Clear-Content Clear-Item Clear-Item Property Clear-Variable Compare-Object ConvertFrom-SecureString Convert-Path ConvertTo-Html ConvertTo-SecureString Copy-Item Copy-ItemProperty Export-Alias Export-Clixml Export-Console Export-Csv ForEach-Object Format-Custom Format-List Format-Table Format-Wide Get-Acl Get-Alias Get-AuthenticodeSignature Get-ChildItem Get-Command Get-Content Get-Credential Get-Culture Get-Date Get-EventLog Get-ExecutionPolicy Get-Help Get-History Get-Host Get-Item Get-ItemProperty Get-Location Get-Member Get-PfxCertificate Get-Process Get-PSDrive Get-PSProvider Get-PSSnapin Get-Service Get-TraceSource Get-UICulture Get-Unique Get-Variable Get-WmiObject Group-Object Import-Alias Import-Clixml Import-Csv Invoke-Expression Invoke-History Invoke-Item Join-Path Measure-Command Measure-Object Move-Item Move-ItemProperty New-Alias New-Item New-ItemProperty New-Object New-PSDrive New-Service New-TimeSpan New-Variable Out-Default Out-File Out-Host Out-Null Out-Printer Out-String Pop-Location Push-Location Read-Host Remove-Item Remove-ItemProperty Remove-PSDrive Remove-PSSnapin Remove-Variable Rename-Item Rename-ItemProperty Resolve-Path Restart-Service Resume-Service Select-Object Select-String Set-Acl Set-Alias Set-AuthenticodeSignature Set-Content Set-Date Set-ExecutionPolicy Set-Item Set-ItemProperty Set-Location Set-PSDebug Set-Service Set-TraceSource Set-Variable Sort-Object Split-Path Start-Service Start-Sleep Start-Transcript Stop-Process Stop-Service Stop-Transcript Suspend-Service Tee-Object Test-Path Trace-Command Update-FormatData Update-TypeData Where-Object Write-Debug Write-Error Write-Host Write-Output Write-Progress Write-Verbose Write-Warning',
+	      built_in: 'Add-Computer Add-Content Add-History Add-JobTrigger Add-Member Add-PSSnapin Add-Type Checkpoint-Computer Clear-Content Clear-EventLog Clear-History Clear-Host Clear-Item Clear-ItemProperty Clear-Variable Compare-Object Complete-Transaction Connect-PSSession Connect-WSMan Convert-Path ConvertFrom-Csv ConvertFrom-Json ConvertFrom-SecureString ConvertFrom-StringData ConvertTo-Csv ConvertTo-Html ConvertTo-Json ConvertTo-SecureString ConvertTo-Xml Copy-Item Copy-ItemProperty Debug-Process Disable-ComputerRestore Disable-JobTrigger Disable-PSBreakpoint Disable-PSRemoting Disable-PSSessionConfiguration Disable-WSManCredSSP Disconnect-PSSession Disconnect-WSMan Disable-ScheduledJob Enable-ComputerRestore Enable-JobTrigger Enable-PSBreakpoint Enable-PSRemoting Enable-PSSessionConfiguration Enable-ScheduledJob Enable-WSManCredSSP Enter-PSSession Exit-PSSession Export-Alias Export-Clixml Export-Console Export-Counter Export-Csv Export-FormatData Export-ModuleMember Export-PSSession ForEach-Object Format-Custom Format-List Format-Table Format-Wide Get-Acl Get-Alias Get-AuthenticodeSignature Get-ChildItem Get-Command Get-ComputerRestorePoint Get-Content Get-ControlPanelItem Get-Counter Get-Credential Get-Culture Get-Date Get-Event Get-EventLog Get-EventSubscriber Get-ExecutionPolicy Get-FormatData Get-Host Get-HotFix Get-Help Get-History Get-IseSnippet Get-Item Get-ItemProperty Get-Job Get-JobTrigger Get-Location Get-Member Get-Module Get-PfxCertificate Get-Process Get-PSBreakpoint Get-PSCallStack Get-PSDrive Get-PSProvider Get-PSSession Get-PSSessionConfiguration Get-PSSnapin Get-Random Get-ScheduledJob Get-ScheduledJobOption Get-Service Get-TraceSource Get-Transaction Get-TypeData Get-UICulture Get-Unique Get-Variable Get-Verb Get-WinEvent Get-WmiObject Get-WSManCredSSP Get-WSManInstance Group-Object Import-Alias Import-Clixml Import-Counter Import-Csv Import-IseSnippet Import-LocalizedData Import-PSSession Import-Module Invoke-AsWorkflow Invoke-Command Invoke-Expression Invoke-History Invoke-Item Invoke-RestMethod Invoke-WebRequest Invoke-WmiMethod Invoke-WSManAction Join-Path Limit-EventLog Measure-Command Measure-Object Move-Item Move-ItemProperty New-Alias New-Event New-EventLog New-IseSnippet New-Item New-ItemProperty New-JobTrigger New-Object New-Module New-ModuleManifest New-PSDrive New-PSSession New-PSSessionConfigurationFile New-PSSessionOption New-PSTransportOption New-PSWorkflowExecutionOption New-PSWorkflowSession New-ScheduledJobOption New-Service New-TimeSpan New-Variable New-WebServiceProxy New-WinEvent New-WSManInstance New-WSManSessionOption Out-Default Out-File Out-GridView Out-Host Out-Null Out-Printer Out-String Pop-Location Push-Location Read-Host Receive-Job Register-EngineEvent Register-ObjectEvent Register-PSSessionConfiguration Register-ScheduledJob Register-WmiEvent Remove-Computer Remove-Event Remove-EventLog Remove-Item Remove-ItemProperty Remove-Job Remove-JobTrigger Remove-Module Remove-PSBreakpoint Remove-PSDrive Remove-PSSession Remove-PSSnapin Remove-TypeData Remove-Variable Remove-WmiObject Remove-WSManInstance Rename-Computer Rename-Item Rename-ItemProperty Reset-ComputerMachinePassword Resolve-Path Restart-Computer Restart-Service Restore-Computer Resume-Job Resume-Service Save-Help Select-Object Select-String Select-Xml Send-MailMessage Set-Acl Set-Alias Set-AuthenticodeSignature Set-Content Set-Date Set-ExecutionPolicy Set-Item Set-ItemProperty Set-JobTrigger Set-Location Set-PSBreakpoint Set-PSDebug Set-PSSessionConfiguration Set-ScheduledJob Set-ScheduledJobOption Set-Service Set-StrictMode Set-TraceSource Set-Variable Set-WmiInstance Set-WSManInstance Set-WSManQuickConfig Show-Command Show-ControlPanelItem Show-EventLog Sort-Object Split-Path Start-Job Start-Process Start-Service Start-Sleep Start-Transaction Start-Transcript Stop-Computer Stop-Job Stop-Process Stop-Service Stop-Transcript Suspend-Job Suspend-Service Tee-Object Test-ComputerSecureChannel Test-Connection Test-ModuleManifest Test-Path Test-PSSessionConfigurationFile Trace-Command Unblock-File Undo-Transaction Unregister-Event Unregister-PSSessionConfiguration Unregister-ScheduledJob Update-FormatData Update-Help Update-List Update-TypeData Use-Transaction Wait-Event Wait-Job Wait-Process Where-Object Write-Debug Write-Error Write-EventLog Write-Host Write-Output Write-Progress Write-Verbose Write-Warning',
 	      nomarkup: '-ne -eq -lt -gt -ge -le -not -like -notlike -match -notmatch -contains -notcontains -in -notin -replace'
 	    },
 	    contains: [
-	      hljs.HASH_COMMENT_MODE,
+	      BACKTICK_ESCAPE,
 	      hljs.NUMBER_MODE,
 	      QUOTE_STRING,
 	      APOS_STRING,
 	      LITERAL,
-	      VAR
+	      VAR,
+	      PS_COMMENT
 	    ]
 	  };
 	};
 
 /***/ },
-/* 108 */
+/* 110 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12515,7 +11161,7 @@
 	};
 
 /***/ },
-/* 109 */
+/* 111 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12549,19 +11195,19 @@
 	};
 
 /***/ },
-/* 110 */
+/* 112 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var ATOM = {
-	
+
 	    begin: /[a-z][A-Za-z0-9_]*/,
 	    relevance: 0
 	  };
-	
+
 	  var VAR = {
-	
+
 	    className: 'symbol',
 	    variants: [
 	      {begin: /[A-Z][a-zA-Z0-9_]*/},
@@ -12569,52 +11215,52 @@
 	    ],
 	    relevance: 0
 	  };
-	
+
 	  var PARENTED = {
-	
+
 	    begin: /\(/,
 	    end: /\)/,
 	    relevance: 0
 	  };
-	
+
 	  var LIST = {
-	
+
 	    begin: /\[/,
 	    end: /\]/
 	  };
-	
+
 	  var LINE_COMMENT = {
-	
+
 	    className: 'comment',
 	    begin: /%/, end: /$/,
 	    contains: [hljs.PHRASAL_WORDS_MODE]
 	  };
-	
+
 	  var BACKTICK_STRING = {
-	
+
 	    className: 'string',
 	    begin: /`/, end: /`/,
 	    contains: [hljs.BACKSLASH_ESCAPE]
 	  };
-	
+
 	  var CHAR_CODE = {
-	
+
 	    className: 'string', // 0'a etc.
 	    begin: /0\'(\\\'|.)/
 	  };
-	
+
 	  var SPACE_CODE = {
-	
+
 	    className: 'string',
 	    begin: /0\'\\s/ // 0'\s
 	  };
-	
+
 	  var PRED_OP = { // relevance booster
 	    begin: /:-/
 	  };
-	
+
 	  var inner = [
-	
+
 	    ATOM,
 	    VAR,
 	    PARENTED,
@@ -12629,10 +11275,10 @@
 	    SPACE_CODE,
 	    hljs.C_NUMBER_MODE
 	  ];
-	
+
 	  PARENTED.contains = inner;
 	  LIST.contains = inner;
-	
+
 	  return {
 	    contains: inner.concat([
 	      {begin: /\.$/} // relevance booster
@@ -12641,7 +11287,7 @@
 	};
 
 /***/ },
-/* 111 */
+/* 113 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12681,11 +11327,11 @@
 	};
 
 /***/ },
-/* 112 */
+/* 114 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var PUPPET_KEYWORDS = {
 	    keyword:
 	    /* language keywords */
@@ -12722,15 +11368,15 @@
 	      'selinux_policyversion serialnumber sp_ sshdsakey sshecdsakey sshrsakey swapencrypted swapfree swapsize timezone type uniqueid uptime '+
 	      'uptime_days uptime_hours uptime_seconds uuid virtual vlans xendomains zfs_version zonenae zones zpool_version'
 	  };
-	
+
 	  var COMMENT = hljs.COMMENT('#', '$');
-	
+
 	  var IDENT_RE = '([A-Za-z_]|::)(\\w|::)*';
-	
+
 	  var TITLE = hljs.inherit(hljs.TITLE_MODE, {begin: IDENT_RE});
-	
+
 	  var VARIABLE = {className: 'variable', begin: '\\$' + IDENT_RE};
-	
+
 	  var STRING = {
 	    className: 'string',
 	    contains: [hljs.BACKSLASH_ESCAPE, VARIABLE],
@@ -12739,7 +11385,7 @@
 	      {begin: /"/, end: /"/}
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['pp'],
 	    contains: [
@@ -12800,7 +11446,69 @@
 	};
 
 /***/ },
-/* 113 */
+/* 115 */
+/***/ function(module, exports) {
+
+	module.exports = // Base deafult colors in PB IDE: background: #FFFFDF; foreground: #000000;
+
+	function(hljs) {
+	  var STRINGS = { // PB IDE color: #0080FF (Azure Radiance)
+	    className: 'string',
+	    begin: '(~)?"', end: '"',
+	    illegal: '\\n'
+	  };
+	  var CONSTANTS = { // PB IDE color: #924B72 (Cannon Pink)
+	    //  "#" + a letter or underscore + letters, digits or underscores + (optional) "$"
+	    className: 'symbol',
+	    begin: '#[a-zA-Z_]\\w*\\$?'
+	  };
+
+	  return {
+	    aliases: ['pb', 'pbi'],
+	    keywords: // PB IDE color: #006666 (Blue Stone) + Bold
+	      // The following keywords list was taken and adapted from GuShH's PureBasic language file for GeSHi...
+	      'And As Break CallDebugger Case CompilerCase CompilerDefault CompilerElse CompilerEndIf CompilerEndSelect ' +
+	      'CompilerError CompilerIf CompilerSelect Continue Data DataSection EndDataSection Debug DebugLevel ' +
+	      'Default Define Dim DisableASM DisableDebugger DisableExplicit Else ElseIf EnableASM ' +
+	      'EnableDebugger EnableExplicit End EndEnumeration EndIf EndImport EndInterface EndMacro EndProcedure ' +
+	      'EndSelect EndStructure EndStructureUnion EndWith Enumeration Extends FakeReturn For Next ForEach ' +
+	      'ForEver Global Gosub Goto If Import ImportC IncludeBinary IncludeFile IncludePath Interface Macro ' +
+	      'NewList Not Or ProcedureReturn Protected Prototype ' +
+	      'PrototypeC Read ReDim Repeat Until Restore Return Select Shared Static Step Structure StructureUnion ' +
+	      'Swap To Wend While With XIncludeFile XOr ' +
+	      'Procedure ProcedureC ProcedureCDLL ProcedureDLL Declare DeclareC DeclareCDLL DeclareDLL',
+	    contains: [
+	      // COMMENTS | PB IDE color: #00AAAA (Persian Green)
+	      hljs.COMMENT(';', '$', {relevance: 0}),
+
+	      { // PROCEDURES DEFINITIONS
+	        className: 'function',
+	        begin: '\\b(Procedure|Declare)(C|CDLL|DLL)?\\b',
+	        end: '\\(',
+	        excludeEnd: true,
+	        returnBegin: true,
+	        contains: [
+	          { // PROCEDURE KEYWORDS | PB IDE color: #006666 (Blue Stone) + Bold
+	            className: 'keyword',
+	            begin: '(Procedure|Declare)(C|CDLL|DLL)?',
+	            excludeEnd: true
+	          },
+	          { // PROCEDURE RETURN TYPE SETTING | PB IDE color: #000000 (Black)
+	            className: 'type',
+	            begin: '\\.\\w*'
+	            // end: ' ',
+	          },
+	          hljs.UNDERSCORE_TITLE_MODE // PROCEDURE NAME | PB IDE color: #006666 (Blue Stone)
+	        ]
+	      },
+	      STRINGS,
+	      CONSTANTS
+	    ]
+	  };
+	};
+
+/***/ },
+/* 116 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12896,7 +11604,7 @@
 	};
 
 /***/ },
-/* 114 */
+/* 117 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12923,7 +11631,7 @@
 	};
 
 /***/ },
-/* 115 */
+/* 118 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -12947,9 +11655,9 @@
 	        'size string url var variant vector2d vector3d vector4d' +
 	        'Promise'
 	    };
-	
+
 	  var QML_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9\\._]*';
-	
+
 	  // Isolate property statements. Ends at a :, =, ;, ,, a comment or end of line.
 	  // Use property class.
 	  var PROPERTY = {
@@ -12961,7 +11669,7 @@
 	        returnEnd: true
 	      }
 	  };
-	
+
 	  // Isolate signal statements. Ends at a ) a comment or end of line.
 	  // Use property class.
 	  var SIGNAL = {
@@ -12973,7 +11681,7 @@
 	        returnEnd: true
 	      }
 	  };
-	
+
 	  // id: is special in QML. When we see id: we want to mark the id: as attribute and
 	  // emphasize the token following.
 	  var ID_ID = {
@@ -12985,7 +11693,7 @@
 	        returnEnd: false
 	      }
 	  };
-	
+
 	  // Find QML object attribute. An attribute is a QML identifier followed by :.
 	  // Unfortunately it's hard to know where it ends, as it may contain scalars,
 	  // objects, object definitions, or javascript. The true end is either when the parent
@@ -13004,7 +11712,7 @@
 	    ],
 	    relevance: 0
 	  };
-	
+
 	  // Find QML object. A QML object is a QML identifier followed by { and ends at the matching }.
 	  // All we really care about is finding IDENT followed by { and just mark up the IDENT and ignore the {.
 	  var QML_OBJECT = {
@@ -13015,7 +11723,7 @@
 	      hljs.inherit(hljs.TITLE_MODE, {begin: QML_IDENT_RE})
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['qt'],
 	    case_insensitive: false,
@@ -13096,12 +11804,12 @@
 	};
 
 /***/ },
-/* 116 */
+/* 119 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var IDENT_RE = '([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*';
-	
+
 	  return {
 	    contains: [
 	      hljs.HASH_COMMENT_MODE,
@@ -13149,14 +11857,14 @@
 	        begin: "\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",
 	        relevance: 0
 	      },
-	
+
 	      {
 	        // escaped identifier
 	        begin: '`',
 	        end: '`',
 	        relevance: 0
 	      },
-	
+
 	      {
 	        className: 'string',
 	        contains: [hljs.BACKSLASH_ESCAPE],
@@ -13170,7 +11878,7 @@
 	};
 
 /***/ },
-/* 117 */
+/* 120 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13201,12 +11909,12 @@
 	};
 
 /***/ },
-/* 118 */
+/* 121 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var IDENTIFIER = '[a-zA-Z-_][^\\n{]+\\{';
-	
+
 	  var PROPERTY = {
 	    className: 'attribute',
 	    begin: /[a-zA-Z-_]+/, end: /\s*:/, excludeEnd: true,
@@ -13225,7 +11933,7 @@
 	      ]
 	    }
 	  };
-	
+
 	  return {
 	    aliases: ['graph', 'instances'],
 	    case_insensitive: true,
@@ -13241,7 +11949,7 @@
 	          hljs.HASH_COMMENT_MODE
 	        ]
 	      },
-	
+
 	      // Instance sections
 	      {
 	        begin: '^\\s*instance of ' + IDENTIFIER,
@@ -13254,7 +11962,7 @@
 	          hljs.HASH_COMMENT_MODE
 	        ]
 	      },
-	
+
 	      // Component sections
 	      {
 	        begin: '^' + IDENTIFIER,
@@ -13264,7 +11972,7 @@
 	          hljs.HASH_COMMENT_MODE
 	        ]
 	      },
-	
+
 	      // Comments
 	      hljs.HASH_COMMENT_MODE
 	    ]
@@ -13272,7 +11980,7 @@
 	};
 
 /***/ },
-/* 119 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13312,7 +12020,7 @@
 	};
 
 /***/ },
-/* 120 */
+/* 123 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13377,7 +12085,7 @@
 	};
 
 /***/ },
-/* 121 */
+/* 124 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13389,8 +12097,8 @@
 	    'false fn for if impl in let loop match mod mut offsetof once priv ' +
 	    'proc pub pure ref return self Self sizeof static struct super trait true ' +
 	    'type typeof unsafe unsized use virtual while where yield move ' +
-	    'int i8 i16 i32 i64 ' +
-	    'uint u8 u32 u64 ' +
+	    'int i8 i16 i32 i64 isize ' +
+	    'uint u8 u32 u64 usize ' +
 	    'float f32 f64 ' +
 	    'str char bool'
 	  var BUILTINS =
@@ -13492,13 +12200,13 @@
 	};
 
 /***/ },
-/* 122 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var ANNOTATION = { className: 'meta', begin: '@[A-Za-z]+' };
-	
+
 	  // used in strings for escaping/interpolation/substitution
 	  var SUBST = {
 	    className: 'subst',
@@ -13507,7 +12215,7 @@
 	      {begin: '\\${', end: '}'}
 	    ]
 	  };
-	
+
 	  var STRING = {
 	    className: 'string',
 	    variants: [
@@ -13532,26 +12240,26 @@
 	        relevance: 10
 	      }
 	    ]
-	
+
 	  };
-	
+
 	  var SYMBOL = {
 	    className: 'symbol',
 	    begin: '\'\\w[\\w\\d_]*(?!\')'
 	  };
-	
+
 	  var TYPE = {
 	    className: 'type',
 	    begin: '\\b[A-Z][A-Za-z0-9_]*',
 	    relevance: 0
 	  };
-	
+
 	  var NAME = {
 	    className: 'title',
 	    begin: /[^0-9\n\t "'(),.`{}\[\]:;][^\n\t "'(),.`{}\[\]:;]+|[^0-9\n\t "'(),.`{}\[\]:;=]/,
 	    relevance: 0
 	  };
-	
+
 	  var CLASS = {
 	    className: 'class',
 	    beginKeywords: 'class object trait type',
@@ -13582,7 +12290,7 @@
 	      NAME
 	    ]
 	  };
-	
+
 	  var METHOD = {
 	    className: 'function',
 	    beginKeywords: 'def',
@@ -13590,7 +12298,7 @@
 	    excludeEnd: true,
 	    contains: [NAME]
 	  };
-	
+
 	  return {
 	    keywords: {
 	      literal: 'true false null',
@@ -13611,7 +12319,7 @@
 	};
 
 /***/ },
-/* 123 */
+/* 126 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13654,18 +12362,18 @@
 	      'vector->list vector-fill! vector-length vector-ref vector-set! ' +
 	      'with-input-from-file with-output-to-file write write-char zero?'
 	  };
-	
+
 	  var SHEBANG = {
 	    className: 'meta',
 	    begin: '^#!',
 	    end: '$'
 	  };
-	
+
 	  var LITERAL = {
 	    className: 'literal',
 	    begin: '(#t|#f|#\\\\' + SCHEME_IDENT_RE + '|#\\\\.)'
 	  };
-	
+
 	  var NUMBER = {
 	    className: 'number',
 	    variants: [
@@ -13676,15 +12384,15 @@
 	      { begin: '#x[0-9a-f]+(/[0-9a-f]+)?' }
 	    ]
 	  };
-	
+
 	  var STRING = hljs.QUOTE_STRING_MODE;
-	
+
 	  var REGULAR_EXPRESSION = {
 	    className: 'regexp',
 	    begin: '#[pr]x"',
 	    end: '[^\\\\]"'
 	  };
-	
+
 	  var COMMENT_MODES = [
 	    hljs.COMMENT(
 	      ';',
@@ -13695,22 +12403,22 @@
 	    ),
 	    hljs.COMMENT('#\\|', '\\|#')
 	  ];
-	
+
 	  var IDENT = {
 	    begin: SCHEME_IDENT_RE,
 	    relevance: 0
 	  };
-	
+
 	  var QUOTED_IDENT = {
 	    className: 'symbol',
 	    begin: '\'' + SCHEME_IDENT_RE
 	  };
-	
+
 	  var BODY = {
 	    endsWithParent: true,
 	    relevance: 0
 	  };
-	
+
 	  var QUOTED_LIST = {
 	    begin: /'/,
 	    contains: [
@@ -13720,14 +12428,14 @@
 	      }
 	    ]
 	  };
-	
+
 	  var NAME = {
 	    className: 'name',
 	    begin: SCHEME_IDENT_RE,
 	    lexemes: SCHEME_IDENT_RE,
 	    keywords: BUILTINS
 	  };
-	
+
 	  var LAMBDA = {
 	    begin: /lambda/, endsWithParent: true, returnBegin: true,
 	    contains: [
@@ -13738,7 +12446,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var LIST = {
 	    variants: [
 	      { begin: '\\(', end: '\\)' },
@@ -13746,9 +12454,9 @@
 	    ],
 	    contains: [LAMBDA, NAME, BODY]
 	  };
-	
+
 	  BODY.contains = [LITERAL, NUMBER, STRING, IDENT, QUOTED_IDENT, QUOTED_LIST, LIST].concat(COMMENT_MODES);
-	
+
 	  return {
 	    illegal: /\S/,
 	    contains: [SHEBANG, NUMBER, STRING, QUOTED_IDENT, QUOTED_LIST, LIST].concat(COMMENT_MODES)
@@ -13756,11 +12464,11 @@
 	};
 
 /***/ },
-/* 124 */
+/* 127 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var COMMON_CONTAINS = [
 	    hljs.C_NUMBER_MODE,
 	    {
@@ -13769,7 +12477,7 @@
 	      contains: [hljs.BACKSLASH_ESCAPE, {begin: '\'\''}]
 	    }
 	  ];
-	
+
 	  return {
 	    aliases: ['sci'],
 	    lexemes: /%?\w+/,
@@ -13814,7 +12522,7 @@
 	};
 
 /***/ },
-/* 125 */
+/* 128 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13916,7 +12624,7 @@
 	};
 
 /***/ },
-/* 126 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -13976,7 +12684,7 @@
 	};
 
 /***/ },
-/* 127 */
+/* 130 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14030,7 +12738,7 @@
 	};
 
 /***/ },
-/* 128 */
+/* 131 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14100,7 +12808,7 @@
 	};
 
 /***/ },
-/* 129 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14116,7 +12824,7 @@
 	  });
 	  //Note: operators will not be treated as builtins due to the lexeme rules
 	  builtins = builtins.concat(specials);
-	
+
 	  // In SQF strings, quotes matching the start are escaped by adding a consecutive.
 	  // Example of single escaped quotes: " "" " and  ' '' '.
 	  var STRINGS = {
@@ -14135,13 +12843,13 @@
 	      }
 	    ]
 	  };
-	
+
 	  var NUMBERS = {
 	    className: 'number',
 	    begin: hljs.NUMBER_RE,
 	    relevance: 0
 	  };
-	
+
 	  // Preprocessor definitions borrowed from C++
 	  var PREPROCESSOR_STRINGS = {
 	    className: 'string',
@@ -14153,7 +12861,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  var PREPROCESSOR =       {
 	    className: 'meta',
 	    begin: '#', end: '$',
@@ -14181,7 +12889,7 @@
 	      hljs.C_BLOCK_COMMENT_MODE
 	    ]
 	  };
-	
+
 	  return {
 	    aliases: ['sqf'],
 	    case_insensitive: true,
@@ -14201,7 +12909,7 @@
 	};
 
 /***/ },
-/* 130 */
+/* 133 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14365,7 +13073,7 @@
 	};
 
 /***/ },
-/* 131 */
+/* 134 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14452,14 +13160,14 @@
 	};
 
 /***/ },
-/* 132 */
+/* 135 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  return {
 	    aliases: ['do', 'ado'],
 	    case_insensitive: true,
-	    keywords: 'if else in foreach for forv forva forval forvalu forvalue forvalues by bys bysort xi quietly qui capture about ac ac_7 acprplot acprplot_7 adjust ado adopath adoupdate alpha ameans an ano anov anova anova_estat anova_terms anovadef aorder ap app appe appen append arch arch_dr arch_estat arch_p archlm areg areg_p args arima arima_dr arima_estat arima_p as asmprobit asmprobit_estat asmprobit_lf asmprobit_mfx__dlg asmprobit_p ass asse asser assert avplot avplot_7 avplots avplots_7 bcskew0 bgodfrey binreg bip0_lf biplot bipp_lf bipr_lf bipr_p biprobit bitest bitesti bitowt blogit bmemsize boot bootsamp bootstrap bootstrap_8 boxco_l boxco_p boxcox boxcox_6 boxcox_p bprobit br break brier bro brow brows browse brr brrstat bs bs_7 bsampl_w bsample bsample_7 bsqreg bstat bstat_7 bstat_8 bstrap bstrap_7 ca ca_estat ca_p cabiplot camat canon canon_8 canon_8_p canon_estat canon_p cap caprojection capt captu captur capture cat cc cchart cchart_7 cci cd censobs_table centile cf char chdir checkdlgfiles checkestimationsample checkhlpfiles checksum chelp ci cii cl class classutil clear cli clis clist clo clog clog_lf clog_p clogi clogi_sw clogit clogit_lf clogit_p clogitp clogl_sw cloglog clonevar clslistarray cluster cluster_measures cluster_stop cluster_tree cluster_tree_8 clustermat cmdlog cnr cnre cnreg cnreg_p cnreg_sw cnsreg codebook collaps4 collapse colormult_nb colormult_nw compare compress conf confi confir confirm conren cons const constr constra constrai constrain constraint continue contract copy copyright copysource cor corc corr corr2data corr_anti corr_kmo corr_smc corre correl correla correlat correlate corrgram cou coun count cox cox_p cox_sw coxbase coxhaz coxvar cprplot cprplot_7 crc cret cretu cretur creturn cross cs cscript cscript_log csi ct ct_is ctset ctst_5 ctst_st cttost cumsp cumsp_7 cumul cusum cusum_7 cutil d datasig datasign datasigna datasignat datasignatu datasignatur datasignature datetof db dbeta de dec deco decod decode deff des desc descr descri describ describe destring dfbeta dfgls dfuller di di_g dir dirstats dis discard disp disp_res disp_s displ displa display distinct do doe doed doedi doedit dotplot dotplot_7 dprobit drawnorm drop ds ds_util dstdize duplicates durbina dwstat dydx e ed edi edit egen eivreg emdef en enc enco encod encode eq erase ereg ereg_lf ereg_p ereg_sw ereghet ereghet_glf ereghet_glf_sh ereghet_gp ereghet_ilf ereghet_ilf_sh ereghet_ip eret eretu eretur ereturn err erro error est est_cfexist est_cfname est_clickable est_expand est_hold est_table est_unhold est_unholdok estat estat_default estat_summ estat_vce_only esti estimates etodow etof etomdy ex exi exit expand expandcl fac fact facto factor factor_estat factor_p factor_pca_rotated factor_rotate factormat fcast fcast_compute fcast_graph fdades fdadesc fdadescr fdadescri fdadescrib fdadescribe fdasav fdasave fdause fh_st file open file read file close file filefilter fillin find_hlp_file findfile findit findit_7 fit fl fli flis flist for5_0 form forma format fpredict frac_154 frac_adj frac_chk frac_cox frac_ddp frac_dis frac_dv frac_in frac_mun frac_pp frac_pq frac_pv frac_wgt frac_xo fracgen fracplot fracplot_7 fracpoly fracpred fron_ex fron_hn fron_p fron_tn fron_tn2 frontier ftodate ftoe ftomdy ftowdate g gamhet_glf gamhet_gp gamhet_ilf gamhet_ip gamma gamma_d2 gamma_p gamma_sw gammahet gdi_hexagon gdi_spokes ge gen gene gener genera generat generate genrank genstd genvmean gettoken gl gladder gladder_7 glim_l01 glim_l02 glim_l03 glim_l04 glim_l05 glim_l06 glim_l07 glim_l08 glim_l09 glim_l10 glim_l11 glim_l12 glim_lf glim_mu glim_nw1 glim_nw2 glim_nw3 glim_p glim_v1 glim_v2 glim_v3 glim_v4 glim_v5 glim_v6 glim_v7 glm glm_6 glm_p glm_sw glmpred glo glob globa global glogit glogit_8 glogit_p gmeans gnbre_lf gnbreg gnbreg_5 gnbreg_p gomp_lf gompe_sw gomper_p gompertz gompertzhet gomphet_glf gomphet_glf_sh gomphet_gp gomphet_ilf gomphet_ilf_sh gomphet_ip gphdot gphpen gphprint gprefs gprobi_p gprobit gprobit_8 gr gr7 gr_copy gr_current gr_db gr_describe gr_dir gr_draw gr_draw_replay gr_drop gr_edit gr_editviewopts gr_example gr_example2 gr_export gr_print gr_qscheme gr_query gr_read gr_rename gr_replay gr_save gr_set gr_setscheme gr_table gr_undo gr_use graph graph7 grebar greigen greigen_7 greigen_8 grmeanby grmeanby_7 gs_fileinfo gs_filetype gs_graphinfo gs_stat gsort gwood h hadimvo hareg hausman haver he heck_d2 heckma_p heckman heckp_lf heckpr_p heckprob hel help hereg hetpr_lf hetpr_p hetprob hettest hexdump hilite hist hist_7 histogram hlogit hlu hmeans hotel hotelling hprobit hreg hsearch icd9 icd9_ff icd9p iis impute imtest inbase include inf infi infil infile infix inp inpu input ins insheet insp inspe inspec inspect integ inten intreg intreg_7 intreg_p intrg2_ll intrg_ll intrg_ll2 ipolate iqreg ir irf irf_create irfm iri is_svy is_svysum isid istdize ivprob_1_lf ivprob_lf ivprobit ivprobit_p ivreg ivreg_footnote ivtob_1_lf ivtob_lf ivtobit ivtobit_p jackknife jacknife jknife jknife_6 jknife_8 jkstat joinby kalarma1 kap kap_3 kapmeier kappa kapwgt kdensity kdensity_7 keep ksm ksmirnov ktau kwallis l la lab labe label labelbook ladder levels levelsof leverage lfit lfit_p li lincom line linktest lis list lloghet_glf lloghet_glf_sh lloghet_gp lloghet_ilf lloghet_ilf_sh lloghet_ip llogi_sw llogis_p llogist llogistic llogistichet lnorm_lf lnorm_sw lnorma_p lnormal lnormalhet lnormhet_glf lnormhet_glf_sh lnormhet_gp lnormhet_ilf lnormhet_ilf_sh lnormhet_ip lnskew0 loadingplot loc loca local log logi logis_lf logistic logistic_p logit logit_estat logit_p loglogs logrank loneway lookfor lookup lowess lowess_7 lpredict lrecomp lroc lroc_7 lrtest ls lsens lsens_7 lsens_x lstat ltable ltable_7 ltriang lv lvr2plot lvr2plot_7 m ma mac macr macro makecns man manova manova_estat manova_p manovatest mantel mark markin markout marksample mat mat_capp mat_order mat_put_rr mat_rapp mata mata_clear mata_describe mata_drop mata_matdescribe mata_matsave mata_matuse mata_memory mata_mlib mata_mosave mata_rename mata_which matalabel matcproc matlist matname matr matri matrix matrix_input__dlg matstrik mcc mcci md0_ md1_ md1debug_ md2_ md2debug_ mds mds_estat mds_p mdsconfig mdslong mdsmat mdsshepard mdytoe mdytof me_derd mean means median memory memsize meqparse mer merg merge mfp mfx mhelp mhodds minbound mixed_ll mixed_ll_reparm mkassert mkdir mkmat mkspline ml ml_5 ml_adjs ml_bhhhs ml_c_d ml_check ml_clear ml_cnt ml_debug ml_defd ml_e0 ml_e0_bfgs ml_e0_cycle ml_e0_dfp ml_e0i ml_e1 ml_e1_bfgs ml_e1_bhhh ml_e1_cycle ml_e1_dfp ml_e2 ml_e2_cycle ml_ebfg0 ml_ebfr0 ml_ebfr1 ml_ebh0q ml_ebhh0 ml_ebhr0 ml_ebr0i ml_ecr0i ml_edfp0 ml_edfr0 ml_edfr1 ml_edr0i ml_eds ml_eer0i ml_egr0i ml_elf ml_elf_bfgs ml_elf_bhhh ml_elf_cycle ml_elf_dfp ml_elfi ml_elfs ml_enr0i ml_enrr0 ml_erdu0 ml_erdu0_bfgs ml_erdu0_bhhh ml_erdu0_bhhhq ml_erdu0_cycle ml_erdu0_dfp ml_erdu0_nrbfgs ml_exde ml_footnote ml_geqnr ml_grad0 ml_graph ml_hbhhh ml_hd0 ml_hold ml_init ml_inv ml_log ml_max ml_mlout ml_mlout_8 ml_model ml_nb0 ml_opt ml_p ml_plot ml_query ml_rdgrd ml_repor ml_s_e ml_score ml_searc ml_technique ml_unhold mleval mlf_ mlmatbysum mlmatsum mlog mlogi mlogit mlogit_footnote mlogit_p mlopts mlsum mlvecsum mnl0_ mor more mov move mprobit mprobit_lf mprobit_p mrdu0_ mrdu1_ mvdecode mvencode mvreg mvreg_estat n nbreg nbreg_al nbreg_lf nbreg_p nbreg_sw nestreg net newey newey_7 newey_p news nl nl_7 nl_9 nl_9_p nl_p nl_p_7 nlcom nlcom_p nlexp2 nlexp2_7 nlexp2a nlexp2a_7 nlexp3 nlexp3_7 nlgom3 nlgom3_7 nlgom4 nlgom4_7 nlinit nllog3 nllog3_7 nllog4 nllog4_7 nlog_rd nlogit nlogit_p nlogitgen nlogittree nlpred no nobreak noi nois noisi noisil noisily note notes notes_dlg nptrend numlabel numlist odbc old_ver olo olog ologi ologi_sw ologit ologit_p ologitp on one onew onewa oneway op_colnm op_comp op_diff op_inv op_str opr opro oprob oprob_sw oprobi oprobi_p oprobit oprobitp opts_exclusive order orthog orthpoly ou out outf outfi outfil outfile outs outsh outshe outshee outsheet ovtest pac pac_7 palette parse parse_dissim pause pca pca_8 pca_display pca_estat pca_p pca_rotate pcamat pchart pchart_7 pchi pchi_7 pcorr pctile pentium pergram pergram_7 permute permute_8 personal peto_st pkcollapse pkcross pkequiv pkexamine pkexamine_7 pkshape pksumm pksumm_7 pl plo plot plugin pnorm pnorm_7 poisgof poiss_lf poiss_sw poisso_p poisson poisson_estat post postclose postfile postutil pperron pr prais prais_e prais_e2 prais_p predict predictnl preserve print pro prob probi probit probit_estat probit_p proc_time procoverlay procrustes procrustes_estat procrustes_p profiler prog progr progra program prop proportion prtest prtesti pwcorr pwd q\\s qby qbys qchi qchi_7 qladder qladder_7 qnorm qnorm_7 qqplot qqplot_7 qreg qreg_c qreg_p qreg_sw qu quadchk quantile quantile_7 que quer query range ranksum ratio rchart rchart_7 rcof recast reclink recode reg reg3 reg3_p regdw regr regre regre_p2 regres regres_p regress regress_estat regriv_p remap ren rena renam rename renpfix repeat replace report reshape restore ret retu retur return rm rmdir robvar roccomp roccomp_7 roccomp_8 rocf_lf rocfit rocfit_8 rocgold rocplot rocplot_7 roctab roctab_7 rolling rologit rologit_p rot rota rotat rotate rotatemat rreg rreg_p ru run runtest rvfplot rvfplot_7 rvpplot rvpplot_7 sa safesum sample sampsi sav save savedresults saveold sc sca scal scala scalar scatter scm_mine sco scob_lf scob_p scobi_sw scobit scor score scoreplot scoreplot_help scree screeplot screeplot_help sdtest sdtesti se search separate seperate serrbar serrbar_7 serset set set_defaults sfrancia sh she shel shell shewhart shewhart_7 signestimationsample signrank signtest simul simul_7 simulate simulate_8 sktest sleep slogit slogit_d2 slogit_p smooth snapspan so sor sort spearman spikeplot spikeplot_7 spikeplt spline_x split sqreg sqreg_p sret sretu sretur sreturn ssc st st_ct st_hc st_hcd st_hcd_sh st_is st_issys st_note st_promo st_set st_show st_smpl st_subid stack statsby statsby_8 stbase stci stci_7 stcox stcox_estat stcox_fr stcox_fr_ll stcox_p stcox_sw stcoxkm stcoxkm_7 stcstat stcurv stcurve stcurve_7 stdes stem stepwise stereg stfill stgen stir stjoin stmc stmh stphplot stphplot_7 stphtest stphtest_7 stptime strate strate_7 streg streg_sw streset sts sts_7 stset stsplit stsum sttocc sttoct stvary stweib su suest suest_8 sum summ summa summar summari summariz summarize sunflower sureg survcurv survsum svar svar_p svmat svy svy_disp svy_dreg svy_est svy_est_7 svy_estat svy_get svy_gnbreg_p svy_head svy_header svy_heckman_p svy_heckprob_p svy_intreg_p svy_ivreg_p svy_logistic_p svy_logit_p svy_mlogit_p svy_nbreg_p svy_ologit_p svy_oprobit_p svy_poisson_p svy_probit_p svy_regress_p svy_sub svy_sub_7 svy_x svy_x_7 svy_x_p svydes svydes_8 svygen svygnbreg svyheckman svyheckprob svyintreg svyintreg_7 svyintrg svyivreg svylc svylog_p svylogit svymarkout svymarkout_8 svymean svymlog svymlogit svynbreg svyolog svyologit svyoprob svyoprobit svyopts svypois svypois_7 svypoisson svyprobit svyprobt svyprop svyprop_7 svyratio svyreg svyreg_p svyregress svyset svyset_7 svyset_8 svytab svytab_7 svytest svytotal sw sw_8 swcnreg swcox swereg swilk swlogis swlogit swologit swoprbt swpois swprobit swqreg swtobit swweib symmetry symmi symplot symplot_7 syntax sysdescribe sysdir sysuse szroeter ta tab tab1 tab2 tab_or tabd tabdi tabdis tabdisp tabi table tabodds tabodds_7 tabstat tabu tabul tabula tabulat tabulate te tempfile tempname tempvar tes test testnl testparm teststd tetrachoric time_it timer tis tob tobi tobit tobit_p tobit_sw token tokeni tokeniz tokenize tostring total translate translator transmap treat_ll treatr_p treatreg trim trnb_cons trnb_mean trpoiss_d2 trunc_ll truncr_p truncreg tsappend tset tsfill tsline tsline_ex tsreport tsrevar tsrline tsset tssmooth tsunab ttest ttesti tut_chk tut_wait tutorial tw tware_st two twoway twoway__fpfit_serset twoway__function_gen twoway__histogram_gen twoway__ipoint_serset twoway__ipoints_serset twoway__kdensity_gen twoway__lfit_serset twoway__normgen_gen twoway__pci_serset twoway__qfit_serset twoway__scatteri_serset twoway__sunflower_gen twoway_ksm_serset ty typ type typeof u unab unabbrev unabcmd update us use uselabel var var_mkcompanion var_p varbasic varfcast vargranger varirf varirf_add varirf_cgraph varirf_create varirf_ctable varirf_describe varirf_dir varirf_drop varirf_erase varirf_graph varirf_ograph varirf_rename varirf_set varirf_table varlist varlmar varnorm varsoc varstable varstable_w varstable_w2 varwle vce vec vec_fevd vec_mkphi vec_p vec_p_w vecirf_create veclmar veclmar_w vecnorm vecnorm_w vecrank vecstable verinst vers versi versio version view viewsource vif vwls wdatetof webdescribe webseek webuse weib1_lf weib2_lf weib_lf weib_lf0 weibhet_glf weibhet_glf_sh weibhet_glfa weibhet_glfa_sh weibhet_gp weibhet_ilf weibhet_ilf_sh weibhet_ilfa weibhet_ilfa_sh weibhet_ip weibu_sw weibul_p weibull weibull_c weibull_s weibullhet wh whelp whi which whil while wilc_st wilcoxon win wind windo window winexec wntestb wntestb_7 wntestq xchart xchart_7 xcorr xcorr_7 xi xi_6 xmlsav xmlsave xmluse xpose xsh xshe xshel xshell xt_iis xt_tis xtab_p xtabond xtbin_p xtclog xtcloglog xtcloglog_8 xtcloglog_d2 xtcloglog_pa_p xtcloglog_re_p xtcnt_p xtcorr xtdata xtdes xtfront_p xtfrontier xtgee xtgee_elink xtgee_estat xtgee_makeivar xtgee_p xtgee_plink xtgls xtgls_p xthaus xthausman xtht_p xthtaylor xtile xtint_p xtintreg xtintreg_8 xtintreg_d2 xtintreg_p xtivp_1 xtivp_2 xtivreg xtline xtline_ex xtlogit xtlogit_8 xtlogit_d2 xtlogit_fe_p xtlogit_pa_p xtlogit_re_p xtmixed xtmixed_estat xtmixed_p xtnb_fe xtnb_lf xtnbreg xtnbreg_pa_p xtnbreg_refe_p xtpcse xtpcse_p xtpois xtpoisson xtpoisson_d2 xtpoisson_pa_p xtpoisson_refe_p xtpred xtprobit xtprobit_8 xtprobit_d2 xtprobit_re_p xtps_fe xtps_lf xtps_ren xtps_ren_8 xtrar_p xtrc xtrc_p xtrchh xtrefe_p xtreg xtreg_be xtreg_fe xtreg_ml xtreg_pa_p xtreg_re xtregar xtrere_p xtset xtsf_ll xtsf_llti xtsum xttab xttest0 xttobit xttobit_8 xttobit_p xttrans yx yxview__barlike_draw yxview_area_draw yxview_bar_draw yxview_dot_draw yxview_dropline_draw yxview_function_draw yxview_iarrow_draw yxview_ilabels_draw yxview_normal_draw yxview_pcarrow_draw yxview_pcbarrow_draw yxview_pccapsym_draw yxview_pcscatter_draw yxview_pcspike_draw yxview_rarea_draw yxview_rbar_draw yxview_rbarm_draw yxview_rcap_draw yxview_rcapsym_draw yxview_rconnected_draw yxview_rline_draw yxview_rscatter_draw yxview_rspike_draw yxview_spike_draw yxview_sunflower_draw zap_s zinb zinb_llf zinb_plf zip zip_llf zip_p zip_plf zt_ct_5 zt_hc_5 zt_hcd_5 zt_is_5 zt_iss_5 zt_sho_5 zt_smp_5 ztbase_5 ztcox_5 ztdes_5 ztereg_5 ztfill_5 ztgen_5 ztir_5 ztjoin_5 ztnb ztnb_p ztp ztp_p zts_5 ztset_5 ztspli_5 ztsum_5 zttoct_5 ztvary_5 ztweib_5',
+	    keywords: 'if else in foreach for forv forva forval forvalu forvalue forvalues by bys bysort xi quietly qui capture about ac ac_7 acprplot acprplot_7 adjust ado adopath adoupdate alpha ameans an ano anov anova anova_estat anova_terms anovadef aorder ap app appe appen append arch arch_dr arch_estat arch_p archlm areg areg_p args arima arima_dr arima_estat arima_p as asmprobit asmprobit_estat asmprobit_lf asmprobit_mfx__dlg asmprobit_p ass asse asser assert avplot avplot_7 avplots avplots_7 bcskew0 bgodfrey binreg bip0_lf biplot bipp_lf bipr_lf bipr_p biprobit bitest bitesti bitowt blogit bmemsize boot bootsamp bootstrap bootstrap_8 boxco_l boxco_p boxcox boxcox_6 boxcox_p bprobit br break brier bro brow brows browse brr brrstat bs bs_7 bsampl_w bsample bsample_7 bsqreg bstat bstat_7 bstat_8 bstrap bstrap_7 ca ca_estat ca_p cabiplot camat canon canon_8 canon_8_p canon_estat canon_p cap caprojection capt captu captur capture cat cc cchart cchart_7 cci cd censobs_table centile cf char chdir checkdlgfiles checkestimationsample checkhlpfiles checksum chelp ci cii cl class classutil clear cli clis clist clo clog clog_lf clog_p clogi clogi_sw clogit clogit_lf clogit_p clogitp clogl_sw cloglog clonevar clslistarray cluster cluster_measures cluster_stop cluster_tree cluster_tree_8 clustermat cmdlog cnr cnre cnreg cnreg_p cnreg_sw cnsreg codebook collaps4 collapse colormult_nb colormult_nw compare compress conf confi confir confirm conren cons const constr constra constrai constrain constraint continue contract copy copyright copysource cor corc corr corr2data corr_anti corr_kmo corr_smc corre correl correla correlat correlate corrgram cou coun count cox cox_p cox_sw coxbase coxhaz coxvar cprplot cprplot_7 crc cret cretu cretur creturn cross cs cscript cscript_log csi ct ct_is ctset ctst_5 ctst_st cttost cumsp cumsp_7 cumul cusum cusum_7 cutil d|0 datasig datasign datasigna datasignat datasignatu datasignatur datasignature datetof db dbeta de dec deco decod decode deff des desc descr descri describ describe destring dfbeta dfgls dfuller di di_g dir dirstats dis discard disp disp_res disp_s displ displa display distinct do doe doed doedi doedit dotplot dotplot_7 dprobit drawnorm drop ds ds_util dstdize duplicates durbina dwstat dydx e|0 ed edi edit egen eivreg emdef en enc enco encod encode eq erase ereg ereg_lf ereg_p ereg_sw ereghet ereghet_glf ereghet_glf_sh ereghet_gp ereghet_ilf ereghet_ilf_sh ereghet_ip eret eretu eretur ereturn err erro error est est_cfexist est_cfname est_clickable est_expand est_hold est_table est_unhold est_unholdok estat estat_default estat_summ estat_vce_only esti estimates etodow etof etomdy ex exi exit expand expandcl fac fact facto factor factor_estat factor_p factor_pca_rotated factor_rotate factormat fcast fcast_compute fcast_graph fdades fdadesc fdadescr fdadescri fdadescrib fdadescribe fdasav fdasave fdause fh_st file open file read file close file filefilter fillin find_hlp_file findfile findit findit_7 fit fl fli flis flist for5_0 form forma format fpredict frac_154 frac_adj frac_chk frac_cox frac_ddp frac_dis frac_dv frac_in frac_mun frac_pp frac_pq frac_pv frac_wgt frac_xo fracgen fracplot fracplot_7 fracpoly fracpred fron_ex fron_hn fron_p fron_tn fron_tn2 frontier ftodate ftoe ftomdy ftowdate g|0 gamhet_glf gamhet_gp gamhet_ilf gamhet_ip gamma gamma_d2 gamma_p gamma_sw gammahet gdi_hexagon gdi_spokes ge gen gene gener genera generat generate genrank genstd genvmean gettoken gl gladder gladder_7 glim_l01 glim_l02 glim_l03 glim_l04 glim_l05 glim_l06 glim_l07 glim_l08 glim_l09 glim_l10 glim_l11 glim_l12 glim_lf glim_mu glim_nw1 glim_nw2 glim_nw3 glim_p glim_v1 glim_v2 glim_v3 glim_v4 glim_v5 glim_v6 glim_v7 glm glm_6 glm_p glm_sw glmpred glo glob globa global glogit glogit_8 glogit_p gmeans gnbre_lf gnbreg gnbreg_5 gnbreg_p gomp_lf gompe_sw gomper_p gompertz gompertzhet gomphet_glf gomphet_glf_sh gomphet_gp gomphet_ilf gomphet_ilf_sh gomphet_ip gphdot gphpen gphprint gprefs gprobi_p gprobit gprobit_8 gr gr7 gr_copy gr_current gr_db gr_describe gr_dir gr_draw gr_draw_replay gr_drop gr_edit gr_editviewopts gr_example gr_example2 gr_export gr_print gr_qscheme gr_query gr_read gr_rename gr_replay gr_save gr_set gr_setscheme gr_table gr_undo gr_use graph graph7 grebar greigen greigen_7 greigen_8 grmeanby grmeanby_7 gs_fileinfo gs_filetype gs_graphinfo gs_stat gsort gwood h|0 hadimvo hareg hausman haver he heck_d2 heckma_p heckman heckp_lf heckpr_p heckprob hel help hereg hetpr_lf hetpr_p hetprob hettest hexdump hilite hist hist_7 histogram hlogit hlu hmeans hotel hotelling hprobit hreg hsearch icd9 icd9_ff icd9p iis impute imtest inbase include inf infi infil infile infix inp inpu input ins insheet insp inspe inspec inspect integ inten intreg intreg_7 intreg_p intrg2_ll intrg_ll intrg_ll2 ipolate iqreg ir irf irf_create irfm iri is_svy is_svysum isid istdize ivprob_1_lf ivprob_lf ivprobit ivprobit_p ivreg ivreg_footnote ivtob_1_lf ivtob_lf ivtobit ivtobit_p jackknife jacknife jknife jknife_6 jknife_8 jkstat joinby kalarma1 kap kap_3 kapmeier kappa kapwgt kdensity kdensity_7 keep ksm ksmirnov ktau kwallis l|0 la lab labe label labelbook ladder levels levelsof leverage lfit lfit_p li lincom line linktest lis list lloghet_glf lloghet_glf_sh lloghet_gp lloghet_ilf lloghet_ilf_sh lloghet_ip llogi_sw llogis_p llogist llogistic llogistichet lnorm_lf lnorm_sw lnorma_p lnormal lnormalhet lnormhet_glf lnormhet_glf_sh lnormhet_gp lnormhet_ilf lnormhet_ilf_sh lnormhet_ip lnskew0 loadingplot loc loca local log logi logis_lf logistic logistic_p logit logit_estat logit_p loglogs logrank loneway lookfor lookup lowess lowess_7 lpredict lrecomp lroc lroc_7 lrtest ls lsens lsens_7 lsens_x lstat ltable ltable_7 ltriang lv lvr2plot lvr2plot_7 m|0 ma mac macr macro makecns man manova manova_estat manova_p manovatest mantel mark markin markout marksample mat mat_capp mat_order mat_put_rr mat_rapp mata mata_clear mata_describe mata_drop mata_matdescribe mata_matsave mata_matuse mata_memory mata_mlib mata_mosave mata_rename mata_which matalabel matcproc matlist matname matr matri matrix matrix_input__dlg matstrik mcc mcci md0_ md1_ md1debug_ md2_ md2debug_ mds mds_estat mds_p mdsconfig mdslong mdsmat mdsshepard mdytoe mdytof me_derd mean means median memory memsize meqparse mer merg merge mfp mfx mhelp mhodds minbound mixed_ll mixed_ll_reparm mkassert mkdir mkmat mkspline ml ml_5 ml_adjs ml_bhhhs ml_c_d ml_check ml_clear ml_cnt ml_debug ml_defd ml_e0 ml_e0_bfgs ml_e0_cycle ml_e0_dfp ml_e0i ml_e1 ml_e1_bfgs ml_e1_bhhh ml_e1_cycle ml_e1_dfp ml_e2 ml_e2_cycle ml_ebfg0 ml_ebfr0 ml_ebfr1 ml_ebh0q ml_ebhh0 ml_ebhr0 ml_ebr0i ml_ecr0i ml_edfp0 ml_edfr0 ml_edfr1 ml_edr0i ml_eds ml_eer0i ml_egr0i ml_elf ml_elf_bfgs ml_elf_bhhh ml_elf_cycle ml_elf_dfp ml_elfi ml_elfs ml_enr0i ml_enrr0 ml_erdu0 ml_erdu0_bfgs ml_erdu0_bhhh ml_erdu0_bhhhq ml_erdu0_cycle ml_erdu0_dfp ml_erdu0_nrbfgs ml_exde ml_footnote ml_geqnr ml_grad0 ml_graph ml_hbhhh ml_hd0 ml_hold ml_init ml_inv ml_log ml_max ml_mlout ml_mlout_8 ml_model ml_nb0 ml_opt ml_p ml_plot ml_query ml_rdgrd ml_repor ml_s_e ml_score ml_searc ml_technique ml_unhold mleval mlf_ mlmatbysum mlmatsum mlog mlogi mlogit mlogit_footnote mlogit_p mlopts mlsum mlvecsum mnl0_ mor more mov move mprobit mprobit_lf mprobit_p mrdu0_ mrdu1_ mvdecode mvencode mvreg mvreg_estat n|0 nbreg nbreg_al nbreg_lf nbreg_p nbreg_sw nestreg net newey newey_7 newey_p news nl nl_7 nl_9 nl_9_p nl_p nl_p_7 nlcom nlcom_p nlexp2 nlexp2_7 nlexp2a nlexp2a_7 nlexp3 nlexp3_7 nlgom3 nlgom3_7 nlgom4 nlgom4_7 nlinit nllog3 nllog3_7 nllog4 nllog4_7 nlog_rd nlogit nlogit_p nlogitgen nlogittree nlpred no nobreak noi nois noisi noisil noisily note notes notes_dlg nptrend numlabel numlist odbc old_ver olo olog ologi ologi_sw ologit ologit_p ologitp on one onew onewa oneway op_colnm op_comp op_diff op_inv op_str opr opro oprob oprob_sw oprobi oprobi_p oprobit oprobitp opts_exclusive order orthog orthpoly ou out outf outfi outfil outfile outs outsh outshe outshee outsheet ovtest pac pac_7 palette parse parse_dissim pause pca pca_8 pca_display pca_estat pca_p pca_rotate pcamat pchart pchart_7 pchi pchi_7 pcorr pctile pentium pergram pergram_7 permute permute_8 personal peto_st pkcollapse pkcross pkequiv pkexamine pkexamine_7 pkshape pksumm pksumm_7 pl plo plot plugin pnorm pnorm_7 poisgof poiss_lf poiss_sw poisso_p poisson poisson_estat post postclose postfile postutil pperron pr prais prais_e prais_e2 prais_p predict predictnl preserve print pro prob probi probit probit_estat probit_p proc_time procoverlay procrustes procrustes_estat procrustes_p profiler prog progr progra program prop proportion prtest prtesti pwcorr pwd q\\s qby qbys qchi qchi_7 qladder qladder_7 qnorm qnorm_7 qqplot qqplot_7 qreg qreg_c qreg_p qreg_sw qu quadchk quantile quantile_7 que quer query range ranksum ratio rchart rchart_7 rcof recast reclink recode reg reg3 reg3_p regdw regr regre regre_p2 regres regres_p regress regress_estat regriv_p remap ren rena renam rename renpfix repeat replace report reshape restore ret retu retur return rm rmdir robvar roccomp roccomp_7 roccomp_8 rocf_lf rocfit rocfit_8 rocgold rocplot rocplot_7 roctab roctab_7 rolling rologit rologit_p rot rota rotat rotate rotatemat rreg rreg_p ru run runtest rvfplot rvfplot_7 rvpplot rvpplot_7 sa safesum sample sampsi sav save savedresults saveold sc sca scal scala scalar scatter scm_mine sco scob_lf scob_p scobi_sw scobit scor score scoreplot scoreplot_help scree screeplot screeplot_help sdtest sdtesti se search separate seperate serrbar serrbar_7 serset set set_defaults sfrancia sh she shel shell shewhart shewhart_7 signestimationsample signrank signtest simul simul_7 simulate simulate_8 sktest sleep slogit slogit_d2 slogit_p smooth snapspan so sor sort spearman spikeplot spikeplot_7 spikeplt spline_x split sqreg sqreg_p sret sretu sretur sreturn ssc st st_ct st_hc st_hcd st_hcd_sh st_is st_issys st_note st_promo st_set st_show st_smpl st_subid stack statsby statsby_8 stbase stci stci_7 stcox stcox_estat stcox_fr stcox_fr_ll stcox_p stcox_sw stcoxkm stcoxkm_7 stcstat stcurv stcurve stcurve_7 stdes stem stepwise stereg stfill stgen stir stjoin stmc stmh stphplot stphplot_7 stphtest stphtest_7 stptime strate strate_7 streg streg_sw streset sts sts_7 stset stsplit stsum sttocc sttoct stvary stweib su suest suest_8 sum summ summa summar summari summariz summarize sunflower sureg survcurv survsum svar svar_p svmat svy svy_disp svy_dreg svy_est svy_est_7 svy_estat svy_get svy_gnbreg_p svy_head svy_header svy_heckman_p svy_heckprob_p svy_intreg_p svy_ivreg_p svy_logistic_p svy_logit_p svy_mlogit_p svy_nbreg_p svy_ologit_p svy_oprobit_p svy_poisson_p svy_probit_p svy_regress_p svy_sub svy_sub_7 svy_x svy_x_7 svy_x_p svydes svydes_8 svygen svygnbreg svyheckman svyheckprob svyintreg svyintreg_7 svyintrg svyivreg svylc svylog_p svylogit svymarkout svymarkout_8 svymean svymlog svymlogit svynbreg svyolog svyologit svyoprob svyoprobit svyopts svypois svypois_7 svypoisson svyprobit svyprobt svyprop svyprop_7 svyratio svyreg svyreg_p svyregress svyset svyset_7 svyset_8 svytab svytab_7 svytest svytotal sw sw_8 swcnreg swcox swereg swilk swlogis swlogit swologit swoprbt swpois swprobit swqreg swtobit swweib symmetry symmi symplot symplot_7 syntax sysdescribe sysdir sysuse szroeter ta tab tab1 tab2 tab_or tabd tabdi tabdis tabdisp tabi table tabodds tabodds_7 tabstat tabu tabul tabula tabulat tabulate te tempfile tempname tempvar tes test testnl testparm teststd tetrachoric time_it timer tis tob tobi tobit tobit_p tobit_sw token tokeni tokeniz tokenize tostring total translate translator transmap treat_ll treatr_p treatreg trim trnb_cons trnb_mean trpoiss_d2 trunc_ll truncr_p truncreg tsappend tset tsfill tsline tsline_ex tsreport tsrevar tsrline tsset tssmooth tsunab ttest ttesti tut_chk tut_wait tutorial tw tware_st two twoway twoway__fpfit_serset twoway__function_gen twoway__histogram_gen twoway__ipoint_serset twoway__ipoints_serset twoway__kdensity_gen twoway__lfit_serset twoway__normgen_gen twoway__pci_serset twoway__qfit_serset twoway__scatteri_serset twoway__sunflower_gen twoway_ksm_serset ty typ type typeof u|0 unab unabbrev unabcmd update us use uselabel var var_mkcompanion var_p varbasic varfcast vargranger varirf varirf_add varirf_cgraph varirf_create varirf_ctable varirf_describe varirf_dir varirf_drop varirf_erase varirf_graph varirf_ograph varirf_rename varirf_set varirf_table varlist varlmar varnorm varsoc varstable varstable_w varstable_w2 varwle vce vec vec_fevd vec_mkphi vec_p vec_p_w vecirf_create veclmar veclmar_w vecnorm vecnorm_w vecrank vecstable verinst vers versi versio version view viewsource vif vwls wdatetof webdescribe webseek webuse weib1_lf weib2_lf weib_lf weib_lf0 weibhet_glf weibhet_glf_sh weibhet_glfa weibhet_glfa_sh weibhet_gp weibhet_ilf weibhet_ilf_sh weibhet_ilfa weibhet_ilfa_sh weibhet_ip weibu_sw weibul_p weibull weibull_c weibull_s weibullhet wh whelp whi which whil while wilc_st wilcoxon win wind windo window winexec wntestb wntestb_7 wntestq xchart xchart_7 xcorr xcorr_7 xi xi_6 xmlsav xmlsave xmluse xpose xsh xshe xshel xshell xt_iis xt_tis xtab_p xtabond xtbin_p xtclog xtcloglog xtcloglog_8 xtcloglog_d2 xtcloglog_pa_p xtcloglog_re_p xtcnt_p xtcorr xtdata xtdes xtfront_p xtfrontier xtgee xtgee_elink xtgee_estat xtgee_makeivar xtgee_p xtgee_plink xtgls xtgls_p xthaus xthausman xtht_p xthtaylor xtile xtint_p xtintreg xtintreg_8 xtintreg_d2 xtintreg_p xtivp_1 xtivp_2 xtivreg xtline xtline_ex xtlogit xtlogit_8 xtlogit_d2 xtlogit_fe_p xtlogit_pa_p xtlogit_re_p xtmixed xtmixed_estat xtmixed_p xtnb_fe xtnb_lf xtnbreg xtnbreg_pa_p xtnbreg_refe_p xtpcse xtpcse_p xtpois xtpoisson xtpoisson_d2 xtpoisson_pa_p xtpoisson_refe_p xtpred xtprobit xtprobit_8 xtprobit_d2 xtprobit_re_p xtps_fe xtps_lf xtps_ren xtps_ren_8 xtrar_p xtrc xtrc_p xtrchh xtrefe_p xtreg xtreg_be xtreg_fe xtreg_ml xtreg_pa_p xtreg_re xtregar xtrere_p xtset xtsf_ll xtsf_llti xtsum xttab xttest0 xttobit xttobit_8 xttobit_p xttrans yx yxview__barlike_draw yxview_area_draw yxview_bar_draw yxview_dot_draw yxview_dropline_draw yxview_function_draw yxview_iarrow_draw yxview_ilabels_draw yxview_normal_draw yxview_pcarrow_draw yxview_pcbarrow_draw yxview_pccapsym_draw yxview_pcscatter_draw yxview_pcspike_draw yxview_rarea_draw yxview_rbar_draw yxview_rbarm_draw yxview_rcap_draw yxview_rcapsym_draw yxview_rconnected_draw yxview_rline_draw yxview_rscatter_draw yxview_rspike_draw yxview_spike_draw yxview_sunflower_draw zap_s zinb zinb_llf zinb_plf zip zip_llf zip_p zip_plf zt_ct_5 zt_hc_5 zt_hcd_5 zt_is_5 zt_iss_5 zt_sho_5 zt_smp_5 ztbase_5 ztcox_5 ztdes_5 ztereg_5 ztfill_5 ztgen_5 ztir_5 ztjoin_5 ztnb ztnb_p ztp ztp_p zts_5 ztset_5 ztspli_5 ztsum_5 zttoct_5 ztvary_5 ztweib_5',
 	        contains: [
 	      {
 	        className: 'symbol',
@@ -14476,7 +13184,7 @@
 	          {begin: '"[^\r\n"]*"'}
 	        ]
 	      },
-	
+
 	      {
 	        className: 'built_in',
 	        variants: [
@@ -14485,7 +13193,7 @@
 	          }
 	        ]
 	      },
-	
+
 	      hljs.COMMENT('^[ \t]*\\*.*$', false),
 	      hljs.C_LINE_COMMENT_MODE,
 	      hljs.C_BLOCK_COMMENT_MODE
@@ -14494,7 +13202,7 @@
 	};
 
 /***/ },
-/* 133 */
+/* 136 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -14512,7 +13220,7 @@
 	    begin: 'END-ISO-10303-21;',
 	    relevance: 10
 	  };
-	
+
 	  return {
 	    aliases: ['p21', 'step', 'stp'],
 	    case_insensitive: true, // STEP 21 is case insensitive in theory, in practice all non-comments are capitalized.
@@ -14545,21 +13253,21 @@
 	};
 
 /***/ },
-/* 134 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var VARIABLE = {
 	    className: 'variable',
 	    begin: '\\$' + hljs.IDENT_RE
 	  };
-	
+
 	  var HEX_COLOR = {
 	    className: 'number',
 	    begin: '#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})'
 	  };
-	
+
 	  var AT_KEYWORDS = [
 	    'charset',
 	    'css',
@@ -14575,7 +13283,7 @@
 	    'warn',
 	    'while'
 	  ];
-	
+
 	  var PSEUDO_SELECTORS = [
 	    'after',
 	    'before',
@@ -14589,7 +13297,7 @@
 	    'link',
 	    'visited'
 	  ];
-	
+
 	  var TAGS = [
 	    'a',
 	    'abbr',
@@ -14663,9 +13371,9 @@
 	    'var',
 	    'video'
 	  ];
-	
+
 	  var TAG_END = '[\\.\\s\\n\\[\\:,]';
-	
+
 	  var ATTRIBUTES = [
 	    'align-content',
 	    'align-items',
@@ -14871,7 +13579,7 @@
 	    'word-wrap',
 	    'z-index'
 	  ];
-	
+
 	  // illegals
 	  var ILLEGAL = [
 	    '\\?',
@@ -14886,25 +13594,25 @@
 	    '\\|',
 	    '%', // prolog
 	  ];
-	
+
 	  return {
 	    aliases: ['styl'],
 	    case_insensitive: false,
 	    keywords: 'if else for in',
 	    illegal: '(' + ILLEGAL.join('|') + ')',
 	    contains: [
-	
+
 	      // strings
 	      hljs.QUOTE_STRING_MODE,
 	      hljs.APOS_STRING_MODE,
-	
+
 	      // comments
 	      hljs.C_LINE_COMMENT_MODE,
 	      hljs.C_BLOCK_COMMENT_MODE,
-	
+
 	      // hex colors
 	      HEX_COLOR,
-	
+
 	      // class tag
 	      {
 	        begin: '\\.[a-zA-Z][a-zA-Z0-9_-]*' + TAG_END,
@@ -14913,7 +13621,7 @@
 	          {className: 'selector-class', begin: '\\.[a-zA-Z][a-zA-Z0-9_-]*'}
 	        ]
 	      },
-	
+
 	      // id tag
 	      {
 	        begin: '\\#[a-zA-Z][a-zA-Z0-9_-]*' + TAG_END,
@@ -14922,7 +13630,7 @@
 	          {className: 'selector-id', begin: '\\#[a-zA-Z][a-zA-Z0-9_-]*'}
 	        ]
 	      },
-	
+
 	      // tags
 	      {
 	        begin: '\\b(' + TAGS.join('|') + ')' + TAG_END,
@@ -14931,26 +13639,26 @@
 	          {className: 'selector-tag', begin: '\\b[a-zA-Z][a-zA-Z0-9_-]*'}
 	        ]
 	      },
-	
+
 	      // psuedo selectors
 	      {
 	        begin: '&?:?:\\b(' + PSEUDO_SELECTORS.join('|') + ')' + TAG_END
 	      },
-	
+
 	      // @ keywords
 	      {
 	        begin: '\@(' + AT_KEYWORDS.join('|') + ')\\b'
 	      },
-	
+
 	      // variables
 	      VARIABLE,
-	
+
 	      // dimension
 	      hljs.CSS_NUMBER_MODE,
-	
+
 	      // number
 	      hljs.NUMBER_MODE,
-	
+
 	      // functions
 	      //  - only from beginning of line + whitespace
 	      {
@@ -14975,7 +13683,7 @@
 	          }
 	        ]
 	      },
-	
+
 	      // attributes
 	      //  - only from beginning of line + whitespace
 	      //  - must have whitespace after it
@@ -15003,7 +13711,7 @@
 	};
 
 /***/ },
-/* 135 */
+/* 138 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15033,7 +13741,7 @@
 	        'withUnsafePointerToObject withUnsafeMutablePointer withUnsafeMutablePointers ' +
 	        'withUnsafePointer withUnsafePointers withVaList zip'
 	    };
-	
+
 	  var TYPE = {
 	    className: 'type',
 	    begin: '\\b[A-Z][\\w\']*',
@@ -15061,7 +13769,7 @@
 	    contains: [SUBST, hljs.BACKSLASH_ESCAPE]
 	  });
 	  SUBST.contains = [NUMBERS];
-	
+
 	  return {
 	    keywords: SWIFT_KEYWORDS,
 	    contains: [
@@ -15075,12 +13783,10 @@
 	        beginKeywords: 'func', end: '{', excludeEnd: true,
 	        contains: [
 	          hljs.inherit(hljs.TITLE_MODE, {
-	            begin: /[A-Za-z$_][0-9A-Za-z$_]*/,
-	            illegal: /\(/
+	            begin: /[A-Za-z$_][0-9A-Za-z$_]*/
 	          }),
 	          {
-	            begin: /</, end: />/,
-	            illegal: />/
+	            begin: /</, end: />/
 	          },
 	          {
 	            className: 'params',
@@ -15115,7 +13821,7 @@
 	                  '@noreturn|@IBAction|@IBDesignable|@IBInspectable|@IBOutlet|' +
 	                  '@infix|@prefix|@postfix|@autoclosure|@testable|@available|' +
 	                  '@nonobjc|@NSApplicationMain|@UIApplicationMain)'
-	
+
 	      },
 	      {
 	        beginKeywords: 'import', end: /$/,
@@ -15126,11 +13832,11 @@
 	};
 
 /***/ },
-/* 136 */
+/* 139 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
-	
+
 	  var COMMENT = {
 	    className: 'comment',
 	    begin: /\$noop\(/,
@@ -15144,25 +13850,25 @@
 	    }],
 	    relevance: 10
 	  };
-	
+
 	  var FUNCTION = {
 	    className: 'keyword',
 	    begin: /\$(?!noop)[a-zA-Z][_a-zA-Z0-9]*/,
 	    end: /\(/,
 	    excludeEnd: true
 	  };
-	
+
 	  var VARIABLE = {
 	    className: 'variable',
 	    begin: /%[_a-zA-Z0-9:]*/,
 	    end: '%'
 	  };
-	
+
 	  var ESCAPE_SEQUENCE = {
 	    className: 'symbol',
 	    begin: /\\./
 	  };
-	
+
 	  return {
 	    contains: [
 	      COMMENT,
@@ -15174,7 +13880,7 @@
 	};
 
 /***/ },
-/* 137 */
+/* 140 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15239,7 +13945,7 @@
 	};
 
 /***/ },
-/* 138 */
+/* 141 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15280,7 +13986,7 @@
 	      }
 	    ]
 	  };
-	
+
 	  return {
 	    contains: [
 	      COMMAND,
@@ -15305,7 +14011,7 @@
 	};
 
 /***/ },
-/* 139 */
+/* 142 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15344,7 +14050,7 @@
 	};
 
 /***/ },
-/* 140 */
+/* 143 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15377,7 +14083,7 @@
 	      TPLABEL
 	    ]
 	  };
-	
+
 	  return {
 	    keywords: {
 	      keyword:
@@ -15432,7 +14138,7 @@
 	};
 
 /***/ },
-/* 141 */
+/* 144 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15440,10 +14146,10 @@
 	    className: 'params',
 	    begin: '\\(', end: '\\)'
 	  };
-	
+
 	  var FUNCTION_NAMES = 'attribute block constant cycle date dump include ' +
 	                  'max min parent random range source template_from_string';
-	
+
 	  var FUNCTIONS = {
 	    beginKeywords: FUNCTION_NAMES,
 	    keywords: {name: FUNCTION_NAMES},
@@ -15452,7 +14158,7 @@
 	      PARAMS
 	    ]
 	  };
-	
+
 	  var FILTER = {
 	    begin: /\|[A-Za-z_]+:?/,
 	    keywords:
@@ -15464,12 +14170,12 @@
 	      FUNCTIONS
 	    ]
 	  };
-	
+
 	  var TAGS = 'autoescape block do embed extends filter flush for ' +
 	    'if import include macro sandbox set spaceless use verbatim';
-	
+
 	  TAGS = TAGS + ' ' + TAGS.split(' ').map(function(t){return 'end' + t}).join(' ');
-	
+
 	  return {
 	    aliases: ['craftcms'],
 	    case_insensitive: true,
@@ -15502,7 +14208,7 @@
 	};
 
 /***/ },
-/* 142 */
+/* 145 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15523,7 +14229,7 @@
 	      'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
 	      'module console window document any number boolean string void'
 	  };
-	
+
 	  return {
 	    aliases: ['ts'],
 	    keywords: KEYWORDS,
@@ -15610,7 +14316,7 @@
 	};
 
 /***/ },
-/* 143 */
+/* 146 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15664,7 +14370,7 @@
 	};
 
 /***/ },
-/* 144 */
+/* 147 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15724,7 +14430,7 @@
 	};
 
 /***/ },
-/* 145 */
+/* 148 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15767,7 +14473,7 @@
 	};
 
 /***/ },
-/* 146 */
+/* 149 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15783,54 +14489,115 @@
 	};
 
 /***/ },
-/* 147 */
+/* 150 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
+	  var SV_KEYWORDS = {
+	    keyword:
+	      'accept_on alias always always_comb always_ff always_latch and assert assign ' +
+	      'assume automatic before begin bind bins binsof bit break buf|0 bufif0 bufif1 ' +
+	      'byte case casex casez cell chandle checker class clocking cmos config const ' +
+	      'constraint context continue cover covergroup coverpoint cross deassign default ' +
+	      'defparam design disable dist do edge else end endcase endchecker endclass ' +
+	      'endclocking endconfig endfunction endgenerate endgroup endinterface endmodule ' +
+	      'endpackage endprimitive endprogram endproperty endspecify endsequence endtable ' +
+	      'endtask enum event eventually expect export extends extern final first_match for ' +
+	      'force foreach forever fork forkjoin function generate|5 genvar global highz0 highz1 ' +
+	      'if iff ifnone ignore_bins illegal_bins implements implies import incdir include ' +
+	      'initial inout input inside instance int integer interconnect interface intersect ' +
+	      'join join_any join_none large let liblist library local localparam logic longint ' +
+	      'macromodule matches medium modport module nand negedge nettype new nexttime nmos ' +
+	      'nor noshowcancelled not notif0 notif1 or output package packed parameter pmos ' +
+	      'posedge primitive priority program property protected pull0 pull1 pulldown pullup ' +
+	      'pulsestyle_ondetect pulsestyle_onevent pure rand randc randcase randsequence rcmos ' +
+	      'real realtime ref reg reject_on release repeat restrict return rnmos rpmos rtran ' +
+	      'rtranif0 rtranif1 s_always s_eventually s_nexttime s_until s_until_with scalared ' +
+	      'sequence shortint shortreal showcancelled signed small soft solve specify specparam ' +
+	      'static string strong strong0 strong1 struct super supply0 supply1 sync_accept_on ' +
+	      'sync_reject_on table tagged task this throughout time timeprecision timeunit tran ' +
+	      'tranif0 tranif1 tri tri0 tri1 triand trior trireg type typedef union unique unique0 ' +
+	      'unsigned until until_with untyped use uwire var vectored virtual void wait wait_order ' +
+	      'wand weak weak0 weak1 while wildcard wire with within wor xnor xor',
+	    literal:
+	      'null',
+	    built_in:
+	      '$finish $stop $exit $fatal $error $warning $info $realtime $time $printtimescale ' +
+	      '$bitstoreal $bitstoshortreal $itor $signed $cast $bits $stime $timeformat ' +
+	      '$realtobits $shortrealtobits $rtoi $unsigned $asserton $assertkill $assertpasson ' +
+	      '$assertfailon $assertnonvacuouson $assertoff $assertcontrol $assertpassoff ' +
+	      '$assertfailoff $assertvacuousoff $isunbounded $sampled $fell $changed $past_gclk ' +
+	      '$fell_gclk $changed_gclk $rising_gclk $steady_gclk $coverage_control ' +
+	      '$coverage_get $coverage_save $set_coverage_db_name $rose $stable $past ' +
+	      '$rose_gclk $stable_gclk $future_gclk $falling_gclk $changing_gclk $display ' +
+	      '$coverage_get_max $coverage_merge $get_coverage $load_coverage_db $typename ' +
+	      '$unpacked_dimensions $left $low $increment $clog2 $ln $log10 $exp $sqrt $pow ' +
+	      '$floor $ceil $sin $cos $tan $countbits $onehot $isunknown $fatal $warning ' +
+	      '$dimensions $right $high $size $asin $acos $atan $atan2 $hypot $sinh $cosh ' +
+	      '$tanh $asinh $acosh $atanh $countones $onehot0 $error $info $random ' +
+	      '$dist_chi_square $dist_erlang $dist_exponential $dist_normal $dist_poisson ' +
+	      '$dist_t $dist_uniform $q_initialize $q_remove $q_exam $async$and$array ' +
+	      '$async$nand$array $async$or$array $async$nor$array $sync$and$array ' +
+	      '$sync$nand$array $sync$or$array $sync$nor$array $q_add $q_full $psprintf ' +
+	      '$async$and$plane $async$nand$plane $async$or$plane $async$nor$plane ' +
+	      '$sync$and$plane $sync$nand$plane $sync$or$plane $sync$nor$plane $system ' +
+	      '$display $displayb $displayh $displayo $strobe $strobeb $strobeh $strobeo ' +
+	      '$write $readmemb $readmemh $writememh $value$plusargs ' +
+	      '$dumpvars $dumpon $dumplimit $dumpports $dumpportson $dumpportslimit ' +
+	      '$writeb $writeh $writeo $monitor $monitorb $monitorh $monitoro $writememb ' +
+	      '$dumpfile $dumpoff $dumpall $dumpflush $dumpportsoff $dumpportsall ' +
+	      '$dumpportsflush $fclose $fdisplay $fdisplayb $fdisplayh $fdisplayo ' +
+	      '$fstrobe $fstrobeb $fstrobeh $fstrobeo $swrite $swriteb $swriteh ' +
+	      '$swriteo $fscanf $fread $fseek $fflush $feof $fopen $fwrite $fwriteb ' +
+	      '$fwriteh $fwriteo $fmonitor $fmonitorb $fmonitorh $fmonitoro $sformat ' +
+	      '$sformatf $fgetc $ungetc $fgets $sscanf $rewind $ftell $ferror'
+	    };
 	  return {
-	    aliases: ['v'],
+	    aliases: ['v', 'sv', 'svh'],
 	    case_insensitive: false,
-	    keywords: {
-	      keyword:
-	        'always and assign begin buf bufif0 bufif1 case casex casez cmos deassign ' +
-	        'default defparam disable edge else end endcase endfunction endmodule ' +
-	        'endprimitive endspecify endtable endtask event for force forever fork ' +
-	        'function if ifnone initial inout input join macromodule module nand ' +
-	        'negedge nmos nor not notif0 notif1 or output parameter pmos posedge ' +
-	        'primitive pulldown pullup rcmos release repeat rnmos rpmos rtran ' +
-	        'rtranif0 rtranif1 specify specparam table task timescale tran ' +
-	        'tranif0 tranif1 wait while xnor xor ' +
-	        // types
-	        'highz0 highz1 integer large medium pull0 pull1 real realtime reg ' +
-	        'scalared signed small strong0 strong1 supply0 supply0 supply1 supply1 ' +
-	        'time tri tri0 tri1 triand trior trireg vectored wand weak0 weak1 wire wor'
-	    },
+	    keywords: SV_KEYWORDS, lexemes: /[\w\$]+/,
 	    contains: [
 	      hljs.C_BLOCK_COMMENT_MODE,
 	      hljs.C_LINE_COMMENT_MODE,
 	      hljs.QUOTE_STRING_MODE,
 	      {
 	        className: 'number',
-	        begin: '(\\b((\\d\'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F\_]+))|(\\B((\'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F\_]+))|(\\b([0-9xzXZ\_])+)',
 	        contains: [hljs.BACKSLASH_ESCAPE],
-	        relevance: 0
+	        variants: [
+	          {begin: '\\b((\\d+\'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)'},
+	          {begin: '\\B((\'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)'},
+	          {begin: '\\b([0-9_])+', relevance: 0}
+	        ]
 	      },
 	      /* parameters to instances */
 	      {
 	        className: 'variable',
-	        begin: '#\\((?!parameter).+\\)'
+	        variants: [
+	          {begin: '#\\((?!parameter).+\\)'},
+	          {begin: '\\.\\w+', relevance: 0},
+	        ]
+	      },
+	      {
+	        className: 'meta',
+	        begin: '`', end: '$',
+	        keywords: {'meta-keyword': 'define __FILE__ ' +
+	          '__LINE__ begin_keywords celldefine default_nettype define ' +
+	          'else elsif end_keywords endcelldefine endif ifdef ifndef ' +
+	          'include line nounconnected_drive pragma resetall timescale ' +
+	          'unconnected_drive undef undefineall'},
+	        relevance: 0
 	      }
 	    ]
 	  }; // return
 	};
 
 /***/ },
-/* 148 */
+/* 151 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  // Regular expression for VHDL numeric literals.
-	
+
 	  // Decimal literal:
 	  var INTEGER_RE = '\\d(_|\\d)*';
 	  var EXPONENT_RE = '[eE][-+]?' + INTEGER_RE;
@@ -15838,9 +14605,9 @@
 	  // Based literal:
 	  var BASED_INTEGER_RE = '\\w+';
 	  var BASED_LITERAL_RE = INTEGER_RE + '#' + BASED_INTEGER_RE + '(\\.' + BASED_INTEGER_RE + ')?' + '#' + '(' + EXPONENT_RE + ')?';
-	
+
 	  var NUMBER_RE = '\\b(' + BASED_LITERAL_RE + '|' + DECIMAL_LITERAL_RE + ')';
-	
+
 	  return {
 	    case_insensitive: true,
 	    keywords: {
@@ -15885,7 +14652,7 @@
 	};
 
 /***/ },
-/* 149 */
+/* 152 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -15953,12 +14720,12 @@
 	    contains: [
 	      hljs.NUMBER_MODE,
 	      hljs.APOS_STRING_MODE,
-	
+
 	      /*
 	      A double quote can start either a string or a line comment. Strings are
 	      ended before the end of a line by another double quote and can contain
 	      escaped double-quotes and post-escaped line breaks.
-	
+
 	      Also, any double quote at the beginning of a line is a comment but we
 	      don't handle that properly at the moment: any double quote inside will
 	      turn them into a string. Handling it properly will require a smarter
@@ -15969,7 +14736,7 @@
 	        begin: /"(\\"|\n\\|[^"\n])*"/
 	      },
 	      hljs.COMMENT('"', '$'),
-	
+
 	      {
 	        className: 'variable',
 	        begin: /[bwtglsav]:[\w\d_]*/
@@ -15995,7 +14762,7 @@
 	};
 
 /***/ },
-/* 150 */
+/* 153 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -16043,12 +14810,12 @@
 	        'r0w r1w r2w r3w r4w r5w r6w r7w r0d r1d r2d r3d r4d r5d r6d r7d ' +
 	        'r0h r1h r2h r3h ' +
 	        'r0l r1l r2l r3l r4l r5l r6l r7l r8l r9l r10l r11l r12l r13l r14l r15l ' +
-	
+
 	        'db dw dd dq dt ddq do dy dz ' +
 	        'resb resw resd resq rest resdq reso resy resz ' +
 	        'incbin equ times ' +
 	        'byte word dword qword nosplit rel abs seg wrt strict near far a32 ptr',
-	
+
 	      meta:
 	        '%define %xdefine %+ %undef %defstr %deftok %assign %strcat %strlen %substr %rotate %elif %else %endif ' +
 	        '%if %ifmacro %ifctx %ifidn %ifidni %ifid %ifnum %ifstr %iftoken %ifempty %ifenv %error %warning %fatal %rep ' +
@@ -16057,7 +14824,7 @@
 	        '__FILE__ __LINE__ __SECT__  __BITS__ __OUTPUT_FORMAT__ __DATE__ __TIME__ __DATE_NUM__ __TIME_NUM__ ' +
 	        '__UTC_DATE__ __UTC_TIME__ __UTC_DATE_NUM__ __UTC_TIME_NUM__  __PASS__ struc endstruc istruc at iend ' +
 	        'align alignb sectalign daz nodaz up down zero default option assume public ' +
-	
+
 	        'bits use16 use32 use64 default section segment absolute extern global common cpu float ' +
 	        '__utf16__ __utf16le__ __utf16be__ __utf32__ __utf32le__ __utf32be__ ' +
 	        '__float8__ __float16__ __float32__ __float64__ __float80m__ __float80e__ __float128l__ __float128h__ ' +
@@ -16081,13 +14848,13 @@
 	                   '(0[Xx])?[0-9][0-9_]*\\.?[0-9_]*(?:[pP](?:[+-]?[0-9_]+)?)?)\\b',
 	            relevance: 0
 	          },
-	
+
 	          // Hex number in $
 	          { begin: '\\$[0-9][0-9A-Fa-f]*', relevance: 0 },
-	
+
 	          // Number in H,D,T,Q,O,B,Y suffix
 	          { begin: '\\b(?:[0-9A-Fa-f][0-9A-Fa-f_]*[Hh]|[0-9][0-9_]*[DdTt]?|[0-7][0-7_]*[QqOo]|[0-1][0-1_]*[BbYy])\\b' },
-	
+
 	          // Number in X,D,T,Q,O,B,Y prefix
 	          { begin: '\\b(?:0[Xx][0-9A-Fa-f_]+|0[DdTt][0-9_]+|0[QqOo][0-7_]+|0[BbYy][0-1_]+)\\b'}
 	        ]
@@ -16100,9 +14867,7 @@
 	          // Single-quoted string
 	          { begin: '\'', end: '[^\\\\]\'' },
 	          // Backquoted string
-	          { begin: '`', end: '[^\\\\]`' },
-	          // Section name
-	          { begin: '\\.[A-Za-z0-9]+' }
+	          { begin: '`', end: '[^\\\\]`' }
 	        ],
 	        relevance: 0
 	      },
@@ -16127,20 +14892,24 @@
 	        className: 'subst',
 	        begin: '%!\S+',
 	        relevance: 0
+	      },
+	      {
+	        className: 'meta',
+	        begin: /^\s*\.[\w_-]+/
 	      }
 	    ]
 	  };
 	};
 
 /***/ },
-/* 151 */
+/* 154 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var BUILTIN_MODULES =
 	    'ObjectLoader Animate MovieCredits Slides Filters Shading Materials LensFlare Mapping VLCAudioVideo ' +
 	    'StereoDecoder PointCloud NetworkAccess RemoteControl RegExp ChromaKey Snowfall NodeJS Speech Charts';
-	
+
 	  var XL_KEYWORDS = {
 	    keyword:
 	      'if then else do while until for loop import with is as where when by data constant ' +
@@ -16159,7 +14928,7 @@
 	      'mouse_?y mouse_buttons ' +
 	      BUILTIN_MODULES
 	  };
-	
+
 	  var DOUBLE_QUOTE_TEXT = {
 	    className: 'string',
 	    begin: '"', end: '"', illegal: '\\n'
@@ -16210,7 +14979,7 @@
 	};
 
 /***/ },
-/* 152 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -16225,13 +14994,13 @@
 	  var VAR = {
 	    begin: /\$[a-zA-Z0-9\-]+/
 	  };
-	
+
 	  var NUMBER = {
 	    className: 'number',
 	    begin: '(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b',
 	    relevance: 0
 	  };
-	
+
 	  var STRING = {
 	    className: 'string',
 	    variants: [
@@ -16239,12 +15008,12 @@
 	      {begin: /'/, end: /'/, contains: [{begin: /''/, relevance: 0}]}
 	    ]
 	  };
-	
+
 	  var ANNOTATION = {
 	    className: 'meta',
 	    begin: '%\\w+'
 	  };
-	
+
 	  var COMMENT = {
 	    className: 'comment',
 	    begin: '\\(:', end: ':\\)',
@@ -16255,11 +15024,11 @@
 	      }
 	    ]
 	  };
-	
+
 	  var METHOD = {
 	    begin: '{', end: '}'
 	  };
-	
+
 	  var CONTAINS = [
 	    VAR,
 	    STRING,
@@ -16269,8 +15038,8 @@
 	    METHOD
 	  ];
 	  METHOD.contains = CONTAINS;
-	
-	
+
+
 	  return {
 	    aliases: ['xpath', 'xq'],
 	    case_insensitive: false,
@@ -16285,12 +15054,12 @@
 	};
 
 /***/ },
-/* 153 */
+/* 156 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
 	  var LITERALS = {literal: '{ } true false yes no Yes No True False null'};
-	
+
 	  var keyPrefix = '^[ \\-]*';
 	  var keyName =  '[a-zA-Z_][\\w\\-]*';
 	  var KEY = {
@@ -16301,7 +15070,7 @@
 	      { begin: keyPrefix + "'" + keyName + "'" + ":"}
 	    ]
 	  };
-	
+
 	  var TEMPLATE_VARIABLES = {
 	    className: 'template-variable',
 	    variants: [
@@ -16321,7 +15090,7 @@
 	      TEMPLATE_VARIABLES
 	    ]
 	  };
-	
+
 	  return {
 	    case_insensitive: true,
 	    aliases: ['yml', 'YAML', 'yaml'],
@@ -16373,7 +15142,7 @@
 	};
 
 /***/ },
-/* 154 */
+/* 157 */
 /***/ function(module, exports) {
 
 	module.exports = function(hljs) {
@@ -16485,4 +15254,3 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=fabb1b859149d42e05de.worker.js.map

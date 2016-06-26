@@ -6,8 +6,8 @@ import DirectoryNav from '../components/DirectoryNav';
 import DirectoryControl from './DirectoryControl';
 import Tooltip from '../../../components/Tooltip'
 import Uploader from './Uploader';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as RouteActions from '../../../actions/RouteActions';
 import * as FileActions from '../../../actions/FileActions';
 import * as TooltipActions from '../../../actions/TooltipActions';
@@ -34,8 +34,8 @@ const FileView = ({
 					<FileList
 						currentFile={currentFile}
 						onNavigate={onNavigate}
-						loading={loading} /> :
-					<FileEditor currentFile={currentFile} />
+						loading={loading}/> :
+					<FileEditor currentFile={currentFile}/>
 			}
 		</div>
 	);
@@ -57,10 +57,10 @@ function mapStateToProps(state) {
 
 	fileTools.sortFiles(files, dirData.sort.asc, dirData.sort.by);
 
-    return {
+	return {
 		tooltip: state.tooltip,
 		loading: state.loading,
-		currentFile: { 
+		currentFile: {
 			path: state.currentFile.path,
 			filetype: state.currentFile.filetype,
 			newDirStage: state.currentFile.newDirStage,
@@ -69,16 +69,16 @@ function mapStateToProps(state) {
 				sort: dirData.sort
 			}
 		},
-    }
+	}
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
+	return {
 		onNavigate: bindActionCreators(RouteActions, dispatch).navigate
-    }
+	}
 }
 
 module.exports = connect(
-    mapStateToProps,
-    mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(FileView);

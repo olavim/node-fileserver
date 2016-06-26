@@ -1,19 +1,18 @@
+import {batchActions} from 'redux-batched-actions';
 import api from '../api';
-import * as ActionType from './FileActions';
-import { fetchFile, setFiles } from './FileActions';
-import { browserHistory } from 'react-router';
-import { batchActions } from 'redux-batched-actions';
+import {fetchFile, setFiles} from './FileActions';
 
 export const Navigate = {
 	START: 'NAVIGATE_START',
-	END: 'NAVIGATE_END',
-}
+	END: 'NAVIGATE_END'
+};
 
-export const navigate = (path) => {
-	return (dispatch) => {
+export const navigate = path => {
+	return dispatch => {
 		dispatch({type: Navigate.START});
 
-		api.fetchFileData(path).then((response) => {
+		api.fetchFileData(path).then(response => {
+			console.log(response.data)
 			dispatch(
 				batchActions([
 					fetchFile(path, response.data),
@@ -21,8 +20,8 @@ export const navigate = (path) => {
 					{type: Navigate.END}
 				])
 			);
-		}).catch((error) => {
-			console.error(error.stack);
+		}).catch(error => {
+			console.log(error.stack);
 		});
-	}
-}
+	};
+};

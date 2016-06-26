@@ -14,18 +14,24 @@ const horizontalMargin = 20;
 export default class Tooltip extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {width: 0, height: 0, windowWidth: window.innerWidth, windowHeight: window.innerHeight};
+		this.state = {
+			width: 0,
+			height: 0,
+			windowWidth: window.innerWidth,
+			windowHeight: window.innerHeight
+		};
 		this.handleResize = this.handleResize.bind(this);
 	}
 
 	componentDidMount() {
-		window.addEventListener("resize", this.handleResize);
+		window.addEventListener('resize', this.handleResize);
 	}
 
 	componentDidUpdate() {
 		let rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
-		if (this.state.width !== rect.right - rect.left || this.state.height !== rect.bottom - rect.top)
+		if (this.state.width !== rect.right - rect.left || this.state.height !== rect.bottom - rect.top) {
 			this.setState({width: rect.right - rect.left, height: rect.bottom - rect.top})
+		}
 
 		let bgcolor = hexToRgb(this.props.bgcolor);
 		this.luminance = getLuminance(bgcolor);
@@ -61,8 +67,9 @@ export default class Tooltip extends React.Component {
 			color: this.luminance > 0.179 ? '#000' : '#FFF'
 		}
 
-		if (this.props.active)
+		if (this.props.active) {
 			Object.assign(style, {display: 'inline'});
+		}
 
 		let arrowStyle = {};
 		arrowStyle['border' + this.props.orientation + 'Color'] = this.props.bgcolor;
@@ -70,14 +77,14 @@ export default class Tooltip extends React.Component {
 		return (
 			<div className={'tooltip ' + this.props.orientation.toLowerCase()} style={style}>
 				<span>{this.props.text}</span>
-				<div className="arrow" style={arrowStyle} />
+				<div className="arrow" style={arrowStyle}/>
 			</div>
 		)
 	}
 }
 
 function getLuminance(color) {
-	let c = [color.r/255, color.g/255, color.b/255];
+	let c = [color.r / 255, color.g / 255, color.b / 255];
 	for (let i = 0; i < c.length; i++) {
 		if (c[i] <= 0.03928) {
 			c[i] = c[i] / 12.92
@@ -92,7 +99,7 @@ function getLuminance(color) {
 function hexToRgb(hex) {
 	// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
 	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-	hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+	hex = hex.replace(shorthandRegex, function (m, r, g, b) {
 		return r + r + g + g + b + b;
 	});
 

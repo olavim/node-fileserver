@@ -14,8 +14,9 @@ export default class FileItem extends React.Component {
 	}
 
 	componentDidUpdate() {
-		if (!this.props.loading && this.state.active)
+		if (!this.props.loading && this.state.active) {
 			this.setState({active: false});
+		}
 	}
 
 	activate() {

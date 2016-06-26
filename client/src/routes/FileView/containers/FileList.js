@@ -1,14 +1,14 @@
 import React from 'react';
 import path from 'path';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Heading from './../components/Heading';
 import FileItem from './../components/FileItem';
-import { NewDirStage } from '../../../actions/FileActions'
-import { isValidFilename } from '../../../tools/fileTools'
+import {NewDirStage} from '../../../actions/FileActions'
+import {isValidFilename} from '../../../tools/fileTools'
 import * as FileActions from '../../../actions/FileActions';
 import * as TooltipActions from '../../../actions/TooltipActions';
-import { Orientation } from '../../../components/Tooltip';
+import {Orientation} from '../../../components/Tooltip';
 
 class FileList extends React.Component {
 	constructor(props) {
@@ -33,8 +33,9 @@ class FileList extends React.Component {
 	}
 
 	onInputKeyPress(e) {
-		if (e.charCode === 13)
+		if (e.charCode === 13) {
 			this.onNewDir(e);
+		}
 	}
 
 	render() {
@@ -54,10 +55,10 @@ class FileList extends React.Component {
 						currentFile.dirData.files.map((file, index) => {
 							let link = path.join(dirname, file.name) + (isDir(file) ? '/' : '');
 							return <FileItem key={index}
-											 link={link}
-											 file={file}
-											 onNavigate={this.props.onNavigate} 
-											 loading={this.props.loading} />
+							                 link={link}
+							                 file={file}
+							                 onNavigate={this.props.onNavigate}
+							                 loading={this.props.loading}/>
 						})
 					}
 					{
@@ -65,9 +66,9 @@ class FileList extends React.Component {
 							<div className="item dir">
 								<div className="name">
 									<input type="text"
-										   ref={c => c ? c.focus() : {}}
-										   onBlur={this.onInputBlur}
-										   onKeyPress={this.onInputKeyPress}/>
+									       ref={c => c ? c.focus() : {}}
+									       onBlur={this.onInputBlur}
+									       onKeyPress={this.onInputKeyPress}/>
 								</div>
 							</div> :
 							''

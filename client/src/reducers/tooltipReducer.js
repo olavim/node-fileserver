@@ -1,5 +1,5 @@
 import * as ActionType from '../actions/TooltipActions'
-import { Orientation } from '../components/Tooltip';
+import {Orientation} from '../components/Tooltip';
 
 const initialState = {
 	active: false,
@@ -13,10 +13,10 @@ module.exports = (state = initialState, action) => {
 	switch (action.type) {
 		case ActionType.TOOLTIP_SHOW:
 			return Object.assign({}, state, {
-				active: true, 
-				text: action.text, 
-				parent: action.parent, 
-				orientation: action.orientation, 
+				active: true,
+				text: action.text,
+				parent: action.parent,
+				orientation: action.orientation,
 				bgcolor: action.bgcolor
 			});
 		case ActionType.TOOLTIP_HIDE:

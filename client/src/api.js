@@ -1,13 +1,13 @@
+import path from 'path';
 import axios from 'axios';
 import config from '../config';
-import path from 'path';
 
 export default {
-	fetchFileData: (dir) => {
+	fetchFileData: dir => {
 		return axios.get(getFileUrl(dir));
 	},
 	newDirectory: (currentDir, name) => {
-		return axios.post(getFileUrl(currentDir) + '?dir=' + name);
+		return axios.post(`${getFileUrl(currentDir)}?dir=${name}`);
 	}
 }
 

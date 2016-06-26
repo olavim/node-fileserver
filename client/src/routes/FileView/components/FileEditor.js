@@ -18,7 +18,7 @@ export default class FileEditor extends React.Component {
 			<div className="file-editor">
 				<pre>
 					<code className={this.props.currentFile.filetype}
-						   dangerouslySetInnerHTML={{__html: this.state.data}} />
+					      dangerouslySetInnerHTML={{__html: this.state.data}}/>
 				</pre>
 			</div>
 		)

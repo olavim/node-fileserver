@@ -1,14 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as UploaderActions from '../../../actions/UploaderActions';
 import FileInputButton from '../components/FileInputButton';
 import CancelButton from '../components/CancelButton';
 
 class Uploader extends React.Component {
 	onClick(e) {
-		if (e.target.className === 'uploader')
+		if (e.target.className === 'uploader') {
 			this.props.hideUploader();
+		}
 	}
 
 	render() {
@@ -28,7 +29,7 @@ class Uploader extends React.Component {
 						</p>
 						<div className="buttons">
 							<FileInputButton />
-							<CancelButton onAction={this.props.hideUploader} />
+							<CancelButton onAction={this.props.hideUploader}/>
 						</div>
 					</div>
 				</div>

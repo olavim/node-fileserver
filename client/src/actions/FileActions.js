@@ -6,7 +6,7 @@ export const SET_FILES = 'SET_FILES';
 export const SORT_FILES = 'SORT_FILES';
 export const NEW_DIR = 'NEW_DIR';
 
-export const fileInfoFields = ['name', 'modified'];
+export const fileInfoFields = ['name', 'modified'];//
 export const NewDirStage = {
 	NONE: 0,		// new directory isn't being made
 	PROMPT: 1,		// waiting for directory to be named

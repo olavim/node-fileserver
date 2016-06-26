@@ -1,26 +1,23 @@
-require('../assets/style.scss');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
-import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { enableBatching } from 'redux-batched-actions';
+import {Router, Route, browserHistory} from 'react-router';
+import {Provider} from 'react-redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {enableBatching} from 'redux-batched-actions';
 import thunk from 'redux-thunk';
-
 import navigationReducer from './reducers/navigationReducer';
 import fileReducer from './reducers/fileReducer';
 import tooltipReducer from './reducers/tooltipReducer';
 import uploaderReducer from './reducers/uploaderReducer';
-
-import { fileInfoFields, NewDirStage } from './actions/FileActions';
-import { navigate } from './actions/RouteActions';
-
+import {fileInfoFields, NewDirStage} from './actions/FileActions';
+import {navigate} from './actions/RouteActions';
 import App from './containers/App';
-import { Orientation } from './components/Tooltip';
+import {Orientation} from './components/Tooltip';
 import FileView from './routes/FileView';
 
-let initialState = {
+require('../assets/style.scss');
+
+const initialState = {
 	tooltip: {
 		active: false,
 		text: '',
@@ -30,9 +27,9 @@ let initialState = {
 	},
 	loading: false,
 	uploader: {
-		active: false,
+		active: false
 	},
-    currentFile: {
+	currentFile: {
 		path: '/',
 		filetype: 'directory',
 		data: '',
@@ -45,30 +42,30 @@ let initialState = {
 			}
 		}
 	}
-}
+};
 
-let reducers = combineReducers({
+const reducers = combineReducers({
 	tooltip: tooltipReducer,
 	loading: navigationReducer,
 	uploader: uploaderReducer,
-    currentFile: fileReducer
+	currentFile: fileReducer
 });
 
 let store = createStore(
-    enableBatching(reducers),
-    initialState,
-    applyMiddleware(thunk)
+	enableBatching(reducers),
+	initialState,
+	applyMiddleware(thunk)
 );
 
 navigate(window.location.pathname)(store.dispatch);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={browserHistory}>
+	<Provider store={store}>
+		<Router history={browserHistory}>
 			<Route path="/" component={App}>
 				{FileView}
 			</Route>
 		</Router>
-    </Provider>,
-    document.getElementById('content')
+	</Provider>,
+	document.getElementById('content')
 );

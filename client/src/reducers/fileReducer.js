@@ -1,5 +1,5 @@
 import * as ActionType from '../actions/FileActions';
-import { fileInfoFields, NewDirStage } from '../actions/FileActions'
+import {fileInfoFields, NewDirStage} from '../actions/FileActions'
 
 const initialState = {
 	path: '/',
@@ -24,7 +24,11 @@ const moveElemToStart = (arr, elem) => {
 module.exports = (state = initialState, action) => {
 	switch (action.type) {
 		case ActionType.CHANGE_FILE:
-			return Object.assign({}, state, {path: action.path, filetype: action.filetype, data: action.data});
+			return Object.assign({}, state, {
+				path: action.path,
+				filetype: action.filetype,
+				data: action.data
+			});
 		case ActionType.SET_FILES:
 			return Object.assign({}, state, {
 				dirData: Object.assign({}, state.dirData, {files: action.files})

@@ -2,16 +2,18 @@ export const isDir = file => file.filetype === 'directory';
 
 export const sortFiles = (files, asc, by) => {
 	files.sort((a, b) => {
-		if (a.filetype !==  b.filetype && (isDir(a) || isDir(b)))
+		if (a.filetype !== b.filetype && (isDir(a) || isDir(b))) {
 			return isDir(a) ? -1 : 1;
-		
+		}
+
 		for (let i = 0; i < by.length; i++) {
 			let field = by[i];
 			let comp = a[field].localeCompare(b[field]);
-			if (comp !== 0)
+			if (comp !== 0) {
 				return asc ? comp : -comp;
+			}
 		}
-		
+
 		return 0;
 	});
 }

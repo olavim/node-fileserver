@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
-	sharePath: '/home/olavi/dev/node-fileserver/share'
+	sharePath: path.resolve(__dirname, '../share')
 }

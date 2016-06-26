@@ -15,7 +15,8 @@ export default ({
 					let link = '/' + dirs.slice(0, index + 1).join('/');
 					return (
 						<li key={index}>
-							<FileLink to={link} onNavigate={onNavigate.bind(this, link, 'directory')}>{dir}</FileLink>
+							<FileLink to={link}
+							          onNavigate={onNavigate.bind(this, link, 'directory')}>{dir}</FileLink>
 						</li>
 					)
 				})

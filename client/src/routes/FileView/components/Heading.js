@@ -13,7 +13,7 @@ export default ({
 	return (
 		<div className={className} onClick={onClick}>
 			{heading}
-			{sort.by[0] === lheading ? <span className={sort.asc ? 'asc' : 'desc'} /> : ''}
+			{sort.by[0] === lheading ? <span className={sort.asc ? 'asc' : 'desc'}/> : ''}
 		</div>
 	)
 }
